@@ -1,11 +1,14 @@
 import emiter from "../utils/emiter";
+import { getComponents } from "../designer";
 
-const layouts = ["div", "p", "h1"];
+const layouts = getComponents()
+  .filter(item => item.container)
+  .map(item => item.tag);
 
-export default function(field) {
+export default function(field, options) {
   const { component, layout } = field;
 
-  if (layouts.indexOf(component) < 0 || layout) {
+  if (!options.dev || layouts.indexOf(component) < 0 || layout) {
     return;
   }
 

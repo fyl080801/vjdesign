@@ -60,17 +60,27 @@
 
 .v-jdesign .v-jform .layout-component {
   border: 1px dotted silver;
-  padding: 10px;
-  /* text-align: center; */
+  padding: 18px;
 }
 
 .v-jdesign .v-jform .layout-component > * {
   text-align: initial;
 }
 
+/* .v-jdesign .v-jform .layout-component::before {
+  position: absolute;
+  left: 0;
+  content: "布局";
+  width: 40px;
+  text-align: center;
+  border: 1px solid gray;
+  background-color: silver;
+} */
+
 .v-jdesign .v-jform .layout-component::after {
   content: "添加组件";
   color: silver;
+  display: block;
 }
 
 .v-jdesign .v-jform .design-element {
@@ -81,5 +91,10 @@
 .v-jdesign .v-jform .design-element::before {
   position: absolute;
   left: 0;
-  /* content: "element"; */
+  content: "组件";
+  font-size: 12px;
+  width: 40px;
+  text-align: center;
+  border: 1px solid gray;
+  background-color: silver;
 }

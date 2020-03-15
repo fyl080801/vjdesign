@@ -18,6 +18,7 @@
       :schema="schema"
       :inits="inits"
       :components="designComponents"
+      :options="options"
     ></vjform>
   </div>
 </template>
@@ -39,6 +40,7 @@ export default {
   }),
   data() {
     return {
+      options: { dev: true },
       designComponents: { vuedraggable },
       changes: []
     };
@@ -59,10 +61,13 @@ export default {
         return;
       }
 
-      this.$nextTick(() => {
-        this.$store.commit("form/FIELD_CHILDREN_CHANGED", this.changes);
-        this.changes = [];
-      });
+      this.$store.commit("form/FIELD_CHILDREN_CHANGED", value);
+      this.changes = [];
+      // console.log("xxx");
+      // this.$nextTick(() => {
+      //   this.$store.commit("form/FIELD_CHILDREN_CHANGED", this.changes);
+      //   this.changes = [];
+      // });
     }
   },
   mounted() {

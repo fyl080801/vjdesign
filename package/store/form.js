@@ -1,5 +1,5 @@
 import { guid2 } from "../utils/helpers";
-import { eachTree } from "../utils/tree";
+import { eachTreeNodes } from "../utils/tree";
 // import { merge } from "lodash-es";
 // import { cloneDeep } from "lodash-es";
 
@@ -10,7 +10,9 @@ export default {
     datasource: {},
     inits: {},
     watchs: {},
-    schema: {}
+    schema: {},
+    editing: null,
+    fieldMap: {}
   },
   mutations: {
     ADD_ROOT: (state, payload) => {
@@ -18,30 +20,56 @@ export default {
         return;
       }
       state.fields = [{ uuid: guid2(), ...payload[0] }];
+
+      // 同步
+      eachTreeNodes(state.fields, node => {
+        state.fieldMap[node.uuid] = node;
+        state.editing = node.uuid;
+      });
     },
     FIELD_CHILDREN_CHANGED: (state, payload) => {
-      state.fields.forEach(item => {
-        eachTree(item, node => {
-          const action = payload.find(p => p.uuid === node.uuid);
+      eachTreeNodes(state.fields, node => {
+        const action = payload.find(p => p.uuid === node.uuid);
 
-          if (!action) {
-            return true;
+        if (!action) {
+          return true;
+        }
+
+        const result = action.value.map(item => {
+          if (item.component === undefined) {
+            return {
+              uuid: guid2(),
+              component: item.tag
+            };
           }
+          return item;
+        });
 
-          const result = action.value.map(item =>
-            item.component !== undefined
-              ? item
-              : {
-                  uuid: guid2(),
-                  component: item.tag
-                }
-          );
-
-          node.children = [...result];
+        node.children = result.map(item => {
+          return state.fieldMap[item.uuid] || item;
         });
       });
 
-      state.fields = [...state.fields];
+      state.fields = [].concat(state.fields);
+
+      // 同步map
+      state.fieldMap = {};
+      eachTreeNodes(state.fields, node => {
+        state.fieldMap[node.uuid] = node;
+      });
+    },
+
+    //
+    SELECT_EDITING: (state, payload) => {
+      state.editing = payload.uuid;
+    },
+    UPDATE_EDITING: (state, payload) => {
+      state.fieldMap[payload.uuid] = Object.assign(
+        state.fieldMap[payload.uuid],
+        payload
+      );
+
+      state.fields = [].concat(state.fields);
     }
   }
 };

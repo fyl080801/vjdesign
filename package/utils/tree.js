@@ -68,10 +68,20 @@ export const eachTree = (node, callback) => {
   const result = callback(node);
 
   if (result === false) {
-    return;
+    return false;
   }
 
-  (node.children || []).forEach(child => eachTree(child, callback));
+  eachTreeNodes(node.children || [], callback);
+};
+
+export const eachTreeNodes = (nodes, callback) => {
+  for (const i in nodes) {
+    const result = eachTree(nodes[i], callback);
+
+    if (result === false) {
+      break;
+    }
+  }
 };
 
 export const convertToTree = options => {

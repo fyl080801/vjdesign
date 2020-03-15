@@ -1,13 +1,15 @@
 <template>
   <div class="preview">
-    <!-- <vjform
+    <vjform
       v-show="fields.length"
+      v-model="model"
       :fields="fields"
       :watchs="watchs"
       :datasource="datasource"
       :schema="schema"
       :inits="inits"
-    ></vjform> -->
+      :options="options"
+    ></vjform>
   </div>
 </template>
 
@@ -22,7 +24,13 @@ export default {
     datasource: state => state.form.datasource,
     schema: state => state.form.schema,
     inits: state => state.form.inits
-  })
+  }),
+  data() {
+    return {
+      model: {},
+      options: { dev: false }
+    };
+  }
 };
 </script>
 

@@ -12,7 +12,7 @@
               <vuedraggable
                 tag="div"
                 class="components-group"
-                :list="group.children"
+                :list="group.components"
                 draggable=".drag-handler"
                 :group="{ name: 'jdesign', pull: 'clone', put: false }"
                 :sort="false"
@@ -21,10 +21,10 @@
                   :span="12"
                   :key="index"
                   class="drag-handler"
-                  v-for="(item, index) in group.children"
+                  v-for="(item, index) in group.components"
                 >
                   <el-card :body-style="{ padding: '10px' }">{{
-                    item.name
+                    item.description
                   }}</el-card>
                 </el-col>
               </vuedraggable>
@@ -39,41 +39,18 @@
 
 <script>
 import vuedraggable from "vuedraggable";
+import { getComponentGroups } from "../designer";
 
 export default {
   components: { vuedraggable },
   data() {
     return {
-      origin: [
-        {
-          name: "布局元素",
-          children: [
-            {
-              name: "层",
-              tag: "div"
-            },
-            {
-              name: "段落",
-              tag: "p"
-            },
-            {
-              name: "标题1",
-              tag: "h1"
-            }
-          ]
-        },
-        {
-          name: "块级元素",
-          children: [
-            {
-              name: "文本",
-              tag: "span"
-            }
-          ]
-        }
-      ],
+      origin: [],
       advance: []
     };
+  },
+  mounted() {
+    this.origin = getComponentGroups(true);
   }
 };
 </script>
