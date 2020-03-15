@@ -1,0 +1,96 @@
+<template>
+  <div class="design-content">
+    <vuedraggable
+      tag="div"
+      v-show="!fields.length"
+      class="empty-text"
+      :value="fields"
+      @input="emitter"
+      group="jdesign"
+    >
+      <p>组件...</p>
+    </vuedraggable>
+    <vjform
+      v-show="fields.length"
+      :fields="fields"
+      :watchs="watchs"
+      :datasource="datasource"
+      :schema="schema"
+      :inits="inits"
+      :components="designComponents"
+    ></vjform>
+  </div>
+</template>
+
+<script>
+import { mapState } from "vuex";
+import emiter from "../utils/emiter";
+import vuedraggable from "vuedraggable";
+
+export default {
+  name: "design-content",
+  components: { vuedraggable },
+  computed: mapState({
+    fields: state => state.form.fields,
+    watchs: state => state.form.watchs,
+    datasource: state => state.form.datasource,
+    schema: state => state.form.schema,
+    inits: state => state.form.inits
+  }),
+  data() {
+    return {
+      designComponents: { vuedraggable },
+      changes: []
+    };
+  },
+  methods: {
+    emitter(value) {
+      this.$store.commit(
+        "form/ADD_ROOT",
+        value.map(item => ({
+          component: item.tag
+        }))
+      );
+    }
+  },
+  watch: {
+    changes(value) {
+      if (value.length <= 0) {
+        return;
+      }
+
+      this.$nextTick(() => {
+        this.$store.commit("form/FIELD_CHILDREN_CHANGED", this.changes);
+        this.changes = [];
+      });
+    }
+  },
+  mounted() {
+    emiter.$on("children-changed", value => {
+      this.changes.push(value);
+    });
+  }
+};
+</script>
+
+<style>
+.design-content {
+  min-height: 250px;
+  border: 1px;
+  border-style: dashed;
+  border-color: silver;
+}
+
+.empty-text {
+  color: silver;
+  height: 250px;
+}
+
+.empty-text p {
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+</style>
