@@ -63,14 +63,9 @@ export default {
 
       this.$store.commit("form/FIELD_CHILDREN_CHANGED", value);
       this.changes = [];
-      // console.log("xxx");
-      // this.$nextTick(() => {
-      //   this.$store.commit("form/FIELD_CHILDREN_CHANGED", this.changes);
-      //   this.changes = [];
-      // });
     }
   },
-  mounted() {
+  created() {
     emiter.$on("children-changed", value => {
       this.changes.push(value);
     });

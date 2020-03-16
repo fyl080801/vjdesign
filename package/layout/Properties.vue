@@ -52,12 +52,10 @@ export default {
   },
   methods: {
     updateEditing(value) {
-      this.$nextTick(() => {
-        this.$store.commit("form/UPDATE_EDITING", value);
-      });
+      this.$store.commit("form/UPDATE_EDITING", value);
     }
   },
-  mounted() {
+  created() {
     emiter.$on("component-selected", field => {
       this.$store.commit("form/SELECT_EDITING", field);
     });

@@ -61,6 +61,8 @@
 .v-jdesign .v-jform .layout-component {
   border: 1px dotted silver;
   padding: 18px;
+  width: 100%;
+  display: inherit;
 }
 
 .v-jdesign .v-jform .layout-component > * {
@@ -78,7 +80,7 @@
 } */
 
 .v-jdesign .v-jform .layout-component::after {
-  content: "添加组件";
+  /* content: "添加组件"; */
   color: silver;
   display: block;
 }

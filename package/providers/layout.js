@@ -38,7 +38,6 @@ export default function(field, options) {
           group: "jdesign"
         },
         props: {
-          tag: "div",
           value: clonedChildren
         }
       },

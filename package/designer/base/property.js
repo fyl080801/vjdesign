@@ -7,10 +7,11 @@ const propertyKeys = {
   命名槽: "fieldOptions.slot",
   内部文本: "fieldOptions.domProps.innerText",
   水印: "fieldOptions.props.placeholder",
-  响应输入: "fieldOptions.on"
+  响应输入: "fieldOptions.on",
+  样式: "fieldOptions.class"
 };
 
-const DEFAULTS = [propertyKeys.命名槽, propertyKeys.别名];
+const DEFAULTS = [propertyKeys.命名槽, propertyKeys.别名, propertyKeys.样式];
 
 const resolveProperties = defineMetadata => {
   const cachedProps = {};
@@ -69,7 +70,10 @@ export const assembly = component => {
       } else if (prop.indexOf("fieldOptions.props.") === 0) {
         groups.组件 = groups.组件 || [];
         groups.组件.push(componentPropertySchema);
-      } else if (prop.indexOf("fieldOptions.style.") === 0) {
+      } else if (
+        prop.indexOf("fieldOptions.style.") === 0 ||
+        prop.indexOf("fieldOptions.class") === 0
+      ) {
         groups.样式 = groups.样式 || [];
         groups.样式.push(componentPropertySchema);
       } else {
@@ -82,6 +86,7 @@ export const assembly = component => {
   return groups;
 };
 
+registerProperty(propertyKeys.样式, { description: "样式" });
 registerProperty(propertyKeys.别名, { description: "别名" });
 registerProperty(propertyKeys.命名槽, { description: "命名槽" });
 registerProperty(propertyKeys.内部文本, { description: "内部文本" });

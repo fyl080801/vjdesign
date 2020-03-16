@@ -1,5 +1,6 @@
 import layout from "./layout";
 import ElementUI from "element-ui";
+import { Plugin } from "vue-fragment";
 import vjform from "vjform";
 import layoutProvider from "./providers/layout";
 import designProvider from "./providers/design";
@@ -17,6 +18,7 @@ vjform.provider("design-component", function() {
 const install = function(v) {
   v.use(ElementUI);
   v.use(vjform);
+  v.use(Plugin);
   v.component(layout.name, layout);
 };
 
