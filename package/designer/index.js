@@ -4,7 +4,7 @@ import {
   getComponentGroups
 } from "./base/component";
 import { registerEditor } from "./base/editor";
-import { registerProperty, assembly } from "./base/property";
+import properties, { registerProperty, assembly } from "./base/property";
 
 // editors
 import "./editors/checkbox";
@@ -18,5 +18,6 @@ export {
   registerProperty,
   assembly,
   getComponents,
-  getComponentGroups
+  getComponentGroups,
+  properties
 };

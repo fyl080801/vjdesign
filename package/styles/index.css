@@ -58,45 +58,55 @@
   padding-bottom: 0;
 }
 
-.v-jdesign .v-jform .layout-component {
+.v-jdesign .v-jform .design-element {
+  position: relative;
+  border: 1px dashed gray;
+  box-sizing: border-box;
+  width: 100%;
+  display: inherit;
+}
+
+.v-jdesign .v-jform .design-element .layout {
   border: 1px dotted silver;
+  box-sizing: border-box;
   padding: 18px;
   width: 100%;
   display: inherit;
 }
 
-.v-jdesign .v-jform .layout-component > * {
+.v-jdesign .v-jform .design-element > .layout-element * {
   text-align: initial;
 }
 
-/* .v-jdesign .v-jform .layout-component::before {
+.v-jdesign .v-jform .design-element > .tag,
+.v-jdesign .v-jform .design-element > .del {
   position: absolute;
   left: 0;
-  content: "布局";
-  width: 40px;
-  text-align: center;
-  border: 1px solid gray;
-  background-color: silver;
-} */
-
-.v-jdesign .v-jform .layout-component::after {
-  /* content: "添加组件"; */
-  color: silver;
-  display: block;
-}
-
-.v-jdesign .v-jform .design-element {
-  position: relative;
-  border: 1px dashed gray;
-}
-
-.v-jdesign .v-jform .design-element::before {
-  position: absolute;
-  left: 0;
-  content: "组件";
+  line-height: 16px;
   font-size: 12px;
-  width: 40px;
+  z-index: 2000;
+  background-color: #e4e7ed;
+  padding: 2px;
+}
+
+.v-jdesign .v-jform .design-element > .tag {
+  border-right: 1px dashed gray;
+  border-bottom: 1px dashed gray;
+}
+
+.v-jdesign .v-jform .design-element > .del {
+  left: auto;
+  right: 0;
+}
+
+.v-jdesign .v-jform .design-element > .del {
+  border-left: 1px dashed gray;
+  border-bottom: 1px dashed gray;
+}
+
+.v-jdesign .v-jform .design-element .layout > .empty {
+  width: 100%;
   text-align: center;
-  border: 1px solid gray;
-  background-color: silver;
+  color: silver;
+  margin: 0;
 }

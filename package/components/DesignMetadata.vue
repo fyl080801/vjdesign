@@ -1,5 +1,10 @@
 <template>
-  <json-viewer :value="fields" :expand-depth="10" copyable></json-viewer>
+  <json-viewer
+    v-if="complete"
+    :value="json"
+    :expand-depth="10"
+    copyable
+  ></json-viewer>
 </template>
 
 <script>
@@ -21,7 +26,24 @@ export default {
       });
       return fields;
     }
-  })
+  }),
+  data() {
+    return {
+      complete: true,
+      json: []
+    };
+  },
+  watch: {
+    fields(value) {
+      this.complete = false;
+      this.json = value;
+    },
+    json() {
+      this.$nextTick(() => {
+        this.complete = true;
+      });
+    }
+  }
 };
 </script>
 

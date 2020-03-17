@@ -31,7 +31,8 @@ import emiter from "../utils/emiter";
 export default {
   data() {
     return {
-      editorGroups: []
+      editorGroups: [],
+      updating: null
     };
   },
   computed: mapState({
@@ -48,16 +49,30 @@ export default {
       this.editorGroups = Object.keys(groups).map(key => {
         return { key, fields: groups[key] };
       });
+    },
+    updating(value) {
+      if (value === null) {
+        return;
+      }
+
+      this.$nextTick(() => {
+        this.$store.commit("form/UPDATE_EDITING", value);
+        this.updating = null;
+      });
     }
   },
   methods: {
     updateEditing(value) {
-      this.$store.commit("form/UPDATE_EDITING", value);
+      this.updating = value;
     }
   },
   created() {
     emiter.$on("component-selected", field => {
       this.$store.commit("form/SELECT_EDITING", field);
+    });
+
+    emiter.$on("component-delete", field => {
+      this.$store.commit("form/DELETE_FIELD", field);
     });
   }
 };

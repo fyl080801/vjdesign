@@ -33,6 +33,7 @@ export const getComponents = base => {
       description: val.description,
       field: val.field,
       container: val.container,
+      base: val.base,
       tag: key
     });
   });

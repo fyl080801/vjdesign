@@ -25,18 +25,19 @@ registerEditor("default", path => {
 
 registerEditor("number", path => {
   return {
-    component: "el-input",
+    component: "el-input-number",
     model: path,
     fieldOptions: {
-      on: {
-        input: val => {
-          try {
-            return parseInt(val, 0);
-          } catch {
-            return 0;
-          }
-        }
-      }
+      on: ["input"]
+      // on: {
+      //   input: val => {
+      //     try {
+      //       return parseInt(val, 0);
+      //     } catch {
+      //       return 0;
+      //     }
+      //   }
+      // }
     }
   };
 });
