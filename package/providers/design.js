@@ -27,6 +27,34 @@ export default function(field, options) {
   };
   field.children = [
     {
+      component: "div",
+      layout: true,
+      fieldOptions: {
+        class: "border border-top"
+      }
+    },
+    {
+      component: "div",
+      layout: true,
+      fieldOptions: {
+        class: "border border-left"
+      }
+    },
+    {
+      component: "div",
+      layout: true,
+      fieldOptions: {
+        class: "border border-bottom"
+      }
+    },
+    {
+      component: "div",
+      layout: true,
+      fieldOptions: {
+        class: "border border-right"
+      }
+    },
+    {
       component: "span",
       layout: true,
       fieldOptions: {

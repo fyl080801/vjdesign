@@ -15,6 +15,7 @@ export default function(field, options) {
   if (
     !options.dev ||
     layouts.indexOf(component) < 0 ||
+    (layout && /border/g.test((field.fieldOptions || {}).class || "")) ||
     (layout &&
       ((field.fieldOptions || {}).class || "").indexOf("design-element") >= 0)
   ) {
@@ -27,24 +28,48 @@ export default function(field, options) {
       layout: true,
       fieldOptions: {
         class: "empty",
-        domProps: { innerText: "添加组件" }
+        domProps: {
+          innerText: field.remark
+            ? field.component + "." + field.remark
+            : field.component
+        }
       }
     }
   ];
-  // !field.children || field.children.length <= 0
-  //   ? [
-  //       {
-  //         component: "p",
-  //         layout: true,
-  //         fieldOptions: {
-  //           class: "empty",
-  //           domProps: { innerText: "添加组件" }
-  //         }
-  //       }
-  //     ]
-  //   : [];
+
   const childrenValue = [...(field.children || [])];
-  const children = [].concat(field.children || []).concat(empty);
+  const children = [
+    {
+      component: "div",
+      layout: true,
+      fieldOptions: {
+        class: "border-layout border-top"
+      }
+    },
+    {
+      component: "div",
+      layout: true,
+      fieldOptions: {
+        class: "border-layout border-left"
+      }
+    },
+    {
+      component: "div",
+      layout: true,
+      fieldOptions: {
+        class: "border-layout border-bottom"
+      }
+    },
+    {
+      component: "div",
+      layout: true,
+      fieldOptions: {
+        class: "border-layout border-right"
+      }
+    }
+  ]
+    .concat(field.children || [])
+    .concat(empty);
 
   field.layout = true;
   field.children = [
