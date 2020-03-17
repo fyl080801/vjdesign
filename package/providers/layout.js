@@ -40,6 +40,8 @@ export default function(field, options) {
   const childrenValue = [...(field.children || [])];
 
   const children = []
+    .concat(field.children || [])
+    // border必须排在表单元素后面
     .concat(
       ["top", "left", "bottom", "right"].map(item => ({
         component: "div",
@@ -49,7 +51,6 @@ export default function(field, options) {
         }
       }))
     )
-    .concat(field.children || [])
     .concat(empty);
 
   field.layout = true;
