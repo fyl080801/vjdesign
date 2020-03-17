@@ -85,8 +85,9 @@
   line-height: 16px;
   font-size: 12px;
   z-index: 2000;
-  background-color: #e4e7ed;
+  background-color: rgb(242, 242, 255);
   padding: 2px;
+  cursor: pointer;
 }
 
 .v-jdesign .v-jform .design-element > .tag {
@@ -109,4 +110,20 @@
   text-align: center;
   color: silver;
   margin: 0;
+}
+
+.v-jdesign .v-jform .design-element.editing {
+  border-color: red;
+}
+
+.v-jdesign .v-jform .design-element.editing > .tag {
+  color: red;
+  border-color: red;
+  font-weight: bold;
+  background-color: #e4e7ed;
+}
+
+.v-jdesign .v-jform .design-element.editing > .del {
+  border-color: red;
+  background-color: #e4e7ed;
 }

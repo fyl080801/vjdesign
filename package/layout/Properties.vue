@@ -8,7 +8,7 @@
             :key="index"
             v-for="(group, index) in editorGroups"
           >
-            <el-form size="mini">
+            <el-form size="mini" label-position="top">
               <vjform
                 :fields="group.fields"
                 :value="editing"

@@ -6,7 +6,7 @@ component("el-form", {
   group: "布局",
   description: "表单",
   container: true,
-  properties: ["fieldOptions.props.labelWidth"],
+  properties: ["fieldOptions.props.labelWidth", "fieldOptions.props.size"],
   base: false
 });
 

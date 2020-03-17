@@ -23,7 +23,7 @@ export default function(field, options) {
   field.component = "div";
   field.layout = true;
   field.fieldOptions = {
-    class: "design-element"
+    class: "design-element " + (emiter.editing === cloned.uuid ? "editing" : "")
   };
   field.children = [
     {
@@ -66,6 +66,7 @@ export default function(field, options) {
   field.fieldOptions[onEvent] = field.fieldOptions[onEvent] || {};
   field.fieldOptions[onEvent].click = evt => {
     emiter.$emit("component-selected", cloned);
+    emiter.setEditing(cloned.uuid);
     evt.stopPropagation();
   };
 }

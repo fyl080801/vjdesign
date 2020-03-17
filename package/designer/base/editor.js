@@ -16,46 +16,28 @@ export const resolveEditor = (name, path) => {
 registerEditor("default", path => {
   return {
     component: "el-input",
-    model: path,
-    fieldOptions: {
-      on: ["input"]
-    }
+    model: [path]
   };
 });
 
 registerEditor("number", path => {
   return {
     component: "el-input-number",
-    model: path,
-    fieldOptions: {
-      on: ["input"]
-      // on: {
-      //   input: val => {
-      //     try {
-      //       return parseInt(val, 0);
-      //     } catch {
-      //       return 0;
-      //     }
-      //   }
-      // }
-    }
+    model: [path]
   };
 });
 
 registerEditor("checkbox", path => {
   return {
     component: "el-checkbox",
-    model: path,
-    fieldOptions: {
-      on: ["input"]
-    }
+    model: [path]
   };
 });
 
 registerEditor("on", path => {
   return {
     component: "el-select",
-    model: path,
+    model: [path],
     displayOptions: {
       model: "model",
       schema: {
@@ -64,7 +46,6 @@ registerEditor("on", path => {
       }
     },
     fieldOptions: {
-      on: ["input"],
       props: { multiple: true }
     },
     children: [

@@ -10,3 +10,4 @@ property("fieldOptions.props.gutter", {
   editor: "number"
 });
 property("fieldOptions.props.span", { description: "列宽", editor: "number" });
+property("fieldOptions.props.size", { description: "尺寸" });
