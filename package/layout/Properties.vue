@@ -2,17 +2,26 @@
   <el-aside class="aside right">
     <el-tabs type="border-card" class="max-aside">
       <el-tab-pane label="组件属性">
-        <el-collapse v-if="editing" class="components" :key="editing.uuid">
+        <el-collapse
+          v-model="groupNames"
+          v-if="editing"
+          class="components"
+          :key="editing.uuid"
+        >
           <el-collapse-item
-            :title="group.key"
             :key="index"
+            :name="group.key"
             v-for="(group, index) in editorGroups"
           >
+            <template slot="title">
+              <div><i class="el-icon-s-operation"></i> {{ group.key }}</div>
+            </template>
             <el-form size="mini" label-position="top">
               <vjform
                 :fields="group.fields"
                 :value="editing"
                 @input="updateEditing"
+                :components="group.components"
               ></vjform>
             </el-form>
           </el-collapse-item>
@@ -32,7 +41,8 @@ export default {
   data() {
     return {
       editorGroups: [],
-      updating: null
+      updating: null,
+      groupNames: []
     };
   },
   computed: mapState({
@@ -47,8 +57,17 @@ export default {
 
       const groups = assembly(value.component);
       this.editorGroups = Object.keys(groups).map(key => {
-        return { key, fields: groups[key] };
+        const fields = groups[key];
+        const components = {};
+        fields.map(field => {
+          if (field.instance) {
+            components[field.instance.name] = field.instance;
+          }
+          return { ...field, instance: undefined };
+        });
+        return { key, fields, components };
       });
+      this.groupNames = Object.keys(groups);
     },
     updating(value) {
       if (value === null) {

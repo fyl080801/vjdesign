@@ -6,9 +6,6 @@ import {
 import { registerEditor } from "./base/editor";
 import properties, { registerProperty, assembly } from "./base/property";
 
-// editors
-import "./editors/checkbox";
-
 // componentss
 import "./components/html";
 

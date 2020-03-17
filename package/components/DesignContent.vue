@@ -7,8 +7,9 @@
       :value="fields"
       @input="emitter"
       group="jdesign"
+      draggable=".design-element"
     >
-      <p>组件...</p>
+      <p>拖组件到此</p>
     </vuedraggable>
     <vjform
       v-show="fields.length"
@@ -40,6 +41,7 @@ export default {
   }),
   data() {
     return {
+      model: {},
       options: { dev: true },
       designComponents: { vuedraggable },
       changes: []
@@ -84,13 +86,16 @@ export default {
 .empty-text {
   color: silver;
   height: 250px;
+  position: relative;
 }
 
 .empty-text p {
   text-align: center;
   margin: 0 auto;
-  position: relative;
+  position: absolute;
   top: 50%;
+  left: 0;
+  right: 0;
   transform: translateY(-50%);
 }
 </style>

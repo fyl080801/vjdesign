@@ -1,15 +1,18 @@
 <template>
   <el-main class="main">
     <el-tabs type="border-card" class="max-aside">
-      <el-tab-pane label="设计器">
+      <el-tab-pane>
+        <span slot="label"><i class="el-icon-edit-outline"></i> 设计器</span>
         <div class="design">
           <design-content></design-content>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="元数据">
+      <el-tab-pane>
+        <span slot="label"><i class="el-icon-tickets"></i> 元数据</span>
         <design-metadata></design-metadata>
       </el-tab-pane>
-      <el-tab-pane label="预览" icon="view">
+      <el-tab-pane>
+        <span slot="label"><i class="el-icon-view"></i> 预览</span>
         <design-preview></design-preview>
       </el-tab-pane>
     </el-tabs>

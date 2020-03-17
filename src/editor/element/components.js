@@ -6,7 +6,11 @@ component("el-form", {
   group: "布局",
   description: "表单",
   container: true,
-  properties: ["fieldOptions.props.labelWidth", "fieldOptions.props.size"],
+  properties: [
+    "fieldOptions.props.labelWidth",
+    "fieldOptions.props.size",
+    "fieldOptions.props.labelPosition"
+  ],
   base: false
 });
 
@@ -37,6 +41,13 @@ component("el-form-item", {
 component("el-input", {
   group: "输入",
   description: "文本框",
+  properties: ["fieldOptions.attrs.placeholder"],
+  base: false
+});
+
+component("el-select", {
+  group: "输入",
+  description: "选择器",
   properties: ["fieldOptions.attrs.placeholder"],
   base: false
 });

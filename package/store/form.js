@@ -11,6 +11,7 @@ export default {
     inits: {},
     watchs: {},
     schema: {},
+    //
     editing: null,
     fieldMap: {}
   },
@@ -25,7 +26,6 @@ export default {
       // 同步
       eachTreeNodes(state.fields, node => {
         state.fieldMap[node.uuid] = node;
-        state.editing = node.uuid;
       });
     },
     // 添加或更新
@@ -62,26 +62,39 @@ export default {
     },
     // 删除
     DELETE_FIELD: (state, payload) => {
-      var isdelete = false;
+      let isdelete = null;
 
-      eachTreeNodes(state.fields, node => {
-        if (!node.children || node.children <= 0) {
-          return true;
-        }
+      // 先看根级元素
+      const deleteIndex = state.fields.findIndex(
+        item => item.uuid === payload.uuid
+      );
 
-        const deleteIndex = node.children.findIndex(
-          item => item.uuid === payload.uuid
-        );
-        if (deleteIndex < 0) {
-          return true;
-        }
+      if (deleteIndex >= 0) {
+        isdelete = state.fields[deleteIndex].uuid;
+        state.fields.splice(deleteIndex, 1);
+      } else {
+        eachTreeNodes(state.fields, node => {
+          if (!node.children || node.children <= 0) {
+            return true;
+          }
 
-        node.children.splice(deleteIndex, 1);
-        isdelete = true;
-        return false;
-      });
+          const deleteIndex = node.children.findIndex(
+            item => item.uuid === payload.uuid
+          );
+          if (deleteIndex < 0) {
+            return true;
+          }
+
+          isdelete = node.children[deleteIndex].uuid;
+          node.children.splice(deleteIndex, 1);
+          return false;
+        });
+      }
 
       if (isdelete) {
+        if (state.editing === isdelete) {
+          state.editing = null;
+        }
         state.fields = [].concat(state.fields);
       }
     },

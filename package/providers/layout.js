@@ -38,36 +38,17 @@ export default function(field, options) {
   ];
 
   const childrenValue = [...(field.children || [])];
-  const children = [
-    {
-      component: "div",
-      layout: true,
-      fieldOptions: {
-        class: "border-layout border-top"
-      }
-    },
-    {
-      component: "div",
-      layout: true,
-      fieldOptions: {
-        class: "border-layout border-left"
-      }
-    },
-    {
-      component: "div",
-      layout: true,
-      fieldOptions: {
-        class: "border-layout border-bottom"
-      }
-    },
-    {
-      component: "div",
-      layout: true,
-      fieldOptions: {
-        class: "border-layout border-right"
-      }
-    }
-  ]
+
+  const children = []
+    .concat(
+      ["top", "left", "bottom", "right"].map(item => ({
+        component: "div",
+        layout: true,
+        fieldOptions: {
+          class: "border-layout border-" + item
+        }
+      }))
+    )
     .concat(field.children || [])
     .concat(empty);
 
@@ -77,7 +58,7 @@ export default function(field, options) {
       component: "vuedraggable",
       layout: true,
       fieldOptions: {
-        class: "layout",
+        class: "layout " + (emiter.editing === field.uuid ? "editing" : ""),
         on: {
           input: value => {
             emiter.$emit("children-changed", { uuid: field.uuid, value });

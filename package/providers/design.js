@@ -25,69 +25,54 @@ export default function(field, options) {
   field.fieldOptions = {
     class: "design-element " + (emiter.editing === cloned.uuid ? "editing" : "")
   };
-  field.children = [
-    {
+
+  field.children = ["top", "left", "bottom", "right"]
+    .map(item => ({
       component: "div",
       layout: true,
       fieldOptions: {
-        class: "border border-top"
+        class: "border border-" + item
       }
-    },
-    {
-      component: "div",
-      layout: true,
-      fieldOptions: {
-        class: "border border-left"
-      }
-    },
-    {
-      component: "div",
-      layout: true,
-      fieldOptions: {
-        class: "border border-bottom"
-      }
-    },
-    {
-      component: "div",
-      layout: true,
-      fieldOptions: {
-        class: "border border-right"
-      }
-    },
-    {
-      component: "span",
-      layout: true,
-      fieldOptions: {
-        class: "tag",
-        domProps: {
-          innerText: cloned.remark
-            ? cloned.component + "." + cloned.remark
-            : cloned.component
-        }
-      }
-    },
-    {
-      component: "a",
-      layout: true,
-      fieldOptions: {
-        class: "del",
-        domProps: {
-          innerText: "删除",
-          href: "javascript:;"
-        },
-        on: {
-          click: () => {
-            this.$confirm("是否删除？")
-              .then(() => {
-                emiter.$emit("component-delete", cloned);
-              })
-              .catch(() => {});
+    }))
+    .concat(
+      [
+        {
+          component: "span",
+          layout: true,
+          fieldOptions: {
+            class: "tag",
+            domProps: {
+              innerText: cloned.remark
+                ? cloned.component + "." + cloned.remark
+                : cloned.component
+            }
           }
-        }
-      }
-    },
-    cloned
-  ];
+        },
+        emiter.editing === cloned.uuid
+          ? {
+              component: "a",
+              layout: true,
+              fieldOptions: {
+                class: "del",
+                domProps: {
+                  innerHTML: '<i class="el-icon-delete"></i> 删除',
+                  href: "javascript:;"
+                },
+                on: {
+                  click: () => {
+                    this.$confirm("是否删除？")
+                      .then(() => {
+                        emiter.$emit("component-delete", cloned);
+                      })
+                      .catch(() => {});
+                  }
+                }
+              }
+            }
+          : null,
+        cloned
+      ].filter(item => item !== null)
+    );
 
   const onEvent = natives.indexOf(field.component) >= 0 ? "on" : "nativeOn";
 

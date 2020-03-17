@@ -1,6 +1,5 @@
 import layout from "./layout";
 import ElementUI from "element-ui";
-import { Plugin } from "vue-fragment";
 import vjform from "vjform";
 import {
   registerComponent,
@@ -24,7 +23,6 @@ vjform.provider("layout", function() {
 const install = function(v) {
   v.use(ElementUI);
   v.use(vjform);
-  v.use(Plugin);
   v.component(layout.name, layout);
 };
 

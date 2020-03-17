@@ -52,6 +52,19 @@ export const assembly = component => {
     const definedProperty = storedProps.get(prop);
 
     if (definedProperty) {
+      const editorDefine =
+        typeof definedProperty.editor === "object"
+          ? definedProperty.editor
+          : {
+              name: definedProperty.editor
+            };
+
+      const editorInstance = resolveEditor(
+        editorDefine.name,
+        prop,
+        editorDefine.options
+      );
+
       const componentPropertySchema = {
         editorIdentity: definedProperty.description,
         component: "el-form-item",
@@ -60,7 +73,8 @@ export const assembly = component => {
             label: definedProperty.description
           }
         },
-        children: [resolveEditor(definedProperty.editor, prop)]
+        children: [editorInstance.field],
+        instance: editorInstance.component
       };
 
       // 将编辑器项分组
@@ -87,8 +101,11 @@ export const assembly = component => {
 };
 
 registerProperty(propertyKeys.样式, { description: "样式" });
-registerProperty(propertyKeys.别名, { description: "别名" });
-registerProperty(propertyKeys.命名槽, { description: "命名槽" });
+registerProperty(propertyKeys.别名, { description: "别名", editor: "simple" });
+registerProperty(propertyKeys.命名槽, {
+  description: "命名槽",
+  editor: "simple"
+});
 registerProperty(propertyKeys.内部文本, { description: "内部文本" });
 registerProperty(propertyKeys.水印, { description: "水印" });
 registerProperty(propertyKeys.响应输入, {

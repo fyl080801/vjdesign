@@ -1,22 +1,46 @@
 import store from "./store";
+import Input from "../editors/Input.vue";
 
 /**
  * 注册编辑器
  * @param {String} name 别名
  * @param {Function} fn 函数，返回一个编辑器组件json
  */
-export const registerEditor = (name, fn) => {
+export const registerEditor = (name, fn, component) => {
+  if (component) {
+    fn.component = component;
+  }
   store.editors.set(name, fn);
 };
 
-export const resolveEditor = (name, path) => {
-  return store.editors.get(name || "default")(path);
+export const resolveEditor = (name, path, options) => {
+  const factory = store.editors.get(name || "default");
+  return {
+    field: factory(path, options),
+    component: factory.component
+  };
 };
 
-registerEditor("default", path => {
+registerEditor(
+  "default",
+  path => {
+    return {
+      component: "v-jdesign-input",
+      model: [path]
+    };
+  },
+  Input
+);
+
+registerEditor("simple", path => {
   return {
     component: "el-input",
-    model: [path]
+    model: [path],
+    fieldOptions: {
+      attrs: {
+        placeholder: "请输入"
+      }
+    }
   };
 });
 
@@ -31,6 +55,19 @@ registerEditor("checkbox", path => {
   return {
     component: "el-checkbox",
     model: [path]
+  };
+});
+
+registerEditor("select", (path, options) => {
+  return {
+    component: "el-select",
+    model: [path],
+    children: options.items.map(item => {
+      return {
+        component: "el-option",
+        fieldOptions: { props: { label: item.label, value: item.value } }
+      };
+    })
   };
 });
 
