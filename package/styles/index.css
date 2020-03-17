@@ -67,7 +67,7 @@
 .v-jdesign .v-jform .design-element .layout {
   position: relative;
   box-sizing: border-box;
-  padding: 18px;
+  padding: 20px;
   padding-bottom: 0;
   width: 100%;
   display: inherit;
@@ -119,28 +119,20 @@
   position: absolute;
   top: 0;
   left: 0;
+  height: 20px;
   line-height: 16px;
   font-size: 12px;
   z-index: 2000;
   background-color: rgb(242, 242, 255);
   padding: 2px;
   cursor: pointer;
-}
-
-.v-jdesign .v-jform .design-element > .tag {
-  border-right: 1px dashed gray;
-  border-bottom: 1px dashed gray;
+  border: 1px dashed gray;
 }
 
 .v-jdesign .v-jform .design-element > .del {
   position: absolute;
   left: auto;
   right: 0;
-}
-
-.v-jdesign .v-jform .design-element > .del {
-  border-left: 1px dashed gray;
-  border-bottom: 1px dashed gray;
 }
 
 .v-jdesign .v-jform .design-element .layout > .empty {
