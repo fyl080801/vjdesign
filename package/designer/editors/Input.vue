@@ -8,6 +8,7 @@
     >
       <el-button
         slot="append"
+        :disabled="true"
         icon="el-icon-link"
         @click="setTransform"
       ></el-button>

@@ -1,3 +1,5 @@
+@import "./editor.css";
+
 .v-jdesign {
   height: 100%;
   border: 1px solid #e4e7ed;
@@ -201,4 +203,8 @@
 /*  */
 .v-jdesign .components-group > .drag-handler {
   cursor: pointer;
+}
+
+.transform-form {
+  width: 640px;
 }

@@ -34,6 +34,7 @@ export default {
         });
 
         this.$confirm(component, "编辑转换", {
+          customClass: "transform-form",
           beforeClose: (action, instance, done) => {
             if (action === "confirm" && transformValue !== null) {
               resolve(transformValue);
