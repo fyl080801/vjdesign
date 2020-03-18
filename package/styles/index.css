@@ -183,9 +183,11 @@
 /* editing */
 .v-jdesign .v-jform .design-element.editing > .border,
 .v-jdesign .v-jform .design-element.editing > .tag,
-.v-jdesign .v-jform .design-element.editing > .del,
-.v-jdesign .v-jform .design-element.editing .layout.editing > .border-layout {
+.v-jdesign .v-jform .design-element.editing > .del {
   border-color: red;
+}
+.v-jdesign .v-jform .design-element.editing .layout.editing > .border-layout {
+  border-color: lightsalmon;
 }
 .v-jdesign .v-jform .design-element.editing > .tag {
   color: red;
