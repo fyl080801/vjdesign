@@ -27,7 +27,7 @@ export default {
   }),
   data() {
     return {
-      model: {},
+      model: { text: "aaa" },
       options: { dev: false }
     };
   }

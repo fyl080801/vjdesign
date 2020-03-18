@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :visible.sync="show" title="编辑转换"></el-dialog>
+  <div>aaa</div>
 </template>
 
 <script>
@@ -8,13 +8,13 @@ export default {
   props: { value: Object },
   data() {
     return {
-      show: false
+      transformValue: this.value
     };
   },
   methods: {
-    open() {
-      this.show = true;
-    }
+    // submit() {
+    //   this.$emit("input", this.transformValue);
+    // }
   }
 };
 </script>
