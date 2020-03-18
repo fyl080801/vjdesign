@@ -60,7 +60,6 @@ export default {
     setTransform() {
       this.openTransform(this.transformValue)
         .then(value => {
-          console.log(value);
           this.$emit("input", value);
         })
         .catch(() => {});

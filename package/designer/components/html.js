@@ -9,7 +9,7 @@ const components = {
   input: {
     description: "输入框",
     group: "输入元素",
-    properties: []
+    properties: [property.数据]
   },
   //
   a: {

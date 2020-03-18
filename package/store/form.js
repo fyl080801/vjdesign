@@ -1,7 +1,5 @@
 import { guid2 } from "../utils/helpers";
 import { eachTreeNodes } from "../utils/tree";
-// import { merge } from "lodash-es";
-// import { cloneDeep } from "lodash-es";
 
 export default {
   namespaced: true,
@@ -13,7 +11,8 @@ export default {
     schema: {},
     //
     editing: null,
-    fieldMap: {}
+    fieldMap: {},
+    model: {}
   },
   mutations: {
     // 添加根元素
@@ -110,6 +109,11 @@ export default {
       );
 
       state.fields = [].concat(state.fields);
+    },
+
+    //
+    UPDATE_MODEL: (state, payload) => {
+      state.model = payload;
     }
   }
 };

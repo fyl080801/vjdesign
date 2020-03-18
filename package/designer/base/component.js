@@ -7,12 +7,18 @@ import store from "./store";
  */
 export const registerComponent = (
   name,
-  { group, description, icon, properties, field, base, container }
+  {
+    group, // 分组
+    description, // 名称
+    icon, // 图标
+    properties, // 属性
+    base, // 是否基础html组件
+    container // 是否容器
+  }
 ) => {
   store.components.set(name, {
     group: group || "其他",
     description,
-    field,
     icon,
     properties,
     container,
@@ -26,12 +32,12 @@ export const getComponents = base => {
     if (base !== undefined && val.base !== base) {
       return;
     }
+    console.log(val);
 
     result.push({
       group: val.group,
       icon: val.icon || "",
       description: val.description,
-      field: val.field,
       container: val.container,
       base: val.base,
       tag: key
