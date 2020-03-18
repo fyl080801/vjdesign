@@ -26,14 +26,17 @@ export default function(field, options) {
     class: "design-element " + (emiter.editing === cloned.uuid ? "editing" : "")
   };
 
-  field.children = ["top", "left", "bottom", "right"]
-    .map(item => ({
-      component: "div",
-      layout: true,
-      fieldOptions: {
-        class: "border border-" + item
-      }
-    }))
+  field.children = []
+    .concat(cloned)
+    .concat(
+      ["top", "left", "bottom", "right"].map(item => ({
+        component: "div",
+        layout: true,
+        fieldOptions: {
+          class: "border border-" + item
+        }
+      }))
+    )
     .concat(
       [
         {
@@ -69,8 +72,7 @@ export default function(field, options) {
                 }
               }
             }
-          : null,
-        cloned
+          : null
       ].filter(item => item !== null)
     );
 

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!updating">
     <el-input
       v-if="!isTransform"
       v-model="fieldValue"
@@ -24,11 +24,11 @@
         @click="clearTransform"
       ></el-button>
     </el-input>
-    <v-jdesign-transform
+    <!-- <v-jdesign-transform
       ref="trans"
       :value="transformValue"
       @input="changeTransform"
-    ></v-jdesign-transform>
+    ></v-jdesign-transform> -->
   </div>
 </template>
 
@@ -43,15 +43,16 @@ export default {
     value: [Object, String]
   },
   data() {
-    return { fieldValue: null, transformValue: null };
+    const isTransform = this.checkTransform();
+    return {
+      updating: false,
+      fieldValue: isTransform ? null : this.value, // 普通值
+      transformValue: isTransform ? this.value : null // 转换的值
+    };
   },
   computed: {
     isTransform() {
-      return (
-        this.value !== null &&
-        typeof this.value === "object" &&
-        !isEmpty(this.value.$type)
-      );
+      return this.checkTransform();
     }
   },
   methods: {
@@ -60,20 +61,20 @@ export default {
       this.$emit("input", value);
     },
     setTransform() {
-      this.$refs.trans.open();
+      // this.$refs.trans.open();
     },
     changeTransform(value) {
       this.$emit("input", value);
     },
     clearTransform() {
       this.$emit("input", this.fieldValue);
-    }
-  },
-  mounted() {
-    if (this.isTransform) {
-      this.fieldValue = this.value;
-    } else {
-      this.transformValue = this.value;
+    },
+    checkTransform() {
+      return (
+        this.value !== null &&
+        typeof this.value === "object" &&
+        !isEmpty(this.value.$type)
+      );
     }
   }
 };
