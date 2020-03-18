@@ -7959,10 +7959,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vjform@^0.3.5-beta.2:
-  version "0.3.5-beta.2"
-  resolved "https://registry.yarnpkg.com/vjform/-/vjform-0.3.5-beta.2.tgz#cad14293c0768b4063417978e4abacdc31c10f25"
-  integrity sha512-6Dot2sEIYiDVi0V6alcnLwiHV5CoGSU7wtEvZRQjG8BiMC7GV+59eEgfBheAHZ3Jg4kXvZQQV78pBLaIRGVv6w==
+vjform@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/vjform/-/vjform-0.3.5.tgz#327d86c51a5a6c056da0ece2146091af3ffb604b"
+  integrity sha512-RaGiT9IOSlk2K7NtpJjGAQxDMGfp9aAZnF4VvjdcKq1pMk6W0245/L7jsROi25W3YWSXjVm0zaOPwIRUOAyOHw==
   dependencies:
     ajv "^6.10.2"
     axios "^0.19.1"
@@ -7989,11 +7989,6 @@ vue-eslint-parser@^7.0.0:
     espree "^6.1.2"
     esquery "^1.0.1"
     lodash "^4.17.15"
-
-vue-fragment@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.npm.taobao.org/vue-fragment/download/vue-fragment-1.5.1.tgz#44c070d55ed1e9a6c698ef57a5c83f64bb06feeb"
-  integrity sha1-RMBw1V7R6abGmO9Xpcg/ZLsG/us=
 
 vue-hooks@^0.3.2:
   version "0.3.2"
