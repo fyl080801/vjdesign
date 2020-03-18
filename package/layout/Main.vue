@@ -12,8 +12,12 @@
         <design-metadata></design-metadata>
       </el-tab-pane>
       <el-tab-pane>
-        <span slot="label"><i class="el-icon-view"></i> 预览</span>
+        <span slot="label"><i class="el-icon-view"></i> 视图预览</span>
         <design-preview></design-preview>
+      </el-tab-pane>
+      <el-tab-pane>
+        <span slot="label"><i class="el-icon-coin"></i> 数据预览</span>
+        <model-preview></model-preview>
       </el-tab-pane>
     </el-tabs>
   </el-main>
@@ -23,12 +27,14 @@
 import DesignContent from "../components/DesignContent.vue";
 import DesignMetadata from "../components/DesignMetadata.vue";
 import DesignPreview from "../components/DesignPreview.vue";
+import ModelPreview from "../components/ModelPreview.vue";
 
 export default {
   components: {
     DesignContent,
     DesignMetadata,
-    DesignPreview
+    DesignPreview,
+    ModelPreview
   }
 };
 </script>

@@ -44,7 +44,7 @@ export default {
   },
   computed: {
     names() {
-      return this.list.map(item => item.name);
+      return this.list.map(item => item.name) || [];
     }
   }
 };

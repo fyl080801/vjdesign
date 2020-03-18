@@ -2,7 +2,8 @@
   <div class="preview">
     <vjform
       v-show="fields.length"
-      v-model="model"
+      :value="model"
+      @input="updateModel"
       :fields="fields"
       :watchs="watchs"
       :datasource="datasource"
@@ -23,13 +24,18 @@ export default {
     watchs: state => state.form.watchs,
     datasource: state => state.form.datasource,
     schema: state => state.form.schema,
-    inits: state => state.form.inits
+    inits: state => state.form.inits,
+    model: state => state.form.model
   }),
   data() {
     return {
-      model: {},
       options: { dev: false }
     };
+  },
+  methods: {
+    updateModel(value) {
+      this.$store.commit("form/UPDATE_MODEL", value);
+    }
   }
 };
 </script>

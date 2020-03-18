@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!updating">
+  <div>
     <el-input
       v-if="!isTransform"
       v-model="fieldValue"
@@ -8,6 +8,7 @@
     >
       <el-button
         slot="append"
+        :disabled="true"
         icon="el-icon-link"
         @click="setTransform"
       ></el-button>
@@ -24,58 +25,14 @@
         @click="clearTransform"
       ></el-button>
     </el-input>
-    <!-- <v-jdesign-transform
-      ref="trans"
-      :value="transformValue"
-      @input="changeTransform"
-    ></v-jdesign-transform> -->
   </div>
 </template>
 
 <script>
-import { isEmpty } from "lodash-es";
-import Transform from "./Transform.vue";
+import transform from "./transform";
 
 export default {
   name: "v-jdesign-input",
-  components: { [Transform.name]: Transform },
-  props: {
-    value: [Object, String]
-  },
-  data() {
-    const isTransform = this.checkTransform();
-    return {
-      updating: false,
-      fieldValue: isTransform ? null : this.value, // 普通值
-      transformValue: isTransform ? this.value : null // 转换的值
-    };
-  },
-  computed: {
-    isTransform() {
-      return this.checkTransform();
-    }
-  },
-  methods: {
-    changed(value) {
-      this.fieldValue = value;
-      this.$emit("input", value);
-    },
-    setTransform() {
-      // this.$refs.trans.open();
-    },
-    changeTransform(value) {
-      this.$emit("input", value);
-    },
-    clearTransform() {
-      this.$emit("input", this.fieldValue);
-    },
-    checkTransform() {
-      return (
-        this.value !== null &&
-        typeof this.value === "object" &&
-        !isEmpty(this.value.$type)
-      );
-    }
-  }
+  mixins: [transform]
 };
 </script>

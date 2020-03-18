@@ -7,6 +7,7 @@ const propertyKeys = {
   命名槽: "fieldOptions.slot",
   内部文本: "fieldOptions.domProps.innerText",
   水印: "fieldOptions.props.placeholder",
+  数据: "model",
   响应输入: "fieldOptions.on",
   样式: "fieldOptions.class"
 };
@@ -15,14 +16,20 @@ const DEFAULTS = [propertyKeys.命名槽, propertyKeys.别名, propertyKeys.样�
 
 const resolveProperties = defineMetadata => {
   const cachedProps = {};
-  cloneDeep(DEFAULTS).forEach(prop => {
-    cachedProps[prop] = "";
+  const storedProps = store.properties;
+  cloneDeep(DEFAULTS).forEach(item => {
+    cachedProps[item] = { property: item, ...storedProps.get(item) };
   });
-  (defineMetadata.properties || []).forEach(prop => {
-    cachedProps[prop] = "";
+  (defineMetadata.properties || []).forEach(item => {
+    const prop =
+      typeof item === "string"
+        ? { property: item, ...storedProps.get(item) }
+        : item;
+
+    cachedProps[prop.property] = prop;
   });
 
-  return Object.keys(cachedProps);
+  return cachedProps;
 };
 
 /**
@@ -30,10 +37,18 @@ const resolveProperties = defineMetadata => {
  * @param {String} path
  * @param {Object} def
  */
-export const registerProperty = (path, { description, editor }) => {
+export const registerProperty = (
+  path,
+  {
+    description, // 名称
+    editor, // 编辑器
+    defaultValue // 默认值
+  }
+) => {
   store.properties.set(path, {
     description,
-    editor
+    editor,
+    defaultValue
   });
 };
 
@@ -44,12 +59,11 @@ export const assembly = component => {
     return {};
   }
 
-  const storedProps = store.properties;
   const properties = resolveProperties(defineMetadata);
   const groups = {};
 
-  properties.forEach(prop => {
-    const definedProperty = storedProps.get(prop);
+  Object.keys(properties).forEach(prop => {
+    const definedProperty = properties[prop];
 
     if (definedProperty) {
       const editorDefine =
@@ -108,6 +122,7 @@ registerProperty(propertyKeys.命名槽, {
 });
 registerProperty(propertyKeys.内部文本, { description: "内部文本" });
 registerProperty(propertyKeys.水印, { description: "水印" });
+registerProperty(propertyKeys.数据, { description: "数据" });
 registerProperty(propertyKeys.响应输入, {
   description: "响应输入",
   editor: "on"
