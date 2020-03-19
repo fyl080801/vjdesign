@@ -66,6 +66,10 @@
   display: inherit;
 }
 
+.v-jdesign .v-jform .design-element > * {
+  display: block !important;
+}
+
 .v-jdesign .v-jform .design-element .layout {
   position: relative;
   box-sizing: border-box;
@@ -73,6 +77,7 @@
   padding-bottom: 0;
   width: 100%;
   display: inherit;
+  overflow: hidden;
 }
 
 .v-jdesign .v-jform .design-element > .layout-element * {

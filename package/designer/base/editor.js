@@ -71,28 +71,28 @@ registerEditor("select", (path, options) => {
   };
 });
 
-registerEditor("on", path => {
-  return {
-    component: "el-select",
-    model: [path],
-    displayOptions: {
-      model: "model",
-      schema: {
-        type: "string",
-        minLength: 1
-      }
-    },
-    fieldOptions: {
-      props: { multiple: true }
-    },
-    children: [
-      {
-        component: "el-option",
-        fieldOptions: { props: { label: "input", value: "input" } }
-      }
-    ]
-  };
-});
+// registerEditor("on", path => {
+//   return {
+//     component: "el-select",
+//     model: [path],
+//     displayOptions: {
+//       model: "model",
+//       schema: {
+//         type: "string",
+//         minLength: 1
+//       }
+//     },
+//     fieldOptions: {
+//       props: { multiple: true }
+//     },
+//     children: [
+//       {
+//         component: "el-option",
+//         fieldOptions: { props: { label: "input", value: "input" } }
+//       }
+//     ]
+//   };
+// });
 
 export default {
   DEFAULT: "default"

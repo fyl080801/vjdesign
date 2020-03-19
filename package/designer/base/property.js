@@ -8,13 +8,13 @@ const propertyKeys = {
   内部文本: "fieldOptions.domProps.innerText",
   水印: "fieldOptions.props.placeholder",
   数据: "model",
-  响应输入: "fieldOptions.on",
+  // 响应输入: "fieldOptions.on",
   样式: "fieldOptions.class"
 };
 
 const DEFAULTS = [propertyKeys.命名槽, propertyKeys.别名, propertyKeys.样式];
 
-const resolveProperties = defineMetadata => {
+export const resolveProperties = defineMetadata => {
   const cachedProps = {};
   const storedProps = store.properties;
   cloneDeep(DEFAULTS).forEach(item => {
@@ -26,7 +26,7 @@ const resolveProperties = defineMetadata => {
         ? { property: item, ...storedProps.get(item) }
         : item;
 
-    cachedProps[prop.property] = prop;
+    cachedProps[prop.property] = { ...storedProps.get(prop.property), ...prop };
   });
 
   return cachedProps;

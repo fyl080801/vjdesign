@@ -1,29 +1,7 @@
-# vjdesign
+# 可视化设计器
 
-## Project setup
-```
-yarn install
-```
+目前还在开发中...
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+![](https://tva1.sinaimg.cn/large/00831rSTly1gcz3bpc8yij31f00u0154.jpg)
 
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![](https://tva1.sinaimg.cn/large/00831rSTly1gcz3bt0dd1j31f00u0gup.jpg)

@@ -16,7 +16,7 @@
             <template slot="title">
               <div><i class="el-icon-s-operation"></i> {{ group.key }}</div>
             </template>
-            <el-form size="mini" label-position="top">
+            <el-form size="mini" label-position="left" label-width="80px">
               <vjform
                 :fields="group.fields"
                 :value="editing"
