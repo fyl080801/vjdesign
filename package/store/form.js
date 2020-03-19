@@ -1,5 +1,6 @@
 import { guid2 } from "../utils/helpers";
 import { eachTreeNodes } from "../utils/tree";
+import { set } from "lodash-es";
 
 export default {
   namespaced: true,
@@ -20,7 +21,14 @@ export default {
       if (!Array.isArray(payload) || payload.length <= 0) {
         return;
       }
-      state.fields = [{ uuid: guid2(), ...payload[0] }];
+
+      const newItem = { uuid: guid2(), ...{ component: payload[0].tag } };
+
+      (payload[0].defaults || []).forEach(item => {
+        set(newItem, item.property, item.value);
+      });
+
+      state.fields = [newItem];
 
       // 同步
       eachTreeNodes(state.fields, node => {
@@ -38,10 +46,16 @@ export default {
 
         const result = action.value.map(item => {
           if (item.component === undefined) {
-            return {
+            const newItem = {
               uuid: guid2(),
               component: item.tag
             };
+
+            (item.defaults || []).forEach(item => {
+              set(newItem, item.property, item.value);
+            });
+
+            return newItem;
           }
           return item;
         });

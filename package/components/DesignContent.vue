@@ -49,12 +49,7 @@ export default {
   },
   methods: {
     emitter(value) {
-      this.$store.commit(
-        "form/ADD_ROOT",
-        value.map(item => ({
-          component: item.tag
-        }))
-      );
+      this.$store.commit("form/ADD_ROOT", value);
     }
   },
   watch: {

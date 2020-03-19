@@ -21,7 +21,8 @@ property("fieldOptions.props.size", {
         { label: "最小", value: "mini" }
       ]
     }
-  }
+  },
+  defaultValue: "medium"
 });
 
 property("fieldOptions.props.labelPosition", {
@@ -36,4 +37,34 @@ property("fieldOptions.props.labelPosition", {
       ]
     }
   }
+});
+
+property("fieldOptions.props.disabled", {
+  description: "禁用",
+  editor: "checkbox"
+});
+
+property("fieldOptions.props.min", {
+  description: "最小值",
+  editor: "number"
+});
+
+property("fieldOptions.props.max", {
+  description: "最大值",
+  editor: "number"
+});
+
+property("fieldOptions.props.step", {
+  description: "步长",
+  editor: "number"
+});
+
+property("fieldOptions.props.range", {
+  description: "是否范围",
+  editor: "checkbox"
+});
+
+property("fieldOptions.props.name", {
+  description: "命名",
+  editor: "simple"
 });

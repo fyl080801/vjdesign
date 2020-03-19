@@ -1,4 +1,5 @@
 import store from "./store";
+import { resolveProperties } from "./property";
 
 /**
  * 注册组件
@@ -32,13 +33,20 @@ export const getComponents = base => {
     if (base !== undefined && val.base !== base) {
       return;
     }
-    console.log(val);
+
+    const properties = resolveProperties(val);
 
     result.push({
       group: val.group,
       icon: val.icon || "",
       description: val.description,
       container: val.container,
+      defaults: Object.keys(properties)
+        .filter(key => properties[key].defaultValue !== undefined)
+        .map(key => ({
+          property: key,
+          value: properties[key].defaultValue
+        })),
       base: val.base,
       tag: key
     });
