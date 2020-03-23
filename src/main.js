@@ -1,6 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
-import vjdesign from "../package/index";
+import vjdesign from "../packages/design";
 import ElementUI from "element-ui";
 import "./editor/element";
 import "bootstrap/dist/css/bootstrap-grid.css";

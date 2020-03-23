@@ -1,4 +1,4 @@
-import { register } from "../../../package/index";
+import { register } from "../../../packages/design/index";
 
 const { property } = register;
 
@@ -67,4 +67,9 @@ property("fieldOptions.props.range", {
 property("fieldOptions.props.name", {
   description: "命名",
   editor: "simple"
+});
+
+property("fieldOptions.props.required", {
+  description: "必填",
+  editor: "checkbox"
 });
