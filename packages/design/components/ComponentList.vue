@@ -42,9 +42,14 @@ export default {
   props: {
     list: Array
   },
-  computed: {
-    names() {
-      return this.list.map(item => item.name) || [];
+  data() {
+    return {
+      names: []
+    };
+  },
+  watch: {
+    list(value) {
+      this.names = value.map(item => item.name) || [];
     }
   }
 };

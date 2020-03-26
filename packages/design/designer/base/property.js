@@ -8,11 +8,18 @@ const propertyKeys = {
   内部文本: "fieldOptions.domProps.innerText",
   水印: "fieldOptions.props.placeholder",
   数据: "model",
+  名称: "fieldOptions.attrs.name",
   // 响应输入: "fieldOptions.on",
-  样式: "fieldOptions.class"
+  样式: "fieldOptions.class",
+  显示条件: "displayOptions"
 };
 
-const DEFAULTS = [propertyKeys.命名槽, propertyKeys.别名, propertyKeys.样式];
+const DEFAULTS = [
+  propertyKeys.命名槽,
+  propertyKeys.别名,
+  propertyKeys.样式,
+  propertyKeys.显示条件
+];
 
 export const resolveProperties = defineMetadata => {
   const cachedProps = {};
@@ -116,6 +123,7 @@ export const assembly = component => {
 
 registerProperty(propertyKeys.样式, { description: "样式" });
 registerProperty(propertyKeys.别名, { description: "别名", editor: "simple" });
+registerProperty(propertyKeys.名称, { description: "名称" });
 registerProperty(propertyKeys.命名槽, {
   description: "命名槽",
   editor: "simple"
@@ -126,6 +134,10 @@ registerProperty(propertyKeys.数据, { description: "数据" });
 registerProperty(propertyKeys.响应输入, {
   description: "响应输入",
   editor: "on"
+});
+registerProperty(propertyKeys.显示条件, {
+  description: "显示条件",
+  editor: "display"
 });
 
 export default {

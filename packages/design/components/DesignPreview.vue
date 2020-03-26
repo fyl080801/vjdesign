@@ -4,6 +4,7 @@
       v-show="fields.length"
       :value="model"
       @input="updateModel"
+      :components="designComponents"
       :fields="fields"
       :watchs="watchs"
       :datasource="datasource"
@@ -25,7 +26,8 @@ export default {
     datasource: state => state.form.datasource,
     schema: state => state.form.schema,
     inits: state => state.form.inits,
-    model: state => state.form.model
+    model: state => state.form.model,
+    designComponents: state => state.components
   }),
   data() {
     return {

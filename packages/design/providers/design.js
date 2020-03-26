@@ -10,7 +10,7 @@ export default function(field, options) {
       .filter(item => item.base !== false)
       .map(item => item.tag);
 
-  if (!options.dev || field.layout) {
+  if (options.mode !== "design" || field.layout) {
     return;
   }
 

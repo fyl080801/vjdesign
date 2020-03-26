@@ -1,12 +1,31 @@
 <template>
   <div id="app">
-    <v-jdesign></v-jdesign>
+    <v-jdesign
+      :value="designValue"
+      @input="changed"
+      :components="components"
+    ></v-jdesign>
   </div>
 </template>
 
 <script>
+import FieldSet from "./components/FieldSet.vue";
+
 export default {
-  name: "App"
+  name: "App",
+  data() {
+    return {
+      designValue: {
+        fields: []
+      },
+      components: { FieldSet }
+    };
+  },
+  methods: {
+    changed(value) {
+      this.designValue = value;
+    }
+  }
 };
 </script>
 

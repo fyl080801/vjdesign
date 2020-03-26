@@ -1,5 +1,5 @@
-import { register } from "../../../package/index";
-import { properties } from "../../../package/designer";
+import { register } from "../../../packages/design/index";
+import { properties } from "../../../packages/design/designer";
 
 const { component } = register;
 
@@ -67,7 +67,7 @@ component("el-form-item", {
   group: "布局",
   description: "表单项",
   container: true,
-  properties: ["fieldOptions.props.label"],
+  properties: ["fieldOptions.props.label", "fieldOptions.props.required"],
   base: false
 });
 
@@ -161,6 +161,70 @@ component("el-rate", {
   group: "输入",
   description: "评分",
   properties: [properties.数据, "fieldOptions.props.disabled"],
+  base: false
+});
+
+component("el-radio-group", {
+  group: "输入",
+  description: "单选项组",
+  properties: [
+    properties.数据,
+    "fieldOptions.props.size",
+    "fieldOptions.props.disabled"
+  ],
+  container: true,
+  base: false
+});
+
+component("el-radio-button", {
+  group: "输入",
+  description: "单选按钮",
+  properties: [
+    "fieldOptions.props.disabled",
+    { property: "fieldOptions.props.label", editor: "simple" }
+  ],
+  base: false
+});
+
+component("el-radio", {
+  group: "输入",
+  description: "单选项",
+  properties: [
+    "fieldOptions.props.disabled",
+    { property: "fieldOptions.props.label", editor: "simple" }
+  ],
+  base: false
+});
+
+component("el-checkbox-group", {
+  group: "输入",
+  description: "复选项组",
+  properties: [
+    properties.数据,
+    "fieldOptions.props.size",
+    "fieldOptions.props.disabled"
+  ],
+  container: true,
+  base: false
+});
+
+component("el-checkbox-button", {
+  group: "输入",
+  description: "复选按钮",
+  properties: [
+    "fieldOptions.props.disabled",
+    { property: "fieldOptions.props.label", editor: "simple" }
+  ],
+  base: false
+});
+
+component("el-checkbox", {
+  group: "输入",
+  description: "复选项",
+  properties: [
+    "fieldOptions.props.disabled",
+    { property: "fieldOptions.props.label", editor: "simple" }
+  ],
   base: false
 });
 
