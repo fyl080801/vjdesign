@@ -13,7 +13,7 @@ export default function(field, options) {
   const { component, layout } = field;
 
   if (
-    !options.dev ||
+    options.mode !== "design" ||
     layouts.indexOf(component) < 0 ||
     (layout && /border/g.test((field.fieldOptions || {}).class || "")) ||
     (layout &&

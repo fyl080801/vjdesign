@@ -16,6 +16,22 @@ export default {
     model: {}
   },
   mutations: {
+    //
+    CREATEED: (state, payload = {}) => {
+      const {
+        fields = [],
+        datasource = {},
+        inits = {},
+        watchs = {},
+        schema = {}
+      } = payload;
+
+      state.fields = fields;
+      state.datasource = datasource;
+      state.inits = inits;
+      state.watchs = watchs;
+      state.schema = schema;
+    },
     // 添加根元素
     ADD_ROOT: (state, payload) => {
       if (!Array.isArray(payload) || payload.length <= 0) {

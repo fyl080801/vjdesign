@@ -1,5 +1,6 @@
 import store from "./store";
 import Input from "../editors/Input.vue";
+import DisplayOptions from "../editors/DisplayOptions.vue";
 
 /**
  * 注册编辑器
@@ -70,6 +71,17 @@ registerEditor("select", (path, options) => {
     })
   };
 });
+
+registerEditor(
+  "display",
+  path => {
+    return {
+      component: "v-jdesign-display",
+      model: [path]
+    };
+  },
+  DisplayOptions
+);
 
 // registerEditor("on", path => {
 //   return {

@@ -37,13 +37,13 @@ export default {
     watchs: state => state.form.watchs,
     datasource: state => state.form.datasource,
     schema: state => state.form.schema,
-    inits: state => state.form.inits
+    inits: state => state.form.inits,
+    designComponents: state => ({ ...state.components, ...{ vuedraggable } })
   }),
   data() {
     return {
       model: {},
-      options: { dev: true },
-      designComponents: { vuedraggable },
+      options: { mode: "design" },
       changes: []
     };
   },
