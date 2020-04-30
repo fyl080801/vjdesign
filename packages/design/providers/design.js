@@ -3,6 +3,7 @@ import { getComponents } from "../designer";
 
 let natives = null;
 
+// 元素设计时处理程序
 export default function(field, options) {
   natives =
     natives ||

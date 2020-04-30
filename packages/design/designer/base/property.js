@@ -1,6 +1,6 @@
 import store from "./store";
 import { resolveEditor } from "./editor";
-import { cloneDeep } from "lodash-es";
+import { cloneDeep, isEmpty, isObject } from "lodash-es";
 
 const propertyKeys = {
   别名: "remark",
@@ -49,13 +49,15 @@ export const registerProperty = (
   {
     description, // 名称
     editor, // 编辑器
-    defaultValue // 默认值
+    defaultValue, // 默认值
+    group // 自定义分组名
   }
 ) => {
   store.properties.set(path, {
     description,
     editor,
-    defaultValue
+    defaultValue,
+    group
   });
 };
 
@@ -70,35 +72,32 @@ export const assembly = component => {
   const groups = {};
 
   Object.keys(properties).forEach(prop => {
-    const definedProperty = properties[prop];
+    if (!properties[prop]) {
+      return;
+    }
 
-    if (definedProperty) {
-      const editorDefine =
-        typeof definedProperty.editor === "object"
-          ? definedProperty.editor
-          : {
-              name: definedProperty.editor
-            };
+    const { editor, description, group } = properties[prop];
+    const { name, options } = isObject(editor) ? editor : { name: editor };
+    const { field, component } = resolveEditor(name, prop, options);
 
-      const editorInstance = resolveEditor(
-        editorDefine.name,
-        prop,
-        editorDefine.options
-      );
+    const componentPropertySchema = {
+      editorIdentity: description,
+      component: "el-form-item",
+      fieldOptions: {
+        props: {
+          label: description
+        }
+      },
+      children: [field],
+      instance: component
+    };
 
-      const componentPropertySchema = {
-        editorIdentity: definedProperty.description,
-        component: "el-form-item",
-        fieldOptions: {
-          props: {
-            label: definedProperty.description
-          }
-        },
-        children: [editorInstance.field],
-        instance: editorInstance.component
-      };
-
-      // 将编辑器项分组
+    if (!isEmpty(group)) {
+      // 具有特定的分组名称
+      groups[group] = groups[group] || [];
+      groups[group].push(componentPropertySchema);
+    } else {
+      // 将属性按特定规则分组
       if (prop.indexOf("fieldOptions.domProps.") === 0) {
         groups.通用 = groups.通用 || [];
         groups.通用.push(componentPropertySchema);

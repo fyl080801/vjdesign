@@ -29,25 +29,25 @@ export const registerComponent = (
 
 export const getComponents = base => {
   const result = [];
-  store.components.forEach((val, key) => {
-    if (base !== undefined && val.base !== base) {
+  store.components.forEach((cmp, key) => {
+    if (base !== undefined && cmp.base !== base) {
       return;
     }
 
-    const properties = resolveProperties(val);
+    const properties = resolveProperties(cmp);
 
     result.push({
-      group: val.group,
-      icon: val.icon || "",
-      description: val.description,
-      container: val.container,
+      group: cmp.group,
+      icon: cmp.icon || "",
+      description: cmp.description,
+      container: cmp.container,
       defaults: Object.keys(properties)
         .filter(key => properties[key].defaultValue !== undefined)
         .map(key => ({
           property: key,
           value: properties[key].defaultValue
         })),
-      base: val.base,
+      base: cmp.base,
       tag: key
     });
   });

@@ -8,78 +8,65 @@ import DisplayOptions from "../editors/DisplayOptions.vue";
  * @param {Function} fn 函数，返回一个编辑器组件json
  */
 export const registerEditor = (name, fn, component) => {
-  if (component) {
-    fn.component = component;
-  }
   store.editors.set(name, fn);
+  store.editorComponents.set(name, component);
 };
 
 export const resolveEditor = (name, path, options) => {
   const factory = store.editors.get(name || "default");
+  const component = store.editorComponents.get(name || "default");
   return {
     field: factory(path, options),
-    component: factory.component
+    component
   };
 };
 
 registerEditor(
   "default",
-  path => {
-    return {
-      component: "v-jdesign-input",
-      model: [path]
-    };
-  },
+  path => ({
+    component: "v-jdesign-input",
+    model: [path]
+  }),
   Input
 );
 
-registerEditor("simple", path => {
-  return {
-    component: "el-input",
-    model: [path],
-    fieldOptions: {
-      attrs: {
-        placeholder: "请输入"
-      }
+registerEditor("simple", path => ({
+  component: "el-input",
+  model: [path],
+  fieldOptions: {
+    attrs: {
+      placeholder: "请输入"
     }
-  };
-});
+  }
+}));
 
-registerEditor("number", path => {
-  return {
-    component: "el-input-number",
-    model: [path]
-  };
-});
+registerEditor("number", path => ({
+  component: "el-input-number",
+  model: [path]
+}));
 
-registerEditor("checkbox", path => {
-  return {
-    component: "el-checkbox",
-    model: [path]
-  };
-});
+registerEditor("checkbox", path => ({
+  component: "el-checkbox",
+  model: [path]
+}));
 
-registerEditor("select", (path, options) => {
-  return {
-    component: "el-select",
-    model: [path],
-    children: options.items.map(item => {
-      return {
-        component: "el-option",
-        fieldOptions: { props: { label: item.label, value: item.value } }
-      };
-    })
-  };
-});
+registerEditor("select", (path, options) => ({
+  component: "el-select",
+  model: [path],
+  children: options.items.map(item => {
+    return {
+      component: "el-option",
+      fieldOptions: { props: { label: item.label, value: item.value } }
+    };
+  })
+}));
 
 registerEditor(
   "display",
-  path => {
-    return {
-      component: "v-jdesign-display",
-      model: [path]
-    };
-  },
+  path => ({
+    component: "v-jdesign-display",
+    model: [path]
+  }),
   DisplayOptions
 );
 
