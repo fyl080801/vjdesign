@@ -49,7 +49,7 @@ export default {
   },
   watch: {
     list(value) {
-      this.names = value.map(item => item.name) || [];
+      this.names = value.length > 0 ? [value[0].name] : [];
     }
   }
 };

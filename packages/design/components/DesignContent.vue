@@ -13,7 +13,7 @@
     </vuedraggable>
     <vjform
       v-show="fields.length"
-      :fields="fields"
+      :fields="designFields"
       :watchs="watchs"
       :datasource="datasource"
       :schema="schema"
@@ -38,7 +38,57 @@ export default {
     datasource: state => state.form.datasource,
     schema: state => state.form.schema,
     inits: state => state.form.inits,
-    designComponents: state => ({ ...state.components, ...{ vuedraggable } })
+    designComponents: state => ({ ...state.components, ...{ vuedraggable } }),
+    designFields() {
+      return [
+        {
+          component: "vuedraggable",
+          layout: true,
+          fieldOptions: {
+            class: "layout root",
+            on: {
+              // 回头加上对root的节点操作
+              // input: value => {
+              //   emiter.$emit("children-changed", { value });
+              // },
+              // add: value => {
+              //   // this.$store.commit("form/ADD_ROOT", value);
+              // },
+              // remove: value => {
+              //   emiter.$emit("children-remove", { value });
+              // },
+              // update: value => {
+              //   emiter.$emit("children-update", { value });
+              // }
+            },
+            attrs: {
+              group: "jdesign",
+              draggable: ".design-element"
+            }
+          },
+          children: [
+            ...this.fields,
+            ...["top", "left", "bottom", "right"].map(item => ({
+              component: "div",
+              layout: true,
+              fieldOptions: {
+                class: "border-layout border-" + item
+              }
+            })),
+            {
+              component: "p",
+              layout: true,
+              fieldOptions: {
+                class: "empty",
+                domProps: {
+                  innerText: "root"
+                }
+              }
+            }
+          ]
+        }
+      ];
+    }
   }),
   data() {
     return {

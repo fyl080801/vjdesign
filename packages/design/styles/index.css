@@ -106,6 +106,7 @@
   right: 0;
 }
 
+.v-jdesign .v-jform .root > .empty,
 .v-jdesign .v-jform .design-element .layout > .empty {
   width: 100%;
   text-align: center;
