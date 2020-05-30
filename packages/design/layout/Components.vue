@@ -1,11 +1,8 @@
 <template>
   <el-aside class="aside">
     <el-tabs type="border-card" class="max-aside">
-      <el-tab-pane label="基础组件">
+      <el-tab-pane label="组件库">
         <component-list :list="origin"></component-list>
-      </el-tab-pane>
-      <el-tab-pane label="集成组件">
-        <component-list :list="advance"></component-list>
       </el-tab-pane>
     </el-tabs>
   </el-aside>
@@ -19,13 +16,11 @@ export default {
   components: { ComponentList },
   data() {
     return {
-      origin: [],
-      advance: []
+      origin: []
     };
   },
   mounted() {
-    this.origin = getComponentGroups(true);
-    this.advance = getComponentGroups(false);
+    this.origin = getComponentGroups();
   }
 };
 </script>

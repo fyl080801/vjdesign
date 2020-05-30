@@ -23,9 +23,10 @@
             class="drag-handler"
             v-for="(item, index) in group.components"
           >
-            <el-card :body-style="{ padding: '10px' }">{{
-              item.description
-            }}</el-card>
+            <el-card :body-style="{ padding: '10px' }">
+              <i :class="item.icon ? item.icon : 'el-icon-s-help'"></i>
+              {{ item.description }}
+            </el-card>
           </el-col>
         </vuedraggable>
       </el-row>
@@ -49,7 +50,7 @@ export default {
   },
   watch: {
     list(value) {
-      this.names = value.map(item => item.name) || [];
+      this.names = value.length > 0 ? [value[0].name] : [];
     }
   }
 };

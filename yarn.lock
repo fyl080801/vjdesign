@@ -7959,10 +7959,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vjform@^0.4.0-beta.1:
-  version "0.4.0-beta.1"
-  resolved "https://registry.npm.taobao.org/vjform/download/vjform-0.4.0-beta.1.tgz#5d8b6afd5d4e83fb3028b6b82035e4c3073bdd30"
-  integrity sha1-XYtq/V1Og/swKLa4IDXkwwc73TA=
+vjform@^0.4.2-beta.1:
+  version "0.4.2-beta.1"
+  resolved "https://registry.npm.taobao.org/vjform/download/vjform-0.4.2-beta.1.tgz#f54086d4778d0dd1131bcdf60a496b374391c095"
+  integrity sha1-9UCG1HeNDdETG832CklrN0ORwJU=
   dependencies:
     ajv "^6.10.2"
     axios "^0.19.1"

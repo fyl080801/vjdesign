@@ -24,13 +24,19 @@ export default {
       eachTreeNodes(fields, node => {
         delete node.uuid;
       });
-      return fields;
+      return {
+        inits: state.form.inits,
+        datasource: state.form.datasource,
+        watchs: state.form.watchs,
+        schema: state.form.schema,
+        fields
+      };
     }
   }),
   data() {
     return {
       complete: true,
-      json: []
+      json: {}
     };
   },
   watch: {

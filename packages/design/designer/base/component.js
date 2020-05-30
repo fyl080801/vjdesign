@@ -1,5 +1,6 @@
 import store from "./store";
 import { resolveProperties } from "./property";
+import { isEmpty } from "lodash-es";
 
 /**
  * 注册组件
@@ -27,36 +28,36 @@ export const registerComponent = (
   });
 };
 
-export const getComponents = base => {
+export const getComponents = filter => {
   const result = [];
-  store.components.forEach((val, key) => {
-    if (base !== undefined && val.base !== base) {
+
+  store.components.forEach((cmp, key) => {
+    if (!isEmpty(filter) && cmp.description.indexOf(filter) < 0) {
       return;
     }
 
-    const properties = resolveProperties(val);
+    const properties = resolveProperties(cmp);
 
     result.push({
-      group: val.group,
-      icon: val.icon || "",
-      description: val.description,
-      container: val.container,
+      group: cmp.group,
+      icon: cmp.icon || "",
+      description: cmp.description,
+      container: cmp.container,
       defaults: Object.keys(properties)
         .filter(key => properties[key].defaultValue !== undefined)
         .map(key => ({
           property: key,
           value: properties[key].defaultValue
         })),
-      base: val.base,
       tag: key
     });
   });
   return result;
 };
 
-export const getComponentGroups = base => {
+export const getComponentGroups = filter => {
   const groups = {};
-  const components = getComponents(base);
+  const components = getComponents(filter);
   components.forEach(item => {
     groups[item.group] = groups[item.group] || [];
     groups[item.group].push(item);

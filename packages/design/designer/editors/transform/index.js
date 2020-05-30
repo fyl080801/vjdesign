@@ -1,10 +1,9 @@
-import TransformEditor from "./TransformEditor.vue";
+import Vue from "vue";
 import { isEmpty } from "lodash-es";
 
-export default {
-  components: { [TransformEditor.name]: TransformEditor },
+export default Vue.extend({
   props: {
-    value: [Object, String]
+    value: [Object, String, Number, Array]
   },
   data() {
     const isTransform = this.checkTransform();
@@ -19,33 +18,6 @@ export default {
     }
   },
   methods: {
-    async openTransform(value) {
-      return await new Promise((resolve, reject) => {
-        let transformValue = value;
-
-        const component = this.$createElement(TransformEditor.name, {
-          on: {
-            input: newvalue => {
-              transformValue = newvalue;
-            }
-          },
-
-          props: { value, width: "200px" }
-        });
-
-        this.$confirm(component, "编辑转换", {
-          customClass: "transform-form",
-          beforeClose: (action, instance, done) => {
-            if (action === "confirm" && transformValue !== null) {
-              resolve(transformValue);
-            } else {
-              reject();
-            }
-            done();
-          }
-        }).catch(() => {});
-      });
-    },
     checkTransform() {
       return (
         this.value !== null &&
@@ -57,15 +29,8 @@ export default {
       this.fieldValue = value;
       this.$emit("input", value);
     },
-    setTransform() {
-      this.openTransform(this.transformValue)
-        .then(value => {
-          this.$emit("input", value);
-        })
-        .catch(() => {});
-    },
     clearTransform() {
       this.$emit("input", this.fieldValue);
     }
   }
-};
+});

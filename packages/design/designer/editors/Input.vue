@@ -33,6 +33,9 @@ import transform from "./transform";
 
 export default {
   name: "v-jdesign-input",
-  mixins: [transform]
+  mixins: [transform],
+  methods: {
+    setTransform() {}
+  }
 };
 </script>
