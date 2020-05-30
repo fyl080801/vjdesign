@@ -23,9 +23,10 @@
             class="drag-handler"
             v-for="(item, index) in group.components"
           >
-            <el-card :body-style="{ padding: '10px' }">{{
-              item.description
-            }}</el-card>
+            <el-card :body-style="{ padding: '10px' }">
+              <i :class="item.icon ? item.icon : 'el-icon-s-help'"></i>
+              {{ item.description }}
+            </el-card>
           </el-col>
         </vuedraggable>
       </el-row>

@@ -4,7 +4,7 @@ import { properties } from "../../../packages/design/designer";
 const { component } = register;
 
 component("el-form", {
-  group: "布局",
+  group: "Element 布局",
   description: "表单",
   container: true,
   properties: [
@@ -16,7 +16,7 @@ component("el-form", {
 });
 
 component("el-tabs", {
-  group: "布局",
+  group: "Element 布局",
   description: "标签页",
   container: true,
   properties: [
@@ -40,7 +40,7 @@ component("el-tabs", {
 });
 
 component("el-tab-pane", {
-  group: "布局",
+  group: "Element 布局",
   description: "标签项",
   container: true,
   properties: ["fieldOptions.props.name", "fieldOptions.props.label"],
@@ -48,7 +48,7 @@ component("el-tab-pane", {
 });
 
 component("el-col", {
-  group: "布局",
+  group: "Element 布局",
   description: "列",
   container: true,
   properties: ["fieldOptions.props.span"],
@@ -56,7 +56,7 @@ component("el-col", {
 });
 
 component("el-row", {
-  group: "布局",
+  group: "Element 布局",
   description: "行",
   container: true,
   properties: ["fieldOptions.props.gutter"],
@@ -64,7 +64,7 @@ component("el-row", {
 });
 
 component("el-form-item", {
-  group: "布局",
+  group: "Element 布局",
   description: "表单项",
   container: true,
   properties: ["fieldOptions.props.label", "fieldOptions.props.required"],
@@ -72,7 +72,7 @@ component("el-form-item", {
 });
 
 component("el-input", {
-  group: "输入",
+  group: "Element 输入",
   description: "文本框",
   properties: [
     properties.数据,
@@ -83,7 +83,7 @@ component("el-input", {
 });
 
 component("el-select", {
-  group: "输入",
+  group: "Element 输入",
   description: "选择器",
   properties: [
     properties.数据,
@@ -94,21 +94,21 @@ component("el-select", {
 });
 
 component("el-input-number", {
-  group: "输入",
+  group: "Element 输入",
   description: "计数器",
   properties: [properties.数据, "fieldOptions.props.disabled"],
   base: false
 });
 
 component("el-switch", {
-  group: "输入",
+  group: "Element 输入",
   description: "开关",
   properties: [properties.数据, "fieldOptions.props.disabled"],
   base: false
 });
 
 component("el-slider", {
-  group: "输入",
+  group: "Element 输入",
   description: "滑块",
   properties: [
     properties.数据,
@@ -122,14 +122,14 @@ component("el-slider", {
 });
 
 component("el-time-select", {
-  group: "输入",
+  group: "Element 输入",
   description: "时间",
   properties: [properties.数据, "fieldOptions.props.disabled"],
   base: false
 });
 
 component("el-date-picker", {
-  group: "输入",
+  group: "Element 输入",
   description: "日期时间",
   properties: [
     properties.数据,
@@ -158,14 +158,14 @@ component("el-date-picker", {
 });
 
 component("el-rate", {
-  group: "输入",
+  group: "Element 输入",
   description: "评分",
   properties: [properties.数据, "fieldOptions.props.disabled"],
   base: false
 });
 
 component("el-radio-group", {
-  group: "输入",
+  group: "Element 输入",
   description: "单选项组",
   properties: [
     properties.数据,
@@ -177,7 +177,7 @@ component("el-radio-group", {
 });
 
 component("el-radio-button", {
-  group: "输入",
+  group: "Element 输入",
   description: "单选按钮",
   properties: [
     "fieldOptions.props.disabled",
@@ -187,7 +187,7 @@ component("el-radio-button", {
 });
 
 component("el-radio", {
-  group: "输入",
+  group: "Element 输入",
   description: "单选项",
   properties: [
     "fieldOptions.props.disabled",
@@ -197,7 +197,7 @@ component("el-radio", {
 });
 
 component("el-checkbox-group", {
-  group: "输入",
+  group: "Element 输入",
   description: "复选项组",
   properties: [
     properties.数据,
@@ -209,7 +209,7 @@ component("el-checkbox-group", {
 });
 
 component("el-checkbox-button", {
-  group: "输入",
+  group: "Element 输入",
   description: "复选按钮",
   properties: [
     "fieldOptions.props.disabled",
@@ -219,7 +219,7 @@ component("el-checkbox-button", {
 });
 
 component("el-checkbox", {
-  group: "输入",
+  group: "Element 输入",
   description: "复选项",
   properties: [
     "fieldOptions.props.disabled",
@@ -229,14 +229,14 @@ component("el-checkbox", {
 });
 
 component("el-table", {
-  group: "数据",
+  group: "Element 数据",
   description: "表格",
   properties: [],
   base: false
 });
 
 component("el-pagination", {
-  group: "数据",
+  group: "Element 数据",
   description: "分页",
   properties: [
     {

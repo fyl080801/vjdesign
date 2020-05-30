@@ -47,6 +47,7 @@ export const resolveProperties = defineMetadata => {
 export const registerProperty = (
   path,
   {
+    icon, // 图标
     description, // 名称
     editor, // 编辑器
     defaultValue, // 默认值
@@ -54,6 +55,7 @@ export const registerProperty = (
   }
 ) => {
   store.properties.set(path, {
+    icon,
     description,
     editor,
     defaultValue,

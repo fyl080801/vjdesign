@@ -24,6 +24,43 @@
   border-left: none;
 }
 
+/* 侧边属性盒子 */
+.v-jdesign > aside.aside > .max-aside > .el-tabs__content .el-tab-pane > * {
+  margin-top: -15px;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.v-jdesign
+  > aside.aside
+  > .max-aside
+  > .el-tabs__content
+  .el-tab-pane
+  > .el-collapse {
+  border: none;
+}
+
+.v-jdesign
+  > aside.aside
+  > .max-aside
+  > .el-tabs__content
+  .el-tab-pane
+  > .el-collapse
+  .el-collapse-item__header {
+  padding-left: 15px;
+}
+
+.v-jdesign
+  > aside.aside
+  > .max-aside
+  > .el-tabs__content
+  .el-tab-pane
+  > .el-collapse
+  .el-collapse-item__content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .v-jdesign > .main,
 .v-jdesign > .right {
   border-left: 1px solid #e4e7ed;

@@ -8,12 +8,12 @@ const components = {
   //
   input: {
     description: "输入框",
-    group: "输入元素",
+    group: "网页元素",
     properties: [property.数据, property.名称]
   },
   button: {
     description: "按钮",
-    group: "输入元素",
+    group: "网页元素",
     properties: [property.内部文本]
   },
   //
@@ -44,19 +44,19 @@ const components = {
   //
   div: {
     description: "层",
-    group: "容器元素",
+    group: "网页元素",
     container: true,
     properties: []
   },
   fieldset: {
     description: "分组",
-    group: "容器元素",
+    group: "网页元素",
     container: true,
     properties: []
   },
   form: {
     description: "表单",
-    group: "容器元素",
+    group: "网页元素",
     container: true,
     properties: [
       {
