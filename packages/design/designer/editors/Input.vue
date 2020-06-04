@@ -8,9 +8,8 @@
     >
       <el-button
         slot="append"
-        :disabled="true"
         icon="el-icon-link"
-        @click="setTransform"
+        @click="openEditor"
       ></el-button>
     </el-input>
     <el-input v-if="isTransform" placeholder="<转换的值>" :readonly="true">
@@ -33,9 +32,6 @@ import transform from "./transform";
 
 export default {
   name: "v-jdesign-input",
-  mixins: [transform],
-  methods: {
-    setTransform() {}
-  }
+  mixins: [transform]
 };
 </script>

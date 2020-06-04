@@ -21,7 +21,7 @@ vjform.provider("layout", function() {
 });
 
 const install = function(v) {
-  v.use(ElementUI);
+  v.use(ElementUI, { size: "small" });
   v.use(vjform);
   v.component(layout.name, layout);
 };

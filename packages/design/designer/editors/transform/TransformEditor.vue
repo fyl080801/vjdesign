@@ -1,43 +1,32 @@
 <template>
-  <el-form label-position="top" size="mini">
-    <el-form-item label="转换类型">
-      <el-radio-group v-model="transformType" @change="typeChanged">
-        <el-radio-button
-          v-for="(key, index) in Object.keys(transformTypes)"
-          :key="index"
-          :label="transformTypes[key]"
-          >{{ key }}</el-radio-button
-        >
-      </el-radio-group>
+  <el-form ref="form" label-position="top" :model="value">
+    <el-form-item
+      label="类型"
+      prop="$type"
+      :rules="[{ required: true, message: '必选项' }]"
+    >
+      <el-select v-model="value.$type">
+        <el-option value="bind" label="绑定"></el-option>
+        <el-option value="func" label="计算"></el-option>
+      </el-select>
     </el-form-item>
-    <el-form-item label="来源" v-if="transformType === transformTypes.绑定">
-      <el-row>
-        <el-col :span="20">
-          <el-cascader
-            v-model="source"
-            :options="sourceData"
-            @change="sourceChanged"
-            style="width:100%"
-          >
-          </el-cascader>
-        </el-col>
-        <el-col :span="4"></el-col>
-      </el-row>
-    </el-form-item>
-    <v-jdesign-func
-      v-if="transformType === transformTypes.计算属性"
-    ></v-jdesign-func>
   </el-form>
 </template>
 
 <script>
 import { TransformTypes } from "../../../utils/enums";
-import Func from "./Func.vue";
+// import Func from "./Func.vue";
 
 export default {
   name: "v-jdesign-transform",
-  props: { value: Object },
-  components: { [Func.name]: Func },
+  props: {
+    value: {
+      type: Object,
+      default() {
+        return {};
+      }
+    }
+  },
   data() {
     return {
       transformValue: this.value,
@@ -53,6 +42,9 @@ export default {
     }
   },
   methods: {
+    onClose() {
+      this.$emit("cancel");
+    },
     typeChanged(value) {
       console.log(value);
     },
@@ -61,6 +53,9 @@ export default {
         $type: TransformTypes.bind,
         $source: value
       };
+    },
+    validate() {
+      return this.$refs.form.validate();
     }
   }
 };
