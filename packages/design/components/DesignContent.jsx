@@ -1,36 +1,10 @@
-<template>
-  <div class="design-content">
-    <vuedraggable
-      tag="div"
-      v-show="!fields.length"
-      class="empty-text"
-      :value="fields"
-      @input="emitter"
-      group="jdesign"
-      draggable=".design-element"
-    >
-      <p>拖组件到此</p>
-    </vuedraggable>
-    <vjform
-      v-show="fields.length"
-      :fields="designFields"
-      :watchs="watchs"
-      :datasource="datasource"
-      :schema="schema"
-      :inits="inits"
-      :components="designComponents"
-      :options="options"
-    ></vjform>
-  </div>
-</template>
-
-<script>
+import Vue from "vue";
 import { mapState } from "vuex";
 import emiter from "../utils/emiter";
 import vuedraggable from "vuedraggable";
+import "./DesignContent.css";
 
-export default {
-  name: "design-content",
+export default Vue.extend({
   components: { vuedraggable },
   computed: mapState({
     fields: state => state.form.fields,
@@ -116,31 +90,32 @@ export default {
     emiter.$on("children-changed", value => {
       this.changes.push(value);
     });
+  },
+  render() {
+    return (
+      <div class="design-content">
+        <vuedraggable
+          tag="div"
+          v-show={!this.fields.length}
+          class="empty-text"
+          value={this.fields}
+          onInput={this.emitter}
+          group="jdesign"
+          draggable=".design-element"
+        >
+          <p>拖组件到此</p>
+        </vuedraggable>
+        <vjform
+          v-show={this.fields.length}
+          fields={this.designFields}
+          watchs={this.watchs}
+          datasource={this.datasource}
+          schema={this.schema}
+          inits={this.inits}
+          components={this.designComponents}
+          options={this.options}
+        ></vjform>
+      </div>
+    );
   }
-};
-</script>
-
-<style>
-.design-content {
-  min-height: 250px;
-  border: 1px;
-  border-style: dashed;
-  border-color: silver;
-}
-
-.empty-text {
-  color: silver;
-  height: 250px;
-  position: relative;
-}
-
-.empty-text p {
-  text-align: center;
-  margin: 0 auto;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-}
-</style>
+});

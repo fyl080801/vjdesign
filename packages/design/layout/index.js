@@ -1,3 +1,3 @@
-import Container from "./Container.vue";
+import Container from "./Container";
 
 export default Container;

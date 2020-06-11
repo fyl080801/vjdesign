@@ -1,20 +1,10 @@
-<template>
-  <json-viewer
-    v-if="complete"
-    :value="json"
-    :expand-depth="10"
-    copyable
-  ></json-viewer>
-</template>
-
-<script>
+import Vue from "vue";
 import { mapState } from "vuex";
 import JsonViewer from "vue-json-viewer";
 import { cloneDeep } from "lodash-es";
 import { eachTreeNodes } from "../utils/tree";
 
-export default {
-  name: "design-metadata",
+export default Vue.extend({
   components: {
     JsonViewer
   },
@@ -49,8 +39,10 @@ export default {
         this.complete = true;
       });
     }
+  },
+  render() {
+    return this.complete ? (
+      <json-viewer value={this.json} expand-depth={10} copyable></json-viewer>
+    ) : null;
   }
-};
-</script>
-
-<style></style>
+});
