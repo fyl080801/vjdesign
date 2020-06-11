@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import DesignContent from "../components/DesignContent.vue";
-import DesignMetadata from "../components/DesignMetadata.vue";
-import DesignPreview from "../components/DesignPreview.vue";
-import ModelPreview from "../components/ModelPreview.vue";
+import DesignContent from "../components/DesignContent";
+import DesignMetadata from "../components/DesignMetadata";
+import DesignPreview from "../components/DesignPreview";
+import ModelPreview from "../components/ModelPreview";
 
 export default {
   components: {
