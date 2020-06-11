@@ -1,20 +1,11 @@
-<template>
-  <el-container class="v-jdesign">
-    <v-jcomponents></v-jcomponents>
-    <v-jmain></v-jmain>
-    <v-jproperties></v-jproperties>
-  </el-container>
-</template>
-
-<script>
+import Vue from "vue";
 import store from "../store";
-import Components from "./Components.vue";
-import Main from "./Main.vue";
-import Properties from "./Properties.vue";
+import Components from "./Components";
+import Main from "./Main";
+import Properties from "./Properties";
 import { mapState } from "vuex";
 
-export default {
-  name: "vJdesign",
+export default Vue.component("vJdesign", {
   store,
   props: {
     value: Object,
@@ -43,6 +34,14 @@ export default {
   created() {
     this.$store.commit("components/UPDATE", this.components || {});
     this.$store.commit("form/CREATEED", this.value);
+  },
+  render() {
+    return (
+      <el-container class="v-jdesign">
+        <v-jcomponents></v-jcomponents>
+        <v-jmain></v-jmain>
+        <v-jproperties></v-jproperties>
+      </el-container>
+    );
   }
-};
-</script>
+});
