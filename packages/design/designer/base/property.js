@@ -131,7 +131,7 @@ registerProperty(propertyKeys.命名槽, {
 });
 registerProperty(propertyKeys.内部文本, { description: "内部文本" });
 registerProperty(propertyKeys.水印, { description: "水印" });
-registerProperty(propertyKeys.数据, { description: "数据" });
+registerProperty(propertyKeys.数据, { description: "数据", editor: "simple" });
 registerProperty(propertyKeys.响应输入, {
   description: "响应输入",
   editor: "on"

@@ -48,6 +48,7 @@ export default Vue.extend({
       this.$confirm(editor, {
         title: "编辑转换",
         customClass: "v-jdesign-transform-editor",
+        closeOnClickModal: false,
         beforeClose: async (action, instance, done) => {
           const { child: form } = editor;
 

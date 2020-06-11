@@ -1,5 +1,6 @@
 import Vue from "vue";
 import { TransformTypes } from "../../../utils/enums";
+import Bind from "./Bind";
 
 export default Vue.extend({
   props: {
@@ -32,6 +33,7 @@ export default Vue.extend({
             ))}
           </el-select>
         </el-form-item>
+        {this.value.$type === "bind" ? <Bind value={this.value}></Bind> : null}
       </el-form>
     );
   }
