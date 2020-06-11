@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { isEmpty } from "lodash-es";
-import TransformEditor from "./TransformEditor.vue";
+import TransformEditor from "./TransformEditor";
 
 export default Vue.extend({
   props: {
@@ -12,7 +12,6 @@ export default Vue.extend({
       }
     }
   },
-  components: { [TransformEditor.name]: TransformEditor },
   data() {
     const isTransform = this.checkTransform();
     return {
@@ -40,35 +39,40 @@ export default Vue.extend({
     clearTransform() {
       this.$emit("input", this.fieldValue);
     },
-    async openEditor() {
-      try {
-        const transformValue = { $type: null };
-        const editor = this.$createElement(TransformEditor, {
-          props: { value: transformValue }
-        });
-        await this.$confirm(editor, "编辑转换", {
-          customClass: "v-jdesign-transform-editor",
-          beforeClose: (action, instance, done) => {
+    openEditor() {
+      this.transformValue = this.transformValue || { $type: null };
+      const editor = this.$createElement(TransformEditor, {
+        props: { value: this.transformValue }
+      });
+
+      this.$confirm(editor, {
+        title: "编辑转换",
+        customClass: "v-jdesign-transform-editor",
+        beforeClose: async (action, instance, done) => {
+          const { child: form } = editor;
+
+          try {
             if (action === "confirm") {
-              editor.child
-                .validate()
-                .then(result => {
-                  if (result) {
-                    done();
-                  }
-                })
-                .catch(() => {
-                  // not validate
-                });
+              const result = await form.validate();
+              if (result) {
+                done();
+              }
             } else {
               done();
             }
+          } catch {
+            //
           }
-        });
-        console.log(transformValue);
-      } catch {
-        //
-      }
+        }
+      })
+        .then(() => {
+          this.$emit("input", this.transformValue);
+        })
+        .catch(() => {});
+
+      this.$nextTick(() => {
+        editor.child.clearValidate();
+      });
     }
   }
 });

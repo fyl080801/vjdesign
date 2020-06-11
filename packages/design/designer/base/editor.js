@@ -1,5 +1,5 @@
 import store from "./store";
-import Input from "../editors/Input.vue";
+import TransformInput from "../editors/Input";
 import DisplayOptions from "../editors/DisplayOptions.vue";
 
 /**
@@ -27,7 +27,7 @@ registerEditor(
     component: "v-jdesign-input",
     model: [path]
   }),
-  Input
+  TransformInput
 );
 
 registerEditor("simple", path => ({
