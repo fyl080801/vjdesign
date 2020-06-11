@@ -5,7 +5,6 @@ import vuedraggable from "vuedraggable";
 import "./DesignContent.css";
 
 export default Vue.extend({
-  name: "design-content",
   components: { vuedraggable },
   computed: mapState({
     fields: state => state.form.fields,

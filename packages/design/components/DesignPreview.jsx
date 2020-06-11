@@ -2,7 +2,6 @@ import Vue from "vue";
 import { mapState } from "vuex";
 
 export default Vue.extend({
-  name: "design-preview",
   computed: mapState({
     fields: state => state.form.fields,
     watchs: state => state.form.watchs,

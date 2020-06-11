@@ -2,7 +2,6 @@ import Vue from "vue";
 import vuedraggable from "vuedraggable";
 
 export default Vue.extend({
-  name: "component-list",
   components: { vuedraggable },
   props: {
     list: Array

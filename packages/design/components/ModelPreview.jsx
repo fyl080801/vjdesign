@@ -2,7 +2,7 @@ import Vue from "vue";
 import { mapState } from "vuex";
 import JsonViewer from "vue-json-viewer";
 
-export default Vue.component("model-preview", {
+export default Vue.extend({
   components: {
     JsonViewer
   },

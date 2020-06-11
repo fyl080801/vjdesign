@@ -5,7 +5,6 @@ import { cloneDeep } from "lodash-es";
 import { eachTreeNodes } from "../utils/tree";
 
 export default Vue.extend({
-  name: "design-metadata",
   components: {
     JsonViewer
   },
