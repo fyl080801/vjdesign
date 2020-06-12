@@ -2,7 +2,6 @@ import Vue from "vue";
 import Transform from "./transform";
 
 const component = Vue.component("v-jdesign-input", {
-  name: "v-jdesign-input",
   mixins: [Transform],
   render() {
     return (

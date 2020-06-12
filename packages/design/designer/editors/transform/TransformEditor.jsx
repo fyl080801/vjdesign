@@ -1,7 +1,5 @@
 import Vue from "vue";
-import { TransformTypes } from "../../../utils/enums";
-import Bind from "./types/Bind";
-import Func from "./types/Func";
+import Panel from "./Panel";
 
 export default Vue.extend({
   props: {
@@ -23,19 +21,7 @@ export default Vue.extend({
   render() {
     return (
       <el-form ref="form" label-position="top" props={{ model: this.value }}>
-        <el-form-item
-          label="类型"
-          prop="$type"
-          rules={[{ required: true, message: "必选项" }]}
-        >
-          <el-select v-model={this.value.$type}>
-            {Object.keys(TransformTypes).map(key => (
-              <el-option value={key} label={TransformTypes[key]} />
-            ))}
-          </el-select>
-        </el-form-item>
-        {this.value.$type === "bind" ? <Bind value={this.value}></Bind> : null}
-        {this.value.$type === "func" ? <Func value={this.value}></Func> : null}
+        <Panel value={this.value}></Panel>
       </el-form>
     );
   }

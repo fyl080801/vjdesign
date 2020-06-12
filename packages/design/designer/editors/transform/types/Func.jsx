@@ -36,6 +36,9 @@ export default Vue.extend({
         >
           <el-input v-model={this.value.$result}></el-input>
         </el-form-item>
+        <el-form-item label="默认值" prop="$default">
+          <el-input v-model={this.value.$default}></el-input>
+        </el-form-item>
       </div>
     );
   }

@@ -5,6 +5,6 @@ export const TransformTypes = {
   // 事件: "on"
   bind: "绑定",
   func: "计算",
-  array: "数组",
+  // array: "数组",
   on: "事件"
 };
