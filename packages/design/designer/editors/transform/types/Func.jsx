@@ -1,33 +1,66 @@
 import Vue from "vue";
+import FuncArg from "../components/FuncArg";
+import { isEmpty } from "lodash-es";
+import { uuid } from "../../../../utils/helpers";
 
 export default Vue.extend({
   props: {
     value: Object
   },
-  computed: {
-    args() {
-      return [];
+  components: { FuncArg },
+  data() {
+    return {
+      newArg: {}
+    };
+  },
+  // computed: {
+  //   args() {
+  //     return Object.keys(this.value.$arguments || {}).map(key => ({
+  //       name: key,
+  //       value: this.value.$arguments[key]
+  //     }));
+  //   }
+  // },
+  methods: {
+    onAddArg(data) {
+      if (isEmpty(data.name)) {
+        this.$message("名称不能为空");
+        return;
+      }
+
+      if (
+        this.value.$arguments &&
+        this.value.$arguments[data.name] !== undefined
+      ) {
+        this.$message("键值重复");
+        return;
+      }
+      this.value.$arguments = this.value.$arguments || {};
+      this.value.$arguments[data.name] = data.value;
+      this.newArg = {};
     }
+  },
+  created() {
+    this.value.$arguments = this.value.$arguments || {};
   },
   render() {
     return (
       <div>
         <el-form-item label="参数" prop="$arguments">
-          <span slot="label">
-            参数
-            <el-button type="text" style={{ marginLeft: "15px" }}>
-              <i
-                class="el-icon-circle-plus-outline"
-                style={{ marginRight: "5px" }}
-              ></i>
-              添加
-            </el-button>
-          </span>
-          <el-table border={true} show-header={false} data={this.args}>
-            <el-table-column lable="参数名" prop="name"></el-table-column>
-            <el-table-column lable="参数值" prop="value"></el-table-column>
-            <el-table-column lable="操作"></el-table-column>
-          </el-table>
+          {Object.keys(this.value.$arguments || {}).map(key => (
+            <func-arg
+              key={uuid()}
+              value={{ name: key, value: this.value.$arguments[key] }}
+              onInput={value => {
+                this.value.$arguments[key] = value.value;
+              }}
+            ></func-arg>
+          ))}
+          <func-arg
+            value={this.newArg}
+            isAdd={true}
+            onAdd={this.onAddArg}
+          ></func-arg>
         </el-form-item>
         <el-form-item
           label="表达式"

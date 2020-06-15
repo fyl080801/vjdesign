@@ -1,8 +1,9 @@
 import Vue from "vue";
 import Transform from "./transform";
+import PopupEditor from "./transform/utils/popupEditor";
 
 const component = Vue.component("v-jdesign-input", {
-  mixins: [Transform],
+  mixins: [Transform, PopupEditor],
   render() {
     return (
       <div>

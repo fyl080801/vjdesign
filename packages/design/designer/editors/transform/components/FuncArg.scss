@@ -1,0 +1,22 @@
+.v-jdesign-transform-editor {
+  .v-jdesign-func {
+    .action {
+      float: right;
+
+      > .el-button {
+        width: 44px;
+      }
+    }
+
+    &.add {
+      .item {
+        margin-bottom: 0;
+      }
+    }
+
+    .item {
+      margin-bottom: 10px;
+      margin-right: 60px !important; // 这里el-row会强制设置style，所以要加!important
+    }
+  }
+}

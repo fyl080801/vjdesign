@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { isEmpty } from "lodash-es";
-import TransformEditor from "./TransformEditor";
+import "./index.scss";
 
 export default Vue.extend({
   props: {
@@ -38,42 +38,6 @@ export default Vue.extend({
     },
     clearTransform() {
       this.$emit("input", this.fieldValue);
-    },
-    openEditor() {
-      this.transformValue = this.transformValue || { $type: null };
-      const editor = this.$createElement(TransformEditor, {
-        props: { value: this.transformValue }
-      });
-
-      this.$confirm(editor, {
-        title: "编辑转换",
-        customClass: "v-jdesign-transform-editor",
-        closeOnClickModal: false,
-        beforeClose: async (action, instance, done) => {
-          const { child: form } = editor;
-
-          try {
-            if (action === "confirm") {
-              const result = await form.validate();
-              if (result) {
-                done();
-              }
-            } else {
-              done();
-            }
-          } catch {
-            //
-          }
-        }
-      })
-        .then(() => {
-          this.$emit("input", this.transformValue);
-        })
-        .catch(() => {});
-
-      this.$nextTick(() => {
-        editor.child.clearValidate();
-      });
     }
   }
 });
