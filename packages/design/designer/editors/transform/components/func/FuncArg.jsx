@@ -10,7 +10,7 @@ export default Vue.extend({
   components: { FuncInput },
   methods: {
     onAdd() {
-      this.$emit("add", this.value);
+      this.$emit("add", this.value.name);
     },
     onDrop() {
       this.$emit("drop");
@@ -28,7 +28,7 @@ export default Vue.extend({
         </div>
 
         <el-row gutter={5} class="item">
-          <el-col span={8}>
+          <el-col span={!this.isAdd ? 8 : 24}>
             {this.isAdd ? (
               <el-input
                 v-model={this.value.name}
@@ -38,15 +38,22 @@ export default Vue.extend({
               <span>{this.value.name}</span>
             )}
           </el-col>
-          <el-col span={16}>
-            <func-input
-              sync={true}
-              v-model={this.value.value}
-              onInput={() => {
-                this.$emit("input", this.value);
-              }}
-            ></func-input>
-          </el-col>
+          {!this.isAdd ? (
+            <el-col span={16}>
+              <func-input
+                sync={true}
+                v-model={this.value.value}
+                onInput={() => {
+                  this.$emit("input", this.value);
+                }}
+                onSetTransform={transformValue => {
+                  this.value.value = transformValue;
+                  this.$emit("input", this.value);
+                  this.$emit("setTransform", transformValue);
+                }}
+              ></func-input>
+            </el-col>
+          ) : null}
         </el-row>
       </div>
     );

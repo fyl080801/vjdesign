@@ -1,11 +1,17 @@
 import Vue from "vue";
-import emiter from "./emiter";
+// import emiter from "./emiter";
 
 export default Vue.extend({
   methods: {
     openEditor() {
       this.transformValue = this.transformValue || { $type: null };
-      emiter.$emit("set-transform", this.transformValue);
+
+      this.$emit("setTransform", this.transformValue);
+
+      this.$nextTick(() => {
+        this.$emit("input", this.transformValue);
+      });
+      // emiter.$emit("set-transform", this.transformValue);
     }
   }
 });

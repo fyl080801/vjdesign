@@ -73,7 +73,12 @@ export default Vue.extend({
         </el-form-item>
         {this.value.$type === "bind" ? <Bind value={this.value}></Bind> : null}
         {this.value.$type === "func" || this.value.$type === "on" ? (
-          <Func value={this.value}></Func>
+          <Func
+            value={this.value}
+            onSetTransform={payload => {
+              this.$emit("setTransform", payload);
+            }}
+          ></Func>
         ) : null}
       </el-form>
     );

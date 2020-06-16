@@ -1,0 +1,19 @@
+.v-jdesign-transform-editor {
+  .v-jdesign-transform-wrapper {
+    display: flex;
+
+    > * {
+      padding: 0 15px;
+      border-right: 1px solid #dcdfe6;
+    }
+
+    > :first-child {
+      padding-left: 0;
+    }
+
+    > :last-child {
+      padding-right: 0;
+      border-right: none;
+    }
+  }
+}

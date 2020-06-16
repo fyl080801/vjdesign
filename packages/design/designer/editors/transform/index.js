@@ -37,6 +37,7 @@ export default Vue.extend({
   },
   methods: {
     checkTransform() {
+      console.log("xxx");
       return (
         this.value !== null &&
         typeof this.value === "object" &&

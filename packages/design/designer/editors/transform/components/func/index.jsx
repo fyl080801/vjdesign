@@ -2,6 +2,7 @@ import Vue from "vue";
 import FuncArg from "./FuncArg";
 import { isEmpty } from "lodash-es";
 import { uuid } from "../../../../../utils/helpers";
+// import emiter from "../../mixins/emiter";
 
 export default Vue.extend({
   props: {
@@ -11,26 +12,37 @@ export default Vue.extend({
   data() {
     return {
       newArg: {}, // 新增的arg
-      current: ""
+      current: "",
+      updating: false
     };
   },
+  computed: {
+    args() {
+      return Object.keys(this.value.$arguments || {}).map(key => ({
+        name: key,
+        value: (this.value.$arguments || {})[key]
+      }));
+    }
+  },
   methods: {
-    onAddArg(data) {
-      if (isEmpty(data.name)) {
+    onAddArg(name) {
+      if (isEmpty(name)) {
         this.$message("名称不能为空");
         return;
       }
 
-      if (
-        this.value.$arguments &&
-        this.value.$arguments[data.name] !== undefined
-      ) {
+      if (this.value.$arguments && this.value.$arguments[name] !== undefined) {
         this.$message("键值重复");
         return;
       }
       this.value.$arguments = this.value.$arguments || {};
-      this.value.$arguments[data.name] = data.value;
+      this.value.$arguments[name] = "";
       this.newArg = {};
+
+      // this.updating = true;
+      // this.$nextTick(() => {
+      //   this.updating = false;
+      // });
     },
     onDropArg(key) {
       this.value.$arguments = this.value.$arguments || {};
@@ -44,25 +56,41 @@ export default Vue.extend({
   render() {
     return (
       <div>
-        <el-form-item label="参数" prop="$arguments">
-          {Object.keys(this.value.$arguments || {}).map(key => (
+        {!this.updating ? (
+          <el-form-item label="参数" prop="$arguments">
+            {this.args.map(item => (
+              <func-arg
+                key={uuid()}
+                value={item}
+                onInput={value => {
+                  this.value.$arguments[item.name] = value.value;
+                }}
+                onDrop={() => {
+                  this.onDropArg(item.name);
+                }}
+                onSetTransform={transformValue => {
+                  this.current = item.name;
+                  this.$emit("setTransform", {
+                    key: item.name,
+                    value: transformValue
+                  });
+                }}
+              ></func-arg>
+            ))}
             <func-arg
-              key={uuid()}
-              value={{ name: key, value: this.value.$arguments[key] }}
-              onInput={value => {
-                this.value.$arguments[key] = value.value;
-              }}
-              onDrop={() => {
-                this.onDropArg(key);
+              value={this.newArg}
+              isAdd={true}
+              onAdd={this.onAddArg}
+              onSetTransform={transformValue => {
+                this.current = "";
+                this.$emit("setTransform", {
+                  key: "",
+                  value: transformValue
+                });
               }}
             ></func-arg>
-          ))}
-          <func-arg
-            value={this.newArg}
-            isAdd={true}
-            onAdd={this.onAddArg}
-          ></func-arg>
-        </el-form-item>
+          </el-form-item>
+        ) : null}
         <el-form-item
           label="表达式"
           prop="$result"
