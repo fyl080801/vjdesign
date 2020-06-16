@@ -10,7 +10,8 @@ export default Vue.extend({
       default() {
         return null;
       }
-    }
+    },
+    sync: { type: Boolean, default: false }
   },
   data() {
     const isTransform = this.checkTransform();
@@ -22,6 +23,16 @@ export default Vue.extend({
   computed: {
     isTransform() {
       return this.checkTransform();
+    }
+  },
+  watch: {
+    value(newval) {
+      if (!this.sync) {
+        return;
+      }
+      const isTransform = this.checkTransform();
+      this.fieldValue = isTransform ? null : newval; // 普通值
+      this.transformValue = isTransform ? newval : null; // 转换的值
     }
   },
   methods: {

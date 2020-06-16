@@ -2,6 +2,7 @@
   .v-jdesign-func {
     .action {
       float: right;
+      margin-top: -1px;
 
       > .el-button {
         width: 44px;
@@ -16,7 +17,7 @@
 
     .item {
       margin-bottom: 10px;
-      margin-right: 60px !important; // 这里el-row会强制设置style，所以要加!important
+      margin-right: 46.5px !important; // 这里el-row会强制设置style，所以要加!important
     }
   }
 }

@@ -38,6 +38,7 @@ export default Vue.extend({
           </el-col>
           <el-col span={16}>
             <func-input
+              sync={true}
               v-model={this.value.value}
               onInput={() => {
                 this.$emit("input", this.value);
