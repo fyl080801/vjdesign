@@ -1,6 +1,6 @@
 import Vue from "vue";
 import "./FuncArg.scss";
-import FuncInput from "./FuncInput";
+import FuncInput from "./editors/Input";
 
 export default Vue.extend({
   props: {
@@ -12,7 +12,9 @@ export default Vue.extend({
     onAdd() {
       this.$emit("add", this.value);
     },
-    onDrop() {}
+    onDrop() {
+      this.$emit("drop");
+    }
   },
   render() {
     return (

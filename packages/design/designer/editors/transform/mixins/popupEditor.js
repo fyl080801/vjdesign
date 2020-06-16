@@ -1,5 +1,5 @@
 import Vue from "vue";
-import TransformEditor from "../TransformEditor";
+import TransformEditor from "../components/editor";
 import { cloneDeep } from "lodash-es";
 
 export default Vue.extend({

@@ -1,7 +1,7 @@
 import Vue from "vue";
-import FuncArg from "../components/FuncArg";
+import FuncArg from "./FuncArg";
 import { isEmpty } from "lodash-es";
-import { uuid } from "../../../../utils/helpers";
+import { uuid } from "../../../../../utils/helpers";
 
 export default Vue.extend({
   props: {
@@ -10,17 +10,10 @@ export default Vue.extend({
   components: { FuncArg },
   data() {
     return {
-      newArg: {}
+      newArg: {}, // 新增的arg
+      current: ""
     };
   },
-  // computed: {
-  //   args() {
-  //     return Object.keys(this.value.$arguments || {}).map(key => ({
-  //       name: key,
-  //       value: this.value.$arguments[key]
-  //     }));
-  //   }
-  // },
   methods: {
     onAddArg(data) {
       if (isEmpty(data.name)) {
@@ -38,6 +31,11 @@ export default Vue.extend({
       this.value.$arguments = this.value.$arguments || {};
       this.value.$arguments[data.name] = data.value;
       this.newArg = {};
+    },
+    onDropArg(key) {
+      this.value.$arguments = this.value.$arguments || {};
+      delete this.value.$arguments[key];
+      this.current = "";
     }
   },
   created() {
@@ -53,6 +51,9 @@ export default Vue.extend({
               value={{ name: key, value: this.value.$arguments[key] }}
               onInput={value => {
                 this.value.$arguments[key] = value.value;
+              }}
+              onDrop={() => {
+                this.onDropArg(key);
               }}
             ></func-arg>
           ))}

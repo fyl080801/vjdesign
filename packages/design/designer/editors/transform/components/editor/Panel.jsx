@@ -1,7 +1,7 @@
 import Vue from "vue";
-import { TransformTypes } from "../../../utils/enums";
-import Bind from "./types/Bind";
-import Func from "./types/Func";
+import { TransformTypes } from "../../../../../utils/enums";
+import Bind from "../bind";
+import Func from "../func";
 
 export default Vue.extend({
   props: {
@@ -18,6 +18,11 @@ export default Vue.extend({
         bind: {},
         func: {},
         on: {}
+      },
+      propKeys: {
+        bind: ["$source", "$default"],
+        func: ["$arguments", "$result", "$default"],
+        on: ["$arguments", "$result", "$default"]
       }
     };
   },
@@ -25,15 +30,36 @@ export default Vue.extend({
     "value.$type": {
       handler(newVal, oldVal) {
         if (oldVal) {
-          //
+          this.propKeys[oldVal].forEach(key => {
+            this.cache[oldVal][key] = this.value[key];
+            delete this.value[key];
+          });
         }
-        console.log(newVal, oldVal);
+
+        this.propKeys[newVal].forEach(key => {
+          if (this.cache[newVal][key] !== undefined) {
+            this.value[key] = this.cache[newVal][key];
+          }
+        });
       }
+    }
+  },
+  methods: {
+    validate() {
+      return this.$refs.form.validate();
+    },
+    clearValidate() {
+      this.$refs.form.clearValidate();
     }
   },
   render() {
     return (
-      <div>
+      <el-form
+        ref="form"
+        label-position="top"
+        class="v-jdesign-transform-panel"
+        props={{ model: this.value }}
+      >
         <el-form-item
           label="类型"
           prop="$type"
@@ -49,7 +75,7 @@ export default Vue.extend({
         {this.value.$type === "func" || this.value.$type === "on" ? (
           <Func value={this.value}></Func>
         ) : null}
-      </div>
+      </el-form>
     );
   }
 });

@@ -1,8 +1,9 @@
 import Vue from "vue";
-import Transform from "../index";
+import Transform from "../../../index";
+import CascadeEditor from "../../../mixins/cascadeEditor";
 
 export default Vue.extend({
-  mixins: [Transform],
+  mixins: [Transform, CascadeEditor],
   render() {
     return (
       <div>
@@ -12,11 +13,19 @@ export default Vue.extend({
             placeholder="请输入"
             onInput={this.changed}
           >
-            <el-button slot="append" icon="el-icon-link"></el-button>
+            <el-button
+              slot="append"
+              icon="el-icon-link"
+              onClick={this.openEditor}
+            ></el-button>
           </el-input>
         ) : (
           <el-input placeholder="<转换的值>" readonly={true}>
-            <el-button slot="append" icon="el-icon-edit"></el-button>
+            <el-button
+              slot="append"
+              icon="el-icon-edit"
+              onClick={this.openEditor}
+            ></el-button>
             <el-button
               slot="append"
               icon="el-icon-close"

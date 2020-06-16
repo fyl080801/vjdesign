@@ -1,8 +1,11 @@
 .v-jdesign-transform-editor {
   &.el-message-box {
     width: auto;
-    min-width: 420px;
     background-color: #f5f7fa;
+
+    .v-jdesign-transform-panel {
+      width: 410px;
+    }
   }
 
   > .el-message-box__header {
