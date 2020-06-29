@@ -16,4 +16,24 @@
       border-right: none;
     }
   }
+
+  .transform-tree {
+    .transform-item-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding-right: 10px;
+
+      .transform-item-label,
+      .transform-action {
+        line-height: 32px;
+      }
+
+      .transform-item-label {
+        > * {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
 }

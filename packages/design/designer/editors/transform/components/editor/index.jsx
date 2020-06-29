@@ -1,63 +1,99 @@
 import Vue from "vue";
 import Panel from "./Panel";
+import { uuid } from "../../../../../utils/helpers";
+import { TransformTypes } from "../../../../../utils/enums";
+import { isEmpty } from "lodash-es";
 import "./index.scss";
 
 export default Vue.extend({
   props: {
-    value: {
-      type: Object,
-      default() {
-        return {};
-      }
-    }
+    value: Array
   },
   data() {
     return {
-      values: []
+      editing: null,
+      rootKey: this.value[0].uuid
     };
   },
   methods: {
-    validate() {
-      return Promise.all(
-        new Array(this.values.length + 1)
-          .fill("")
-          .map((item, index) => this.$refs[`trans_${index}`].validate())
-      );
+    // shown() {
+    //   this.$refs.tree.setCurrentKey(this.value[0].uuid);
+    //   this.editing = this.value[0];
+    // },
+    addArgument(node) {
+      this.$refs.tree.append({ $type: null, uuid: uuid(), name: "" }, node);
     },
-    clearValidate() {
-      new Array(this.values.length + 1)
-        .fill("")
-        .forEach((item, index) => this.$refs[`trans_${index}`].clearValidate());
+    removeArgument(node) {
+      this.$refs.tree.remove(node);
     },
-    setTransform(payload, index) {
-      // if (index > this.values.length - 1) {
-      //   // 触发转换编辑的面板大于当前正在编辑转换的面板数量，是不可能的
-      //   // 只可能会发生当前面板其他参数被编辑，或者上级某个面板的参数被编辑
-      //   return;
-      // }
+    onCurrentChange(data) {
+      this.editing = data;
+    },
+    //
 
-      if (index < this.values.length) {
-        // 当前面板之前的面板参数需要被编辑
-        this.values = this.values.slice(0, index);
-        this.values.push(payload);
-      } else if (index === this.values.length) {
-        //
-        this.values.push(payload);
-      }
+    getNodeName(data) {
+      return isEmpty(data.name)
+        ? data.isRoot
+          ? "<root>"
+          : "<新建节点>"
+        : data.name;
     }
   },
   render() {
     return (
       <div class="v-jdesign-transform-wrapper">
-        {[this.value, ...this.values].map((item, index) => (
-          <Panel
-            ref={`trans_${index}`}
-            value={item}
-            onSetTransform={payload => {
-              this.setTransform(payload, index);
-            }}
-          ></Panel>
-        ))}
+        <el-tree
+          ref="tree"
+          class="v-jdesign-transform-panel"
+          data={this.value}
+          highlight-current={true}
+          default-expand-all={true}
+          expand-on-click-node={false}
+          node-key="uuid"
+          current-node-key="uuid"
+          props={{ children: "children" }}
+          on-current-change={this.onCurrentChange}
+          class="transform-tree"
+          scopedSlots={{
+            default: ({ node, data }) => {
+              return (
+                <div class="transform-item-wrapper">
+                  <div class="transform-item-label">
+                    <span>{this.getNodeName(data)}</span>
+                    {data.$type && TransformTypes[data.$type] ? (
+                      <el-tag size="mini" type="success">
+                        {TransformTypes[data.$type]}
+                      </el-tag>
+                    ) : null}
+                  </div>
+                  <div class="transform-action">
+                    {data.$type &&
+                    data.$type !== "bind" &&
+                    data.$type !== "raw" ? (
+                      <el-button
+                        type="text"
+                        onClick={() => this.addArgument(node)}
+                      >
+                        添加参数
+                      </el-button>
+                    ) : null}
+                    <el-button
+                      type="text"
+                      onClick={() => this.removeArgument(node)}
+                    >
+                      删除
+                    </el-button>
+                  </div>
+                </div>
+              );
+            }
+          }}
+        ></el-tree>
+        {this.editing ? (
+          <Panel value={this.editing}></Panel>
+        ) : (
+          <div class="v-jdesign-transform-panel"></div>
+        )}
       </div>
     );
   }

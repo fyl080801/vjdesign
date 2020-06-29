@@ -1,5 +1,7 @@
 import Vue from "vue";
 import { isEmpty } from "lodash-es";
+import TransformEditor from "./components/editor";
+import { convertTransformData } from "./utils";
 import "./index.scss";
 
 export default Vue.extend({
@@ -37,7 +39,6 @@ export default Vue.extend({
   },
   methods: {
     checkTransform() {
-      console.log("xxx");
       return (
         this.value !== null &&
         typeof this.value === "object" &&
@@ -50,6 +51,40 @@ export default Vue.extend({
     },
     clearTransform() {
       this.$emit("input", this.fieldValue);
+    },
+    openEditor() {
+      this.transformValue = this.transformValue || { $type: null };
+      const editor = this.$createElement(TransformEditor, {
+        props: {
+          value: convertTransformData(this.transformValue)
+        }
+      });
+
+      this.$confirm(editor, {
+        title: "编辑转换",
+        customClass: "v-jdesign-transform-editor",
+        closeOnClickModal: false,
+        beforeClose: (action, instance, done) => {
+          if (action === "confirm") {
+            // const result = await form.validate();
+            // if (result) {
+            //   done();
+            // }
+            done(action);
+          } else {
+            done(action);
+          }
+        }
+      })
+        .then(result => {
+          console.log(result);
+          // this.$emit("input", cloneDeep(this.transformValue));
+        })
+        .catch(() => {});
+
+      // this.$nextTick(() => {
+      //   editor.child.shown();
+      // });
     }
   }
 });
