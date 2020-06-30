@@ -10,7 +10,8 @@ import {
 import layoutProvider from "./providers/layout";
 import designProvider from "./providers/design";
 import "element-ui/lib/theme-chalk/index.css";
-import "./styles/index.css";
+import "./index.scss";
+// import "./styles/index.css";
 
 vjform.feature("provider")("design-element", function() {
   return designProvider;

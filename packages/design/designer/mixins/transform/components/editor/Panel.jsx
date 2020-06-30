@@ -29,14 +29,14 @@ export default Vue.extend({
   watch: {
     "value.$type": {
       handler(newVal, oldVal) {
-        if (oldVal) {
+        if (oldVal && this.propKeys[oldVal]) {
           this.propKeys[oldVal].forEach(key => {
             this.cache[oldVal][key] = this.value[key];
             delete this.value[key];
           });
         }
 
-        if (newVal) {
+        if (newVal && this.propKeys[newVal]) {
           this.propKeys[newVal].forEach(key => {
             if (this.cache[newVal][key] !== undefined) {
               this.value[key] = this.cache[newVal][key];
@@ -68,7 +68,7 @@ export default Vue.extend({
             prop="name"
             rules={[{ required: true, message: "必选项" }]}
           >
-            <el-input v-model={this.value.name}></el-input>
+            <el-input v-model={this.value.name} placeholder="请输入"></el-input>
           </el-form-item>
         ) : null}
         <el-form-item
@@ -87,7 +87,7 @@ export default Vue.extend({
         </el-form-item>
         {!this.value.isRoot && this.value.$type === "raw" ? (
           <el-form-item label="值" prop="raw">
-            <el-input v-model={this.value.raw}></el-input>
+            <el-input v-model={this.value.raw} placeholder="请输入"></el-input>
           </el-form-item>
         ) : null}
         {this.value.$type === "bind" ? <Bind value={this.value}></Bind> : null}

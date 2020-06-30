@@ -16,10 +16,10 @@ export default Vue.extend({
     };
   },
   methods: {
-    // shown() {
-    //   this.$refs.tree.setCurrentKey(this.value[0].uuid);
-    //   this.editing = this.value[0];
-    // },
+    shown() {
+      this.editing = null;
+    },
+    //
     addArgument(node) {
       this.$refs.tree.append({ $type: null, uuid: uuid(), name: "" }, node);
     },
@@ -30,13 +30,34 @@ export default Vue.extend({
       this.editing = data;
     },
     //
-
     getNodeName(data) {
-      return isEmpty(data.name)
-        ? data.isRoot
-          ? "<root>"
-          : "<新建节点>"
+      return this.isRoot(data)
+        ? "组件属性"
+        : this.isNewNode(data)
+        ? "<参数>"
         : data.name;
+    },
+    isRoot(data) {
+      return data.isRoot;
+    },
+    isNewNode(data) {
+      return isEmpty(data.name) ? (data.isRoot ? false : true) : false;
+    }
+  },
+  watch: {
+    ["editing.$type"](value) {
+      if (!this.editing) {
+        return;
+      }
+
+      if (
+        !["func", "on"].includes(value) &&
+        (this.editing.children || []).length > 0
+      ) {
+        for (let i = this.editing.children.length; i >= 0; i--) {
+          this.$refs.tree.remove(this.editing.children[i]);
+        }
+      }
     }
   },
   render() {
@@ -57,7 +78,13 @@ export default Vue.extend({
           scopedSlots={{
             default: ({ node, data }) => {
               return (
-                <div class="transform-item-wrapper">
+                <div
+                  class={{
+                    "transform-item-wrapper": true,
+                    root: this.isRoot(data),
+                    new: this.isNewNode(data)
+                  }}
+                >
                   <div class="transform-item-label">
                     <span>{this.getNodeName(data)}</span>
                     {data.$type && TransformTypes[data.$type] ? (
@@ -67,9 +94,7 @@ export default Vue.extend({
                     ) : null}
                   </div>
                   <div class="transform-action">
-                    {data.$type &&
-                    data.$type !== "bind" &&
-                    data.$type !== "raw" ? (
+                    {data.$type && ["func", "on"].includes(data.$type) ? (
                       <el-button
                         type="text"
                         onClick={() => this.addArgument(node)}
@@ -79,6 +104,7 @@ export default Vue.extend({
                     ) : null}
                     <el-button
                       type="text"
+                      disabled={data.isRoot}
                       onClick={() => this.removeArgument(node)}
                     >
                       删除

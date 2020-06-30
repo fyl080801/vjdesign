@@ -1,7 +1,7 @@
 import Vue from "vue";
-import { isEmpty } from "lodash-es";
+import { isEmpty, cloneDeep } from "lodash-es";
 import TransformEditor from "./components/editor";
-import { convertTransformData } from "./utils";
+import { convertTransformData, convertTransformResult } from "./utils";
 import "./index.scss";
 
 export default Vue.extend({
@@ -12,8 +12,7 @@ export default Vue.extend({
       default() {
         return null;
       }
-    },
-    sync: { type: Boolean, default: false }
+    }
   },
   data() {
     const isTransform = this.checkTransform();
@@ -29,9 +28,6 @@ export default Vue.extend({
   },
   watch: {
     value(newval) {
-      if (!this.sync) {
-        return;
-      }
       const isTransform = this.checkTransform();
       this.fieldValue = isTransform ? null : newval; // 普通值
       this.transformValue = isTransform ? newval : null; // 转换的值
@@ -54,9 +50,13 @@ export default Vue.extend({
     },
     openEditor() {
       this.transformValue = this.transformValue || { $type: null };
+      //
+      const editingData = cloneDeep(
+        convertTransformData(this.transformValue, true)
+      );
       const editor = this.$createElement(TransformEditor, {
         props: {
-          value: convertTransformData(this.transformValue)
+          value: editingData
         }
       });
 
@@ -65,26 +65,30 @@ export default Vue.extend({
         customClass: "v-jdesign-transform-editor",
         closeOnClickModal: false,
         beforeClose: (action, instance, done) => {
-          if (action === "confirm") {
-            // const result = await form.validate();
-            // if (result) {
-            //   done();
-            // }
-            done(action);
-          } else {
-            done(action);
-          }
+          // if (action === "confirm") {
+          //   // const result = await form.validate();
+          //   // if (result) {
+          //   //   done();
+          //   // }
+          //   done(action);
+          // } else {
+          //   done(action);
+          // }
+          done(action);
         }
       })
         .then(result => {
-          console.log(result);
-          // this.$emit("input", cloneDeep(this.transformValue));
+          if (result !== "confirm") {
+            return;
+          }
+
+          this.$emit("input", convertTransformResult(editingData));
         })
         .catch(() => {});
 
-      // this.$nextTick(() => {
-      //   editor.child.shown();
-      // });
+      this.$nextTick(() => {
+        editor.child.shown();
+      });
     }
   }
 });

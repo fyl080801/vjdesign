@@ -24,6 +24,14 @@
       justify-content: space-between;
       padding-right: 10px;
 
+      &.new {
+        font-style: italic;
+
+        > .transform-item-label {
+          color: #c0c4cc;
+        }
+      }
+
       .transform-item-label,
       .transform-action {
         line-height: 32px;
@@ -34,6 +42,10 @@
           margin-right: 5px;
         }
       }
+    }
+
+    .el-tree-node__content {
+      height: 32px;
     }
   }
 }
