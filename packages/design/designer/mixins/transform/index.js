@@ -1,6 +1,8 @@
 import Vue from "vue";
-import { isEmpty } from "lodash-es";
-import TransformEditor from "./TransformEditor";
+import { isEmpty, cloneDeep } from "lodash-es";
+import TransformEditor from "./components/editor";
+import { convertTransformData, convertTransformResult } from "./utils";
+import "./index.scss";
 
 export default Vue.extend({
   props: {
@@ -24,6 +26,13 @@ export default Vue.extend({
       return this.checkTransform();
     }
   },
+  watch: {
+    value(newval) {
+      const isTransform = this.checkTransform();
+      this.fieldValue = isTransform ? null : newval; // 普通值
+      this.transformValue = isTransform ? newval : null; // 转换的值
+    }
+  },
   methods: {
     checkTransform() {
       return (
@@ -41,38 +50,44 @@ export default Vue.extend({
     },
     openEditor() {
       this.transformValue = this.transformValue || { $type: null };
+      //
+      const editingData = cloneDeep(
+        convertTransformData(this.transformValue, true)
+      );
       const editor = this.$createElement(TransformEditor, {
-        props: { value: this.transformValue }
+        props: {
+          value: editingData
+        }
       });
 
       this.$confirm(editor, {
         title: "编辑转换",
         customClass: "v-jdesign-transform-editor",
         closeOnClickModal: false,
-        beforeClose: async (action, instance, done) => {
-          const { child: form } = editor;
-
-          try {
-            if (action === "confirm") {
-              const result = await form.validate();
-              if (result) {
-                done();
-              }
-            } else {
-              done();
-            }
-          } catch {
-            //
-          }
+        beforeClose: (action, instance, done) => {
+          // if (action === "confirm") {
+          //   // const result = await form.validate();
+          //   // if (result) {
+          //   //   done();
+          //   // }
+          //   done(action);
+          // } else {
+          //   done(action);
+          // }
+          done(action);
         }
       })
-        .then(() => {
-          this.$emit("input", this.transformValue);
+        .then(result => {
+          if (result !== "confirm") {
+            return;
+          }
+
+          this.$emit("input", convertTransformResult(editingData));
         })
         .catch(() => {});
 
       this.$nextTick(() => {
-        editor.child.clearValidate();
+        editor.child.shown();
       });
     }
   }

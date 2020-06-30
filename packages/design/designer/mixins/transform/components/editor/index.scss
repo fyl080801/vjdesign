@@ -1,0 +1,51 @@
+.v-jdesign-transform-editor {
+  .v-jdesign-transform-wrapper {
+    display: flex;
+
+    > * {
+      padding: 0 15px;
+      border-right: 1px solid #dcdfe6;
+    }
+
+    > :first-child {
+      padding-left: 0;
+    }
+
+    > :last-child {
+      padding-right: 0;
+      border-right: none;
+    }
+  }
+
+  .transform-tree {
+    .transform-item-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding-right: 10px;
+
+      &.new {
+        font-style: italic;
+
+        > .transform-item-label {
+          color: #c0c4cc;
+        }
+      }
+
+      .transform-item-label,
+      .transform-action {
+        line-height: 32px;
+      }
+
+      .transform-item-label {
+        > * {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .el-tree-node__content {
+      height: 32px;
+    }
+  }
+}
