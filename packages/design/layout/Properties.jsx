@@ -8,7 +8,8 @@ export default Vue.extend({
     return {
       editorGroups: [],
       updating: null,
-      groupNames: []
+      groupNames: [],
+      propNames: ["vjform_datasource"]
     };
   },
   computed: mapState({
@@ -93,7 +94,23 @@ export default Vue.extend({
               </el-collapse>
             ) : null}
           </el-tab-pane>
-          <el-tab-pane label="页面属性">页面属性</el-tab-pane>
+          <el-tab-pane label="页面属性">
+            <el-collapse v-model={this.propNames} class="components">
+              <el-collapse-item
+                key="vjform_datasource"
+                name="vjform_datasource"
+              >
+                <div slot="title">
+                  <i class="el-icon-s-operation"></i> 数据源
+                </div>
+                {/* <el-form
+                  size="mini"
+                  label-position="left"
+                  label-width="80px"
+                ></el-form> */}
+              </el-collapse-item>
+            </el-collapse>
+          </el-tab-pane>
         </el-tabs>
       </el-aside>
     );
