@@ -1,8 +1,8 @@
 import Vue from "vue";
 import { isEmpty, cloneDeep } from "lodash-es";
-import TransformEditor from "./components/editor";
-import { convertTransformData, convertTransformResult } from "./utils";
-import "./index.scss";
+import TransformEditor from "./components/form";
+import { convertTransformData, convertTransformResult } from "./helpers";
+import "./styles/index.scss";
 
 export default Vue.extend({
   props: {

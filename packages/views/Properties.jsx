@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { mapState } from "vuex";
-import { assembly } from "../designer";
+import { assembly } from "../lib";
 import emiter from "../utils/emiter";
 import Datasource from "../components/Datasource";
 

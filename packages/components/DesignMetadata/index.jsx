@@ -2,7 +2,7 @@ import Vue from "vue";
 import { mapState } from "vuex";
 import JsonViewer from "vue-json-viewer";
 import { cloneDeep } from "lodash-es";
-import { eachTreeNodes } from "../utils/tree";
+import { eachTreeNodes } from "../../utils/tree";
 
 export default Vue.extend({
   components: {

@@ -1,6 +1,6 @@
 import Vue from "vue";
-import ComponentList from "../components/ComponentList";
-import { getComponentGroups } from "../designer";
+import ComponentList from "../components/ComponentList/index";
+import { getComponentGroups } from "../lib";
 
 export default Vue.extend({
   components: { ComponentList },

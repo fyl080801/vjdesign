@@ -1,4 +1,4 @@
-import { register } from "../../../packages/design/index";
+import { register } from "../../../packages/index";
 
 const { property } = register;
 

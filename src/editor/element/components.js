@@ -1,5 +1,5 @@
-import { register } from "../../../packages/design/index";
-import { properties } from "../../../packages/design/designer";
+import { register } from "../../../packages/index";
+import { properties } from "../../../packages/lib";
 
 const { component } = register;
 

@@ -1,5 +1,5 @@
 import Vue from "vue";
-import Transform from "../mixins/transform";
+import Transform from "./transform";
 
 const component = Vue.component("v-jdesign-input", {
   mixins: [Transform],

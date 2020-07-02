@@ -1,8 +1,8 @@
 import Vue from "vue";
 import { mapState } from "vuex";
-import emiter from "../utils/emiter";
+import emiter from "../../utils/emiter";
 import vuedraggable from "vuedraggable";
-import "./DesignContent.scss";
+import "./index.scss";
 
 export default Vue.extend({
   components: { vuedraggable },

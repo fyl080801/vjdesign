@@ -1,8 +1,8 @@
 import Vue from "vue";
-import DesignContent from "../components/DesignContent";
-import DesignMetadata from "../components/DesignMetadata";
-import DesignPreview from "../components/DesignPreview";
-import ModelPreview from "../components/ModelPreview";
+import DesignContent from "../components/DesignContent/index";
+import DesignMetadata from "../components/DesignMetadata/index";
+import DesignPreview from "../components/DesignPreview/index";
+import ModelPreview from "../components/ModelPreview/index";
 
 export default Vue.extend({
   components: {

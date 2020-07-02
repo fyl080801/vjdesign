@@ -1,4 +1,4 @@
-import layout from "./layout";
+import layout from "./views";
 import ElementUI from "element-ui";
 import vjform from "vjform";
 import {
@@ -6,19 +6,13 @@ import {
   registerProperty,
   registerEditor,
   properties
-} from "./designer";
-import layoutProvider from "./providers/layout";
-import designProvider from "./providers/design";
+} from "./lib";
+import extension from "./lib/extension";
 import "element-ui/lib/theme-chalk/index.css";
-import "./index.scss";
+import "./styles/index.scss";
 
-vjform.feature("provider")("design-element", function() {
-  return designProvider;
-});
-
-vjform.feature("provider")("layout", function() {
-  return layoutProvider;
-});
+vjform.feature("provider")("design-element", extension.design);
+vjform.feature("provider")("layout", extension.layout);
 
 const install = function(v) {
   v.use(ElementUI, { size: "small" });
