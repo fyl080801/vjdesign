@@ -2,14 +2,18 @@ import Vue from "vue";
 import { mapState } from "vuex";
 import { assembly } from "../designer";
 import emiter from "../utils/emiter";
+import Datasource from "../components/Datasource";
 
 export default Vue.extend({
+  components: { Datasource },
   data() {
     return {
       editorGroups: [],
       updating: null,
       groupNames: [],
-      propNames: ["vjform_datasource"]
+      propNames: [],
+      //
+      showDatasource: false
     };
   },
   computed: mapState({
@@ -96,18 +100,11 @@ export default Vue.extend({
           </el-tab-pane>
           <el-tab-pane label="页面属性">
             <el-collapse v-model={this.propNames} class="components">
-              <el-collapse-item
-                key="vjform_datasource"
-                name="vjform_datasource"
-              >
+              <datasource></datasource>
+              <el-collapse-item key="vjform_watchs" name="vjform_watchs">
                 <div slot="title">
-                  <i class="el-icon-s-operation"></i> 数据源
+                  <i class="el-icon-s-operation"></i> 监听
                 </div>
-                {/* <el-form
-                  size="mini"
-                  label-position="left"
-                  label-width="80px"
-                ></el-form> */}
               </el-collapse-item>
             </el-collapse>
           </el-tab-pane>

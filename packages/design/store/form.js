@@ -144,6 +144,11 @@ export default {
     //
     UPDATE_MODEL: (state, payload) => {
       state.model = payload;
+    },
+
+    //
+    ADD_DATASOURCE: (state, payload) => {
+      state.datasource[payload.name] = payload.value;
     }
   }
 };
