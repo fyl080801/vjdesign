@@ -1,5 +1,5 @@
 import emiter from "../../utils/emiter";
-import { getComponents } from "..";
+import { getComponents } from "../feature/component";
 
 let layouts = null;
 

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import ComponentList from "../components/ComponentList/index";
-import { getComponentGroups } from "../lib";
+import { getGroups } from "../lib/feature/component";
 
 export default Vue.extend({
   components: { ComponentList },
@@ -10,7 +10,7 @@ export default Vue.extend({
     };
   },
   mounted() {
-    this.origin = getComponentGroups();
+    this.origin = getGroups();
   },
   render() {
     return (

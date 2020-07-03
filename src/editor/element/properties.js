@@ -1,18 +1,32 @@
-import { register } from "../../../packages/index";
+import vjdesign from "../../../packages";
 
-const { property } = register;
+const { feature } = vjdesign;
 
-property("fieldOptions.attrs.placeholder", { description: "水印" });
-property("fieldOptions.props.labelWidth", { description: "前缀宽度" });
-property("fieldOptions.props.label", { description: "前缀" });
-property("fieldOptions.props.gutter", {
-  description: "间隔",
-  editor: "number"
-});
-property("fieldOptions.props.span", { description: "列宽", editor: "number" });
-property("fieldOptions.props.size", {
-  description: "尺寸",
-  editor: {
+feature.property("fieldOptions.attrs.placeholder", { description: "水印" });
+feature.property("fieldOptions.props.labelWidth", { description: "前缀宽度" });
+feature.property("fieldOptions.props.label", { description: "前缀" });
+feature.property(
+  "fieldOptions.props.gutter",
+  {
+    description: "间隔"
+  },
+  "number"
+);
+feature.property(
+  "fieldOptions.props.span",
+  {
+    description: "列宽"
+  },
+  "number"
+);
+feature.property(
+  "fieldOptions.props.size",
+  {
+    description: "尺寸",
+
+    defaultValue: "medium"
+  },
+  {
     name: "select",
     options: {
       items: [
@@ -21,13 +35,15 @@ property("fieldOptions.props.size", {
         { label: "最小", value: "mini" }
       ]
     }
-  },
-  defaultValue: "medium"
-});
+  }
+);
 
-property("fieldOptions.props.labelPosition", {
-  description: "前缀位置",
-  editor: {
+feature.property(
+  "fieldOptions.props.labelPosition",
+  {
+    description: "前缀位置"
+  },
+  {
     name: "select",
     options: {
       items: [
@@ -37,39 +53,60 @@ property("fieldOptions.props.labelPosition", {
       ]
     }
   }
-});
+);
 
-property("fieldOptions.props.disabled", {
-  description: "禁用",
-  editor: "checkbox"
-});
+feature.property(
+  "fieldOptions.props.disabled",
+  {
+    description: "禁用"
+  },
+  "checkbox"
+);
 
-property("fieldOptions.props.min", {
-  description: "最小值",
-  editor: "number"
-});
+feature.property(
+  "fieldOptions.props.min",
+  {
+    description: "最小值"
+  },
+  "number"
+);
 
-property("fieldOptions.props.max", {
-  description: "最大值",
-  editor: "number"
-});
+feature.property(
+  "fieldOptions.props.max",
+  {
+    description: "最大值"
+  },
+  "number"
+);
 
-property("fieldOptions.props.step", {
-  description: "步长",
-  editor: "number"
-});
+feature.property(
+  "fieldOptions.props.step",
+  {
+    description: "步长"
+  },
+  "number"
+);
 
-property("fieldOptions.props.range", {
-  description: "是否范围",
-  editor: "checkbox"
-});
+feature.property(
+  "fieldOptions.props.range",
+  {
+    description: "是否范围"
+  },
+  "checkbox"
+);
 
-property("fieldOptions.props.name", {
-  description: "命名",
-  editor: "simple"
-});
+feature.property(
+  "fieldOptions.props.name",
+  {
+    description: "命名"
+  },
+  "simple"
+);
 
-property("fieldOptions.props.required", {
-  description: "必填",
-  editor: "checkbox"
-});
+feature.property(
+  "fieldOptions.props.required",
+  {
+    description: "必填"
+  },
+  "checkbox"
+);
