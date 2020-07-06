@@ -1,0 +1,28 @@
+.v-jdesign {
+  .components {
+    > .el-collapse-item {
+      &.property-wrapper {
+        .inline-property {
+          display: flex;
+          justify-content: space-between;
+
+          .inline-property__title {
+            display: flex;
+            flex: 1;
+            font-size: 14px;
+
+            > * {
+              flex: 1;
+            }
+          }
+        }
+
+        > .el-collapse-item__wrap {
+          .el-collapse-item__content {
+            padding-bottom: 15px;
+          }
+        }
+      }
+    }
+  }
+}

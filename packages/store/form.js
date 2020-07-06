@@ -1,3 +1,4 @@
+// import Vue from "vue";
 import { guid2 } from "../utils/helpers";
 import { eachTreeNodes } from "../utils/tree";
 import { set } from "lodash-es";
@@ -147,8 +148,22 @@ export default {
     },
 
     //
-    ADD_DATASOURCE: (state, payload) => {
-      state.datasource[payload.name] = payload.value;
+    SET_DATASOURCE: (state, payload) => {
+      const { name, value } = payload;
+      delete value.name;
+      state.datasource = { ...state.datasource, [name]: value };
+    },
+    UPDATE_DATASOURCE: (state, payload) => {
+      const { name, value } = payload;
+      const { name: newName } = value;
+      delete state.datasource[name];
+      delete value.name;
+      state.datasource = { ...state.datasource, [newName]: value };
+    },
+    REMOVE_DATASOURCE: (state, payload) => {
+      const changed = { ...state.datasource };
+      delete changed[payload];
+      state.datasource = changed;
     }
   }
 };

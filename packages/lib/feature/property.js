@@ -21,15 +21,15 @@ export const DEFAULTS = [
   // DEFAULT_KEYS.显示条件
 ];
 
-export const getProperties = defined => {
+export const getProperties = (metaArray = [], defaults = []) => {
   const props = {};
   const stored = getFeature("property");
 
-  cloneDeep(DEFAULTS).forEach(item => {
+  cloneDeep(defaults).forEach(item => {
     props[item] = { property: item, ...stored.get(item) };
   });
 
-  (defined.properties || []).forEach(item => {
+  metaArray.forEach(item => {
     const prop =
       typeof item === "string" ? { property: item, ...stored.get(item) } : item;
 
@@ -39,54 +39,55 @@ export const getProperties = defined => {
   return props;
 };
 
-export const assembly = component => {
-  const defined = cloneDeep(getFeature("component").get(component));
+export const assemblyEditor = (metaArray, defaults) => {
+  const properties = getProperties(metaArray, defaults);
 
-  if (!defined) {
-    return {};
-  }
+  return Object.keys(properties).map(prop => {
+    const { editor, description, group, defaultValue } = properties[prop];
+    const { name, options } = isObject(editor) ? editor : { name: editor };
+    const { field, component } = getEditorFactory(name)(prop, options);
 
-  const properties = getProperties(defined);
+    return {
+      group,
+      property: prop,
+      editorIdentity: description,
+      component: "el-form-item",
+      fieldOptions: {
+        props: {
+          label: description
+        }
+      },
+      defaultValue,
+      children: [field],
+      instance: component
+    };
+  });
+};
 
-  return Object.keys(properties).reduce(
+export const assemblyEditorGroups = (metaArray, defaults) => {
+  const properties = assemblyEditor(metaArray, defaults);
+
+  return properties.reduce(
     (groups, prop) => {
-      if (!properties[prop]) {
-        return groups;
-      }
-
-      const { editor, description, group } = properties[prop];
-      const { name, options } = isObject(editor) ? editor : { name: editor };
-      const { field, component } = getEditorFactory(name)(prop, options);
-
-      const property = {
-        editorIdentity: description,
-        component: "el-form-item",
-        fieldOptions: {
-          props: {
-            label: description
-          }
-        },
-        children: [field],
-        instance: component
-      };
+      const { group, property } = prop;
 
       if (!isEmpty(group)) {
         // 具有特定的分组名称
         groups[group] = groups[group] || [];
-        groups[group].push(property);
+        groups[group].push(prop);
       } else {
         // 将属性按特定规则分组
-        if (prop.indexOf("fieldOptions.domProps.") === 0) {
-          groups.通用.push(property);
-        } else if (prop.indexOf("fieldOptions.props.") === 0) {
-          groups.组件.push(property);
+        if (property.indexOf("fieldOptions.domProps.") === 0) {
+          groups.通用.push(prop);
+        } else if (property.indexOf("fieldOptions.props.") === 0) {
+          groups.组件.push(prop);
         } else if (
-          prop.indexOf("fieldOptions.style.") === 0 ||
-          prop.indexOf("fieldOptions.class") === 0
+          property.indexOf("fieldOptions.style.") === 0 ||
+          property.indexOf("fieldOptions.class") === 0
         ) {
-          groups.样式.push(property);
+          groups.样式.push(prop);
         } else {
-          groups.基础.push(property);
+          groups.基础.push(prop);
         }
       }
 

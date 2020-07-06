@@ -20,16 +20,14 @@
 // };
 
 import feature from "./feature";
-import { DEFAULTS, DEFAULT_KEYS } from "./feature/property";
+import { DEFAULT_KEYS } from "./feature/property";
 
 import "./internal/component";
 import "./internal/editor";
 import "./internal/property";
+import "./internal/datasource";
 
 export default {
   ...feature,
-  properties: {
-    DEFAULTS: DEFAULTS,
-    ...DEFAULT_KEYS
-  }
+  properties: DEFAULT_KEYS
 };

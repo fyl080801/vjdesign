@@ -23,7 +23,6 @@ feature.property(
   "fieldOptions.props.size",
   {
     description: "尺寸",
-
     defaultValue: "medium"
   },
   {

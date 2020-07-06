@@ -1,6 +1,7 @@
 import Vue from "vue";
 import { mapState } from "vuex";
-import { assembly } from "../lib/feature/property";
+import { assemblyEditorGroups, DEFAULTS } from "../lib/feature/property";
+import { getComponent } from "../lib/feature/component";
 import emiter from "../utils/emiter";
 import Datasource from "../components/Datasource";
 
@@ -26,17 +27,18 @@ export default Vue.extend({
         return;
       }
 
-      const groups = assembly(value.component);
+      const component = getComponent(value.component);
+      const groups = assemblyEditorGroups(component.properties, DEFAULTS);
+
       this.editorGroups = Object.keys(groups)
         .filter(key => groups[key].length > 0)
         .map(key => {
           const fields = groups[key];
           const components = {};
-          fields.map(field => {
+          fields.forEach(field => {
             if (field.instance) {
               components[field.instance.name] = field.instance;
             }
-            return { ...field, instance: undefined };
           });
           return { key, fields, components };
         });

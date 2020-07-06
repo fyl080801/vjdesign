@@ -1,6 +1,10 @@
 import { getFeature } from "./map";
 import { getProperties } from "./property";
-import { isEmpty } from "lodash-es";
+import { isEmpty, cloneDeep } from "lodash-es";
+
+export const getComponent = name => {
+  return cloneDeep(getFeature("component").get(name));
+};
 
 export const getComponents = filter => {
   const result = [];
@@ -11,7 +15,7 @@ export const getComponents = filter => {
       return;
     }
 
-    const properties = getProperties(component);
+    const properties = getProperties(component.properties);
 
     result.push({
       group: component.group,
