@@ -4,9 +4,10 @@ import { assemblyEditorGroups, DEFAULTS } from "../lib/feature/property";
 import { getComponent } from "../lib/feature/component";
 import emiter from "../utils/emiter";
 import Datasource from "../components/Datasource";
+import Watchs from "../components/Watchs";
 
 export default Vue.extend({
-  components: { Datasource },
+  components: { Datasource, Watchs },
   data() {
     return {
       editorGroups: [],
@@ -105,11 +106,7 @@ export default Vue.extend({
           <el-tab-pane label="页面属性">
             <el-collapse v-model={this.propNames} class="components">
               <datasource></datasource>
-              <el-collapse-item key="vjform_watchs" name="vjform_watchs">
-                <div slot="title">
-                  <i class="el-icon-s-operation"></i> 监听
-                </div>
-              </el-collapse-item>
+              <watchs></watchs>
             </el-collapse>
           </el-tab-pane>
         </el-tabs>

@@ -14,7 +14,7 @@ export default Vue.extend({
         >
           <el-input
             v-model={this.value.$source}
-            placeholder="请输入"
+            placeholder="model,params,datasource,sourcedata里的属性完整路径"
           ></el-input>
         </el-form-item>
         <el-form-item label="默认值" prop="$default">
