@@ -1,5 +1,6 @@
 import feature from "../feature";
 import TransformInput from "../editors/Input";
+import TransformCheckbox from "../editors/Checkbox";
 
 feature.editor(
   "default",
@@ -25,7 +26,16 @@ feature.editor("number", path => ({
   model: [path]
 }));
 
-feature.editor("checkbox", path => ({
+feature.editor(
+  "checkbox",
+  path => ({
+    component: "v-jdesign-checkbox",
+    model: [path]
+  }),
+  TransformCheckbox
+);
+
+feature.editor("check", path => ({
   component: "el-checkbox",
   model: [path]
 }));

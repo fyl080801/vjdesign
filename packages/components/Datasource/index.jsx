@@ -82,6 +82,7 @@ export default Vue.extend({
           onCancel={() => (this.dialog.visible = false)}
         ></datasource-editor>
         <div class="property-wrapper__body">
+          {this.datasource.length <= 0 ? <p class="empty">暂无数据</p> : null}
           {this.datasource.map((ds, index) => (
             <div class="inline-property">
               <div class="inline-property__title">
@@ -112,8 +113,7 @@ export default Vue.extend({
           ))}
         </div>
         <el-button size="small" onClick={this.onAdd} style="width: 100%">
-          <i class="el-icon-plus"></i>
-          添加
+          <i class="el-icon-plus"></i> 添加
         </el-button>
       </el-collapse-item>
     );

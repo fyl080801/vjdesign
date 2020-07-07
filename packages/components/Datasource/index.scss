@@ -2,6 +2,13 @@
   .components {
     > .el-collapse-item {
       &.property-wrapper {
+        .empty {
+          font-size: 14px;
+          color: #909399;
+          text-align: center;
+          margin: 0;
+        }
+
         .property-wrapper__body {
           margin-bottom: 15px;
         }

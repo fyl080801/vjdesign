@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Editor from "./Editor";
+import { mapState } from "vuex";
 
 export default Vue.extend({
   components: {
@@ -10,12 +11,26 @@ export default Vue.extend({
       dialog: {
         visible: false,
         data: {}
-      }
+      },
+      data: [],
+      baseData: [{ label: "添加" }]
     };
   },
   methods: {
     onAdd() {},
     onSubmit() {}
+  },
+  computed: {
+    ...mapState({
+      watchs: state => {
+        return Object.keys(state.form.watchs).map(prop => ({
+          label: prop,
+          children: Object.keys(state.form.watchs[prop]).map(modelProp => ({
+            label: modelProp
+          }))
+        }));
+      }
+    })
   },
   render() {
     return (
@@ -33,10 +48,14 @@ export default Vue.extend({
           onSubmit={this.onSubmit}
           onCancel={() => (this.dialog.visible = false)}
         ></watch-editor>
-        <el-button size="small" onClick={this.onAdd} style="width: 100%">
+        <el-tree
+          data={this.data}
+          scopedSlots={{ default: () => <div></div> }}
+        ></el-tree>
+        {/* <el-button size="small" onClick={this.onAdd} style="width: 100%">
           <i class="el-icon-plus"></i>
           添加
-        </el-button>
+        </el-button> */}
       </el-collapse-item>
     );
   }

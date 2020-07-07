@@ -1,0 +1,11 @@
+.v-jdesign {
+  .v-jdesign-checkbox {
+    > :first-child {
+      margin-left: 0;
+    }
+
+    > * {
+      margin-left: 10px;
+    }
+  }
+}
