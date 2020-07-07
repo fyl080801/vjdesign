@@ -2,7 +2,6 @@ import Vue from "vue";
 import { cloneDeep } from "lodash-es";
 import { getDatasources } from "../../lib/feature/datasource";
 import { assemblyEditor } from "../../lib/feature/property";
-import { set } from "lodash-es";
 import "./Editor.scss";
 
 export default Vue.extend({
@@ -21,6 +20,9 @@ export default Vue.extend({
   watch: {
     visible(value) {
       if (value === true) {
+        if (this.$refs && this.$refs.form) {
+          this.$refs.form.clearValidate();
+        }
         this.model = cloneDeep(this.value);
       }
     },
@@ -29,19 +31,16 @@ export default Vue.extend({
       this.components = {};
 
       if (value) {
-        const selectDatasource = this.datasources.find(ds => ds.type === value);
+        const selected = this.datasources.find(ds => ds.type === value);
 
-        if (!selectDatasource) {
+        if (!selected) {
           return;
         }
 
-        this.editing = assemblyEditor(selectDatasource.options) || [];
+        this.editing = assemblyEditor(selected.options) || [];
         this.editing.forEach(item => {
           if (item.instance) {
             this.components[item.instance.name] = item.instance;
-          }
-          if (item.defaultValue !== undefined) {
-            set(this.model, item.property, item.defaultValue);
           }
         });
       }
@@ -52,10 +51,11 @@ export default Vue.extend({
       this.$emit("cancel");
     },
     onSubmit() {
-      if (!this.model.name) {
-        return;
-      }
-      this.$emit("submit", this.model);
+      this.$refs.form.validate(valid => {
+        if (valid) {
+          this.$emit("submit", this.model);
+        }
+      });
     }
   },
   mounted() {
@@ -72,11 +72,24 @@ export default Vue.extend({
         close-on-click-modal={false}
         append-to-body={true}
       >
-        <el-form props={{ model: this.model }} label-position="top">
-          <el-form-item prop="name" label="名称">
+        <el-form
+          ref="form"
+          props={{ model: this.model }}
+          label-position="top"
+          size="small"
+        >
+          <el-form-item
+            prop="name"
+            label="名称"
+            rules={[{ required: true, message: "必填项" }]}
+          >
             <el-input v-model={this.model.name} placeholder="请输入"></el-input>
           </el-form-item>
-          <el-form-item prop="type" label="类型">
+          <el-form-item
+            prop="type"
+            label="类型"
+            rules={[{ required: true, message: "必选项" }]}
+          >
             <el-select v-model={this.model.type} placeholder="请选择">
               {this.datasources.map(ds => (
                 <el-option value={ds.type} label={ds.description}></el-option>
@@ -92,8 +105,10 @@ export default Vue.extend({
           ) : null}
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button onClick={this.onCancel}>取消</el-button>
-          <el-button type="primary" onClick={this.onSubmit}>
+          <el-button size="small" onClick={this.onCancel}>
+            取消
+          </el-button>
+          <el-button size="small" type="primary" onClick={this.onSubmit}>
             确定
           </el-button>
         </span>

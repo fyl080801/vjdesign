@@ -43,23 +43,25 @@ export const assemblyEditor = (metaArray, defaults) => {
   const properties = getProperties(metaArray, defaults);
 
   return Object.keys(properties).map(prop => {
-    const { editor, description, group, defaultValue } = properties[prop];
+    const { editor, description, group, defaultValue, rules = [] } = properties[
+      prop
+    ];
     const { name, options } = isObject(editor) ? editor : { name: editor };
     const { field, component } = getEditorFactory(name)(prop, options);
 
     return {
       group,
       property: prop,
-      editorIdentity: description,
+      rules,
+      instance: component,
+      defaultValue,
       component: "el-form-item",
       fieldOptions: {
         props: {
           label: description
         }
       },
-      defaultValue,
-      children: [field],
-      instance: component
+      children: [field]
     };
   });
 };
@@ -106,19 +108,19 @@ export default store => {
   return (
     path,
     {
-      icon, // 图标
       description, // 名称
       defaultValue, // 默认值
-      group // 自定义分组名
+      group, // 自定义分组名
+      rules // 属性验证规则
     },
     editor // 编辑器
   ) => {
     const instance = {
-      icon,
       description,
       editor,
       defaultValue,
-      group
+      group,
+      rules: rules || []
     };
 
     store.set(path, instance);

@@ -97,6 +97,7 @@ export default Vue.extend({
                     {data.$type && ["func", "on"].includes(data.$type) ? (
                       <el-button
                         type="text"
+                        size="small"
                         onClick={() => this.addArgument(node)}
                       >
                         添加参数
@@ -104,6 +105,7 @@ export default Vue.extend({
                     ) : null}
                     <el-button
                       type="text"
+                      size="small"
                       disabled={data.isRoot}
                       onClick={() => this.removeArgument(node)}
                     >

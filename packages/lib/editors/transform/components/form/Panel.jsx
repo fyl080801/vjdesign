@@ -58,6 +58,7 @@ export default Vue.extend({
     return (
       <el-form
         ref="form"
+        size="small"
         label-position="top"
         class="v-jdesign-transform-panel"
         props={{ model: this.value }}

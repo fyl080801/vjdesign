@@ -14,7 +14,7 @@ export default Vue.extend({
         <div slot="title">
           <i class="el-icon-s-operation"></i> 监听
         </div>
-        <el-button onClick={this.onAdd} style="width: 100%">
+        <el-button size="small" onClick={this.onAdd} style="width: 100%">
           <i class="el-icon-plus"></i>
           添加
         </el-button>

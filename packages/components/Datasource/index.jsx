@@ -86,20 +86,30 @@ export default Vue.extend({
             <div class="inline-property__title">
               <span>{ds.name}</span>
               <span>
-                <el-tag type="info">{this.datasources[ds.value.type]}</el-tag>
+                <el-tag size="small" type="info">
+                  {this.datasources[ds.value.type]}
+                </el-tag>
               </span>
             </div>
             <div class="inline-property__action">
-              <el-button type="text" onClick={() => this.onEdit(index)}>
+              <el-button
+                size="small"
+                type="text"
+                onClick={() => this.onEdit(index)}
+              >
                 编辑
               </el-button>
-              <el-button type="text" onClick={() => this.onRemove(ds)}>
+              <el-button
+                size="small"
+                type="text"
+                onClick={() => this.onRemove(ds)}
+              >
                 删除
               </el-button>
             </div>
           </div>
         ))}
-        <el-button onClick={this.onAdd} style="width: 100%">
+        <el-button size="small" onClick={this.onAdd} style="width: 100%">
           <i class="el-icon-plus"></i>
           添加
         </el-button>

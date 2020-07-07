@@ -2,7 +2,11 @@ import feature from "../feature";
 
 // object
 feature.datasource("object", "对象数据", [
-  { property: "data", description: "数据" }
+  {
+    property: "data",
+    description: "数据",
+    rules: [{ required: true, message: "必填项" }]
+  }
 ]);
 
 // request
@@ -10,7 +14,8 @@ feature.datasource("request", "HTTP请求", [
   {
     property: "url",
     description: "请求地址",
-    editor: "simple"
+    editor: "simple",
+    rules: [{ required: true, message: "必填项" }]
   },
   {
     property: "method",
@@ -24,6 +29,7 @@ feature.datasource("request", "HTTP请求", [
         ]
       }
     },
+    rules: [{ required: true, message: "必填项" }],
     defaultValue: "GET"
   },
   {
