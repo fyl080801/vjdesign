@@ -20,10 +20,13 @@ export default Vue.extend({
   watch: {
     visible(value) {
       if (value === true) {
-        if (this.$refs && this.$refs.form) {
-          this.$refs.form.clearValidate();
-        }
         this.model = cloneDeep(this.value);
+
+        this.$nextTick(() => {
+          if (this.$refs && this.$refs.form) {
+            this.$refs.form.clearValidate();
+          }
+        });
       }
     },
     ["model.type"](value) {
@@ -68,7 +71,7 @@ export default Vue.extend({
         title="数据源"
         onClose={this.onCancel}
         width="540px"
-        custom-class="v-jdesign-datasource-dialog"
+        custom-class="v-jdesign-dialog"
         close-on-click-modal={false}
         append-to-body={true}
       >

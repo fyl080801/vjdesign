@@ -72,7 +72,7 @@ export default Vue.extend({
         name="vjform_datasource"
       >
         <div slot="title">
-          <i class="el-icon-s-operation"></i> 数据源
+          <i class="el-icon-s-operation"></i>数据源
         </div>
         {/* 这种Ïdialog必须放到前面 */}
         <datasource-editor
@@ -81,34 +81,36 @@ export default Vue.extend({
           onSubmit={this.onSubmit}
           onCancel={() => (this.dialog.visible = false)}
         ></datasource-editor>
-        {this.datasource.map((ds, index) => (
-          <div class="inline-property">
-            <div class="inline-property__title">
-              <span>{ds.name}</span>
-              <span>
-                <el-tag size="small" type="info">
-                  {this.datasources[ds.value.type]}
-                </el-tag>
-              </span>
+        <div class="property-wrapper__body">
+          {this.datasource.map((ds, index) => (
+            <div class="inline-property">
+              <div class="inline-property__title">
+                <span>{ds.name}</span>
+                <span style="line-height: 30px">
+                  <el-tag size="small" type="info">
+                    {this.datasources[ds.value.type]}
+                  </el-tag>
+                </span>
+              </div>
+              <div class="inline-property__action">
+                <el-button
+                  size="small"
+                  type="text"
+                  onClick={() => this.onEdit(index)}
+                >
+                  编辑
+                </el-button>
+                <el-button
+                  size="small"
+                  type="text"
+                  onClick={() => this.onRemove(ds)}
+                >
+                  删除
+                </el-button>
+              </div>
             </div>
-            <div class="inline-property__action">
-              <el-button
-                size="small"
-                type="text"
-                onClick={() => this.onEdit(index)}
-              >
-                编辑
-              </el-button>
-              <el-button
-                size="small"
-                type="text"
-                onClick={() => this.onRemove(ds)}
-              >
-                删除
-              </el-button>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
         <el-button size="small" onClick={this.onAdd} style="width: 100%">
           <i class="el-icon-plus"></i>
           添加

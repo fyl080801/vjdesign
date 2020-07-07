@@ -84,7 +84,8 @@ export default Vue.extend({
                 {this.editorGroups.map((group, index) => (
                   <el-collapse-item key={index} name={group.key}>
                     <div slot="title">
-                      <i class="el-icon-s-operation"></i> {group.key}
+                      <i class="el-icon-s-operation"></i>
+                      {group.key}
                     </div>
                     <el-form
                       size="mini"

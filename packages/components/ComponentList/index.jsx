@@ -1,5 +1,6 @@
 import Vue from "vue";
 import vuedraggable from "vuedraggable";
+import "./index.scss";
 
 export default Vue.extend({
   components: { vuedraggable },
@@ -22,9 +23,10 @@ export default Vue.extend({
         {this.list.map((group, index) => (
           <el-collapse-item key={index} name={group.name}>
             <div slot="title">
-              <i class="el-icon-menu"></i> {group.name}
+              <i class="el-icon-menu"></i>
+              {group.name}
             </div>
-            <el-row gutter={10}>
+            <el-row>
               <vuedraggable
                 tag="div"
                 class="components-group"

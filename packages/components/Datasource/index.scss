@@ -2,6 +2,10 @@
   .components {
     > .el-collapse-item {
       &.property-wrapper {
+        .property-wrapper__body {
+          margin-bottom: 15px;
+        }
+
         .inline-property {
           display: flex;
           justify-content: space-between;
@@ -10,6 +14,7 @@
             display: flex;
             flex: 1;
             font-size: 14px;
+            line-height: 32px;
 
             > * {
               flex: 1;
