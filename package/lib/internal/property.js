@@ -14,6 +14,11 @@ feature.property(
 feature.property(DEFAULT_KEYS.内部文本, { description: "内部文本" });
 feature.property(DEFAULT_KEYS.水印, { description: "水印" });
 feature.property(DEFAULT_KEYS.数据, { description: "数据" }, "simple");
+feature.property(
+  DEFAULT_KEYS.条件显示,
+  { description: "条件显示" },
+  "checkbox"
+);
 // feature.property(DEFAULT_KEYS.响应输入, {
 //   description: "响应输入",
 //   editor: "on"

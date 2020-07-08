@@ -7,7 +7,7 @@ import "./styles/index.scss";
 export default Vue.extend({
   props: {
     value: {
-      type: [Object, String, Number, Array, Date],
+      type: [Object, String, Number, Array, Date, Boolean],
       required: false,
       default() {
         return null;

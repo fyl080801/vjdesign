@@ -67,7 +67,7 @@ export default Vue.extend({
   data() {
     return {
       model: {},
-      options: { mode: "design" },
+      options: { mode: "design", sss: true },
       changes: []
     };
   },

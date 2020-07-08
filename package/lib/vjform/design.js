@@ -18,6 +18,8 @@ export default function() {
 
     const cloned = { layout: true, ...field };
 
+    cloned.component = cloned.component || cloned.$conditionComponent;
+
     Object.keys(field).forEach(key => {
       delete field[key];
     });

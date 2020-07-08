@@ -11,14 +11,14 @@ export const DEFAULT_KEYS = {
   名称: "fieldOptions.attrs.name",
   // 响应输入: "fieldOptions.on",
   样式: "fieldOptions.class",
-  显示条件: "displayOptions"
+  条件显示: "condition"
 };
 
 export const DEFAULTS = [
   DEFAULT_KEYS.命名槽,
   DEFAULT_KEYS.别名,
-  DEFAULT_KEYS.样式
-  // DEFAULT_KEYS.显示条件
+  DEFAULT_KEYS.样式,
+  DEFAULT_KEYS.条件显示
 ];
 
 export const getProperties = (metaArray = [], defaults = []) => {

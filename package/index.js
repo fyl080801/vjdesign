@@ -1,6 +1,6 @@
 import layout from "./views";
 import ElementUI from "element-ui";
-import vjform from "vjform";
+import vjform from "vjform/package/index";
 import lib from "./lib";
 import "./lib/vjform";
 
