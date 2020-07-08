@@ -12,12 +12,11 @@ export default function() {
           .filter(item => item.container)
           .map(item => item.tag);
 
-    const { component, layout, $conditionComponent } = field;
-    const layoutComponent = component || $conditionComponent;
+    const { component, layout, remark } = field;
 
     if (
       options.mode !== "design" ||
-      layouts.indexOf(layoutComponent) < 0 ||
+      layouts.indexOf(component) < 0 ||
       (layout && /border/g.test((field.fieldOptions || {}).class || "")) ||
       (layout &&
         ((field.fieldOptions || {}).class || "").indexOf("design-element") >= 0)
@@ -32,9 +31,7 @@ export default function() {
         fieldOptions: {
           class: "empty",
           domProps: {
-            innerText: field.remark
-              ? layoutComponent + "." + field.remark
-              : layoutComponent
+            innerText: remark ? `${component}.${remark}` : component
           }
         }
       }

@@ -70,6 +70,10 @@ export default Vue.extend({
       this.$store.commit("form/DELETE_FIELD", field);
     });
   },
+  destroyed() {
+    emiter.$off("component-selected");
+    emiter.$off("component-delete");
+  },
   render() {
     return (
       <el-aside class="aside right">
