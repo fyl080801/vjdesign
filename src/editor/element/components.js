@@ -1,4 +1,4 @@
-import vjdesign from "../../../packages";
+import vjdesign from "../../../package/index";
 
 const { feature } = vjdesign;
 const { properties } = feature;
