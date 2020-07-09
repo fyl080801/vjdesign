@@ -64,23 +64,13 @@ feature.component(
   [DEFAULT_KEYS.内部文本]
 );
 
-feature.component(
-  "legend",
-  {
-    description: "分组标题",
-    group: "网页元素"
-  },
-  [DEFAULT_KEYS.内部文本]
-);
+feature.component("hr", {
+  description: "分割线",
+  group: "网页元素"
+});
 
 feature.component("div", {
   description: "层",
-  group: "网页元素",
-  container: true
-});
-
-feature.component("fieldset", {
-  description: "分组",
   group: "网页元素",
   container: true
 });

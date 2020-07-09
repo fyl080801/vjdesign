@@ -48,10 +48,11 @@ export default Vue.extend({
           onSubmit={this.onSubmit}
           onCancel={() => (this.dialog.visible = false)}
         ></watch-editor>
-        <el-tree
+        敬请期待。。。
+        {/* <el-tree
           data={this.data}
           scopedSlots={{ default: () => <div></div> }}
-        ></el-tree>
+        ></el-tree> */}
         {/* <el-button size="small" onClick={this.onAdd} style="width: 100%">
           <i class="el-icon-plus"></i>
           添加

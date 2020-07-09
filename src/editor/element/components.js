@@ -281,3 +281,13 @@ feature.component(
     }
   ]
 );
+
+// 交互
+feature.component("el-button", { group: "Element 输入", description: "按钮" }, [
+  properties.内部文本,
+  {
+    description: "点击",
+    group: "事件",
+    property: "fieldOptions.on.click"
+  }
+]);
