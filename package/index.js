@@ -4,13 +4,13 @@ import vjform from "vjform";
 import lib from "./lib";
 import "./lib/vjform";
 
-import "element-ui/lib/theme-chalk/index.css";
+import "element-ui/packages/theme-chalk/src/index.scss";
 import "./styles/index.scss";
 
 const install = function(v) {
   v.use(ElementUI);
   v.use(vjform);
-  v.component(layout.name, layout);
+  v.component("vJdesign", layout);
 };
 
 if (typeof window !== "undefined" && window.Vue) {

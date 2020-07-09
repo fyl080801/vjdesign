@@ -1,6 +1,16 @@
 {
   "name": "vjdesign",
   "version": "0.1.0-beta.1",
+  "description": "Vue Form Designer",
+  "author": {
+    "name": "fyl080801",
+    "email": "fyl080801@hotmail.com"
+  },
+  "homepage": "https://github.com/fyl080801/vjdesign/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:fyl080801/vjdesign.git"
+  },
   "keywords": [
     "vue",
     "form",
@@ -9,11 +19,14 @@
     "json schema",
     "form design"
   ],
+  "main": "dist/vjdesign.umd.js",
+  "module": "dist/vjdesign.esm.js",
   "private": false,
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "dist": "NODE_ENV=production webpack -p --config webpack.config.prod.js"
   },
   "dependencies": {
     "bootstrap": "^4.5.0",
@@ -32,16 +45,29 @@
     "@vue/cli-service": "^4.4.1",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
     "chalk": "^4.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.6.0",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.1.2",
+    "file-loader": "^6.0.0",
     "lint-staged": "^10.2.11",
+    "lodash-webpack-plugin": "^0.11.5",
+    "mini-css-extract-plugin": "^0.9.0",
     "minimist": "^1.2.5",
     "node-sass": "^4.14.1",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "style-loader": "^1.2.1",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-merge": "^5.0.8",
+    "webpack-node-externals": "^2.3.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged",

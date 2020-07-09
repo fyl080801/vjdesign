@@ -5,7 +5,7 @@ import Main from "./Main";
 import Properties from "./Properties";
 import { mapState } from "vuex";
 
-export default Vue.component("vJdesign", {
+export default Vue.extend({
   store,
   props: {
     value: Object,
