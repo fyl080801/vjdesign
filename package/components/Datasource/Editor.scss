@@ -1,0 +1,32 @@
+.el-dialog {
+  &.v-jdesign-dialog {
+    background-color: #f5f7fa;
+
+    .el-dialog__header {
+      border-bottom: 1px solid #dcdfe6;
+      background-color: white;
+      border-radius: inherit;
+      border-bottom-right-radius: initial;
+      border-bottom-left-radius: initial;
+      padding: 15px 15px 10px;
+
+      .el-dialog__title {
+        line-height: 1;
+      }
+
+      .el-dialog__headerbtn {
+        top: 15px;
+      }
+    }
+
+    .el-dialog__body {
+      padding: 10px 20px;
+      background-color: #fff;
+    }
+
+    .el-dialog__footer {
+      border-top: 1px solid #dcdfe6;
+      padding: 10px 20px 10px;
+    }
+  }
+}

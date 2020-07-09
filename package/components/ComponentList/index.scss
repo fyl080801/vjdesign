@@ -1,0 +1,35 @@
+.v-jdesign {
+  .aside {
+    .components {
+      .el-collapse-item__header {
+        i {
+          margin-right: 5px;
+        }
+      }
+
+      .components-group {
+        margin-left: -16px;
+        margin-right: -15px;
+
+        > .drag-handler {
+          &.el-col {
+            margin-bottom: 0;
+          }
+        }
+
+        .el-card {
+          box-shadow: none;
+          border-radius: 0;
+          margin-bottom: -1px;
+          margin-right: -1px;
+
+          .el-card__body {
+            > * {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
