@@ -3,7 +3,7 @@ import vjdesign from "../../../package/index";
 const { feature } = vjdesign;
 const { properties } = feature;
 
-vjdesign.feature.component(
+feature.component(
   "el-form",
   {
     group: "Element 布局",
@@ -17,7 +17,7 @@ vjdesign.feature.component(
   ]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-tabs",
   {
     group: "Element 布局",
@@ -43,7 +43,7 @@ vjdesign.feature.component(
   ]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-tab-pane",
   {
     group: "Element 布局",
@@ -53,7 +53,7 @@ vjdesign.feature.component(
   ["fieldOptions.props.name", "fieldOptions.props.label"]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-col",
   {
     group: "Element 布局",
@@ -63,7 +63,7 @@ vjdesign.feature.component(
   ["fieldOptions.props.span"]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-row",
   {
     group: "Element 布局",
@@ -73,7 +73,7 @@ vjdesign.feature.component(
   ["fieldOptions.props.gutter"]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-form-item",
   {
     group: "Element 布局",
@@ -83,7 +83,7 @@ vjdesign.feature.component(
   ["fieldOptions.props.label", "fieldOptions.props.required"]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-input",
   {
     group: "Element 输入",
@@ -96,7 +96,7 @@ vjdesign.feature.component(
   ]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-select",
   {
     group: "Element 输入",
@@ -109,7 +109,7 @@ vjdesign.feature.component(
   ]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-input-number",
   {
     group: "Element 输入",
@@ -118,7 +118,7 @@ vjdesign.feature.component(
   [properties.数据, "fieldOptions.props.disabled"]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-switch",
   {
     group: "Element 输入",
@@ -127,7 +127,7 @@ vjdesign.feature.component(
   [properties.数据, "fieldOptions.props.disabled"]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-slider",
   {
     group: "Element 输入",
@@ -143,7 +143,7 @@ vjdesign.feature.component(
   ]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-time-select",
   {
     group: "Element 输入",
@@ -152,7 +152,7 @@ vjdesign.feature.component(
   [properties.数据, "fieldOptions.props.disabled"]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-date-picker",
   {
     group: "Element 输入",
@@ -183,7 +183,7 @@ vjdesign.feature.component(
   ]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-rate",
   {
     group: "Element 输入",
@@ -192,7 +192,7 @@ vjdesign.feature.component(
   [properties.数据, "fieldOptions.props.disabled"]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-radio-group",
   {
     group: "Element 输入",
@@ -202,7 +202,7 @@ vjdesign.feature.component(
   [properties.数据, "fieldOptions.props.size", "fieldOptions.props.disabled"]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-radio-button",
   {
     group: "Element 输入",
@@ -214,7 +214,7 @@ vjdesign.feature.component(
   ]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-radio",
   {
     group: "Element 输入",
@@ -226,7 +226,7 @@ vjdesign.feature.component(
   ]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-checkbox-group",
   {
     group: "Element 输入",
@@ -236,7 +236,7 @@ vjdesign.feature.component(
   [properties.数据, "fieldOptions.props.size", "fieldOptions.props.disabled"]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-checkbox-button",
   {
     group: "Element 输入",
@@ -248,24 +248,25 @@ vjdesign.feature.component(
   ]
 );
 
-vjdesign.feature.component(
+feature.component(
   "el-checkbox",
   {
     group: "Element 输入",
     description: "复选项"
   },
   [
+    properties.数据,
     "fieldOptions.props.disabled",
     { property: "fieldOptions.props.label", editor: "simple" }
   ]
 );
 
-vjdesign.feature.component("el-table", {
+feature.component("el-table", {
   group: "Element 数据",
   description: "表格"
 });
 
-vjdesign.feature.component(
+feature.component(
   "el-pagination",
   {
     group: "Element 数据",

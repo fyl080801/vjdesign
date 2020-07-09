@@ -24,35 +24,6 @@ export default function() {
       return;
     }
 
-    const empty = [
-      {
-        component: "p",
-        layout: true,
-        fieldOptions: {
-          class: "empty",
-          domProps: {
-            innerText: remark ? `${component}.${remark}` : component
-          }
-        }
-      }
-    ];
-
-    const childrenValue = [...(field.children || [])];
-
-    const children = []
-      .concat(field.children || [])
-      // border必须排在表单元素后面
-      .concat(
-        ["top", "left", "bottom", "right"].map(item => ({
-          component: "div",
-          layout: true,
-          fieldOptions: {
-            class: "border-layout border-" + item
-          }
-        }))
-      )
-      .concat(empty);
-
     field.layout = true;
     field.children = [
       {
@@ -79,10 +50,31 @@ export default function() {
             draggable: ".design-element"
           },
           props: {
-            value: childrenValue
+            value: [...(field.children || [])]
           }
         },
-        children
+        children: [
+          ...(field.children || []),
+          // 必须用4个绝对定位的边框，因为要把可拖动区域避开
+          ...["top", "left", "bottom", "right"].map(item => ({
+            component: "div",
+            layout: true,
+            fieldOptions: {
+              class: "border-layout border-" + item
+            }
+          })),
+          {
+            component: "p",
+            layout: true,
+            fieldOptions: {
+              class: "empty",
+              slot: "footer",
+              domProps: {
+                innerText: remark ? `${component}.${remark}` : component
+              }
+            }
+          }
+        ]
       }
     ];
   };

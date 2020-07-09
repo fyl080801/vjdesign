@@ -3,6 +3,14 @@
   border: 1px;
   border-style: dashed;
   border-color: silver;
+
+  > .v-jform {
+    display: flex;
+
+    > .root {
+      flex: 1;
+    }
+  }
 }
 
 .empty-text {

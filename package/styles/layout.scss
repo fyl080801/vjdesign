@@ -73,89 +73,106 @@
 
     .root,
     .design-element .layout {
+      min-height: 45px;
+
       > .empty {
         width: 100%;
         text-align: center;
         color: silver;
         margin: 0;
-        font-size: medium;
+        font-size: 14px;
         cursor: pointer;
         float: left;
+        line-height: 24px;
       }
     }
   }
 }
 
-/* element border */
-.v-jdesign .v-jform .design-element > .border-top,
-.v-jdesign .v-jform .design-element > .border-bottom,
-.v-jdesign .v-jform .design-element > .border-left,
-.v-jdesign .v-jform .design-element > .border-right {
-  position: absolute;
-  border-style: none;
-  border-color: gray;
-}
-.v-jdesign .v-jform .design-element > .border-top {
-  top: 0;
-  left: 0;
-  right: 0;
-  border-top-width: 1px;
-  border-top-style: dashed;
-}
-.v-jdesign .v-jform .design-element > .border-left {
-  top: 0;
-  left: 0;
-  bottom: 0;
-  border-left-width: 1px;
-  border-left-style: dashed;
-}
-.v-jdesign .v-jform .design-element > .border-bottom {
-  right: 0;
-  left: 0;
-  bottom: 0;
-  border-bottom-width: 1px;
-  border-bottom-style: dashed;
-}
-.v-jdesign .v-jform .design-element > .border-right {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  border-right-width: 1px;
-  border-right-style: dashed;
-}
+// border
+.v-jdesign {
+  .v-jform {
+    .design-element {
+      /* element border */
+      > .border-top,
+      > .border-bottom,
+      > .border-left,
+      > .border-right {
+        position: absolute;
+        border-style: none;
+        border-color: gray;
+      }
 
-/* layout border */
-.v-jdesign .v-jform .design-element .layout > .border-top,
-.v-jdesign .v-jform .design-element .layout > .border-right,
-.v-jdesign .v-jform .design-element .layout > .border-left,
-.v-jdesign .v-jform .design-element .layout > .border-bottom {
-  position: absolute;
-  border-style: none;
-  border-color: silver;
-}
-.v-jdesign .v-jform .design-element .layout > .border-right {
-  right: 0;
-  top: 0;
-  bottom: 0;
-  border-right: 1px dashed silver;
-}
-.v-jdesign .v-jform .design-element .layout > .border-left {
-  left: 0;
-  top: 0;
-  bottom: 0;
-  border-left: 1px dashed silver;
-}
-.v-jdesign .v-jform .design-element .layout > .border-top {
-  right: 0;
-  top: 0;
-  left: 0;
-  border-top: 1px dashed silver;
-}
-.v-jdesign .v-jform .design-element .layout > .border-bottom {
-  right: 0;
-  left: 0;
-  bottom: 0;
-  border-bottom: 1px dashed silver;
+      > .border-top {
+        top: 0;
+        left: 0;
+        right: 0;
+        border-top-width: 1px;
+        border-top-style: dashed;
+      }
+
+      > .border-left {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        border-left-width: 1px;
+        border-left-style: dashed;
+      }
+
+      > .border-bottom {
+        right: 0;
+        left: 0;
+        bottom: 0;
+        border-bottom-width: 1px;
+        border-bottom-style: dashed;
+      }
+
+      > .border-right {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border-right-width: 1px;
+        border-right-style: dashed;
+      }
+
+      // layout
+      .layout {
+        > .border-top,
+        > .border-right,
+        > .border-left,
+        > .border-bottom {
+          position: absolute;
+          border-style: none;
+          border-color: silver;
+        }
+
+        > .border-right {
+          right: 0;
+          top: 0;
+          bottom: 0;
+          border-right: 1px dashed silver;
+        }
+        > .border-left {
+          left: 0;
+          top: 0;
+          bottom: 0;
+          border-left: 1px dashed silver;
+        }
+        > .border-top {
+          right: 0;
+          top: 0;
+          left: 0;
+          border-top: 1px dashed silver;
+        }
+        > .border-bottom {
+          right: 0;
+          left: 0;
+          bottom: 0;
+          border-bottom: 1px dashed silver;
+        }
+      }
+    }
+  }
 }
 
 /* editing */
@@ -166,6 +183,9 @@
 }
 .v-jdesign .v-jform .design-element.editing .layout.editing > .border-layout {
   border-color: lightsalmon;
+}
+.v-jdesign .v-jform .design-element.editing .layout.editing > .empty {
+  color: lightsalmon;
 }
 .v-jdesign .v-jform .design-element.editing > .tag {
   color: red;
