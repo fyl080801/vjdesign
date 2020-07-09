@@ -35,7 +35,7 @@ feature.datasource("request", "HTTP请求", [
   {
     property: "autoload",
     description: "自动请求",
-    editor: "checkbox"
+    editor: "check"
   },
   {
     property: "data",
