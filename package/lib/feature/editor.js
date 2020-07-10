@@ -10,17 +10,17 @@ export const getEditorFactory = name => {
   return (path, options) => {
     return {
       field: instance.factory(path, options),
-      component: instance.component
+      components: instance.components
     };
   };
 };
 
 export default store => {
   // factory 用于创建编辑器的定义
-  return (name, factory, component) => {
+  return (name, factory, components = {}) => {
     const editor = {
       factory,
-      component
+      components: components
     };
 
     store.set(name, editor);

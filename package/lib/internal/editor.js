@@ -1,6 +1,7 @@
 import feature from "../feature";
 import TransformInput from "../editors/Input";
 import TransformCheckbox from "../editors/Checkbox";
+import { Input, InputNumber, Checkbox, Select, Option } from "element-ui";
 
 feature.editor(
   "default",
@@ -8,23 +9,33 @@ feature.editor(
     component: "v-jdesign-input",
     model: [path]
   }),
-  TransformInput
+  { TransformInput }
 );
 
-feature.editor("simple", path => ({
-  component: "el-input",
-  model: [path],
-  fieldOptions: {
-    attrs: {
-      placeholder: "请输入"
+feature.editor(
+  "simple",
+  path => ({
+    component: "el-input",
+    model: [path],
+    fieldOptions: {
+      attrs: {
+        placeholder: "请输入"
+      }
     }
-  }
-}));
+  }),
+  { "el-input": Input }
+);
 
-feature.editor("number", path => ({
-  component: "el-input-number",
-  model: [path]
-}));
+feature.editor(
+  "number",
+  path => ({
+    component: "el-input-number",
+    model: [path]
+  }),
+  {
+    "el-input-number": InputNumber
+  }
+);
 
 feature.editor(
   "checkbox",
@@ -32,24 +43,34 @@ feature.editor(
     component: "v-jdesign-checkbox",
     model: [path]
   }),
-  TransformCheckbox
+  { TransformCheckbox }
 );
 
-feature.editor("check", path => ({
-  component: "el-checkbox",
-  model: [path]
-}));
+feature.editor(
+  "check",
+  path => ({
+    component: "el-checkbox",
+    model: [path]
+  }),
+  {
+    "el-checkbox": Checkbox
+  }
+);
 
-feature.editor("select", (path, options) => ({
-  component: "el-select",
-  model: [path],
-  children: options.items.map(item => {
-    return {
-      component: "el-option",
-      fieldOptions: { props: { label: item.label, value: item.value } }
-    };
-  })
-}));
+feature.editor(
+  "select",
+  (path, options) => ({
+    component: "el-select",
+    model: [path],
+    children: options.items.map(item => {
+      return {
+        component: "el-option",
+        fieldOptions: { props: { label: item.label, value: item.value } }
+      };
+    })
+  }),
+  { "el-select": Select, "el-option": Option }
+);
 
 // registerEditor(
 //   "display",

@@ -2,6 +2,7 @@ import Vue from "vue";
 import { TransformTypes } from "../../../../../utils/enums";
 import Bind from "../bind";
 import Func from "../func";
+import { Input, Form, FormItem, Select, Option } from "element-ui";
 
 export default Vue.extend({
   props: {
@@ -56,7 +57,7 @@ export default Vue.extend({
   },
   render() {
     return (
-      <el-form
+      <Form
         ref="form"
         size="small"
         label-position="top"
@@ -64,32 +65,30 @@ export default Vue.extend({
         props={{ model: this.value }}
       >
         {!this.value.isRoot ? (
-          <el-form-item
+          <FormItem
             label="名称"
             prop="name"
             rules={[{ required: true, message: "必选项" }]}
           >
-            <el-input v-model={this.value.name} placeholder="请输入"></el-input>
-          </el-form-item>
+            <Input v-model={this.value.name} placeholder="请输入"></Input>
+          </FormItem>
         ) : null}
-        <el-form-item
+        <FormItem
           label="类型"
           prop="$type"
           rules={[{ required: true, message: "必选项" }]}
         >
-          <el-select v-model={this.value.$type}>
-            {!this.value.isRoot ? (
-              <el-option value="raw" label="固定值" />
-            ) : null}
+          <Select v-model={this.value.$type}>
+            {!this.value.isRoot ? <Option value="raw" label="固定值" /> : null}
             {Object.keys(TransformTypes).map(key => (
-              <el-option value={key} label={TransformTypes[key]} />
+              <Option value={key} label={TransformTypes[key]} />
             ))}
-          </el-select>
-        </el-form-item>
+          </Select>
+        </FormItem>
         {!this.value.isRoot && this.value.$type === "raw" ? (
-          <el-form-item label="值" prop="raw">
-            <el-input v-model={this.value.raw} placeholder="请输入"></el-input>
-          </el-form-item>
+          <FormItem label="值" prop="raw">
+            <Input v-model={this.value.raw} placeholder="请输入"></Input>
+          </FormItem>
         ) : null}
         {this.value.$type === "bind" ? <Bind value={this.value}></Bind> : null}
         {this.value.$type === "func" || this.value.$type === "on" ? (
@@ -100,7 +99,7 @@ export default Vue.extend({
             }}
           ></Func>
         ) : null}
-      </el-form>
+      </Form>
     );
   }
 });

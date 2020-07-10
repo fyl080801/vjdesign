@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Editor from "./Editor";
 import { mapState } from "vuex";
+import { CollapseItem } from "element-ui";
 
 export default Vue.extend({
   components: {
@@ -23,18 +24,20 @@ export default Vue.extend({
   computed: {
     ...mapState({
       watchs: state => {
-        return Object.keys(state.form.watchs).map(prop => ({
+        return Object.keys(state.form.value.watchs).map(prop => ({
           label: prop,
-          children: Object.keys(state.form.watchs[prop]).map(modelProp => ({
-            label: modelProp
-          }))
+          children: Object.keys(state.form.value.watchs[prop]).map(
+            modelProp => ({
+              label: modelProp
+            })
+          )
         }));
       }
     })
   },
   render() {
     return (
-      <el-collapse-item
+      <CollapseItem
         key="vjform_watchs"
         name="vjform_watchs"
         class="property-wrapper"
@@ -57,7 +60,7 @@ export default Vue.extend({
           <i class="el-icon-plus"></i>
           添加
         </el-button> */}
-      </el-collapse-item>
+      </CollapseItem>
     );
   }
 });

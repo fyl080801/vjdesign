@@ -1,40 +1,39 @@
 import Vue from "vue";
 import Transform from "./transform";
+import { Input, Button } from "element-ui";
 
-const component = Vue.component("v-jdesign-input", {
+export default Vue.component("v-jdesign-input", {
   mixins: [Transform],
   render() {
     return (
       <div>
         {!this.isTransform ? (
-          <el-input
+          <Input
             v-model={this.fieldValue}
             placeholder="请输入"
             onChange={this.changed}
           >
-            <el-button
+            <Button
               slot="append"
               icon="el-icon-link"
               onClick={this.openEditor}
-            ></el-button>
-          </el-input>
+            ></Button>
+          </Input>
         ) : (
-          <el-input placeholder="<转换的值>" readonly={true}>
-            <el-button
+          <Input placeholder="<转换的值>" readonly={true}>
+            <Button
               slot="append"
               icon="el-icon-edit"
               onClick={this.openEditor}
-            ></el-button>
-            <el-button
+            ></Button>
+            <Button
               slot="append"
               icon="el-icon-close"
               onClick={this.clearTransform}
-            ></el-button>
-          </el-input>
+            ></Button>
+          </Input>
         )}
       </div>
     );
   }
 });
-
-export default component;

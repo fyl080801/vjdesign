@@ -47,13 +47,13 @@ export const assemblyEditor = (metaArray, defaults) => {
       prop
     ];
     const { name, options } = isObject(editor) ? editor : { name: editor };
-    const { field, component } = getEditorFactory(name)(prop, options);
+    const { field, components } = getEditorFactory(name)(prop, options);
 
     return {
       group,
       property: prop,
       rules,
-      instance: component,
+      editorComponents: components,
       defaultValue,
       component: "el-form-item",
       fieldOptions: {

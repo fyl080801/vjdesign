@@ -1,6 +1,7 @@
 import Vue from "vue";
 import ComponentList from "../components/ComponentList/index";
 import { getGroups } from "../lib/feature/component";
+import { Aside, Tabs, TabPane } from "element-ui";
 
 export default Vue.extend({
   components: { ComponentList },
@@ -14,13 +15,13 @@ export default Vue.extend({
   },
   render() {
     return (
-      <el-aside class="aside">
-        <el-tabs type="border-card" class="max-aside">
-          <el-tab-pane label="组件库">
+      <Aside class="aside">
+        <Tabs type="border-card" class="max-aside">
+          <TabPane label="组件库">
             <component-list list={this.origin}></component-list>
-          </el-tab-pane>
-        </el-tabs>
-      </el-aside>
+          </TabPane>
+        </Tabs>
+      </Aside>
     );
   }
 });

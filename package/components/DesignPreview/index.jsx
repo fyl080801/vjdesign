@@ -1,13 +1,14 @@
 import Vue from "vue";
 import { mapState } from "vuex";
+import VJForm from "vjform";
 
 export default Vue.extend({
   computed: mapState({
-    fields: state => state.form.fields,
-    watchs: state => state.form.watchs,
-    datasource: state => state.form.datasource,
-    schema: state => state.form.schema,
-    inits: state => state.form.inits,
+    fields: state => state.form.value.fields,
+    watchs: state => state.form.value.watchs,
+    datasource: state => state.form.value.datasource,
+    schema: state => state.form.value.schema,
+    inits: state => state.form.value.inits,
     model: state => state.form.model,
     designComponents: state => state.components
   }),
@@ -24,7 +25,7 @@ export default Vue.extend({
   render() {
     return (
       <div class="preview">
-        <vjform
+        <VJForm
           v-show={this.fields.length}
           value={this.model}
           onInput={this.updateModel}
@@ -35,7 +36,7 @@ export default Vue.extend({
           schema={this.schema}
           inits={this.inits}
           options={this.options}
-        ></vjform>
+        ></VJForm>
       </div>
     );
   }

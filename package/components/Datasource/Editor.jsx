@@ -3,6 +3,16 @@ import { cloneDeep } from "lodash-es";
 import { getDatasources } from "../../lib/feature/datasource";
 import { assemblyEditor } from "../../lib/feature/property";
 import "./Editor.scss";
+import VJForm from "vjform";
+import {
+  Dialog,
+  Form,
+  FormItem,
+  Input,
+  Select,
+  Option,
+  Button
+} from "element-ui";
 
 export default Vue.extend({
   props: {
@@ -11,6 +21,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      updating: false,
       datasources: [],
       model: {},
       editing: null,
@@ -20,18 +31,22 @@ export default Vue.extend({
   watch: {
     visible(value) {
       if (value === true) {
+        this.updating = true;
         this.model = cloneDeep(this.value);
 
         this.$nextTick(() => {
           if (this.$refs && this.$refs.form) {
             this.$refs.form.clearValidate();
           }
+          this.updating = false;
         });
       }
     },
     ["model.type"](value) {
       this.editing = null;
-      this.components = {};
+      this.components = {
+        "el-form-item": FormItem
+      };
 
       if (value) {
         const selected = this.datasources.find(ds => ds.type === value);
@@ -42,9 +57,7 @@ export default Vue.extend({
 
         this.editing = assemblyEditor(selected.options) || [];
         this.editing.forEach(item => {
-          if (item.instance) {
-            this.components[item.instance.name] = item.instance;
-          }
+          this.components = { ...this.components, ...item.editorComponents };
         });
       }
     }
@@ -66,7 +79,7 @@ export default Vue.extend({
   },
   render() {
     return (
-      <el-dialog
+      <Dialog
         visible={this.visible}
         title="数据源"
         onClose={this.onCancel}
@@ -75,47 +88,50 @@ export default Vue.extend({
         close-on-click-modal={false}
         append-to-body={true}
       >
-        <el-form
+        <Form
           ref="form"
           props={{ model: this.model }}
           label-position="top"
           size="small"
         >
-          <el-form-item
+          <FormItem
             prop="name"
             label="名称"
             rules={[{ required: true, message: "必填项" }]}
           >
-            <el-input v-model={this.model.name} placeholder="请输入"></el-input>
-          </el-form-item>
-          <el-form-item
+            <Input v-model={this.model.name} placeholder="请输入"></Input>
+          </FormItem>
+          <FormItem
             prop="type"
             label="类型"
             rules={[{ required: true, message: "必选项" }]}
           >
-            <el-select v-model={this.model.type} placeholder="请选择">
+            <Select v-model={this.model.type} placeholder="请选择">
               {this.datasources.map(ds => (
-                <el-option value={ds.type} label={ds.description}></el-option>
+                <Option value={ds.type} label={ds.description}></Option>
               ))}
-            </el-select>
-          </el-form-item>
-          {this.editing ? (
-            <vjform
+            </Select>
+          </FormItem>
+          {this.editing && !this.updating ? (
+            <VJForm
               fields={this.editing}
               v-model={this.model}
+              onInput={value => {
+                this.model = { ...this.model, ...value };
+              }}
               components={this.components}
-            ></vjform>
+            ></VJForm>
           ) : null}
-        </el-form>
+        </Form>
         <span slot="footer" class="dialog-footer">
-          <el-button size="small" onClick={this.onCancel}>
+          <Button size="small" onClick={this.onCancel}>
             取消
-          </el-button>
-          <el-button size="small" type="primary" onClick={this.onSubmit}>
+          </Button>
+          <Button size="small" type="primary" onClick={this.onSubmit}>
             确定
-          </el-button>
+          </Button>
         </span>
-      </el-dialog>
+      </Dialog>
     );
   }
 });

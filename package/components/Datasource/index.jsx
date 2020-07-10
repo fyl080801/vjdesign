@@ -3,6 +3,7 @@ import { mapState } from "vuex";
 import Editor from "./Editor";
 import { getDatasources } from "../../lib/feature/datasource";
 import "./index.scss";
+import { CollapseItem, Tag, Button, Popconfirm } from "element-ui";
 
 export default Vue.extend({
   components: { "datasource-editor": Editor },
@@ -17,10 +18,10 @@ export default Vue.extend({
   },
   computed: {
     ...mapState({
-      datasource: state => {
-        return Object.keys(state.form.datasource).map(key => ({
+      datasource: ({ form }) => {
+        return Object.keys(form.value.datasource || {}).map(key => ({
           name: key,
-          value: state.form.datasource[key]
+          value: form.value.datasource[key]
         }));
       }
     })
@@ -51,11 +52,7 @@ export default Vue.extend({
       }
     },
     onRemove(item) {
-      this.$confirm("是否删除？", "删除数据源")
-        .then(() => {
-          this.$store.commit("form/REMOVE_DATASOURCE", item.name);
-        })
-        .catch(() => {});
+      this.$store.commit("form/REMOVE_DATASOURCE", item.name);
     }
   },
   mounted() {
@@ -66,7 +63,7 @@ export default Vue.extend({
   },
   render() {
     return (
-      <el-collapse-item
+      <CollapseItem
         class="property-wrapper"
         key="vjform_datasource"
         name="vjform_datasource"
@@ -88,34 +85,35 @@ export default Vue.extend({
               <div class="inline-property__title">
                 <span>{ds.name}</span>
                 <span style="line-height: 30px">
-                  <el-tag size="small" type="info">
+                  <Tag size="small" type="info">
                     {this.datasources[ds.value.type]}
-                  </el-tag>
+                  </Tag>
                 </span>
               </div>
               <div class="inline-property__action">
-                <el-button
+                <Button
                   size="small"
                   type="text"
                   onClick={() => this.onEdit(index)}
                 >
                   编辑
-                </el-button>
-                <el-button
-                  size="small"
-                  type="text"
-                  onClick={() => this.onRemove(ds)}
+                </Button>
+                <Popconfirm
+                  title="是否删除？"
+                  onOnConfirm={() => this.onRemove(ds)}
                 >
-                  删除
-                </el-button>
+                  <Button slot="reference" size="small" type="text">
+                    删除
+                  </Button>
+                </Popconfirm>
               </div>
             </div>
           ))}
         </div>
-        <el-button size="small" onClick={this.onAdd} style="width: 100%">
+        <Button size="small" onClick={this.onAdd} style="width: 100%">
           <i class="el-icon-plus"></i> 添加
-        </el-button>
-      </el-collapse-item>
+        </Button>
+      </CollapseItem>
     );
   }
 });

@@ -1,4 +1,4 @@
-.v-jdesign-transform-editor {
+.v-jdesign-dialog {
   .v-jdesign-transform-wrapper {
     display: flex;
 
@@ -17,7 +17,13 @@
     }
   }
 
+  .v-jdesign-transform-panel {
+    flex: 1;
+  }
+
   .transform-tree {
+    flex: 1;
+
     .transform-item-wrapper {
       width: 100%;
       display: flex;

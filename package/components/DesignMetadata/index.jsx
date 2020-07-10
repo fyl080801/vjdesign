@@ -10,15 +10,15 @@ export default Vue.extend({
   },
   computed: mapState({
     fields: state => {
-      const fields = cloneDeep(state.form.fields);
+      const fields = cloneDeep(state.form.value.fields);
       eachTreeNodes(fields, node => {
         delete node.uuid;
       });
       return {
-        inits: state.form.inits,
-        datasource: state.form.datasource,
-        watchs: state.form.watchs,
-        schema: state.form.schema,
+        inits: state.form.value.inits,
+        datasource: state.form.value.datasource,
+        watchs: state.form.value.watchs,
+        schema: state.form.value.schema,
         fields
       };
     }
