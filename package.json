@@ -1,6 +1,6 @@
 {
   "name": "vjdesign",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0",
   "description": "Vue Form Designer",
   "author": {
     "name": "fyl080801",
@@ -26,7 +26,8 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "dist": "NODE_ENV=production webpack -p --config webpack.config.prod.js"
+    "dist": "NODE_ENV=production webpack -p --config webpack.config.prod.js",
+    "prepublish": "npm run dist"
   },
   "dependencies": {
     "bootstrap": "^4.5.0",
