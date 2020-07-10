@@ -1,4 +1,5 @@
 import Vue from "vue";
+import { Dialog } from "element-ui";
 
 export default Vue.extend({
   props: {
@@ -15,7 +16,7 @@ export default Vue.extend({
   },
   render() {
     return (
-      <el-dialog
+      <Dialog
         visible={this.visible}
         title="数据源"
         onClose={this.onCancel}
@@ -23,7 +24,7 @@ export default Vue.extend({
         custom-class="v-jdesign-dialog"
         close-on-click-modal={false}
         append-to-body={true}
-      ></el-dialog>
+      ></Dialog>
     );
   }
 });

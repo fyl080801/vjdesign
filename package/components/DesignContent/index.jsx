@@ -2,17 +2,22 @@ import Vue from "vue";
 import { mapState } from "vuex";
 import emiter from "../../utils/emiter";
 import vuedraggable from "vuedraggable";
+import VJForm from "vjform";
+import { Popconfirm } from "element-ui";
 import "./index.scss";
 
 export default Vue.extend({
   components: { vuedraggable },
   computed: mapState({
-    fields: state => state.form.fields,
-    watchs: state => state.form.watchs,
-    datasource: state => state.form.datasource,
-    schema: state => state.form.schema,
-    inits: state => state.form.inits,
-    designComponents: state => ({ ...state.components, ...{ vuedraggable } }),
+    fields: state => state.form.value.fields,
+    watchs: state => state.form.value.watchs,
+    datasource: state => state.form.value.datasource,
+    schema: state => state.form.value.schema,
+    inits: state => state.form.value.inits,
+    designComponents: state => ({
+      ...state.components,
+      ...{ vuedraggable, "el-popconfirm": Popconfirm }
+    }),
     designFields() {
       return [
         {
@@ -105,7 +110,7 @@ export default Vue.extend({
         >
           <p>拖组件到此</p>
         </vuedraggable>
-        <vjform
+        <VJForm
           v-show={this.fields.length}
           fields={this.designFields}
           watchs={this.watchs}
@@ -114,7 +119,7 @@ export default Vue.extend({
           inits={this.inits}
           components={this.designComponents}
           options={this.options}
-        ></vjform>
+        ></VJForm>
       </div>
     );
   }

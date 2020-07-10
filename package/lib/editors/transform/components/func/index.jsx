@@ -1,5 +1,6 @@
 import Vue from "vue";
 import { isEmpty } from "lodash-es";
+import { FormItem, Input } from "element-ui";
 
 export default Vue.extend({
   props: {
@@ -23,12 +24,12 @@ export default Vue.extend({
   methods: {
     onAddArg(name) {
       if (isEmpty(name)) {
-        this.$message("名称不能为空");
+        // this.$message("名称不能为空");
         return;
       }
 
       if (this.value.$arguments && this.value.$arguments[name] !== undefined) {
-        this.$message("键值重复");
+        // this.$message("键值重复");
         return;
       }
       this.value.$arguments = this.value.$arguments || {};
@@ -47,22 +48,16 @@ export default Vue.extend({
   render() {
     return (
       <div>
-        <el-form-item
+        <FormItem
           label="表达式"
           prop="$result"
           rules={[{ required: true, message: "必填项" }]}
         >
-          <el-input
-            v-model={this.value.$result}
-            placeholder="请输入"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="默认值" prop="$default">
-          <el-input
-            v-model={this.value.$default}
-            placeholder="请输入"
-          ></el-input>
-        </el-form-item>
+          <Input v-model={this.value.$result} placeholder="请输入"></Input>
+        </FormItem>
+        <FormItem label="默认值" prop="$default">
+          <Input v-model={this.value.$default} placeholder="请输入"></Input>
+        </FormItem>
       </div>
     );
   }

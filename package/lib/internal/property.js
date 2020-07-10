@@ -23,10 +23,3 @@ feature.property(
 //   description: "响应输入",
 //   editor: "on"
 // });
-// feature.property(
-//   DEFAULT_KEYS.显示条件,
-//   {
-//     description: "显示条件"
-//   },
-//   "display"
-// );

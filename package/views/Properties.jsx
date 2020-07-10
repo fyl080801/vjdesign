@@ -5,6 +5,22 @@ import { getComponent } from "../lib/feature/component";
 import emiter from "../utils/emiter";
 import Datasource from "../components/Datasource";
 import Watchs from "../components/Watchs";
+import {
+  Aside,
+  Tabs,
+  TabPane,
+  Collapse,
+  CollapseItem,
+  Form,
+  FormItem,
+  Input,
+  Checkbox,
+  Select,
+  Option,
+  Button,
+  Popconfirm
+} from "element-ui";
+import VJForm from "vjform";
 
 export default Vue.extend({
   components: { Datasource, Watchs },
@@ -76,46 +92,51 @@ export default Vue.extend({
   },
   render() {
     return (
-      <el-aside class="aside right">
-        <el-tabs type="border-card" class="max-aside">
-          <el-tab-pane label="组件属性">
+      <Aside class="aside right">
+        <Tabs type="border-card" class="max-aside">
+          <TabPane label="组件属性">
             {this.editing ? (
-              <el-collapse
+              <Collapse
                 v-model={this.groupNames}
                 class="components"
                 key={this.editing.uuid}
               >
                 {this.editorGroups.map((group, index) => (
-                  <el-collapse-item key={index} name={group.key}>
+                  <CollapseItem key={index} name={group.key}>
                     <div slot="title">
                       <i class="el-icon-s-operation"></i>
                       {group.key}
                     </div>
-                    <el-form
-                      size="mini"
-                      label-position="left"
-                      label-width="80px"
-                    >
-                      <vjform
+                    <Form size="mini" label-position="left" label-width="80px">
+                      <VJForm
                         fields={group.fields}
                         value={this.editing}
                         onInput={this.updateEditing}
-                        components={group.components}
-                      ></vjform>
-                    </el-form>
-                  </el-collapse-item>
+                        components={{
+                          ...group.components,
+                          "el-form-item": FormItem,
+                          "el-input": Input,
+                          "el-checkbox": Checkbox,
+                          "el-select": Select,
+                          "el-option": Option,
+                          "el-button": Button,
+                          "el-popconfirm": Popconfirm
+                        }}
+                      ></VJForm>
+                    </Form>
+                  </CollapseItem>
                 ))}
-              </el-collapse>
+              </Collapse>
             ) : null}
-          </el-tab-pane>
-          <el-tab-pane label="页面属性">
-            <el-collapse v-model={this.propNames} class="components">
+          </TabPane>
+          <TabPane label="页面属性">
+            <Collapse v-model={this.propNames} class="components">
               <datasource></datasource>
               <watchs></watchs>
-            </el-collapse>
-          </el-tab-pane>
-        </el-tabs>
-      </el-aside>
+            </Collapse>
+          </TabPane>
+        </Tabs>
+      </Aside>
     );
   }
 });

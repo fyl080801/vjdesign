@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Transform from "./transform";
 import "./Checkbox.scss";
+import { Checkbox, Button } from "element-ui";
 
 const component = Vue.component("v-jdesign-checkbox", {
   mixins: [Transform],
@@ -8,33 +9,29 @@ const component = Vue.component("v-jdesign-checkbox", {
     return (
       <div class="v-jdesign-checkbox">
         {!this.isTransform ? (
-          <el-checkbox
+          <Checkbox
             v-model={this.fieldValue}
             onChange={this.changed}
-          ></el-checkbox>
+          ></Checkbox>
         ) : (
-          <el-checkbox disabled={true}>{"<转换>"}</el-checkbox>
+          <Checkbox disabled={true}>{"<转换>"}</Checkbox>
         )}
         {!this.isTransform ? (
-          <el-button type="text" icon="el-icon-link" onClick={this.openEditor}>
+          <Button type="text" icon="el-icon-link" onClick={this.openEditor}>
             转换
-          </el-button>
+          </Button>
         ) : (
           <span>
-            <el-button
-              type="text"
-              icon="el-icon-edit"
-              onClick={this.openEditor}
-            >
+            <Button type="text" icon="el-icon-edit" onClick={this.openEditor}>
               编辑
-            </el-button>
-            <el-button
+            </Button>
+            <Button
               type="text"
               icon="el-icon-close"
               onClick={this.clearTransform}
             >
               清除
-            </el-button>
+            </Button>
           </span>
         )}
       </div>

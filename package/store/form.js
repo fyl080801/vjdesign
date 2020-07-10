@@ -6,11 +6,13 @@ import { set } from "lodash-es";
 export default {
   namespaced: true,
   state: {
-    fields: [],
-    datasource: {},
-    inits: {},
-    watchs: {},
-    schema: {},
+    value: {
+      fields: [],
+      datasource: {},
+      inits: {},
+      watchs: {},
+      schema: {}
+    },
     //
     editing: null,
     fieldMap: {},
@@ -19,19 +21,10 @@ export default {
   mutations: {
     //
     CREATEED: (state, payload = {}) => {
-      const {
-        fields = [],
-        datasource = {},
-        inits = {},
-        watchs = {},
-        schema = {}
-      } = payload;
-
-      state.fields = fields;
-      state.datasource = datasource;
-      state.inits = inits;
-      state.watchs = watchs;
-      state.schema = schema;
+      state.value = {
+        ...state.value,
+        ...payload
+      };
     },
     // 添加根元素
     ADD_ROOT: (state, payload) => {
@@ -45,16 +38,16 @@ export default {
         set(newItem, item.property, item.value);
       });
 
-      state.fields = [newItem];
+      state.value.fields = [newItem];
 
       // 同步
-      eachTreeNodes(state.fields, node => {
+      eachTreeNodes(state.value.fields, node => {
         state.fieldMap[node.uuid] = node;
       });
     },
     // 添加或更新
     FIELD_CHILDREN_CHANGED: (state, payload) => {
-      eachTreeNodes(state.fields, node => {
+      eachTreeNodes(state.value.fields, node => {
         const action = payload.find(p => p.uuid === node.uuid);
 
         if (!action) {
@@ -82,11 +75,11 @@ export default {
         });
       });
 
-      state.fields = [].concat(state.fields);
+      state.value.fields = [].concat(state.value.fields);
 
       // 同步map
       state.fieldMap = {};
-      eachTreeNodes(state.fields, node => {
+      eachTreeNodes(state.value.fields, node => {
         state.fieldMap[node.uuid] = node;
       });
     },
@@ -95,15 +88,15 @@ export default {
       let isdelete = null;
 
       // 先看根级元素
-      const deleteIndex = state.fields.findIndex(
+      const deleteIndex = state.value.fields.findIndex(
         item => item.uuid === payload.uuid
       );
 
       if (deleteIndex >= 0) {
-        isdelete = state.fields[deleteIndex].uuid;
-        state.fields.splice(deleteIndex, 1);
+        isdelete = state.value.fields[deleteIndex].uuid;
+        state.value.fields.splice(deleteIndex, 1);
       } else {
-        eachTreeNodes(state.fields, node => {
+        eachTreeNodes(state.value.fields, node => {
           if (!node.children || node.children <= 0) {
             return true;
           }
@@ -125,7 +118,7 @@ export default {
         if (state.editing === isdelete) {
           state.editing = null;
         }
-        state.fields = [].concat(state.fields);
+        state.value.fields = [].concat(state.value.fields);
       }
     },
 
@@ -139,7 +132,7 @@ export default {
         payload
       );
 
-      state.fields = [].concat(state.fields);
+      state.value.fields = [].concat(state.value.fields);
     },
 
     //
@@ -151,19 +144,19 @@ export default {
     SET_DATASOURCE: (state, payload) => {
       const { name, value } = payload;
       delete value.name;
-      state.datasource = { ...state.datasource, [name]: value };
+      state.value.datasource = { ...state.value.datasource, [name]: value };
     },
     UPDATE_DATASOURCE: (state, payload) => {
       const { name, value } = payload;
       const { name: newName } = value;
-      delete state.datasource[name];
+      delete state.value.datasource[name];
       delete value.name;
-      state.datasource = { ...state.datasource, [newName]: value };
+      state.value.datasource = { ...state.value.datasource, [newName]: value };
     },
     REMOVE_DATASOURCE: (state, payload) => {
-      const changed = { ...state.datasource };
+      const changed = { ...state.value.datasource };
       delete changed[payload];
-      state.datasource = changed;
+      state.value.datasource = changed;
     }
   }
 };

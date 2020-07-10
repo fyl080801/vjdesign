@@ -17,6 +17,11 @@ export default Vue.extend({
   data() {
     const isTransform = this.checkTransform();
     return {
+      dialog: {
+        mounted: false,
+        visible: false,
+        value: null
+      },
       fieldValue: isTransform ? null : this.value, // 普通值
       transformValue: isTransform ? this.value : null // 转换的值
     };
@@ -50,45 +55,34 @@ export default Vue.extend({
     },
     openEditor() {
       this.transformValue = this.transformValue || { $type: null };
-      //
-      const editingData = cloneDeep(
+
+      if (!this.dialog.mounted) {
+        document.body.appendChild(
+          new Vue({
+            render: h => {
+              return h(TransformEditor, {
+                props: this.dialog,
+                on: {
+                  cancel: () => {
+                    this.dialog.visible = false;
+                  },
+                  submit: data => {
+                    this.$emit("input", convertTransformResult(data));
+                    this.dialog.visible = false;
+                  }
+                }
+              });
+            }
+          }).$mount().$el
+        );
+
+        this.dialog.mounted = true;
+      }
+
+      this.dialog.value = cloneDeep(
         convertTransformData(this.transformValue, true)
       );
-      const editor = this.$createElement(TransformEditor, {
-        props: {
-          value: editingData
-        }
-      });
-
-      this.$confirm(editor, {
-        title: "编辑转换",
-        customClass: "v-jdesign-transform-editor",
-        closeOnClickModal: false,
-        beforeClose: (action, instance, done) => {
-          // if (action === "confirm") {
-          //   // const result = await form.validate();
-          //   // if (result) {
-          //   //   done();
-          //   // }
-          //   done(action);
-          // } else {
-          //   done(action);
-          // }
-          done(action);
-        }
-      })
-        .then(result => {
-          if (result !== "confirm") {
-            return;
-          }
-
-          this.$emit("input", convertTransformResult(editingData));
-        })
-        .catch(() => {});
-
-      this.$nextTick(() => {
-        editor.child.shown();
-      });
+      this.dialog.visible = true;
     }
   }
 });
