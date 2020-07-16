@@ -5,7 +5,7 @@ import { CollapseItem } from "element-ui";
 
 export default Vue.extend({
   components: {
-    "watch-editor": Editor
+    "listeners-editor": Editor
   },
   data() {
     return {
@@ -23,16 +23,7 @@ export default Vue.extend({
   },
   computed: {
     ...mapState({
-      watchs: state => {
-        return Object.keys(state.form.value.watchs).map(prop => ({
-          label: prop,
-          children: Object.keys(state.form.value.watchs[prop]).map(
-            modelProp => ({
-              label: modelProp
-            })
-          )
-        }));
-      }
+      listeners: ({ form }) => form.value.listeners
     })
   },
   render() {
@@ -45,12 +36,12 @@ export default Vue.extend({
         <div slot="title">
           <i class="el-icon-s-operation"></i>监听
         </div>
-        <watch-editor
+        <listeners-editor
           visible={this.dialog.visible}
           v-model={this.dialog.data}
           onSubmit={this.onSubmit}
           onCancel={() => (this.dialog.visible = false)}
-        ></watch-editor>
+        ></listeners-editor>
         敬请期待。。。
         {/* <el-tree
           data={this.data}

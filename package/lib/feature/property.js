@@ -1,6 +1,7 @@
 import { getFeature } from "./map";
 import { cloneDeep, isEmpty, isObject } from "lodash-es";
 import { getEditorFactory } from "./editor";
+// import emiter from "../../utils/emiter";
 
 export const DEFAULT_KEYS = {
   别名: "remark",
@@ -57,11 +58,38 @@ export const assemblyEditor = (metaArray, defaults) => {
       defaultValue,
       component: "el-form-item",
       fieldOptions: {
-        props: {
-          label: description
-        }
+        class: "property-field__wrapper",
+        props: { label: description }
       },
-      children: [field]
+      children: [
+        field,
+        {
+          component: "el-button",
+          text: "清除",
+          condition: {
+            $type: "func",
+            $arguments: { model: { $type: "bind", $source: `model.${prop}` } },
+            $result: "model !== undefined"
+          },
+          fieldOptions: {
+            class: "clear",
+            props: { type: "text" },
+            on: {
+              click: {
+                $type: "on",
+                $arguments: {
+                  model: { $type: "bind", $source: `model` }
+                },
+                $result: `(() => {
+                  delete model.${prop}; 
+                  this.$context.$emit('input', model); 
+                  this.$context.$emit('clear', '${prop}'); 
+                })()`
+              }
+            }
+          }
+        }
+      ]
     };
   });
 };

@@ -24,7 +24,7 @@ export default Vue.extend({
       updating: false,
       datasources: [],
       model: {},
-      editing: null,
+      fields: null,
       components: {}
     };
   },
@@ -43,7 +43,7 @@ export default Vue.extend({
       }
     },
     ["model.type"](value) {
-      this.editing = null;
+      this.fields = null;
       this.components = {
         "el-form-item": FormItem
       };
@@ -55,8 +55,8 @@ export default Vue.extend({
           return;
         }
 
-        this.editing = assemblyEditor(selected.options) || [];
-        this.editing.forEach(item => {
+        this.fields = assemblyEditor(selected.options) || [];
+        this.fields.forEach(item => {
           this.components = { ...this.components, ...item.editorComponents };
         });
       }
@@ -112,12 +112,16 @@ export default Vue.extend({
               ))}
             </Select>
           </FormItem>
-          {this.editing && !this.updating ? (
+          {this.fields && !this.updating ? (
             <VJForm
-              fields={this.editing}
+              class="vjdesign-property"
+              fields={this.fields}
               v-model={this.model}
-              onInput={value => {
-                this.model = { ...this.model, ...value };
+              onClear={() => {
+                this.updating = true;
+                this.$nextTick(() => {
+                  this.updating = false;
+                });
               }}
               components={this.components}
             ></VJForm>

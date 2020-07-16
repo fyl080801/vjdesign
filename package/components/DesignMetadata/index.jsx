@@ -15,9 +15,8 @@ export default Vue.extend({
         delete node.uuid;
       });
       return {
-        inits: state.form.value.inits,
         datasource: state.form.value.datasource,
-        watchs: state.form.value.watchs,
+        listeners: state.form.value.listeners,
         schema: state.form.value.schema,
         fields
       };
