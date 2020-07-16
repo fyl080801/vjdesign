@@ -9,8 +9,7 @@ export default {
     value: {
       fields: [],
       datasource: {},
-      inits: {},
-      watchs: {},
+      listeners: [],
       schema: {}
     },
     //
@@ -132,7 +131,11 @@ export default {
         payload
       );
 
+      //
       state.value.fields = [].concat(state.value.fields);
+    },
+    REFRESH_EDITING: state => {
+      state.fieldMap = { ...state.fieldMap };
     },
 
     //

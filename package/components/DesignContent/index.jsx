@@ -10,10 +10,9 @@ export default Vue.extend({
   components: { vuedraggable },
   computed: mapState({
     fields: state => state.form.value.fields,
-    watchs: state => state.form.value.watchs,
+    listeners: state => state.form.value.listeners,
     datasource: state => state.form.value.datasource,
     schema: state => state.form.value.schema,
-    inits: state => state.form.value.inits,
     designComponents: state => ({
       ...state.components,
       ...{ vuedraggable, "el-popconfirm": Popconfirm }
@@ -113,10 +112,9 @@ export default Vue.extend({
         <VJForm
           v-show={this.fields.length}
           fields={this.designFields}
-          watchs={this.watchs}
+          listeners={this.listeners}
           datasource={this.datasource}
           schema={this.schema}
-          inits={this.inits}
           components={this.designComponents}
           options={this.options}
         ></VJForm>

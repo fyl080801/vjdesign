@@ -4,7 +4,7 @@ import { assemblyEditorGroups, DEFAULTS } from "../lib/feature/property";
 import { getComponent } from "../lib/feature/component";
 import emiter from "../utils/emiter";
 import Datasource from "../components/Datasource";
-import Watchs from "../components/Watchs";
+import Listeners from "../components/Listeners";
 import {
   Aside,
   Tabs,
@@ -23,7 +23,7 @@ import {
 import VJForm from "vjform";
 
 export default Vue.extend({
-  components: { Datasource, Watchs },
+  components: { Datasource, Listeners },
   data() {
     return {
       editorGroups: [],
@@ -34,9 +34,11 @@ export default Vue.extend({
       showDatasource: false
     };
   },
-  computed: mapState({
-    editing: state => state.form.fieldMap[state.form.editing]
-  }),
+  computed: {
+    ...mapState({
+      editing: ({ form }) => form.fieldMap[form.editing]
+    })
+  },
   watch: {
     editing(value) {
       if (!value) {
@@ -75,6 +77,9 @@ export default Vue.extend({
   methods: {
     updateEditing(value) {
       this.updating = value;
+    },
+    refreshEditing() {
+      this.$store.commit("form/REFRESH_EDITING");
     }
   },
   created() {
@@ -107,11 +112,13 @@ export default Vue.extend({
                       <i class="el-icon-s-operation"></i>
                       {group.key}
                     </div>
-                    <Form size="mini" label-position="left" label-width="80px">
+                    <Form size="mini" label-position="top">
                       <VJForm
+                        class="vjdesign-property"
                         fields={group.fields}
                         value={this.editing}
                         onInput={this.updateEditing}
+                        onClear={this.refreshEditing}
                         components={{
                           ...group.components,
                           "el-form-item": FormItem,
@@ -132,7 +139,7 @@ export default Vue.extend({
           <TabPane label="页面属性">
             <Collapse v-model={this.propNames} class="components">
               <datasource></datasource>
-              <watchs></watchs>
+              <listeners></listeners>
             </Collapse>
           </TabPane>
         </Tabs>

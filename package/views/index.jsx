@@ -26,7 +26,7 @@ export default Vue.extend({
   //   form: {
   //     handler(value) {
   //       const result = {};
-  //       ["fields", "datasource", "inits", "watchs", "schema"].forEach(key => {
+  //       ["fields", "datasource", "watchs", "schema"].forEach(key => {
   //         result[key] = value[key];
   //       });
   //       this.$emit("input", result);

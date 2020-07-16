@@ -25,13 +25,13 @@ const component = Vue.component("v-jdesign-checkbox", {
             <Button type="text" icon="el-icon-edit" onClick={this.openEditor}>
               编辑
             </Button>
-            <Button
+            {/* <Button
               type="text"
               icon="el-icon-close"
               onClick={this.clearTransform}
             >
               清除
-            </Button>
+            </Button> */}
           </span>
         )}
       </div>

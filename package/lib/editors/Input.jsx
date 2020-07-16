@@ -26,11 +26,11 @@ export default Vue.component("v-jdesign-input", {
               icon="el-icon-edit"
               onClick={this.openEditor}
             ></Button>
-            <Button
+            {/* <Button
               slot="append"
               icon="el-icon-close"
               onClick={this.clearTransform}
-            ></Button>
+            ></Button> */}
           </Input>
         )}
       </div>

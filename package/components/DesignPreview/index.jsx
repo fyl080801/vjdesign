@@ -5,10 +5,9 @@ import VJForm from "vjform";
 export default Vue.extend({
   computed: mapState({
     fields: state => state.form.value.fields,
-    watchs: state => state.form.value.watchs,
+    listeners: state => state.form.value.listeners,
     datasource: state => state.form.value.datasource,
     schema: state => state.form.value.schema,
-    inits: state => state.form.value.inits,
     model: state => state.form.model,
     designComponents: state => state.components
   }),
@@ -31,10 +30,9 @@ export default Vue.extend({
           onInput={this.updateModel}
           components={this.designComponents}
           fields={this.fields}
-          watchs={this.watchs}
+          listeners={this.listeners}
           datasource={this.datasource}
           schema={this.schema}
-          inits={this.inits}
           options={this.options}
         ></VJForm>
       </div>
