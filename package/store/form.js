@@ -160,6 +160,25 @@ export default {
       const changed = { ...state.value.datasource };
       delete changed[payload];
       state.value.datasource = changed;
+    },
+
+    //
+    SET_LISTENERS: (state, payload) => {
+      const { value } = payload;
+      state.value.listeners = [...state.value.listeners, value];
+    },
+    UPDATE_LISTENERS: (state, payload) => {
+      const { index, value } = payload;
+      Object.keys(value)
+        .filter(key => key !== "actions")
+        .forEach(key => {
+          state.value.listeners[index][key] = value[key];
+        });
+      state.value.listeners = [...state.value.listeners];
+    },
+    REMOVE_LISTENERS: (state, payload) => {
+      const { index } = payload;
+      state.value.listeners.splice(index, 1);
     }
   }
 };

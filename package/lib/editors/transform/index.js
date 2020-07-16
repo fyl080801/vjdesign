@@ -12,7 +12,8 @@ export default Vue.extend({
       default() {
         return null;
       }
-    }
+    },
+    transforms: Array
   },
   data() {
     const isTransform = this.checkTransform();
@@ -20,7 +21,8 @@ export default Vue.extend({
       dialog: {
         mounted: false,
         visible: false,
-        value: null
+        value: null,
+        transforms: null
       },
       fieldValue: isTransform ? null : this.value, // 普通值
       transformValue: isTransform ? this.value : null // 转换的值
@@ -55,6 +57,7 @@ export default Vue.extend({
     },
     openEditor() {
       this.transformValue = this.transformValue || { $type: null };
+      this.dialog.transforms = [...this.transforms];
 
       if (!this.dialog.mounted) {
         document.body.appendChild(

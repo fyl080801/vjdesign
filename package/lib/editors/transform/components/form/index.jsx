@@ -9,6 +9,7 @@ import { Tree, Tag, Button, Dialog } from "element-ui";
 export default Vue.extend({
   props: {
     value: Array,
+    transforms: Array,
     visible: Boolean
   },
   data() {
@@ -142,7 +143,10 @@ export default Vue.extend({
             }}
           ></Tree>
           {this.editing ? (
-            <Panel value={this.editing}></Panel>
+            <Panel
+              value={this.editing}
+              transforms={this.isRoot(this.editing) ? this.transforms : null}
+            ></Panel>
           ) : (
             <div class="v-jdesign-transform-panel"></div>
           )}

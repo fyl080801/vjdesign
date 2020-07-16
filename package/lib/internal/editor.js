@@ -5,9 +5,10 @@ import { Input, InputNumber, Checkbox, Select, Option } from "element-ui";
 
 feature.editor(
   "default",
-  path => ({
+  (path, options) => ({
     component: "v-jdesign-input",
-    model: [path]
+    model: [path],
+    fieldOptions: options
   }),
   { TransformInput }
 );
