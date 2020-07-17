@@ -165,7 +165,10 @@ export default {
     //
     SET_LISTENERS: (state, payload) => {
       const { value } = payload;
-      state.value.listeners = [...state.value.listeners, value];
+      state.value.listeners = [
+        ...state.value.listeners,
+        { actions: [], ...value }
+      ];
     },
     UPDATE_LISTENERS: (state, payload) => {
       const { index, value } = payload;

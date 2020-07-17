@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Editor from "./Editor";
 import { mapState } from "vuex";
-import { CollapseItem, Button } from "element-ui";
+import { CollapseItem, Button, Popconfirm } from "element-ui";
 
 export default Vue.extend({
   components: {
@@ -27,6 +27,7 @@ export default Vue.extend({
       this.dialog.data = this.listeners[index];
       this.dialog.visible = true;
     },
+    onRemove() {},
     onSubmit(data) {
       this.dialog.visible = false;
 
@@ -50,7 +51,7 @@ export default Vue.extend({
   },
   computed: {
     ...mapState({
-      listeners: ({ form }) => form.value.listeners // 回头转换成树结构
+      listeners: ({ form }) => form.value.listeners
     })
   },
   render() {
@@ -69,10 +70,40 @@ export default Vue.extend({
           onSubmit={this.onSubmit}
           onCancel={this.onCancel}
         ></listeners-editor>
-        <el-tree
-          data={this.data}
-          scopedSlots={{ default: () => <div></div> }}
-        ></el-tree>
+        <div class="property-wrapper__body">
+          <el-tree
+            data={this.listeners}
+            children="actions"
+            isLeaf={data =>
+              Object.getOwnPropertyDescriptor(data, "actions") === undefined
+            }
+            scopedSlots={{
+              default: ({ data, node }) => (
+                <div class="inline-property" style="width: 100%">
+                  <div class="inline-property__title">
+                    <span>{data.label}</span>
+                  </div>
+                  <div class="inline-property__action">
+                    <Button size="small" type="text">
+                      添加行为
+                    </Button>
+                    <Button size="small" type="text">
+                      编辑
+                    </Button>
+                    <Popconfirm
+                      title="是否删除？"
+                      onOnConfirm={() => this.onRemove(node.$index)}
+                    >
+                      <Button slot="reference" size="small" type="text">
+                        删除
+                      </Button>
+                    </Popconfirm>
+                  </div>
+                </div>
+              )
+            }}
+          ></el-tree>
+        </div>
         <Button size="small" onClick={this.onAdd} style="width: 100%">
           <i class="el-icon-plus"></i> 添加
         </Button>
