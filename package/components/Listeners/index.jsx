@@ -27,7 +27,11 @@ export default Vue.extend({
       this.dialog.data = this.listeners[index];
       this.dialog.visible = true;
     },
-    onRemove() {},
+    onRemove(index) {
+      this.$store.commit("form/REMOVE_LISTENERS", {
+        index: index
+      });
+    },
     onSubmit(data) {
       this.dialog.visible = false;
 
@@ -71,38 +75,31 @@ export default Vue.extend({
           onCancel={this.onCancel}
         ></listeners-editor>
         <div class="property-wrapper__body">
-          <el-tree
-            data={this.listeners}
-            children="actions"
-            isLeaf={data =>
-              Object.getOwnPropertyDescriptor(data, "actions") === undefined
-            }
-            scopedSlots={{
-              default: ({ data, node }) => (
-                <div class="inline-property" style="width: 100%">
-                  <div class="inline-property__title">
-                    <span>{data.label}</span>
-                  </div>
-                  <div class="inline-property__action">
-                    <Button size="small" type="text">
-                      添加行为
-                    </Button>
-                    <Button size="small" type="text">
-                      编辑
-                    </Button>
-                    <Popconfirm
-                      title="是否删除？"
-                      onOnConfirm={() => this.onRemove(node.$index)}
-                    >
-                      <Button slot="reference" size="small" type="text">
-                        删除
-                      </Button>
-                    </Popconfirm>
-                  </div>
-                </div>
-              )
-            }}
-          ></el-tree>
+          {this.listeners.length <= 0 ? <p class="empty">暂无数据</p> : null}
+          {this.listeners.map((lis, index) => (
+            <div class="inline-property">
+              <div class="inline-property__title">
+                <span>{lis.source}</span>
+              </div>
+              <div class="inline-property__action">
+                <Button
+                  size="small"
+                  type="text"
+                  onClick={() => this.onEdit(index)}
+                >
+                  编辑
+                </Button>
+                <Popconfirm
+                  title="是否删除？"
+                  onOnConfirm={() => this.onRemove(lis)}
+                >
+                  <Button slot="reference" size="small" type="text">
+                    删除
+                  </Button>
+                </Popconfirm>
+              </div>
+            </div>
+          ))}
         </div>
         <Button size="small" onClick={this.onAdd} style="width: 100%">
           <i class="el-icon-plus"></i> 添加

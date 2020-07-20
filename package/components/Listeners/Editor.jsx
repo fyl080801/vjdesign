@@ -70,6 +70,7 @@ export default Vue.extend({
           }
         }
       ]) || [];
+
     this.fields.forEach(item => {
       this.components = { ...this.components, ...item.editorComponents };
     });
@@ -92,11 +93,11 @@ export default Vue.extend({
           size="small"
         >
           <FormItem
-            prop="label"
+            prop="source"
             label="名称"
             rules={[{ required: true, message: "必填项" }]}
           >
-            <Input v-model={this.model.label} placeholder="请输入"></Input>
+            <Input v-model={this.model.source} placeholder="请输入"></Input>
           </FormItem>
           <Row gutter={20}>
             <Col span={12}>
