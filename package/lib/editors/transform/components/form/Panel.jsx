@@ -11,7 +11,8 @@ export default Vue.extend({
       default() {
         return {};
       }
-    }
+    },
+    transforms: Array
   },
   data() {
     return {
@@ -80,9 +81,16 @@ export default Vue.extend({
         >
           <Select v-model={this.value.$type}>
             {!this.value.isRoot ? <Option value="raw" label="固定值" /> : null}
-            {Object.keys(TransformTypes).map(key => (
-              <Option value={key} label={TransformTypes[key]} />
-            ))}
+            {Object.keys(TransformTypes)
+              .filter(key => {
+                if (!this.transforms || this.transforms.length <= 0) {
+                  return true;
+                }
+                return this.transforms.includes(key);
+              })
+              .map(key => (
+                <Option value={key} label={TransformTypes[key]} />
+              ))}
           </Select>
         </FormItem>
         {!this.value.isRoot && this.value.$type === "raw" ? (

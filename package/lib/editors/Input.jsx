@@ -4,13 +4,16 @@ import { Input, Button } from "element-ui";
 
 export default Vue.component("v-jdesign-input", {
   mixins: [Transform],
+  props: {
+    placeholder: { type: String, default: "请输入" }
+  },
   render() {
     return (
       <div>
         {!this.isTransform ? (
           <Input
             v-model={this.fieldValue}
-            placeholder="请输入"
+            placeholder={this.placeholder}
             onChange={this.changed}
           >
             <Button

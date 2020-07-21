@@ -5,6 +5,14 @@ feature.datasource("object", "对象数据", [
   {
     property: "data",
     description: "数据",
+    editor: {
+      name: "default",
+      options: {
+        props: {
+          transforms: ["bind", "func"]
+        }
+      }
+    },
     rules: [{ required: true, message: "必填项" }]
   }
 ]);
