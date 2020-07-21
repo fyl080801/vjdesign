@@ -79,7 +79,7 @@ export default Vue.extend({
           {this.listeners.map((lis, index) => (
             <div class="inline-property">
               <div class="inline-property__title">
-                <span>{lis.source}</span>
+                <span>{lis.label}</span>
               </div>
               <div class="inline-property__action">
                 <Button

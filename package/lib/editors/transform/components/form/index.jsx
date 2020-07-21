@@ -36,7 +36,7 @@ export default Vue.extend({
     //
     getNodeName(data) {
       return this.isRoot(data)
-        ? "组件属性"
+        ? "转换属性"
         : this.isNewNode(data)
         ? "<参数>"
         : data.name;

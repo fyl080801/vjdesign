@@ -173,7 +173,7 @@ export default {
     UPDATE_LISTENERS: (state, payload) => {
       const { index, value } = payload;
       Object.keys(value)
-        .filter(key => key !== "actions")
+        // .filter(key => key !== "actions")
         .forEach(key => {
           state.value.listeners[index][key] = value[key];
         });

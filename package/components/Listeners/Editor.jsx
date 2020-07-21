@@ -12,6 +12,7 @@ import {
 import { cloneDeep } from "lodash-es";
 import { assemblyEditor } from "../../lib/feature/property";
 import VJForm from "vjform";
+import TransformInput from "../../lib/editors/Input";
 
 export default Vue.extend({
   props: {
@@ -23,10 +24,20 @@ export default Vue.extend({
       updating: false,
       model: {},
       components: {},
-      fields: []
+      fields: [],
+      newAction: {}
     };
   },
   methods: {
+    onAddAction() {
+      this.model.actions = this.model.actions || [];
+      this.model.actions.push({ ...this.newAction });
+      this.newAction = {};
+    },
+    onRemoveAction(index) {
+      this.model.actions = this.model.actions || [];
+      this.model.actions.splice(index, 1);
+    },
     onCancel() {
       this.$emit("cancel");
     },
@@ -79,7 +90,7 @@ export default Vue.extend({
     return (
       <Dialog
         visible={this.visible}
-        title="数据源"
+        title="监听"
         onClose={this.onCancel}
         width="540px"
         custom-class="v-jdesign-dialog"
@@ -93,11 +104,11 @@ export default Vue.extend({
           size="small"
         >
           <FormItem
-            prop="source"
+            prop="label"
             label="名称"
             rules={[{ required: true, message: "必填项" }]}
           >
-            <Input v-model={this.model.source} placeholder="请输入"></Input>
+            <Input v-model={this.model.label} placeholder="请输入"></Input>
           </FormItem>
           <Row gutter={20}>
             <Col span={12}>
@@ -125,6 +136,63 @@ export default Vue.extend({
               components={this.components}
             ></VJForm>
           ) : null}
+          <FormItem prop="actions" label="行为">
+            {(this.model.actions || []).map((item, index) => (
+              <Row gutter={10} key={index}>
+                <Col span={7}>
+                  <Input placeholder="数据" v-model={item.model}></Input>
+                </Col>
+                <Col span={7}>
+                  <TransformInput
+                    placeholder="触发条件"
+                    v-model={item.condition}
+                    transforms={["bind", "func"]}
+                  ></TransformInput>
+                </Col>
+                <Col span={7}>
+                  <TransformInput
+                    placeholder="赋值/行为"
+                    v-model={item.expression}
+                  ></TransformInput>
+                </Col>
+                <Col span={3}>
+                  <Button
+                    style="width: 100%"
+                    icon="el-icon-delete"
+                    onClick={() => this.onRemoveAction(index)}
+                  ></Button>
+                </Col>
+              </Row>
+            ))}
+            <Row gutter={10}>
+              <Col span={7}>
+                <Input
+                  placeholder="数据"
+                  v-model={this.newAction.model}
+                ></Input>
+              </Col>
+              <Col span={7}>
+                <TransformInput
+                  placeholder="触发条件"
+                  v-model={this.newAction.condition}
+                  transforms={["bind", "func"]}
+                ></TransformInput>
+              </Col>
+              <Col span={7}>
+                <TransformInput
+                  placeholder="赋值/行为"
+                  v-model={this.newAction.expression}
+                ></TransformInput>
+              </Col>
+              <Col span={3}>
+                <Button
+                  style="width: 100%"
+                  icon="el-icon-plus"
+                  onClick={this.onAddAction}
+                ></Button>
+              </Col>
+            </Row>
+          </FormItem>
         </Form>
         <span slot="footer" class="dialog-footer">
           <Button size="small" onClick={this.onCancel}>

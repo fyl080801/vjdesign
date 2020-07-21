@@ -13,7 +13,7 @@ export default Vue.extend({
         return null;
       }
     },
-    transforms: Array
+    transforms: { type: Array, default: () => [] }
   },
   data() {
     const isTransform = this.checkTransform();
@@ -22,7 +22,7 @@ export default Vue.extend({
         mounted: false,
         visible: false,
         value: null,
-        transforms: null
+        transforms: []
       },
       fieldValue: isTransform ? null : this.value, // 普通值
       transformValue: isTransform ? this.value : null // 转换的值
