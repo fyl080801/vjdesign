@@ -1,6 +1,6 @@
 {
   "name": "vjdesign",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Vue Form Designer",
   "author": {
     "name": "fyl080801",
@@ -36,7 +36,7 @@
     "lodash-es": "^4.17.15",
     "vjform": "^1.1.0",
     "vue": "^2.6.11",
-    "vue-json-viewer": "^2.2.13",
+    "vue-json-viewer": "^2.2.12",
     "vuedraggable": "^2.23.2",
     "vuex": "^3.4.0"
   },
