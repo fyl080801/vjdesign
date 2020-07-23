@@ -3,8 +3,7 @@ import store from "../store";
 import Components from "./Components";
 import Main from "./Main";
 import Properties from "./Properties";
-// import { mapState } from "vuex";
-import { Container } from "element-ui";
+import "./index.scss";
 
 export default Vue.extend({
   store,
@@ -12,39 +11,18 @@ export default Vue.extend({
     value: Object,
     components: Object
   },
-  components: {
-    "v-jcomponents": Components,
-    "v-jmain": Main,
-    "v-jproperties": Properties
-  },
-  // computed: {
-  //   ...mapState({
-  //     form: state => state.form
-  //   })
-  // },
-  // watch: {
-  //   form: {
-  //     handler(value) {
-  //       const result = {};
-  //       ["fields", "datasource", "watchs", "schema"].forEach(key => {
-  //         result[key] = value[key];
-  //       });
-  //       this.$emit("input", result);
-  //     },
-  //     deep: true
-  //   }
-  // },
+  components: {},
   created() {
     this.$store.commit("components/UPDATE", this.components || {});
     this.$store.commit("form/CREATEED", this.value);
   },
   render() {
     return (
-      <Container class="v-jdesign">
-        <v-jcomponents></v-jcomponents>
-        <v-jmain></v-jmain>
-        <v-jproperties></v-jproperties>
-      </Container>
+      <div class="v-jdesign">
+        <Components></Components>
+        <Main></Main>
+        <Properties></Properties>
+      </div>
     );
   }
 });
