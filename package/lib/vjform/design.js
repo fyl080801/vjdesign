@@ -21,7 +21,7 @@ export default function() {
     field.component = "div";
     field.layout = true;
     field.fieldOptions = {
-      class: "design-element " + (emiter.editing === uuid ? "editing" : ""),
+      class: "v-jd-design " + (emiter.editing === uuid ? "editing" : ""),
       on: {
         click: evt => {
           emiter.$emit("component-selected", cloned);
@@ -35,7 +35,7 @@ export default function() {
       ...["top", "left", "bottom", "right"].map(item => ({
         component: "div",
         layout: true,
-        fieldOptions: { class: "border border-" + item }
+        fieldOptions: { class: "v-jd-border v-jd-border-" + item }
       })),
       {
         component: "span",
