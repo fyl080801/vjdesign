@@ -2,8 +2,12 @@ const path = require("path");
 const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+function resolve(dir) {
+  return path.join(__dirname, dir);
+}
+
 module.exports = {
-  context: path.resolve(__dirname, "./package"),
+  context: resolve("./package"),
   module: {
     rules: [
       {
@@ -24,6 +28,14 @@ module.exports = {
             loader: "sass-loader"
           }
         ]
+      },
+      {
+        test: /\.svg$/,
+        loader: "svg-sprite-loader",
+        include: [resolve("./package/icons")],
+        options: {
+          symbolId: "icon-[name]"
+        }
       }
     ]
   },

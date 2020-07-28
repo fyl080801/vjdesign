@@ -10,7 +10,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      names: []
+      shown: []
     };
   },
   watch: {
@@ -18,15 +18,41 @@ export default Vue.extend({
       this.names = value.length > 0 ? [value[0].name] : [];
     }
   },
+  methods: {
+    toggleShown(index) {
+      const include = this.shown.findIndex(item => item === index);
+      if (include >= 0) {
+        this.shown.splice(include, 1);
+      } else {
+        this.shown.push(index);
+      }
+    }
+  },
   render() {
     return (
       <div class="accordion v-jd-collapse">
         {this.list.map((group, index) => (
           <div class="card item" key={index}>
-            <a href="javascript:;" class="card-header header">
+            <a
+              href="javascript:;"
+              class="card-header header"
+              onClick={() => this.toggleShown(index)}
+            >
+              <i>
+                <svg-icon name="th-large" />
+              </i>
               {group.name}
+              <i>
+                <svg-icon
+                  name={
+                    this.shown.includes(index)
+                      ? "chevron-down"
+                      : "chevron-right"
+                  }
+                />
+              </i>
             </a>
-            <div class="collapse show">
+            <div class={{ collapse: true, show: this.shown.includes(index) }}>
               <div class="card-body body">
                 <vuedraggable
                   tag="div"
@@ -37,15 +63,22 @@ export default Vue.extend({
                   sort={false}
                 >
                   {group.components.map((item, index) => (
-                    <div key={index} class="drag-handler col-6">
+                    <a
+                      key={index}
+                      href="javascript:;"
+                      class="drag-handler col-6"
+                    >
                       {item.description}
-                      {/* <Card body-style={{ padding: "10px" }}>
-                          <i
-                            class={item.icon ? item.icon : "el-icon-s-help"}
-                          ></i>
-                          {item.description}
-                        </Card> */}
-                    </div>
+                    </a>
+                    // <div >
+
+                    //   {/* <Card body-style={{ padding: "10px" }}>
+                    //       <i
+                    //         class={item.icon ? item.icon : "el-icon-s-help"}
+                    //       ></i>
+                    //       {item.description}
+                    //     </Card> */}
+                    // </div>
                     // <Col span={12} key={index} class="drag-handler">
                     //   <Card body-style={{ padding: "10px" }}>
                     //     <i
