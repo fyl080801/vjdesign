@@ -1,10 +1,8 @@
 import Vue from "vue";
 import ComponentList from "../components/ComponentList/index";
 import { getGroups } from "../lib/feature/component";
-import { Tabs, TabPane } from "element-ui";
 
 export default Vue.extend({
-  components: { ComponentList },
   data() {
     return {
       origin: []
@@ -15,12 +13,24 @@ export default Vue.extend({
   },
   render() {
     return (
-      <div class="aside">
-        <Tabs type="border-card" class="max-aside">
-          <TabPane label="组件库">
-            <component-list list={this.origin}></component-list>
-          </TabPane>
-        </Tabs>
+      <div class="v-jd-aside left">
+        <ul class="nav nav-tabs v-jd-tabs" role="tablist">
+          <li class="nav-item v-jd-tabitem" role="presentation">
+            <a class="nav-link active v-jd-link" role="tab" href="javascript:;">
+              组件库
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content v-jd-tabcontent">
+          <div
+            class="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <ComponentList list={this.origin} />
+          </div>
+        </div>
       </div>
     );
   }

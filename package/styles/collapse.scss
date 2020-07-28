@@ -1,0 +1,35 @@
+@import "../styles/variables.scss";
+
+.v-jdesign {
+  .v-jd-collapse {
+    font-size: 13px;
+
+    > .item {
+      border: none;
+      border-radius: 0;
+      border-top: $border;
+      border-bottom: $border;
+
+      &:first-child,
+      &:last-child {
+        border: none;
+      }
+
+      &:last-child {
+        border-top: $border;
+      }
+
+      > .header {
+        background-color: #fff;
+        padding: 0;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 20px;
+
+        color: black;
+        font-weight: 500;
+        text-decoration: none;
+      }
+    }
+  }
+}

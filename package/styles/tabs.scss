@@ -1,0 +1,37 @@
+@import "./variables.scss";
+
+.v-jdesign {
+  .v-jd-tabs {
+    background-color: $tabBackgroundColor;
+
+    > .v-jd-tabitem {
+      font-weight: 500;
+
+      > .v-jd-link {
+        height: 40px;
+        padding: 0 20px;
+        min-width: 102px;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 0;
+        border: $border;
+        border-top: none;
+        border-bottom: none;
+        color: $tabFontColor;
+
+        &.active {
+          color: #409eff;
+        }
+
+        &:first-child {
+          border-left: none;
+        }
+      }
+    }
+  }
+
+  .v-jd-tabcontent {
+    flex: 1;
+    overflow: auto;
+  }
+}

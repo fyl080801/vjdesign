@@ -3,7 +3,6 @@ import store from "../store";
 import Components from "./Components";
 import Main from "./Main";
 import Properties from "./Properties";
-import "./index.scss";
 
 export default Vue.extend({
   store,

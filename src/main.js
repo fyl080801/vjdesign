@@ -3,7 +3,7 @@ import App from "./App.vue";
 import vjdesign from "../package/index";
 import ElementUI from "element-ui";
 import "./editor/element";
-import "bootstrap/dist/css/bootstrap-grid.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 Vue.config.productionTip = false;
 
