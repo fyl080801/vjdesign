@@ -35,6 +35,7 @@
     "core-js": "^3.6.4",
     "element-ui": "^2.13.2",
     "lodash-es": "^4.17.15",
+    "normalize.css": "^8.0.1",
     "vjform": "^1.1.0",
     "vue": "^2.6.11",
     "vue-json-viewer": "^2.2.12",
