@@ -11,20 +11,32 @@
         height: 40px;
         padding: 0 20px;
         min-width: 102px;
-        text-align: center;
         line-height: 40px;
         border-radius: 0;
-        border: $border;
-        border-top: none;
-        border-bottom: none;
+        border: none;
         color: $tabFontColor;
+        margin-left: -1px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+        overflow-y: hidden;
 
         &.active {
           color: #409eff;
+          border-left: $border;
+          border-right: $border;
+
+          // 为了改变svg颜色
+          .tab-icon {
+            filter: drop-shadow(#409eff 0 100px);
+            transform: translate(0, -100px);
+          }
         }
 
-        &:first-child {
-          border-left: none;
+        .tab-icon {
+          margin-right: 5px;
         }
       }
     }

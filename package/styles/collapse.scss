@@ -9,6 +9,7 @@
       border-radius: 0;
       border-top: $border;
       border-bottom: $border;
+      margin-top: -1px;
 
       &:first-child,
       &:last-child {
@@ -62,7 +63,7 @@
           color: black;
           text-decoration: none;
 
-          margin-bottom: -1px;
+          // margin-bottom: -1px;
 
           &:hover {
             color: $fontActiveColor;
