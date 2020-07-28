@@ -23,14 +23,19 @@
         justify-content: center;
         overflow-y: hidden;
 
+        .tab-icon {
+          filter: drop-shadow($tabFontColor 0 100px);
+          transform: translate(0, -100px);
+        }
+
         &.active {
-          color: #409eff;
+          color: $fontActiveColor;
           border-left: $border;
           border-right: $border;
 
           // 为了改变svg颜色
           .tab-icon {
-            filter: drop-shadow(#409eff 0 100px);
+            filter: drop-shadow($fontActiveColor 0 100px);
             transform: translate(0, -100px);
           }
         }

@@ -16,6 +16,10 @@
       border-right: $border;
     }
 
+    &.right {
+      border-left: $border;
+    }
+
     svg {
       margin-top: -2px;
     }

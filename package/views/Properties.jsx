@@ -5,27 +5,27 @@ import { getComponent } from "../lib/feature/component";
 import emiter from "../utils/emiter";
 import Datasource from "../components/Datasource";
 import Listeners from "../components/Listeners";
-import {
-  Aside,
-  Tabs,
-  TabPane,
-  Collapse,
-  CollapseItem,
-  Form,
-  FormItem,
-  Input,
-  Checkbox,
-  Select,
-  Option,
-  Button,
-  Popconfirm
-} from "element-ui";
-import VJForm from "vjform";
+// import {
+//   Tabs,
+//   TabPane,
+//   Collapse,
+//   CollapseItem,
+//   Form,
+//   FormItem,
+//   Input,
+//   Checkbox,
+//   Select,
+//   Option,
+//   Button,
+//   Popconfirm
+// } from "element-ui";
+// import VJForm from "vjform";
 
 export default Vue.extend({
   components: { Datasource, Listeners },
   data() {
     return {
+      active: 0,
       editorGroups: [],
       updating: null,
       groupNames: [],
@@ -80,6 +80,9 @@ export default Vue.extend({
     },
     refreshEditing() {
       this.$store.commit("form/REFRESH_EDITING");
+    },
+    toggleActive(index) {
+      this.active = index;
     }
   },
   created() {
@@ -97,8 +100,68 @@ export default Vue.extend({
   },
   render() {
     return (
-      <Aside class="aside right">
-        <Tabs type="border-card" class="max-aside">
+      <div class="v-jd-aside right">
+        <ul class="nav nav-tabs v-jd-tabs" role="tablist">
+          <li class="nav-item v-jd-tabitem" role="presentation">
+            <a
+              class={`nav-link v-jd-link ${this.active === 0 ? "active" : ""}`}
+              role="tab"
+              href="javascript:;"
+              onClick={() => this.toggleActive(0)}
+            >
+              组件属性
+            </a>
+          </li>
+          <li class="nav-item v-jd-tabitem" role="presentation">
+            <a
+              class={`nav-link v-jd-link ${this.active === 1 ? "active" : ""}`}
+              role="tab"
+              href="javascript:;"
+              onClick={() => this.toggleActive(1)}
+            >
+              页面属性
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content v-jd-tabcontent">
+          {this.active === 0 ? (
+            <div class="tab-pane fade show" role="tabpanel">
+              {this.editing ? (
+                <div class="accordion v-jd-collapse">
+                  {this.editorGroups.map((group, index) => (
+                    <div class="card item" key={index}>
+                      {/* <a
+                        href="javascript:;"
+                        class="card-header header"
+                        onClick={() => this.toggleShown(index)}
+                      >
+                        <i>
+                          <svg-icon name="th-large" />
+                        </i>
+                        {group.name}
+                        <i>
+                          <svg-icon
+                            name={
+                              this.shown.includes(index)
+                                ? "chevron-down"
+                                : "chevron-right"
+                            }
+                          />
+                        </i>
+                      </a> */}
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+          {this.active === 1 ? (
+            <div class="tab-pane fade show" role="tabpanel">
+              <div class="accordion v-jd-collapse"></div>
+            </div>
+          ) : null}
+        </div>
+        {/* <Tabs type="border-card" class="max-aside">
           <TabPane label="组件属性">
             {this.editing ? (
               <Collapse
@@ -142,8 +205,8 @@ export default Vue.extend({
               <listeners></listeners>
             </Collapse>
           </TabPane>
-        </Tabs>
-      </Aside>
+        </Tabs> */}
+      </div>
     );
   }
 });

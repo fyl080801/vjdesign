@@ -62,7 +62,7 @@ export default Vue.extend({
           </li>
         </ul>
         <div class="tab-content v-jd-tabcontent" style="padding: 15px">
-          <div class="tab-pane fade show active" id="home" role="tabpanel">
+          <div class="tab-pane fade show active" role="tabpanel">
             {this.active === 0 ? <DesignContent /> : null}
             {this.active === 1 ? <DesignMetadata /> : null}
             {this.active === 2 ? <DesignPreview /> : null}
