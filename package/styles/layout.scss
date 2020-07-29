@@ -18,6 +18,11 @@
   min-width: 0;
 
   font-size: 14px;
+
+  .jv-container {
+    border: $border;
+    border-style: dashed;
+  }
 }
 
 /*  */

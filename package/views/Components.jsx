@@ -15,7 +15,11 @@ export default Vue.extend({
     return (
       <div class="v-jd-aside left">
         <ul class="nav nav-tabs v-jd-tabs" role="tablist">
-          <li class="nav-item v-jd-tabitem" role="presentation">
+          <li
+            class="nav-item v-jd-tabitem"
+            role="presentation"
+            style="width: 50%"
+          >
             <a class="nav-link active v-jd-link" role="tab" href="javascript:;">
               组件库
             </a>

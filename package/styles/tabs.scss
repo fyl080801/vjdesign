@@ -10,7 +10,7 @@
       > .v-jd-link {
         height: 40px;
         padding: 0 20px;
-        min-width: 102px;
+        min-width: 120px;
         line-height: 40px;
         border-radius: 0;
         border: none;
@@ -43,6 +43,10 @@
         .tab-icon {
           margin-right: 5px;
         }
+      }
+
+      > :last-child {
+        margin-right: -1px;
       }
     }
   }

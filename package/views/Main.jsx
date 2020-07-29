@@ -37,7 +37,8 @@ export default Vue.extend({
               href="javascript:;"
               onClick={() => this.toggleActive(1)}
             >
-              元数据
+              <svg-icon name="code" class="tab-icon" />
+              配置预览
             </a>
           </li>
           <li class="nav-item v-jd-tabitem" role="presentation">
@@ -47,6 +48,7 @@ export default Vue.extend({
               href="javascript:;"
               onClick={() => this.toggleActive(2)}
             >
+              <svg-icon name="eye-on" class="tab-icon" />
               视图预览
             </a>
           </li>
@@ -57,6 +59,7 @@ export default Vue.extend({
               href="javascript:;"
               onClick={() => this.toggleActive(3)}
             >
+              <svg-icon name="database" class="tab-icon" />
               数据预览
             </a>
           </li>

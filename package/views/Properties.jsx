@@ -5,6 +5,7 @@ import { getComponent } from "../lib/feature/component";
 import emiter from "../utils/emiter";
 import Datasource from "../components/Datasource";
 import Listeners from "../components/Listeners";
+import { Accordion, Card } from "../components/Accordion";
 // import {
 //   Tabs,
 //   TabPane,
@@ -19,7 +20,7 @@ import Listeners from "../components/Listeners";
 //   Button,
 //   Popconfirm
 // } from "element-ui";
-// import VJForm from "vjform";
+import VJForm from "vjform";
 
 export default Vue.extend({
   components: { Datasource, Listeners },
@@ -102,7 +103,11 @@ export default Vue.extend({
     return (
       <div class="v-jd-aside right">
         <ul class="nav nav-tabs v-jd-tabs" role="tablist">
-          <li class="nav-item v-jd-tabitem" role="presentation">
+          <li
+            class="nav-item v-jd-tabitem"
+            role="presentation"
+            style="width: 50%"
+          >
             <a
               class={`nav-link v-jd-link ${this.active === 0 ? "active" : ""}`}
               role="tab"
@@ -112,7 +117,11 @@ export default Vue.extend({
               组件属性
             </a>
           </li>
-          <li class="nav-item v-jd-tabitem" role="presentation">
+          <li
+            class="nav-item v-jd-tabitem"
+            role="presentation"
+            style="width: 50%"
+          >
             <a
               class={`nav-link v-jd-link ${this.active === 1 ? "active" : ""}`}
               role="tab"
@@ -125,39 +134,39 @@ export default Vue.extend({
         </ul>
         <div class="tab-content v-jd-tabcontent">
           {this.active === 0 ? (
-            <div class="tab-pane fade show" role="tabpanel">
+            <div class="tab-pane fade show active" role="tabpanel">
               {this.editing ? (
-                <div class="accordion v-jd-collapse">
-                  {this.editorGroups.map((group, index) => (
-                    <div class="card item" key={index}>
-                      {/* <a
-                        href="javascript:;"
-                        class="card-header header"
-                        onClick={() => this.toggleShown(index)}
-                      >
+                <Accordion v-model={this.groupNames}>
+                  {this.editorGroups.map(group => (
+                    <Card key={group.key} name={group.key}>
+                      <fragment slot="title">
                         <i>
-                          <svg-icon name="th-large" />
+                          <svg-icon name="tools" />
                         </i>
-                        {group.name}
-                        <i>
-                          <svg-icon
-                            name={
-                              this.shown.includes(index)
-                                ? "chevron-down"
-                                : "chevron-right"
-                            }
-                          />
-                        </i>
-                      </a> */}
-                    </div>
+                        {group.key}
+                      </fragment>
+                      <form>
+                        <VJForm
+                          class="vjdesign-property"
+                          value={this.editing}
+                          fields={[]}
+                          onInput={this.updateEditing}
+                          onClear={this.refreshEditing}
+                          components={{ ...group.components }}
+                        />
+                        sdsdsd
+                      </form>
+                    </Card>
                   ))}
-                </div>
-              ) : null}
+                </Accordion>
+              ) : (
+                <p>请选择组件</p>
+              )}
             </div>
           ) : null}
           {this.active === 1 ? (
-            <div class="tab-pane fade show" role="tabpanel">
-              <div class="accordion v-jd-collapse"></div>
+            <div class="tab-pane fade show active" role="tabpanel">
+              <Accordion v-model={this.propNames}></Accordion>
             </div>
           ) : null}
         </div>
