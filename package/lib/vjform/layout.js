@@ -17,9 +17,9 @@ export default function() {
     if (
       options.mode !== "design" ||
       layouts.indexOf(component) < 0 ||
-      (layout && /border/g.test((field.fieldOptions || {}).class || "")) ||
+      (layout && /v-jd-border/g.test((field.fieldOptions || {}).class || "")) ||
       (layout &&
-        ((field.fieldOptions || {}).class || "").indexOf("design-element") >= 0)
+        ((field.fieldOptions || {}).class || "").indexOf("v-jd-design") >= 0)
     ) {
       return;
     }
@@ -30,7 +30,8 @@ export default function() {
         component: "vuedraggable",
         layout: true,
         fieldOptions: {
-          class: "layout " + (emiter.editing === field.uuid ? "editing" : ""),
+          class:
+            "v-jd-layout " + (emiter.editing === field.uuid ? "editing" : ""),
           on: {
             input: value => {
               emiter.$emit("children-changed", { uuid: field.uuid, value });
@@ -47,7 +48,7 @@ export default function() {
           },
           attrs: {
             group: "jdesign",
-            draggable: ".design-element"
+            draggable: ".v-jd-design"
           },
           props: {
             value: [...(field.children || [])]
@@ -60,7 +61,7 @@ export default function() {
             component: "div",
             layout: true,
             fieldOptions: {
-              class: "border-layout border-" + item
+              class: "v-jd-border-layout v-jd-border-" + item
             }
           })),
           {

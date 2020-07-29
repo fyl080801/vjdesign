@@ -1,0 +1,174 @@
+.v-jdesign {
+  .v-jform {
+    .v-jd-design {
+      position: relative;
+      width: 100%;
+      display: inherit;
+    }
+
+    .v-jd-design {
+      .v-jd-layout {
+        position: relative;
+        box-sizing: border-box;
+        padding: 20px;
+        padding-bottom: 0;
+        width: 100%;
+        display: inherit;
+        overflow: hidden;
+      }
+
+      > * {
+        display: block !important;
+      }
+
+      > .layout-element * {
+        text-align: initial;
+      }
+
+      > .tag,
+      > .del {
+        position: absolute;
+        top: 0;
+        left: 0;
+        line-height: 16px;
+        font-size: 12px;
+        z-index: 2000;
+        background-color: rgb(242, 242, 242);
+        padding: 2px 4px;
+        cursor: pointer;
+        border: 1px dashed gray;
+        text-decoration: none;
+      }
+
+      > .del {
+        position: absolute;
+        left: auto;
+        right: 0;
+      }
+    }
+
+    .root,
+    .v-jd-design .v-jd-layout {
+      min-height: 45px;
+
+      > .empty {
+        width: 100%;
+        text-align: center;
+        color: silver;
+        margin: 0;
+        font-size: 14px;
+        cursor: pointer;
+        float: left;
+        line-height: 24px;
+      }
+    }
+
+    .v-jd-design {
+      /* element border */
+      > .v-jd-border-top,
+      > .v-jd-border-bottom,
+      > .v-jd-border-left,
+      > .v-jd-border-right {
+        position: absolute;
+        border-style: none;
+        border-color: gray;
+      }
+
+      > .v-jd-border-top {
+        top: 0;
+        left: 0;
+        right: 0;
+        border-top-width: 1px;
+        border-top-style: dashed;
+      }
+
+      > .v-jd-border-left {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        border-left-width: 1px;
+        border-left-style: dashed;
+      }
+
+      > .v-jd-border-bottom {
+        right: 0;
+        left: 0;
+        bottom: 0;
+        border-bottom-width: 1px;
+        border-bottom-style: dashed;
+      }
+
+      > .v-jd-border-right {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border-right-width: 1px;
+        border-right-style: dashed;
+      }
+
+      // layout
+      .v-jd-layout {
+        > .v-jd-border-top,
+        > .v-jd-border-right,
+        > .v-jd-border-left,
+        > .v-jd-border-bottom {
+          position: absolute;
+          border-style: none;
+          border-color: silver;
+        }
+
+        > .v-jd-border-right {
+          right: 0;
+          top: 0;
+          bottom: 0;
+          border-right: 1px dashed silver;
+        }
+        > .v-jd-border-left {
+          left: 0;
+          top: 0;
+          bottom: 0;
+          border-left: 1px dashed silver;
+        }
+        > .v-jd-border-top {
+          right: 0;
+          top: 0;
+          left: 0;
+          border-top: 1px dashed silver;
+        }
+        > .v-jd-border-bottom {
+          right: 0;
+          left: 0;
+          bottom: 0;
+          border-bottom: 1px dashed silver;
+        }
+      }
+
+      //
+      &.editing {
+        > .v-jd-border,
+        > .tag,
+        > .del {
+          border-color: red;
+        }
+
+        > .v-jd-border-layout {
+          border-color: lightsalmon;
+        }
+
+        > .empty {
+          color: lightsalmon;
+        }
+
+        > .tag {
+          color: red;
+          font-weight: 500;
+          background-color: #e4e7ed;
+        }
+
+        > .del {
+          background-color: #e4e7ed;
+        }
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ import SvgIcon from "vue-svgicon";
 import "./icons/components";
 import "./lib/vjform";
 
+import "normalize.css/normalize.css";
 import "element-ui/packages/theme-chalk/src/index.scss";
 import "./styles/index.scss";
 

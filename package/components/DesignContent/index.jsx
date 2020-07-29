@@ -23,7 +23,7 @@ export default Vue.extend({
           component: "vuedraggable",
           layout: true,
           fieldOptions: {
-            class: "layout root",
+            class: "v-jd-layout root",
             on: {
               // 回头加上对root的节点操作
               // input: value => {
@@ -41,7 +41,7 @@ export default Vue.extend({
             },
             attrs: {
               group: "jdesign",
-              draggable: ".design-element"
+              draggable: ".v-jd-design"
             }
           },
           children: [
@@ -50,7 +50,7 @@ export default Vue.extend({
               component: "div",
               layout: true,
               fieldOptions: {
-                class: "border-layout border-" + item
+                class: "v-jd-border-layout v-jd-border-" + item
               }
             })),
             {
@@ -105,7 +105,7 @@ export default Vue.extend({
           value={this.fields}
           onInput={this.emitter}
           group="jdesign"
-          draggable=".design-element"
+          draggable=".v-jd-design"
         >
           <p>拖组件到此</p>
         </vuedraggable>

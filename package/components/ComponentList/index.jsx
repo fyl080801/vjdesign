@@ -32,7 +32,7 @@ export default Vue.extend({
     return (
       <div class="accordion v-jd-collapse">
         {this.list.map((group, index) => (
-          <div class="card item" key={index}>
+          <div class="card item">
             <a
               href="javascript:;"
               class="card-header header"
@@ -62,12 +62,8 @@ export default Vue.extend({
                   group={{ name: "jdesign", pull: "clone", put: false }}
                   sort={false}
                 >
-                  {group.components.map((item, index) => (
-                    <a
-                      key={index}
-                      href="javascript:;"
-                      class="drag-handler col-6"
-                    >
+                  {group.components.map(item => (
+                    <a href="javascript:;" class="drag-handler col-6">
                       {item.description}
                     </a>
                   ))}
