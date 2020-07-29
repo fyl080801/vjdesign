@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Editor from "./Editor";
 import { mapState } from "vuex";
-import { CollapseItem, Button, Popconfirm } from "element-ui";
+import { Button, Popconfirm } from "element-ui";
+import { Card } from "../Accordion";
 
 export default Vue.extend({
   components: {
@@ -60,14 +61,13 @@ export default Vue.extend({
   },
   render() {
     return (
-      <CollapseItem
-        key="vjform_watchs"
-        name="vjform_watchs"
-        class="property-wrapper"
-      >
-        <div slot="title">
-          <i class="el-icon-s-operation"></i>监听
-        </div>
+      <Card key="vjform_watchs" name="vjform_watchs" class="property-wrapper">
+        <fragment slot="title">
+          <i>
+            <svg-icon name="tools" />
+          </i>
+          监听
+        </fragment>
         <listeners-editor
           visible={this.dialog.visible}
           v-model={this.dialog.data}
@@ -104,7 +104,7 @@ export default Vue.extend({
         <Button size="small" onClick={this.onAdd} style="width: 100%">
           <i class="el-icon-plus"></i> 添加
         </Button>
-      </CollapseItem>
+      </Card>
     );
   }
 });

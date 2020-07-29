@@ -7,7 +7,16 @@ export default Vue.extend({
   },
   methods: {
     toggleShown() {
-      this.$parent.onItemToggle(this.name);
+      this.parent.onItemToggle(this.name);
+    }
+  },
+  computed: {
+    parent() {
+      let cache = this.$parent;
+      while (!/v-jd-accordion/g.test(cache.$vnode.tag) && cache.$parent) {
+        cache = cache.$parent;
+      }
+      return cache;
     }
   },
   render() {
@@ -22,7 +31,7 @@ export default Vue.extend({
           <i>
             <svg-icon
               name={
-                this.$parent.value.includes(this.name)
+                this.parent.value.includes(this.name)
                   ? "chevron-down"
                   : "chevron-right"
               }
@@ -32,7 +41,7 @@ export default Vue.extend({
         <div
           class={{
             collapse: true,
-            show: this.$parent.value.includes(this.name)
+            show: this.parent.value.includes(this.name)
           }}
         >
           <div class="card-body body">{this.$slots.default}</div>

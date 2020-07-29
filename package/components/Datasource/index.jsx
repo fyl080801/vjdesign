@@ -3,7 +3,8 @@ import { mapState } from "vuex";
 import Editor from "./Editor";
 import { getDatasources } from "../../lib/feature/datasource";
 import "./index.scss";
-import { CollapseItem, Tag, Button, Popconfirm } from "element-ui";
+import { Tag, Button, Popconfirm } from "element-ui";
+import { Card } from "../Accordion";
 
 export default Vue.extend({
   components: { "datasource-editor": Editor },
@@ -63,14 +64,20 @@ export default Vue.extend({
   },
   render() {
     return (
-      <CollapseItem
+      <Card
         class="property-wrapper"
         key="vjform_datasource"
         name="vjform_datasource"
       >
-        <div slot="title">
+        <fragment slot="title">
+          <i>
+            <svg-icon name="tools" />
+          </i>
+          数据源
+        </fragment>
+        {/* <div slot="title">
           <i class="el-icon-s-operation"></i>数据源
-        </div>
+        </div> */}
         {/* 这种Ïdialog必须放到前面 */}
         <datasource-editor
           visible={this.dialog.visible}
@@ -113,7 +120,7 @@ export default Vue.extend({
         <Button size="small" onClick={this.onAdd} style="width: 100%">
           <i class="el-icon-plus"></i> 添加
         </Button>
-      </CollapseItem>
+      </Card>
     );
   }
 });

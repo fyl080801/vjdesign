@@ -166,7 +166,10 @@ export default Vue.extend({
           ) : null}
           {this.active === 1 ? (
             <div class="tab-pane fade show active" role="tabpanel">
-              <Accordion v-model={this.propNames}></Accordion>
+              <Accordion v-model={this.propNames}>
+                <datasource></datasource>
+                <listeners></listeners>
+              </Accordion>
             </div>
           ) : null}
         </div>
@@ -210,8 +213,7 @@ export default Vue.extend({
           </TabPane>
           <TabPane label="页面属性">
             <Collapse v-model={this.propNames} class="components">
-              <datasource></datasource>
-              <listeners></listeners>
+              
             </Collapse>
           </TabPane>
         </Tabs> */}
