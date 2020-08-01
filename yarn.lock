@@ -1172,10 +1172,10 @@
     lodash.kebabcase "^4.1.1"
     svg-tags "^1.0.0"
 
-"@vue/babel-preset-app@^4.4.1":
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/@vue/babel-preset-app/-/babel-preset-app-4.4.1.tgz#97c6796183cd0abf96a17297dc335c4c702fd8c4"
-  integrity sha512-VHVROEBBiW0dnuNuzlFElkncXo+zxh5Px0MZ51Th5da8UPbQodf43mnpotMnFtmCPTXAFL58tzDttu1FgrgfpQ==
+"@vue/babel-preset-app@^4.4.6":
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@vue/babel-preset-app/-/babel-preset-app-4.4.6.tgz#92aef916e83f1abe0a2ed1e9e2cef5b332f958c4"
+  integrity sha512-urIa6Qk3lKacLvscrzxMNyYlTqKFcPAUo5MohOjv1ISZ9PssHw693WTOrqSC0XksdMLtp/rnLvc6l5G8Muk0lw==
   dependencies:
     "@babel/core" "^7.9.6"
     "@babel/helper-compilation-targets" "^7.9.6"
@@ -1240,60 +1240,60 @@
     "@vue/babel-plugin-transform-vue-jsx" "^1.1.2"
     camelcase "^5.0.0"
 
-"@vue/cli-overlay@^4.4.1":
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/@vue/cli-overlay/-/cli-overlay-4.4.1.tgz#f1f51f31f7a00d371e9a5b5a941525184475bf8b"
-  integrity sha512-EQqAVy7O/qqGOfSYIGL073FWlr/s6QFA0wA1wY8pHnTS5WPwAiHT+D+xe+fgXKZ3KeL7v7u/le7YFIEVXFVXOg==
+"@vue/cli-overlay@^4.4.6":
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@vue/cli-overlay/-/cli-overlay-4.4.6.tgz#58f996066d8c0a0a45ad4b5c6f3f213f9945a9ba"
+  integrity sha512-fzjg2gWQt+jw5fyLsD9HZNxGNQgZjLDI2s9bLWJwRucdfmncSi9neqA0TZyszGrgcJA4Qu4V5KgV0qwVSBYCaw==
 
-"@vue/cli-plugin-babel@^4.4.1":
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-babel/-/cli-plugin-babel-4.4.1.tgz#2c6e969fe51f1b4b211bea84afb7cad18240f70f"
-  integrity sha512-dmhymfm2UnZDw13k/zKT6YIj7je53mE37Y+jEJxpRUlCKFmZUDuYkJ8i5HmO0SnaCnEGqNELaBkoIFnY3aE2Gw==
+"@vue/cli-plugin-babel@^4.4.6":
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-babel/-/cli-plugin-babel-4.4.6.tgz#d5d750d4f74900c00836e19c164193650df26f3b"
+  integrity sha512-9cX9mN+4DIbcqw3rV6UBOA0t5zikIkrBLQloUzsOBOu5Xb7/UoD7inInFj7bnyHUflr5LqbdWJ+etCQcWAIIXA==
   dependencies:
     "@babel/core" "^7.9.6"
-    "@vue/babel-preset-app" "^4.4.1"
-    "@vue/cli-shared-utils" "^4.4.1"
+    "@vue/babel-preset-app" "^4.4.6"
+    "@vue/cli-shared-utils" "^4.4.6"
     babel-loader "^8.1.0"
     cache-loader "^4.1.0"
     thread-loader "^2.1.3"
     webpack "^4.0.0"
 
-"@vue/cli-plugin-eslint@^4.4.1":
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-eslint/-/cli-plugin-eslint-4.4.1.tgz#e39d6517da6de231195d227f995f495e2958a74a"
-  integrity sha512-T+9+q44iajQEbe59z6Io3otFOsWnPOEVU+/hrDyC6aOToJbQo6P4VacByDDcuGYENAjAd8ENLSt18TaPNSIyRw==
+"@vue/cli-plugin-eslint@^4.4.6":
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-eslint/-/cli-plugin-eslint-4.4.6.tgz#442d62a70dd93e4a549ff9164d2d10f4e97a58f1"
+  integrity sha512-3a9rVpOKPQsDgAlRkhmBMHboGobivG/47BbQGE66Z8YJxrgF/AWikP3Jy67SmxtszRkyiWfw4aJFRV9r3MzffQ==
   dependencies:
-    "@vue/cli-shared-utils" "^4.4.1"
+    "@vue/cli-shared-utils" "^4.4.6"
     eslint-loader "^2.2.1"
     globby "^9.2.0"
     inquirer "^7.1.0"
     webpack "^4.0.0"
     yorkie "^2.0.0"
 
-"@vue/cli-plugin-router@^4.4.1":
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-router/-/cli-plugin-router-4.4.1.tgz#07d09df0f4bea816e637da814f578b808f1f93b2"
-  integrity sha512-kCSsJG7pjDvCJDjGtcCI5l0UjmqwNigOR41RkeGSjSUvzV4ArSniXjFqrOmtpMp36S5xCtwtt9MFm/K4fCubkQ==
+"@vue/cli-plugin-router@^4.4.6":
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-router/-/cli-plugin-router-4.4.6.tgz#db5bb1c92afd2046376e4faa90270d6363d4b9b8"
+  integrity sha512-TkLdn0ZYo3zgn78Rk8doPlR+4UkGjGW2R1eGEaZEkue/mw2VhUWtTk9cKLZaYrw0eY8Ro/j+OV6mD+scyrairg==
   dependencies:
-    "@vue/cli-shared-utils" "^4.4.1"
+    "@vue/cli-shared-utils" "^4.4.6"
 
-"@vue/cli-plugin-vuex@^4.4.1":
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-vuex/-/cli-plugin-vuex-4.4.1.tgz#98d18fc5d36fa6e0d1fc2ecaeea37aa965564f19"
-  integrity sha512-FtOFsDP0qznwVaCz0BZmTzUm5vhHSJzX2/XD3L5dLTkrNxyDEbZmbKoX0n1OzBcQwZC7dkJZP2tdoCQx0mX//g==
+"@vue/cli-plugin-vuex@^4.4.6":
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-vuex/-/cli-plugin-vuex-4.4.6.tgz#44b596f0d5236e0a2ce1aa4757bda5207c230be0"
+  integrity sha512-Ho0YzUivn8BLPqFoFypntR8CMTEXYYHVr0GdnZW99XL+DbGw75f+tJfnrV9UFHDTfvZt7uewKiXDMlrzQ0l3Ug==
 
-"@vue/cli-service@^4.4.1":
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/@vue/cli-service/-/cli-service-4.4.1.tgz#b26a435d8c953bc7efaf7b784c9835c1415bcf1c"
-  integrity sha512-DVV0zr5Sw7pzdm3z3PRrfqihLgoJP/d9AgNFcSSQF/J9Gtvjf1t0PTJJFeLANHSL3kDWte+3kjc22sXayu0BJQ==
+"@vue/cli-service@^4.4.6":
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@vue/cli-service/-/cli-service-4.4.6.tgz#83ca058d081eb145bbc1ae2fe8069d2d9ddf7e18"
+  integrity sha512-k5OFGh2NnvRymCyq9DfBiNJvECUuun3pl5KMm3557IZyA5E5csv+RHoSW3dX8HHe0zXq18g52VswP1llvR9POw==
   dependencies:
     "@intervolga/optimize-cssnano-plugin" "^1.0.5"
     "@soda/friendly-errors-webpack-plugin" "^1.7.1"
     "@soda/get-current-script" "^1.0.0"
-    "@vue/cli-overlay" "^4.4.1"
-    "@vue/cli-plugin-router" "^4.4.1"
-    "@vue/cli-plugin-vuex" "^4.4.1"
-    "@vue/cli-shared-utils" "^4.4.1"
+    "@vue/cli-overlay" "^4.4.6"
+    "@vue/cli-plugin-router" "^4.4.6"
+    "@vue/cli-plugin-vuex" "^4.4.6"
+    "@vue/cli-shared-utils" "^4.4.6"
     "@vue/component-compiler-utils" "^3.1.2"
     "@vue/preload-webpack-plugin" "^1.1.0"
     "@vue/web-component-wrapper" "^1.2.0"
@@ -1340,10 +1340,10 @@
     webpack-dev-server "^3.11.0"
     webpack-merge "^4.2.2"
 
-"@vue/cli-shared-utils@^4.4.1":
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/@vue/cli-shared-utils/-/cli-shared-utils-4.4.1.tgz#930304ade5a9f9bf0d2fd67d9305cad83d04aae1"
-  integrity sha512-teevHgI7XUsKVMOncx3M+6iLjO28woGfRwgUG4hR83moVBHQe5x2OCr2i5t/58bwpv269RD5RYXBQCGtIXuxZw==
+"@vue/cli-shared-utils@^4.4.6":
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@vue/cli-shared-utils/-/cli-shared-utils-4.4.6.tgz#0ec59880920736c6dd79079ac0b5ceac29fa55e1"
+  integrity sha512-ba+FZZCjiTSu2otnLjY4qXqASe7ZIQ/QBljk5oRPgqrR0p1NUkDPUcZhqa041aOaSW1yAfSfhOD7Q84nMnWhzQ==
   dependencies:
     "@hapi/joi" "^15.0.1"
     chalk "^2.4.2"
@@ -1355,7 +1355,6 @@
     ora "^3.4.0"
     read-pkg "^5.1.1"
     request "^2.88.2"
-    request-promise-native "^1.0.8"
     semver "^6.1.0"
     strip-ansi "^6.0.0"
 
@@ -2222,9 +2221,9 @@ bluebird@^3.1.1, bluebird@^3.5.5:
   integrity sha1-nyKcFb4nJFT/qXOs4NvueaGww28=
 
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
-  version "4.11.8"
-  resolved "https://registry.npm.taobao.org/bn.js/download/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
-  integrity sha1-LN4J617jQfSEdGuwMJsyU7GxRC8=
+  version "4.11.9"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.9.tgz#26d556829458f9d1e81fc48952493d0ba3507828"
+  integrity sha512-E6QoYqCKZfgatHTdHzs1RRKP7ip4vvm+EyRUeE2RF0NblwVvb0p6jSVeNTOFxPn26QXN2o6SMfNxKp6kU8zQaw==
 
 body-parser@1.19.0:
   version "1.19.0"
@@ -2297,7 +2296,7 @@ braces@^3.0.1, braces@~3.0.2:
 
 brorand@^1.0.1:
   version "1.1.0"
-  resolved "https://registry.npm.taobao.org/brorand/download/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
+  resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
 
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
@@ -3719,9 +3718,9 @@ element-ui@^2.13.2:
     throttle-debounce "^1.0.1"
 
 elliptic@^6.0.0:
-  version "6.5.2"
-  resolved "https://registry.npm.taobao.org/elliptic/download/elliptic-6.5.2.tgz#05c5678d7173c049d8ca433552224a495d0e3762"
-  integrity sha1-BcVnjXFzwEnYykM1UiJKSV0ON2I=
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.3.tgz#cb59eb2efdaf73a0bd78ccd7015a62ad6e0f93d6"
+  integrity sha512-IMqzv5wNQf+E6aHeIqATs0tOLeOTwj1QKbRcS3jBbYkl5oLAserA8yJTT7/VyHUYG91PRmPyeQDObKLPpeS4dw==
   dependencies:
     bn.js "^4.4.0"
     brorand "^1.0.1"
@@ -3873,10 +3872,10 @@ eslint-loader@^2.2.1:
     object-hash "^1.1.4"
     rimraf "^2.6.1"
 
-eslint-plugin-prettier@^3.1.3:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.1.3.tgz#ae116a0fc0e598fdae48743a4430903de5b4e6ca"
-  integrity sha512-+HG5jmu/dN3ZV3T6eCD7a4BlAySdN7mLIbJYo0z1cFQuI+r2DiTJEFeF68ots93PsnrMxbzIZ2S/ieX+mkrBeQ==
+eslint-plugin-prettier@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.1.4.tgz#168ab43154e2ea57db992a2cd097c828171f75c2"
+  integrity sha512-jZDa8z76klRqo+TdGDTFJSavwbnWK2ZpqGKNZ+VvweMW516pDUMmQ2koXvxEE4JhzNvTv+radye/bWGBmA6jmg==
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
@@ -4864,8 +4863,8 @@ hash-sum@^2.0.0:
 
 hash.js@^1.0.0, hash.js@^1.0.3:
   version "1.1.7"
-  resolved "https://registry.npm.taobao.org/hash.js/download/hash.js-1.1.7.tgz#0babca538e8d4ee4a0f8988d68866537a003cf42"
-  integrity sha1-C6vKU46NTuSg+JiNaIZlN6ADz0I=
+  resolved "https://registry.yarnpkg.com/hash.js/-/hash.js-1.1.7.tgz#0babca538e8d4ee4a0f8988d68866537a003cf42"
+  integrity sha512-taOaskGt4z4SOANNseOviYDvjEJinIkRgmp7LbKP2YTTmVxWBl87s/uzK9r+44BclBSp2X7K1hqeNfz9JbBeXA==
   dependencies:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
@@ -4887,7 +4886,7 @@ highlight.js@^9.6.0:
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
-  resolved "https://registry.npm.taobao.org/hmac-drbg/download/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
+  resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
   integrity sha1-0nRXAQJabHdabFRXk+1QL8DGSaE=
   dependencies:
     hash.js "^1.0.3"
@@ -6186,12 +6185,12 @@ mini-css-extract-plugin@^0.9.0:
 
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   version "1.0.1"
-  resolved "https://registry.npm.taobao.org/minimalistic-assert/download/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
-  integrity sha1-LhlN4ERibUoQ5/f7wAznPoPk1cc=
+  resolved "https://registry.yarnpkg.com/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
+  integrity sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==
 
 minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
   version "1.0.1"
-  resolved "https://registry.npm.taobao.org/minimalistic-crypto-utils/download/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
+  resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
   integrity sha1-9sAMHAsIIkblxNmd+4x8CDsrWCo=
 
 minimatch@^3.0.4, minimatch@~3.0.2:
@@ -7897,22 +7896,6 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-request-promise-core@1.1.3:
-  version "1.1.3"
-  resolved "https://registry.npm.taobao.org/request-promise-core/download/request-promise-core-1.1.3.tgz#e9a3c081b51380dfea677336061fea879a829ee9"
-  integrity sha1-6aPAgbUTgN/qZ3M2Bh/qh5qCnuk=
-  dependencies:
-    lodash "^4.17.15"
-
-request-promise-native@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.npm.taobao.org/request-promise-native/download/request-promise-native-1.0.8.tgz#a455b960b826e44e2bf8999af64dff2bfe58cb36"
-  integrity sha1-pFW5YLgm5E4r+Jma9k3/K/5YyzY=
-  dependencies:
-    request-promise-core "1.1.3"
-    stealthy-require "^1.1.1"
-    tough-cookie "^2.3.3"
-
 request@^2.87.0, request@^2.88.0, request@^2.88.2:
   version "2.88.2"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.2.tgz#d73c918731cb5a87da047e207234146f664d12b3"
@@ -8618,11 +8601,6 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
-stealthy-require@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.npm.taobao.org/stealthy-require/download/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
-  integrity sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=
-
 stream-browserify@^2.0.1:
   version "2.0.2"
   resolved "https://registry.npm.taobao.org/stream-browserify/download/stream-browserify-2.0.2.tgz#87521d38a44aa7ee91ce1cd2a47df0cb49dd660b"
@@ -9067,7 +9045,7 @@ toposort@^1.0.0:
   resolved "https://registry.npm.taobao.org/toposort/download/toposort-1.0.7.tgz#2e68442d9f64ec720b8cc89e6443ac6caa950029"
   integrity sha1-LmhELZ9k7HILjMieZEOsbKqVACk=
 
-tough-cookie@^2.3.3, tough-cookie@~2.5.0:
+tough-cookie@~2.5.0:
   version "2.5.0"
   resolved "https://registry.npm.taobao.org/tough-cookie/download/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"
   integrity sha1-zZ+yoKodWhK0c72fuW+j3P9lreI=
@@ -9351,6 +9329,11 @@ uuid@^3.3.2, uuid@^3.4.0:
   resolved "https://registry.npm.taobao.org/uuid/download/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha1-sj5DWK+oogL+ehAK8fX4g/AgB+4=
 
+uuid@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.0.tgz#ab738085ca22dc9a8c92725e459b1d507df5d6ea"
+  integrity sha512-fX6Z5o4m6XsXBdli9g7DtWgAx+osMsRRZFKma1mIUsLCz6vRvv+pz5VNbyu9UEDzpMWulZfvpgb/cmDXVulYFQ==
+
 v8-compile-cache@^2.0.3:
   version "2.1.0"
   resolved "https://registry.npm.taobao.org/v8-compile-cache/download/v8-compile-cache-2.1.0.tgz#e14de37b31a6d194f5690d67efc4e7f6fc6ab30e"
@@ -9388,10 +9371,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vjform@^1.1.0-beta.3:
-  version "1.1.0-beta.3"
-  resolved "https://registry.yarnpkg.com/vjform/-/vjform-1.1.0-beta.3.tgz#6279154d0e6c8620122a1d88038e3fb4bc55e761"
-  integrity sha512-kduGh14i8U4TfvvFFghV4BolFG3Iz78GHHyUK2ogzptgJuhpkQXD5DKuXTlIZUmvpjYRXWQ9PuSnMCWuRwDp/g==
+vjform@^1.1.0:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/vjform/-/vjform-1.2.1.tgz#bd08e27027f357640e5a1bfab58f79425175fb25"
+  integrity sha512-l38V5rqvg/QLQeM8jUUD48BibJXr03jXeGgOrGXRetoWki1SnUdP6C4aK6eYpw8GtsDbrncOVKryT2326KFGlQ==
   dependencies:
     ajv "^6.12.3"
     async-validator "^3.3.0"
@@ -9399,6 +9382,7 @@ vjform@^1.1.0-beta.3:
     core-js "^3.6.5"
     element-ui "^2.13.2"
     lodash-es "^4.17.15"
+    uuid "^8.3.0"
     vue "^2.6.10"
     vue-hooks "^0.3.2"
     vue-router "^3.3.4"
@@ -9430,10 +9414,10 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.4.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-hot-reload-api%2Fdownload%2Fvue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha1-UylVzB6yCKPZkLOp+acFdGV+CPI=
 
-vue-json-viewer@^2.2.11:
-  version "2.2.11"
-  resolved "https://registry.yarnpkg.com/vue-json-viewer/-/vue-json-viewer-2.2.11.tgz#32076b4fc563eb0a2e3ac45931a7a973d6b58f18"
-  integrity sha512-1wKK5vlthju7cSmlXn3SVugOZjFpf6ApoZqGigo3eK6hrylNLzeMm+Pm6FzMS2ykdTUUYuWqhqR8uMl88CY76g==
+vue-json-viewer@^2.2.13:
+  version "2.2.14"
+  resolved "https://registry.yarnpkg.com/vue-json-viewer/-/vue-json-viewer-2.2.14.tgz#24954736761b05eb5cbaf6cc2df8ef6f4bf978f0"
+  integrity sha512-FvMHs83ZCnvRDryLUDlrb4wiAQUb82x7kxShWykZXUd60sgCunsY0VnTthmVRC/ZFzjVr9/OxRTwcc85cOWonQ==
   dependencies:
     clipboard "^2.0.4"
     vue "^2.6.9"
@@ -9642,7 +9626,7 @@ webpack-merge@^4.2.2:
   dependencies:
     lodash "^4.17.15"
 
-webpack-merge@^5.0.8:
+webpack-merge@^5.0.9:
   version "5.0.9"
   resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-5.0.9.tgz#d5e0e0ae564ae704836d747893bdd2741544bf31"
   integrity sha512-P4teh6O26xIDPugOGX61wPxaeP918QOMjmzhu54zTVcLtOS28ffPWtnv+ilt3wscwBUCL2WNMnh97XkrKqt9Fw==
@@ -9650,7 +9634,7 @@ webpack-merge@^5.0.8:
     clone-deep "^4.0.1"
     wildcard "^2.0.0"
 
-webpack-node-externals@^2.3.0:
+webpack-node-externals@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/webpack-node-externals/-/webpack-node-externals-2.5.0.tgz#8d50f3289c71bc2b921a8da228e0b652acc503f1"
   integrity sha512-g7/Z7Q/gsP8GkJkKZuJggn6RSb5PvxW1YD5vvmRZIxaSxAzkqjfL5n9CslVmNYlSqBVCyiqFgOqVS2IOObCSRg==
