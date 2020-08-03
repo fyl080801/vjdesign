@@ -23,6 +23,13 @@
     border: $border;
     border-style: dashed;
   }
+
+  .svg-icon {
+    &.v-jd-svgicon {
+      width: 1em;
+      height: 1em;
+    }
+  }
 }
 
 /*  */

@@ -1,13 +1,15 @@
 import Vue from "vue";
-import Editor from "./Editor";
+// import Editor from "./Editor";
 import { mapState } from "vuex";
-import { Button, Popconfirm } from "element-ui";
+// import { Button, Popconfirm } from "element-ui";
 import { Card } from "../Accordion";
+// import { Fragment } from "vue-fragment";
+// import SvgIcon from "vue-svgicon";
 
 export default Vue.extend({
-  components: {
-    "listeners-editor": Editor
-  },
+  // components: {
+  //   "listeners-editor": Editor
+  // },
   data() {
     return {
       dialog: {
@@ -62,12 +64,12 @@ export default Vue.extend({
   render() {
     return (
       <Card key="vjform_watchs" name="vjform_watchs" class="property-wrapper">
-        <fragment slot="title">
+        {/* <Fragment slot="title">
           <i>
-            <svg-icon name="tools" />
+            <SvgIcon class="v-jd-svgicon" name="tools" />
           </i>
           监听
-        </fragment>
+        </Fragment>
         <listeners-editor
           visible={this.dialog.visible}
           v-model={this.dialog.data}
@@ -103,7 +105,7 @@ export default Vue.extend({
         </div>
         <Button size="small" onClick={this.onAdd} style="width: 100%">
           <i class="el-icon-plus"></i> 添加
-        </Button>
+        </Button> */}
       </Card>
     );
   }

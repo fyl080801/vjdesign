@@ -1,5 +1,6 @@
 import Vue from "vue";
 import vuedraggable from "vuedraggable";
+import SvgIcon from "vue-svgicon";
 // import "./index.scss";
 // import { Collapse, CollapseItem, Row, Col, Card } from "element-ui";
 
@@ -39,11 +40,12 @@ export default Vue.extend({
               onClick={() => this.toggleShown(index)}
             >
               <i>
-                <svg-icon name="th-large" />
+                <SvgIcon class="v-jd-svgicon" name="th-large" />
               </i>
               {group.name}
               <i>
-                <svg-icon
+                <SvgIcon
+                  class="v-jd-svgicon"
                   name={
                     this.shown.includes(index)
                       ? "chevron-down"

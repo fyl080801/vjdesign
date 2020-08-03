@@ -1,7 +1,7 @@
 import feature from "../feature";
 import TransformInput from "../editors/Input";
 import TransformCheckbox from "../editors/Checkbox";
-import { Input, InputNumber, Checkbox, Select, Option } from "element-ui";
+// import { Input, InputNumber, Checkbox, Select, Option } from "element-ui";
 
 feature.editor(
   "default",
@@ -23,8 +23,8 @@ feature.editor(
         placeholder: "请输入"
       }
     }
-  }),
-  { "el-input": Input }
+  })
+  // { "el-input": Input }
 );
 
 feature.editor(
@@ -32,10 +32,10 @@ feature.editor(
   path => ({
     component: "el-input-number",
     model: [path]
-  }),
-  {
-    "el-input-number": InputNumber
-  }
+  })
+  // {
+  //   "el-input-number": InputNumber
+  // }
 );
 
 feature.editor(
@@ -52,10 +52,10 @@ feature.editor(
   path => ({
     component: "el-checkbox",
     model: [path]
-  }),
-  {
-    "el-checkbox": Checkbox
-  }
+  })
+  // {
+  //   "el-checkbox": Checkbox
+  // }
 );
 
 feature.editor(
@@ -69,8 +69,8 @@ feature.editor(
         fieldOptions: { props: { label: item.label, value: item.value } }
       };
     })
-  }),
-  { "el-select": Select, "el-option": Option }
+  })
+  // { "el-select": Select, "el-option": Option }
 );
 
 // registerEditor(

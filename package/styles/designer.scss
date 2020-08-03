@@ -1,4 +1,38 @@
 .v-jdesign {
+  .design-content {
+    min-height: 250px;
+    border: 1px;
+    border-style: dashed;
+    border-color: silver;
+
+    > .v-jform {
+      display: flex;
+
+      > .root {
+        flex: 1;
+      }
+    }
+  }
+
+  .empty-text {
+    color: silver;
+    height: 250px;
+    position: relative;
+  }
+
+  .empty-text {
+    p {
+      text-align: center;
+      margin: 0 auto;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      font-size: 16px;
+    }
+  }
+
   .v-jform {
     .v-jd-design {
       position: relative;

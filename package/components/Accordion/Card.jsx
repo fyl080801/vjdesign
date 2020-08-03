@@ -1,4 +1,5 @@
 import Vue from "vue";
+import SvgIcon from "vue-svgicon";
 
 export default Vue.extend({
   props: {
@@ -29,7 +30,8 @@ export default Vue.extend({
         >
           {this.$slots.title ? this.$slots.title : this.title}
           <i>
-            <svg-icon
+            <SvgIcon
+              class="v-jd-svgicon"
               name={
                 this.parent.value.includes(this.name)
                   ? "chevron-down"

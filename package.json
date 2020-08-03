@@ -1,6 +1,6 @@
 {
   "name": "vjdesign",
-  "version": "0.2.1",
+  "version": "0.3.0-beta.1",
   "description": "Vue Form Designer",
   "author": {
     "name": "fyl080801",
@@ -71,6 +71,7 @@
     "svg-sprite-loader": "^4.3.0",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.43.0",
+    "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.3.12",
     "webpack-merge": "^5.0.9",
     "webpack-node-externals": "^2.5.0"

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Transform from "./transform";
-import { Input, Button } from "element-ui";
+// import { Input, Button } from "element-ui";
 
 export default Vue.component("v-jdesign-input", {
   mixins: [Transform],
@@ -10,7 +10,7 @@ export default Vue.component("v-jdesign-input", {
   render() {
     return (
       <div>
-        {!this.isTransform ? (
+        {/* {!this.isTransform ? (
           <Input
             v-model={this.fieldValue}
             placeholder={this.placeholder}
@@ -29,13 +29,8 @@ export default Vue.component("v-jdesign-input", {
               icon="el-icon-edit"
               onClick={this.openEditor}
             ></Button>
-            {/* <Button
-              slot="append"
-              icon="el-icon-close"
-              onClick={this.clearTransform}
-            ></Button> */}
           </Input>
-        )}
+        )} */}
       </div>
     );
   }

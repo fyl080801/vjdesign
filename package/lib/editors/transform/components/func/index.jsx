@@ -1,6 +1,6 @@
 import Vue from "vue";
 import { isEmpty } from "lodash-es";
-import { FormItem, Input } from "element-ui";
+// import { FormItem, Input } from "element-ui";
 
 export default Vue.extend({
   props: {
@@ -48,7 +48,7 @@ export default Vue.extend({
   render() {
     return (
       <div>
-        <FormItem
+        {/* <FormItem
           label="表达式"
           prop="$result"
           rules={[{ required: true, message: "必填项" }]}
@@ -57,7 +57,7 @@ export default Vue.extend({
         </FormItem>
         <FormItem label="默认值" prop="$default">
           <Input v-model={this.value.$default} placeholder="请输入"></Input>
-        </FormItem>
+        </FormItem> */}
       </div>
     );
   }

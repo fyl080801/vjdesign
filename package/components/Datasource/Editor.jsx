@@ -2,17 +2,17 @@ import Vue from "vue";
 import { cloneDeep } from "lodash-es";
 import { getDatasources } from "../../lib/feature/datasource";
 import { assemblyEditor } from "../../lib/feature/property";
-import "./Editor.scss";
-import VJForm from "vjform";
-import {
-  Dialog,
-  Form,
-  FormItem,
-  Input,
-  Select,
-  Option,
-  Button
-} from "element-ui";
+// import "./Editor.scss";
+// import VJForm from "vjform";
+// import {
+//   Dialog,
+//   Form,
+//   FormItem,
+//   Input,
+//   Select,
+//   Option,
+//   Button
+// } from "element-ui";
 
 export default Vue.extend({
   props: {
@@ -45,7 +45,7 @@ export default Vue.extend({
     ["model.type"](value) {
       this.fields = null;
       this.components = {
-        "el-form-item": FormItem
+        // "el-form-item": FormItem
       };
 
       if (value) {
@@ -79,63 +79,64 @@ export default Vue.extend({
   },
   render() {
     return (
-      <Dialog
-        visible={this.visible}
-        title="数据源"
-        onClose={this.onCancel}
-        width="540px"
-        custom-class="v-jdesign-dialog"
-        close-on-click-modal={false}
-        append-to-body={true}
-      >
-        <Form
-          ref="form"
-          props={{ model: this.model }}
-          label-position="top"
-          size="small"
-        >
-          <FormItem
-            prop="name"
-            label="名称"
-            rules={[{ required: true, message: "必填项" }]}
-          >
-            <Input v-model={this.model.name} placeholder="请输入"></Input>
-          </FormItem>
-          <FormItem
-            prop="type"
-            label="类型"
-            rules={[{ required: true, message: "必选项" }]}
-          >
-            <Select v-model={this.model.type} placeholder="请选择">
-              {this.datasources.map(ds => (
-                <Option value={ds.type} label={ds.description}></Option>
-              ))}
-            </Select>
-          </FormItem>
-          {this.fields && !this.updating ? (
-            <VJForm
-              class="vjdesign-property"
-              fields={this.fields}
-              v-model={this.model}
-              onClear={() => {
-                this.updating = true;
-                this.$nextTick(() => {
-                  this.updating = false;
-                });
-              }}
-              components={this.components}
-            ></VJForm>
-          ) : null}
-        </Form>
-        <span slot="footer" class="dialog-footer">
-          <Button size="small" onClick={this.onCancel}>
-            取消
-          </Button>
-          <Button size="small" type="primary" onClick={this.onSubmit}>
-            确定
-          </Button>
-        </span>
-      </Dialog>
+      <div></div>
+      // <Dialog
+      //   visible={this.visible}
+      //   title="数据源"
+      //   onClose={this.onCancel}
+      //   width="540px"
+      //   custom-class="v-jdesign-dialog"
+      //   close-on-click-modal={false}
+      //   append-to-body={true}
+      // >
+      //   <Form
+      //     ref="form"
+      //     props={{ model: this.model }}
+      //     label-position="top"
+      //     size="small"
+      //   >
+      //     <FormItem
+      //       prop="name"
+      //       label="名称"
+      //       rules={[{ required: true, message: "必填项" }]}
+      //     >
+      //       <Input v-model={this.model.name} placeholder="请输入"></Input>
+      //     </FormItem>
+      //     <FormItem
+      //       prop="type"
+      //       label="类型"
+      //       rules={[{ required: true, message: "必选项" }]}
+      //     >
+      //       <Select v-model={this.model.type} placeholder="请选择">
+      //         {this.datasources.map(ds => (
+      //           <Option value={ds.type} label={ds.description}></Option>
+      //         ))}
+      //       </Select>
+      //     </FormItem>
+      //     {this.fields && !this.updating ? (
+      //       <VJForm
+      //         class="vjdesign-property"
+      //         fields={this.fields}
+      //         v-model={this.model}
+      //         onClear={() => {
+      //           this.updating = true;
+      //           this.$nextTick(() => {
+      //             this.updating = false;
+      //           });
+      //         }}
+      //         components={this.components}
+      //       ></VJForm>
+      //     ) : null}
+      //   </Form>
+      //   <span slot="footer" class="dialog-footer">
+      //     <Button size="small" onClick={this.onCancel}>
+      //       取消
+      //     </Button>
+      //     <Button size="small" type="primary" onClick={this.onSubmit}>
+      //       确定
+      //     </Button>
+      //   </span>
+      // </Dialog>
     );
   }
 });

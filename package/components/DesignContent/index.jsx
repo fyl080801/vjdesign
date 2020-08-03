@@ -3,8 +3,8 @@ import { mapState } from "vuex";
 import emiter from "../../utils/emiter";
 import vuedraggable from "vuedraggable";
 import VJForm from "vjform";
-import { Popconfirm } from "element-ui";
-import "./index.scss";
+// import { Popconfirm } from "element-ui";
+// import "./index.scss";
 
 export default Vue.extend({
   components: { vuedraggable },
@@ -15,7 +15,7 @@ export default Vue.extend({
     schema: state => state.form.value.schema,
     designComponents: state => ({
       ...state.components,
-      ...{ vuedraggable, "el-popconfirm": Popconfirm }
+      ...{ vuedraggable }
     }),
     designFields() {
       return [

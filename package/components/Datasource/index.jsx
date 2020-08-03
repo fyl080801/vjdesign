@@ -1,13 +1,15 @@
 import Vue from "vue";
 import { mapState } from "vuex";
-import Editor from "./Editor";
+// import Editor from "./Editor";
 import { getDatasources } from "../../lib/feature/datasource";
-import "./index.scss";
-import { Tag, Button, Popconfirm } from "element-ui";
+// import "./index.scss";
+// import { Tag, Button, Popconfirm } from "element-ui";
 import { Card } from "../Accordion";
+// import { Fragment } from "vue-fragment";
+// import SvgIcon from "vue-svgicon";
 
 export default Vue.extend({
-  components: { "datasource-editor": Editor },
+  // components: { "datasource-editor": Editor },
   data() {
     return {
       datasources: {},
@@ -69,16 +71,12 @@ export default Vue.extend({
         key="vjform_datasource"
         name="vjform_datasource"
       >
-        <fragment slot="title">
+        {/* <Fragment slot="title">
           <i>
-            <svg-icon name="tools" />
+            <SvgIcon class="v-jd-svgicon" name="tools" />
           </i>
           数据源
-        </fragment>
-        {/* <div slot="title">
-          <i class="el-icon-s-operation"></i>数据源
-        </div> */}
-        {/* 这种Ïdialog必须放到前面 */}
+        </Fragment>
         <datasource-editor
           visible={this.dialog.visible}
           v-model={this.dialog.data}
@@ -119,7 +117,7 @@ export default Vue.extend({
         </div>
         <Button size="small" onClick={this.onAdd} style="width: 100%">
           <i class="el-icon-plus"></i> 添加
-        </Button>
+        </Button> */}
       </Card>
     );
   }

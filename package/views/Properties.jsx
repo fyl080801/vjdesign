@@ -6,6 +6,8 @@ import emiter from "../utils/emiter";
 import Datasource from "../components/Datasource";
 import Listeners from "../components/Listeners";
 import { Accordion, Card } from "../components/Accordion";
+import { Fragment } from "vue-fragment";
+import SvgIcon from "vue-svgicon";
 // import {
 //   Tabs,
 //   TabPane,
@@ -139,12 +141,12 @@ export default Vue.extend({
                 <Accordion v-model={this.groupNames}>
                   {this.editorGroups.map(group => (
                     <Card key={group.key} name={group.key}>
-                      <fragment slot="title">
+                      <Fragment slot="title">
                         <i>
-                          <svg-icon name="tools" />
+                          <SvgIcon class="v-jd-svgicon" name="tools" />
                         </i>
                         {group.key}
-                      </fragment>
+                      </Fragment>
                       <form>
                         <VJForm
                           class="vjdesign-property"

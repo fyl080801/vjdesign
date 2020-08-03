@@ -3,6 +3,7 @@ import DesignContent from "../components/DesignContent/index";
 import DesignMetadata from "../components/DesignMetadata/index";
 import DesignPreview from "../components/DesignPreview/index";
 import ModelPreview from "../components/ModelPreview/index";
+import SvgIcon from "vue-svgicon";
 
 export default Vue.extend({
   data() {
@@ -26,7 +27,7 @@ export default Vue.extend({
               href="javascript:;"
               onClick={() => this.toggleActive(0)}
             >
-              <svg-icon name="edit" class="tab-icon" />
+              <SvgIcon name="edit" class="tab-icon v-jd-svgicon" />
               设计器
             </a>
           </li>
@@ -37,7 +38,7 @@ export default Vue.extend({
               href="javascript:;"
               onClick={() => this.toggleActive(1)}
             >
-              <svg-icon name="code" class="tab-icon" />
+              <SvgIcon name="code" class="tab-icon v-jd-svgicon" />
               配置预览
             </a>
           </li>
@@ -48,7 +49,7 @@ export default Vue.extend({
               href="javascript:;"
               onClick={() => this.toggleActive(2)}
             >
-              <svg-icon name="eye-on" class="tab-icon" />
+              <SvgIcon name="eye-on" class="tab-icon v-jd-svgicon" />
               视图预览
             </a>
           </li>
@@ -59,7 +60,7 @@ export default Vue.extend({
               href="javascript:;"
               onClick={() => this.toggleActive(3)}
             >
-              <svg-icon name="database" class="tab-icon" />
+              <SvgIcon name="database" class="tab-icon v-jd-svgicon" />
               数据预览
             </a>
           </li>
