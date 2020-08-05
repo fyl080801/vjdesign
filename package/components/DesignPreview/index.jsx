@@ -1,6 +1,6 @@
-import Vue from "vue";
-import { mapState } from "vuex";
-import VJForm from "vjform";
+import Vue from 'vue'
+import { mapState } from 'vuex'
+import VJForm from 'vjform'
 
 export default Vue.extend({
   computed: mapState({
@@ -14,11 +14,11 @@ export default Vue.extend({
   data() {
     return {
       options: { dev: false }
-    };
+    }
   },
   methods: {
     updateModel(value) {
-      this.$store.commit("form/UPDATE_MODEL", value);
+      this.$store.commit('form/UPDATE_MODEL', value)
     }
   },
   render() {
@@ -36,6 +36,6 @@ export default Vue.extend({
           options={this.options}
         ></VJForm>
       </div>
-    );
+    )
   }
-});
+})

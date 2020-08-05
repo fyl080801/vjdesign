@@ -1,6 +1,6 @@
-import Vue from "vue";
-import vuedraggable from "vuedraggable";
-import SvgIcon from "vue-svgicon";
+import Vue from 'vue'
+import vuedraggable from 'vuedraggable'
+import SvgIcon from 'vue-svgicon'
 // import "./index.scss";
 // import { Collapse, CollapseItem, Row, Col, Card } from "element-ui";
 
@@ -12,20 +12,20 @@ export default Vue.extend({
   data() {
     return {
       shown: []
-    };
+    }
   },
   watch: {
     list(value) {
-      this.names = value.length > 0 ? [value[0].name] : [];
+      this.names = value.length > 0 ? [value[0].name] : []
     }
   },
   methods: {
     toggleShown(index) {
-      const include = this.shown.findIndex(item => item === index);
+      const include = this.shown.findIndex(item => item === index)
       if (include >= 0) {
-        this.shown.splice(include, 1);
+        this.shown.splice(include, 1)
       } else {
-        this.shown.push(index);
+        this.shown.push(index)
       }
     }
   },
@@ -46,11 +46,7 @@ export default Vue.extend({
               <i>
                 <SvgIcon
                   class="v-jd-svgicon"
-                  name={
-                    this.shown.includes(index)
-                      ? "chevron-down"
-                      : "chevron-right"
-                  }
+                  name={this.shown.includes(index) ? 'chevron-down' : 'chevron-right'}
                 />
               </i>
             </a>
@@ -61,7 +57,7 @@ export default Vue.extend({
                   class="components-group row"
                   list={group.components}
                   draggable=".drag-handler"
-                  group={{ name: "jdesign", pull: "clone", put: false }}
+                  group={{ name: 'jdesign', pull: 'clone', put: false }}
                   sort={false}
                 >
                   {group.components.map(item => (
@@ -75,6 +71,6 @@ export default Vue.extend({
           </div>
         ))}
       </div>
-    );
+    )
   }
-});
+})

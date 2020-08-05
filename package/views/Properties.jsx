@@ -1,13 +1,13 @@
-import Vue from "vue";
-import { mapState } from "vuex";
-import { assemblyEditorGroups, DEFAULTS } from "../lib/feature/property";
-import { getComponent } from "../lib/feature/component";
-import emiter from "../utils/emiter";
-import Datasource from "../components/Datasource";
-import Listeners from "../components/Listeners";
-import { Accordion, Card } from "../components/Accordion";
-import { Fragment } from "vue-fragment";
-import SvgIcon from "vue-svgicon";
+import Vue from 'vue'
+import { mapState } from 'vuex'
+import { assemblyEditorGroups, DEFAULTS } from '../lib/feature/property'
+import { getComponent } from '../lib/feature/component'
+import emiter from '../utils/emiter'
+import Datasource from '../components/Datasource'
+import Listeners from '../components/Listeners'
+import { Accordion, Card } from '../components/Accordion'
+import { Fragment } from 'vue-fragment'
+import SvgIcon from 'vue-svgicon'
 // import {
 //   Tabs,
 //   TabPane,
@@ -22,7 +22,7 @@ import SvgIcon from "vue-svgicon";
 //   Button,
 //   Popconfirm
 // } from "element-ui";
-import VJForm from "vjform";
+import VJForm from 'vjform'
 
 export default Vue.extend({
   components: { Datasource, Listeners },
@@ -35,7 +35,7 @@ export default Vue.extend({
       propNames: [],
       //
       showDatasource: false
-    };
+    }
   },
   computed: {
     ...mapState({
@@ -45,73 +45,69 @@ export default Vue.extend({
   watch: {
     editing(value) {
       if (!value) {
-        this.editorGroups = [];
-        return;
+        this.editorGroups = []
+        return
       }
 
-      const component = getComponent(value.component);
-      const groups = assemblyEditorGroups(component.properties, DEFAULTS);
+      const component = getComponent(value.component)
+      const groups = assemblyEditorGroups(component.properties, DEFAULTS)
 
       this.editorGroups = Object.keys(groups)
         .filter(key => groups[key].length > 0)
         .map(key => {
-          const fields = groups[key];
-          const components = {};
+          const fields = groups[key]
+          const components = {}
           fields.forEach(field => {
             if (field.instance) {
-              components[field.instance.name] = field.instance;
+              components[field.instance.name] = field.instance
             }
-          });
-          return { key, fields, components };
-        });
-      this.groupNames = Object.keys(groups);
+          })
+          return { key, fields, components }
+        })
+      this.groupNames = Object.keys(groups)
     },
     updating(value) {
       if (value === null) {
-        return;
+        return
       }
 
       this.$nextTick(() => {
-        this.$store.commit("form/UPDATE_EDITING", value);
-        this.updating = null;
-      });
+        this.$store.commit('form/UPDATE_EDITING', value)
+        this.updating = null
+      })
     }
   },
   methods: {
     updateEditing(value) {
-      this.updating = value;
+      this.updating = value
     },
     refreshEditing() {
-      this.$store.commit("form/REFRESH_EDITING");
+      this.$store.commit('form/REFRESH_EDITING')
     },
     toggleActive(index) {
-      this.active = index;
+      this.active = index
     }
   },
   created() {
-    emiter.$on("component-selected", field => {
-      this.$store.commit("form/SELECT_EDITING", field);
-    });
+    emiter.$on('component-selected', field => {
+      this.$store.commit('form/SELECT_EDITING', field)
+    })
 
-    emiter.$on("component-delete", field => {
-      this.$store.commit("form/DELETE_FIELD", field);
-    });
+    emiter.$on('component-delete', field => {
+      this.$store.commit('form/DELETE_FIELD', field)
+    })
   },
   destroyed() {
-    emiter.$off("component-selected");
-    emiter.$off("component-delete");
+    emiter.$off('component-selected')
+    emiter.$off('component-delete')
   },
   render() {
     return (
       <div class="v-jd-aside right">
         <ul class="nav nav-tabs v-jd-tabs" role="tablist">
-          <li
-            class="nav-item v-jd-tabitem"
-            role="presentation"
-            style="width: 50%"
-          >
+          <li class="nav-item v-jd-tabitem" role="presentation" style="width: 50%">
             <a
-              class={`nav-link v-jd-link ${this.active === 0 ? "active" : ""}`}
+              class={`nav-link v-jd-link ${this.active === 0 ? 'active' : ''}`}
               role="tab"
               href="javascript:;"
               onClick={() => this.toggleActive(0)}
@@ -119,13 +115,9 @@ export default Vue.extend({
               组件属性
             </a>
           </li>
-          <li
-            class="nav-item v-jd-tabitem"
-            role="presentation"
-            style="width: 50%"
-          >
+          <li class="nav-item v-jd-tabitem" role="presentation" style="width: 50%">
             <a
-              class={`nav-link v-jd-link ${this.active === 1 ? "active" : ""}`}
+              class={`nav-link v-jd-link ${this.active === 1 ? 'active' : ''}`}
               role="tab"
               href="javascript:;"
               onClick={() => this.toggleActive(1)}
@@ -220,6 +212,6 @@ export default Vue.extend({
           </TabPane>
         </Tabs> */}
       </div>
-    );
+    )
   }
-});
+})

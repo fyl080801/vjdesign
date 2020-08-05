@@ -1,8 +1,8 @@
-import Vue from "vue";
+import Vue from 'vue'
 // import Editor from "./Editor";
-import { mapState } from "vuex";
+import { mapState } from 'vuex'
 // import { Button, Popconfirm } from "element-ui";
-import { Card } from "../Accordion";
+import { Card } from '../Accordion'
 // import { Fragment } from "vue-fragment";
 // import SvgIcon from "vue-svgicon";
 
@@ -18,42 +18,42 @@ export default Vue.extend({
         index: -1
       },
       data: []
-    };
+    }
   },
   methods: {
     onAdd() {
-      this.dialog.data = {};
-      this.dialog.visible = true;
+      this.dialog.data = {}
+      this.dialog.visible = true
     },
     onEdit(index) {
-      this.dialog.index = index;
-      this.dialog.data = this.listeners[index];
-      this.dialog.visible = true;
+      this.dialog.index = index
+      this.dialog.data = this.listeners[index]
+      this.dialog.visible = true
     },
     onRemove(index) {
-      this.$store.commit("form/REMOVE_LISTENERS", {
+      this.$store.commit('form/REMOVE_LISTENERS', {
         index: index
-      });
+      })
     },
     onSubmit(data) {
-      this.dialog.visible = false;
+      this.dialog.visible = false
 
       if (this.dialog.index >= 0) {
-        this.$store.commit("form/UPDATE_LISTENERS", {
+        this.$store.commit('form/UPDATE_LISTENERS', {
           index: this.dialog.index,
           value: data
-        });
+        })
       } else {
-        this.$store.commit("form/SET_LISTENERS", {
+        this.$store.commit('form/SET_LISTENERS', {
           value: data
-        });
+        })
       }
 
-      this.dialog.index = -1;
+      this.dialog.index = -1
     },
     onCancel() {
-      this.dialog.visible = false;
-      this.dialog.index = -1;
+      this.dialog.visible = false
+      this.dialog.index = -1
     }
   },
   computed: {
@@ -107,6 +107,6 @@ export default Vue.extend({
           <i class="el-icon-plus"></i> 添加
         </Button> */}
       </Card>
-    );
+    )
   }
-});
+})

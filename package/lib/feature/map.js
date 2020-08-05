@@ -1,9 +1,9 @@
-import { getMapDefault } from "../../utils/helpers";
+import { getMapDefault } from '../../utils/helpers'
 
-const store = new Map();
+const store = new Map()
 
 export const getFeature = (type, storeDefault = new Map()) => {
-  return getMapDefault(store, type, storeDefault);
-};
+  return getMapDefault(store, type, storeDefault)
+}
 
-export default store;
+export default store

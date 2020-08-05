@@ -1,9 +1,9 @@
-import Vue from "vue";
-import Transform from "./transform";
+import Vue from 'vue'
+import Transform from './transform'
 // import "./Checkbox.scss";
 // import { Checkbox, Button } from "element-ui";
 
-const component = Vue.component("v-jdesign-checkbox", {
+const component = Vue.component('v-jdesign-checkbox', {
   mixins: [Transform],
   render() {
     return (
@@ -28,8 +28,8 @@ const component = Vue.component("v-jdesign-checkbox", {
           </span>
         )} */}
       </div>
-    );
+    )
   }
-});
+})
 
-export default component;
+export default component

@@ -1,25 +1,25 @@
-import { getFeature } from "./map";
-import { getProperties } from "./property";
-import { isEmpty, cloneDeep } from "lodash-es";
+import { getFeature } from './map'
+import { getProperties } from './property'
+import { isEmpty, cloneDeep } from 'lodash-es'
 
 export const getComponent = name => {
-  return cloneDeep(getFeature("component").get(name));
-};
+  return cloneDeep(getFeature('component').get(name))
+}
 
 export const getComponents = filter => {
-  const result = [];
-  const stored = getFeature("component");
+  const result = []
+  const stored = getFeature('component')
 
   stored.forEach((component, key) => {
     if (!isEmpty(filter) && component.description.indexOf(filter) < 0) {
-      return;
+      return
     }
 
-    const properties = getProperties(component.properties);
+    const properties = getProperties(component.properties)
 
     result.push({
       group: component.group,
-      icon: component.icon || "",
+      icon: component.icon || '',
       description: component.description,
       container: component.container,
       defaults: Object.keys(properties)
@@ -29,30 +29,30 @@ export const getComponents = filter => {
           value: properties[key].defaultValue
         })),
       tag: key
-    });
-  });
+    })
+  })
 
-  return result;
-};
+  return result
+}
 
 export const getGroups = filter => {
-  const groups = {};
-  const components = getComponents(filter);
+  const groups = {}
+  const components = getComponents(filter)
 
   components.forEach(item => {
-    groups[item.group] = groups[item.group] || [];
-    groups[item.group].push(item);
-  });
+    groups[item.group] = groups[item.group] || []
+    groups[item.group].push(item)
+  })
 
-  const result = [];
+  const result = []
   Object.keys(groups).forEach(key => {
     result.push({
       name: key,
       components: groups[key]
-    });
-  });
-  return result;
-};
+    })
+  })
+  return result
+}
 
 export default store => {
   return (
@@ -66,27 +66,27 @@ export default store => {
     properties = []
   ) => {
     const component = {
-      group: group || "其他",
+      group: group || '其他',
       description,
       icon,
       properties,
       container
-    };
+    }
 
-    store.set(name, component);
+    store.set(name, component)
 
     // 是否有必要链式组装？
     const assembly = {
       property(prop) {
-        component.properties.push(prop);
-        return assembly;
+        component.properties.push(prop)
+        return assembly
       },
       description(str) {
-        component.description = str;
-        return assembly;
+        component.description = str
+        return assembly
       }
-    };
+    }
 
-    return assembly;
-  };
-};
+    return assembly
+  }
+}

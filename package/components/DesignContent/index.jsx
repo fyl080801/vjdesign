@@ -1,8 +1,8 @@
-import Vue from "vue";
-import { mapState } from "vuex";
-import emiter from "../../utils/emiter";
-import vuedraggable from "vuedraggable";
-import VJForm from "vjform";
+import Vue from 'vue'
+import { mapState } from 'vuex'
+import emiter from '../../utils/emiter'
+import vuedraggable from 'vuedraggable'
+import VJForm from 'vjform'
 // import { Popconfirm } from "element-ui";
 // import "./index.scss";
 
@@ -20,10 +20,10 @@ export default Vue.extend({
     designFields() {
       return [
         {
-          component: "vuedraggable",
+          component: 'vuedraggable',
           layout: true,
           fieldOptions: {
-            class: "v-jd-layout root",
+            class: 'v-jd-layout root',
             on: {
               // 回头加上对root的节点操作
               // input: value => {
@@ -40,60 +40,60 @@ export default Vue.extend({
               // }
             },
             attrs: {
-              group: "jdesign",
-              draggable: ".v-jd-design"
+              group: 'jdesign',
+              draggable: '.v-jd-design'
             }
           },
           children: [
             ...this.fields,
-            ...["top", "left", "bottom", "right"].map(item => ({
-              component: "div",
+            ...['top', 'left', 'bottom', 'right'].map(item => ({
+              component: 'div',
               layout: true,
               fieldOptions: {
-                class: "v-jd-border-layout v-jd-border-" + item
+                class: 'v-jd-border-layout v-jd-border-' + item
               }
             })),
             {
-              component: "p",
+              component: 'p',
               layout: true,
               fieldOptions: {
-                class: "empty",
+                class: 'empty',
                 domProps: {
-                  innerText: "root"
+                  innerText: 'root'
                 }
               }
             }
           ]
         }
-      ];
+      ]
     }
   }),
   data() {
     return {
       model: {},
-      options: { mode: "design", sss: true },
+      options: { mode: 'design', sss: true },
       changes: []
-    };
+    }
   },
   methods: {
     emitter(value) {
-      this.$store.commit("form/ADD_ROOT", value);
+      this.$store.commit('form/ADD_ROOT', value)
     }
   },
   watch: {
     changes(value) {
       if (value.length <= 0) {
-        return;
+        return
       }
 
-      this.$store.commit("form/FIELD_CHILDREN_CHANGED", value);
-      this.changes = [];
+      this.$store.commit('form/FIELD_CHILDREN_CHANGED', value)
+      this.changes = []
     }
   },
   created() {
-    emiter.$on("children-changed", value => {
-      this.changes.push(value);
-    });
+    emiter.$on('children-changed', value => {
+      this.changes.push(value)
+    })
   },
   render() {
     return (
@@ -119,6 +119,6 @@ export default Vue.extend({
           options={this.options}
         ></VJForm>
       </div>
-    );
+    )
   }
-});
+})

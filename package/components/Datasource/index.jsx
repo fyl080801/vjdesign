@@ -1,10 +1,10 @@
-import Vue from "vue";
-import { mapState } from "vuex";
+import Vue from 'vue'
+import { mapState } from 'vuex'
 // import Editor from "./Editor";
-import { getDatasources } from "../../lib/feature/datasource";
+import { getDatasources } from '../../lib/feature/datasource'
 // import "./index.scss";
 // import { Tag, Button, Popconfirm } from "element-ui";
-import { Card } from "../Accordion";
+import { Card } from '../Accordion'
 // import { Fragment } from "vue-fragment";
 // import SvgIcon from "vue-svgicon";
 
@@ -17,7 +17,7 @@ export default Vue.extend({
         visible: false,
         data: {}
       }
-    };
+    }
   },
   computed: {
     ...mapState({
@@ -25,52 +25,48 @@ export default Vue.extend({
         return Object.keys(form.value.datasource || {}).map(key => ({
           name: key,
           value: form.value.datasource[key]
-        }));
+        }))
       }
     })
   },
   methods: {
     onAdd() {
-      this.dialog.data = {};
-      this.dialog.visible = true;
+      this.dialog.data = {}
+      this.dialog.visible = true
     },
     onEdit(index) {
-      const current = this.datasource[index];
-      this.dialog.data = { ...current.value, name: current.name, index: index };
-      this.dialog.visible = true;
+      const current = this.datasource[index]
+      this.dialog.data = { ...current.value, name: current.name, index: index }
+      this.dialog.visible = true
     },
     onSubmit(data) {
-      this.dialog.visible = false;
+      this.dialog.visible = false
 
       if (data.index !== undefined) {
-        this.$store.commit("form/UPDATE_DATASOURCE", {
+        this.$store.commit('form/UPDATE_DATASOURCE', {
           name: this.datasource[data.index].name,
           value: { ...data, index: undefined }
-        });
+        })
       } else {
-        this.$store.commit("form/SET_DATASOURCE", {
+        this.$store.commit('form/SET_DATASOURCE', {
           name: data.name,
           value: data
-        });
+        })
       }
     },
     onRemove(item) {
-      this.$store.commit("form/REMOVE_DATASOURCE", item.name);
+      this.$store.commit('form/REMOVE_DATASOURCE', item.name)
     }
   },
   mounted() {
     this.datasources = getDatasources().reduce((result, ds) => {
-      result[ds.type] = ds.description;
-      return result;
-    }, {});
+      result[ds.type] = ds.description
+      return result
+    }, {})
   },
   render() {
     return (
-      <Card
-        class="property-wrapper"
-        key="vjform_datasource"
-        name="vjform_datasource"
-      >
+      <Card class="property-wrapper" key="vjform_datasource" name="vjform_datasource">
         {/* <Fragment slot="title">
           <i>
             <SvgIcon class="v-jd-svgicon" name="tools" />
@@ -119,6 +115,6 @@ export default Vue.extend({
           <i class="el-icon-plus"></i> 添加
         </Button> */}
       </Card>
-    );
+    )
   }
-});
+})

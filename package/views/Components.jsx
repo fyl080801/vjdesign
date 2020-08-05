@@ -1,25 +1,21 @@
-import Vue from "vue";
-import ComponentList from "../components/ComponentList/index";
-import { getGroups } from "../lib/feature/component";
+import Vue from 'vue'
+import ComponentList from '../components/ComponentList/index'
+import { getGroups } from '../lib/feature/component'
 
 export default Vue.extend({
   data() {
     return {
       origin: []
-    };
+    }
   },
   mounted() {
-    this.origin = getGroups();
+    this.origin = getGroups()
   },
   render() {
     return (
       <div class="v-jd-aside left">
         <ul class="nav nav-tabs v-jd-tabs" role="tablist">
-          <li
-            class="nav-item v-jd-tabitem"
-            role="presentation"
-            style="width: 50%"
-          >
+          <li class="nav-item v-jd-tabitem" role="presentation" style="width: 50%">
             <a class="nav-link active v-jd-link" role="tab" href="javascript:;">
               组件库
             </a>
@@ -36,6 +32,6 @@ export default Vue.extend({
           </div>
         </div>
       </div>
-    );
+    )
   }
-});
+})

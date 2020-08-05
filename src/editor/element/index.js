@@ -1,2 +1,2 @@
-import "./components";
-import "./properties";
+import './components'
+import './properties'

@@ -1,111 +1,111 @@
-import vjdesign from "../../../package/index";
+import vjdesign from '../../../package/index'
 
-const { feature } = vjdesign;
+const { feature } = vjdesign
 
-feature.property("fieldOptions.attrs.placeholder", { description: "水印" });
-feature.property("fieldOptions.props.labelWidth", { description: "前缀宽度" });
-feature.property("fieldOptions.props.label", { description: "前缀" });
+feature.property('fieldOptions.attrs.placeholder', { description: '水印' })
+feature.property('fieldOptions.props.labelWidth', { description: '前缀宽度' })
+feature.property('fieldOptions.props.label', { description: '前缀' })
 feature.property(
-  "fieldOptions.props.gutter",
+  'fieldOptions.props.gutter',
   {
-    description: "间隔"
+    description: '间隔'
   },
-  "number"
-);
+  'number'
+)
 feature.property(
-  "fieldOptions.props.span",
+  'fieldOptions.props.span',
   {
-    description: "列宽"
+    description: '列宽'
   },
-  "number"
-);
+  'number'
+)
 feature.property(
-  "fieldOptions.props.size",
+  'fieldOptions.props.size',
   {
-    description: "尺寸",
-    defaultValue: "medium"
+    description: '尺寸',
+    defaultValue: 'medium'
   },
   {
-    name: "select",
+    name: 'select',
     options: {
       items: [
-        { label: "正常", value: "medium" },
-        { label: "小", value: "small" },
-        { label: "最小", value: "mini" }
+        { label: '正常', value: 'medium' },
+        { label: '小', value: 'small' },
+        { label: '最小', value: 'mini' }
       ]
     }
   }
-);
+)
 
 feature.property(
-  "fieldOptions.props.labelPosition",
+  'fieldOptions.props.labelPosition',
   {
-    description: "前缀位置"
+    description: '前缀位置'
   },
   {
-    name: "select",
+    name: 'select',
     options: {
       items: [
-        { label: "靠右", value: "right" },
-        { label: "靠左", value: "left" },
-        { label: "顶部", value: "top" }
+        { label: '靠右', value: 'right' },
+        { label: '靠左', value: 'left' },
+        { label: '顶部', value: 'top' }
       ]
     }
   }
-);
+)
 
 feature.property(
-  "fieldOptions.props.disabled",
+  'fieldOptions.props.disabled',
   {
-    description: "禁用"
+    description: '禁用'
   },
-  "checkbox"
-);
+  'checkbox'
+)
 
 feature.property(
-  "fieldOptions.props.min",
+  'fieldOptions.props.min',
   {
-    description: "最小值"
+    description: '最小值'
   },
-  "number"
-);
+  'number'
+)
 
 feature.property(
-  "fieldOptions.props.max",
+  'fieldOptions.props.max',
   {
-    description: "最大值"
+    description: '最大值'
   },
-  "number"
-);
+  'number'
+)
 
 feature.property(
-  "fieldOptions.props.step",
+  'fieldOptions.props.step',
   {
-    description: "步长"
+    description: '步长'
   },
-  "number"
-);
+  'number'
+)
 
 feature.property(
-  "fieldOptions.props.range",
+  'fieldOptions.props.range',
   {
-    description: "是否范围"
+    description: '是否范围'
   },
-  "checkbox"
-);
+  'checkbox'
+)
 
 feature.property(
-  "fieldOptions.props.name",
+  'fieldOptions.props.name',
   {
-    description: "命名"
+    description: '命名'
   },
-  "simple"
-);
+  'simple'
+)
 
 feature.property(
-  "fieldOptions.props.required",
+  'fieldOptions.props.required',
   {
-    description: "必填"
+    description: '必填'
   },
-  "checkbox"
-);
+  'checkbox'
+)

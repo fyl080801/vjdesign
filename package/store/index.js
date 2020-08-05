@@ -1,14 +1,14 @@
-import Vue from "vue";
-import Vuex, { Store } from "vuex";
-import createLogger from "vuex/dist/logger";
-import form from "./form";
-import components from "./components";
+import Vue from 'vue'
+import Vuex, { Store } from 'vuex'
+import createLogger from 'vuex/dist/logger'
+import form from './form'
+import components from './components'
 
-const debug = process.env.NODE_ENV !== "production";
+const debug = process.env.NODE_ENV !== 'production'
 
-const plugins = debug ? [createLogger()] : [];
+const plugins = debug ? [createLogger()] : []
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Store({
   plugins,
@@ -21,4 +21,4 @@ export default new Store({
     form,
     components
   }
-});
+})

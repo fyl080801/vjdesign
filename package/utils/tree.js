@@ -1,36 +1,36 @@
 const _convert = function(data) {
   // 将键值映射成键值对
-  let map = {};
+  let map = {}
 
   data.forEach(current => {
     map[current[this.key]] = {
       $data: current,
       $key: current[this.key]
-    };
-  });
+    }
+  })
 
   // 构建树
   let root = {
     $data: null,
     $key: null,
     $children: []
-  };
+  }
 
   Object.keys(map).forEach(key => {
-    let current = map[key];
-    let parent = map[current.$data[this.parent]];
+    let current = map[key]
+    let parent = map[current.$data[this.parent]]
     if (parent) {
-      parent.$children = parent.$children || [];
-      parent.$children.push(current);
-      this.onEach(current, parent, data);
+      parent.$children = parent.$children || []
+      parent.$children.push(current)
+      this.onEach(current, parent, data)
     } else {
-      root.$children.push(current);
-      this.onEach(current, root, data);
+      root.$children.push(current)
+      this.onEach(current, root, data)
     }
-  });
+  })
 
-  return root;
-};
+  return root
+}
 
 // const _resolve = function(data, parent) {
 //   let node = {
@@ -65,33 +65,33 @@ const _convert = function(data) {
 // }
 
 export const eachTree = (node, callback) => {
-  const result = callback(node);
+  const result = callback(node)
 
   if (result === false) {
-    return false;
+    return false
   }
 
-  eachTreeNodes(node.children || [], callback);
-};
+  eachTreeNodes(node.children || [], callback)
+}
 
 export const eachTreeNodes = (nodes, callback) => {
   for (const i in nodes) {
-    const result = eachTree(nodes[i], callback);
+    const result = eachTree(nodes[i], callback)
 
     if (result === false) {
-      break;
+      break
     }
   }
-};
+}
 
 export const convertToTree = options => {
   const {
-    key = "id",
-    parent = "parentId",
-    children = "children",
+    key = 'id',
+    parent = 'parentId',
+    children = 'children',
     onEach = () => {},
     data = []
-  } = options;
+  } = options
 
-  return _convert.call({ key, parent, children, onEach }, data);
-};
+  return _convert.call({ key, parent, children, onEach }, data)
+}

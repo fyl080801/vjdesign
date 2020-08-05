@@ -1,4 +1,4 @@
-import Vue from "vue";
+import Vue from 'vue'
 // import {
 //   Dialog,
 //   Button,
@@ -9,8 +9,8 @@ import Vue from "vue";
 //   Row,
 //   Col
 // } from "element-ui";
-import { cloneDeep } from "lodash-es";
-import { assemblyEditor } from "../../lib/feature/property";
+import { cloneDeep } from 'lodash-es'
+import { assemblyEditor } from '../../lib/feature/property'
 // import VJForm from "vjform";
 // import TransformInput from "../../lib/editors/Input";
 
@@ -26,65 +26,65 @@ export default Vue.extend({
       components: {},
       fields: [],
       newAction: {}
-    };
+    }
   },
   methods: {
     onAddAction() {
-      this.model.actions = this.model.actions || [];
-      this.model.actions.push({ ...this.newAction });
-      this.newAction = {};
+      this.model.actions = this.model.actions || []
+      this.model.actions.push({ ...this.newAction })
+      this.newAction = {}
     },
     onRemoveAction(index) {
-      this.model.actions = this.model.actions || [];
-      this.model.actions.splice(index, 1);
+      this.model.actions = this.model.actions || []
+      this.model.actions.splice(index, 1)
     },
     onCancel() {
-      this.$emit("cancel");
+      this.$emit('cancel')
     },
     onSubmit() {
       this.$refs.form.validate(valid => {
         if (valid) {
-          this.$emit("submit", this.model);
+          this.$emit('submit', this.model)
         }
-      });
+      })
     }
   },
   watch: {
     visible(value) {
       if (value === true) {
-        this.updating = true;
-        this.model = cloneDeep(this.value);
+        this.updating = true
+        this.model = cloneDeep(this.value)
 
         this.$nextTick(() => {
           if (this.$refs && this.$refs.form) {
-            this.$refs.form.clearValidate();
+            this.$refs.form.clearValidate()
           }
-          this.updating = false;
-        });
+          this.updating = false
+        })
       }
     }
   },
   mounted() {
     this.components = {
       // "el-form-item": FormItem
-    };
+    }
 
     this.fields =
       assemblyEditor([
         {
-          property: "watch",
-          description: "监听",
-          rules: [{ required: true, message: "必填项" }],
+          property: 'watch',
+          description: '监听',
+          rules: [{ required: true, message: '必填项' }],
           editor: {
-            name: "default",
-            options: { props: { transforms: ["bind", "func"] } }
+            name: 'default',
+            options: { props: { transforms: ['bind', 'func'] } }
           }
         }
-      ]) || [];
+      ]) || []
 
     this.fields.forEach(item => {
-      this.components = { ...this.components, ...item.editorComponents };
-    });
+      this.components = { ...this.components, ...item.editorComponents }
+    })
   },
   render() {
     return (
@@ -204,6 +204,6 @@ export default Vue.extend({
       //     </Button>
       //   </span>
       // </Dialog>
-    );
+    )
   }
-});
+})

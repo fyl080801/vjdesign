@@ -1,8 +1,8 @@
-import Vue from "vue";
+import Vue from 'vue'
 // import Panel from "./Panel";
-import { uuid } from "../../../../../utils/helpers";
+import { uuid } from '../../../../../utils/helpers'
 // import { TransformTypes } from "../../../../../utils/enums";
-import { isEmpty, cloneDeep } from "lodash-es";
+import { isEmpty, cloneDeep } from 'lodash-es'
 // import "./index.scss";
 // import { Tree, Tag, Button, Dialog } from "element-ui";
 
@@ -16,63 +16,56 @@ export default Vue.extend({
     return {
       model: {},
       editing: null
-    };
+    }
   },
   computed: {
     rootKey() {
-      return this.value.length > 0 ? this.value[0].uuid : null;
+      return this.value.length > 0 ? this.value[0].uuid : null
     }
   },
   methods: {
     addArgument(node) {
-      this.$refs.tree.append({ $type: null, uuid: uuid(), name: "" }, node);
+      this.$refs.tree.append({ $type: null, uuid: uuid(), name: '' }, node)
     },
     removeArgument(node) {
-      this.$refs.tree.remove(node);
+      this.$refs.tree.remove(node)
     },
     onCurrentChange(data) {
-      this.editing = data;
+      this.editing = data
     },
     //
     getNodeName(data) {
-      return this.isRoot(data)
-        ? "转换属性"
-        : this.isNewNode(data)
-        ? "<参数>"
-        : data.name;
+      return this.isRoot(data) ? '转换属性' : this.isNewNode(data) ? '<参数>' : data.name
     },
     isRoot(data) {
-      return data.isRoot;
+      return data.isRoot
     },
     isNewNode(data) {
-      return isEmpty(data.name) ? (data.isRoot ? false : true) : false;
+      return isEmpty(data.name) ? (data.isRoot ? false : true) : false
     },
     //
     onCancel() {
-      this.$emit("cancel");
+      this.$emit('cancel')
     },
     onSubmit() {
-      this.$emit("submit", this.model);
+      this.$emit('submit', this.model)
     }
   },
   watch: {
     visible(value) {
       if (value === true) {
-        this.model = cloneDeep(this.value);
-        this.editing = null;
+        this.model = cloneDeep(this.value)
+        this.editing = null
       }
     },
-    ["editing.$type"](value) {
+    ['editing.$type'](value) {
       if (!this.editing) {
-        return;
+        return
       }
 
-      if (
-        !["func", "on"].includes(value) &&
-        (this.editing.children || []).length > 0
-      ) {
+      if (!['func', 'on'].includes(value) && (this.editing.children || []).length > 0) {
         for (let i = this.editing.children.length; i >= 0; i--) {
-          this.$refs.tree.remove(this.editing.children[i]);
+          this.$refs.tree.remove(this.editing.children[i])
         }
       }
     }
@@ -161,6 +154,6 @@ export default Vue.extend({
       //     </Button>
       //   </span>
       // </Dialog>
-    );
+    )
   }
-});
+})

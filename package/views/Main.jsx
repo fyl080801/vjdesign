@@ -1,19 +1,19 @@
-import Vue from "vue";
-import DesignContent from "../components/DesignContent/index";
-import DesignMetadata from "../components/DesignMetadata/index";
-import DesignPreview from "../components/DesignPreview/index";
-import ModelPreview from "../components/ModelPreview/index";
-import SvgIcon from "vue-svgicon";
+import Vue from 'vue'
+import DesignContent from '../components/DesignContent/index'
+import DesignMetadata from '../components/DesignMetadata/index'
+import DesignPreview from '../components/DesignPreview/index'
+import ModelPreview from '../components/ModelPreview/index'
+import SvgIcon from 'vue-svgicon'
 
 export default Vue.extend({
   data() {
     return {
       active: 0
-    };
+    }
   },
   methods: {
     toggleActive(index) {
-      this.active = index;
+      this.active = index
     }
   },
   render() {
@@ -22,7 +22,7 @@ export default Vue.extend({
         <ul class="nav nav-tabs v-jd-tabs" role="tablist">
           <li class="nav-item v-jd-tabitem" role="presentation">
             <a
-              class={`nav-link v-jd-link ${this.active === 0 ? "active" : ""}`}
+              class={`nav-link v-jd-link ${this.active === 0 ? 'active' : ''}`}
               role="tab"
               href="javascript:;"
               onClick={() => this.toggleActive(0)}
@@ -33,7 +33,7 @@ export default Vue.extend({
           </li>
           <li class="nav-item v-jd-tabitem" role="presentation">
             <a
-              class={`nav-link v-jd-link ${this.active === 1 ? "active" : ""}`}
+              class={`nav-link v-jd-link ${this.active === 1 ? 'active' : ''}`}
               role="tab"
               href="javascript:;"
               onClick={() => this.toggleActive(1)}
@@ -44,7 +44,7 @@ export default Vue.extend({
           </li>
           <li class="nav-item v-jd-tabitem" role="presentation">
             <a
-              class={`nav-link v-jd-link ${this.active === 2 ? "active" : ""}`}
+              class={`nav-link v-jd-link ${this.active === 2 ? 'active' : ''}`}
               role="tab"
               href="javascript:;"
               onClick={() => this.toggleActive(2)}
@@ -55,7 +55,7 @@ export default Vue.extend({
           </li>
           <li class="nav-item v-jd-tabitem" role="presentation">
             <a
-              class={`nav-link v-jd-link ${this.active === 3 ? "active" : ""}`}
+              class={`nav-link v-jd-link ${this.active === 3 ? 'active' : ''}`}
               role="tab"
               href="javascript:;"
               onClick={() => this.toggleActive(3)}
@@ -74,6 +74,6 @@ export default Vue.extend({
           </div>
         </div>
       </div>
-    );
+    )
   }
-});
+})

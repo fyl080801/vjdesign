@@ -1,14 +1,14 @@
-import Vue from "vue";
+import Vue from 'vue'
 
 const emiter = new Vue({
   data() {
-    return { editing: null };
+    return { editing: null }
   },
   methods: {
     setEditing(id) {
-      this.editing = id;
+      this.editing = id
     }
   }
-});
+})
 
-export default emiter;
+export default emiter

@@ -1,8 +1,8 @@
-import Vue from "vue";
-import store from "../store";
-import Components from "./Components";
-import Main from "./Main";
-import Properties from "./Properties";
+import Vue from 'vue'
+import store from '../store'
+import Components from './Components'
+import Main from './Main'
+import Properties from './Properties'
 
 export default Vue.extend({
   store,
@@ -12,8 +12,8 @@ export default Vue.extend({
   },
   components: {},
   created() {
-    this.$store.commit("components/UPDATE", this.components || {});
-    this.$store.commit("form/CREATEED", this.value);
+    this.$store.commit('components/UPDATE', this.components || {})
+    this.$store.commit('form/CREATEED', this.value)
   },
   render() {
     return (
@@ -22,6 +22,6 @@ export default Vue.extend({
         <Main></Main>
         <Properties></Properties>
       </div>
-    );
+    )
   }
-});
+})

@@ -1,4 +1,4 @@
-import Vue from "vue";
+import Vue from 'vue'
 // import { TransformTypes } from "../../../../../utils/enums";
 // import Bind from "../bind";
 // import Func from "../func";
@@ -9,7 +9,7 @@ export default Vue.extend({
     value: {
       type: Object,
       default() {
-        return {};
+        return {}
       }
     },
     transforms: Array
@@ -22,38 +22,38 @@ export default Vue.extend({
         on: {}
       },
       propKeys: {
-        bind: ["$source", "$default"],
-        func: ["$arguments", "$result", "$default"],
-        on: ["$arguments", "$result", "$default"]
+        bind: ['$source', '$default'],
+        func: ['$arguments', '$result', '$default'],
+        on: ['$arguments', '$result', '$default']
       }
-    };
+    }
   },
   watch: {
-    "value.$type": {
+    'value.$type': {
       handler(newVal, oldVal) {
         if (oldVal && this.propKeys[oldVal]) {
           this.propKeys[oldVal].forEach(key => {
-            this.cache[oldVal][key] = this.value[key];
-            delete this.value[key];
-          });
+            this.cache[oldVal][key] = this.value[key]
+            delete this.value[key]
+          })
         }
 
         if (newVal && this.propKeys[newVal]) {
           this.propKeys[newVal].forEach(key => {
             if (this.cache[newVal][key] !== undefined) {
-              this.value[key] = this.cache[newVal][key];
+              this.value[key] = this.cache[newVal][key]
             }
-          });
+          })
         }
       }
     }
   },
   methods: {
     validate() {
-      return this.$refs.form.validate();
+      return this.$refs.form.validate()
     },
     clearValidate() {
-      this.$refs.form.clearValidate();
+      this.$refs.form.clearValidate()
     }
   },
   render() {
@@ -109,6 +109,6 @@ export default Vue.extend({
       //     ></Func>
       //   ) : null}
       // </Form>
-    );
+    )
   }
-});
+})

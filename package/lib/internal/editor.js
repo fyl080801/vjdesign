@@ -1,77 +1,77 @@
-import feature from "../feature";
-import TransformInput from "../editors/Input";
-import TransformCheckbox from "../editors/Checkbox";
+import feature from '../feature'
+import TransformInput from '../editors/Input'
+import TransformCheckbox from '../editors/Checkbox'
 // import { Input, InputNumber, Checkbox, Select, Option } from "element-ui";
 
 feature.editor(
-  "default",
+  'default',
   (path, options) => ({
-    component: "v-jdesign-input",
+    component: 'v-jdesign-input',
     model: [path],
     fieldOptions: options
   }),
   { TransformInput }
-);
+)
 
 feature.editor(
-  "simple",
+  'simple',
   path => ({
-    component: "el-input",
+    component: 'el-input',
     model: [path],
     fieldOptions: {
       attrs: {
-        placeholder: "请输入"
+        placeholder: '请输入'
       }
     }
   })
   // { "el-input": Input }
-);
+)
 
 feature.editor(
-  "number",
+  'number',
   path => ({
-    component: "el-input-number",
+    component: 'el-input-number',
     model: [path]
   })
   // {
   //   "el-input-number": InputNumber
   // }
-);
+)
 
 feature.editor(
-  "checkbox",
+  'checkbox',
   path => ({
-    component: "v-jdesign-checkbox",
+    component: 'v-jdesign-checkbox',
     model: [path]
   }),
   { TransformCheckbox }
-);
+)
 
 feature.editor(
-  "check",
+  'check',
   path => ({
-    component: "el-checkbox",
+    component: 'el-checkbox',
     model: [path]
   })
   // {
   //   "el-checkbox": Checkbox
   // }
-);
+)
 
 feature.editor(
-  "select",
+  'select',
   (path, options) => ({
-    component: "el-select",
+    component: 'el-select',
     model: [path],
     children: options.items.map(item => {
       return {
-        component: "el-option",
+        component: 'el-option',
         fieldOptions: { props: { label: item.label, value: item.value } }
-      };
+      }
     })
   })
   // { "el-select": Select, "el-option": Option }
-);
+)
 
 // registerEditor(
 //   "display",

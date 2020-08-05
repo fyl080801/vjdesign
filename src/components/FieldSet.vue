@@ -7,9 +7,9 @@
 
 <script>
 export default {
-  name: "v-fieldset",
+  name: 'v-fieldset',
   props: { title: String }
-};
+}
 </script>
 
 <style></style>

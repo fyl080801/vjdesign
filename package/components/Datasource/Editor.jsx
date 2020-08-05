@@ -1,7 +1,7 @@
-import Vue from "vue";
-import { cloneDeep } from "lodash-es";
-import { getDatasources } from "../../lib/feature/datasource";
-import { assemblyEditor } from "../../lib/feature/property";
+import Vue from 'vue'
+import { cloneDeep } from 'lodash-es'
+import { getDatasources } from '../../lib/feature/datasource'
+import { assemblyEditor } from '../../lib/feature/property'
 // import "./Editor.scss";
 // import VJForm from "vjform";
 // import {
@@ -26,56 +26,56 @@ export default Vue.extend({
       model: {},
       fields: null,
       components: {}
-    };
+    }
   },
   watch: {
     visible(value) {
       if (value === true) {
-        this.updating = true;
-        this.model = cloneDeep(this.value);
+        this.updating = true
+        this.model = cloneDeep(this.value)
 
         this.$nextTick(() => {
           if (this.$refs && this.$refs.form) {
-            this.$refs.form.clearValidate();
+            this.$refs.form.clearValidate()
           }
-          this.updating = false;
-        });
+          this.updating = false
+        })
       }
     },
-    ["model.type"](value) {
-      this.fields = null;
+    ['model.type'](value) {
+      this.fields = null
       this.components = {
         // "el-form-item": FormItem
-      };
+      }
 
       if (value) {
-        const selected = this.datasources.find(ds => ds.type === value);
+        const selected = this.datasources.find(ds => ds.type === value)
 
         if (!selected) {
-          return;
+          return
         }
 
-        this.fields = assemblyEditor(selected.options) || [];
+        this.fields = assemblyEditor(selected.options) || []
         this.fields.forEach(item => {
-          this.components = { ...this.components, ...item.editorComponents };
-        });
+          this.components = { ...this.components, ...item.editorComponents }
+        })
       }
     }
   },
   methods: {
     onCancel() {
-      this.$emit("cancel");
+      this.$emit('cancel')
     },
     onSubmit() {
       this.$refs.form.validate(valid => {
         if (valid) {
-          this.$emit("submit", this.model);
+          this.$emit('submit', this.model)
         }
-      });
+      })
     }
   },
   mounted() {
-    this.datasources = getDatasources();
+    this.datasources = getDatasources()
   },
   render() {
     return (
@@ -137,6 +137,6 @@ export default Vue.extend({
       //     </Button>
       //   </span>
       // </Dialog>
-    );
+    )
   }
-});
+})

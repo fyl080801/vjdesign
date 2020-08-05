@@ -1,4 +1,4 @@
-import Vue from "vue";
+import Vue from 'vue'
 // import { Input, FormItem } from "element-ui";
 
 export default Vue.extend({
@@ -22,6 +22,6 @@ export default Vue.extend({
           <Input v-model={this.value.$default} placeholder="请输入"></Input>
         </FormItem> */}
       </div>
-    );
+    )
   }
-});
+})
