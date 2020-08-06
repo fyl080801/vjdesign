@@ -139,16 +139,15 @@ export default Vue.extend({
                         </i>
                         {group.key}
                       </Fragment>
-                      <form>
+                      <form class="v-jd-propform">
                         <VJForm
-                          class="vjdesign-property"
+                          class="v-jd-property"
                           value={this.editing}
-                          fields={[]}
+                          fields={group.fields}
                           onInput={this.updateEditing}
                           onClear={this.refreshEditing}
                           components={{ ...group.components }}
                         />
-                        sdsdsd
                       </form>
                     </Card>
                   ))}

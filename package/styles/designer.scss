@@ -206,3 +206,21 @@
     }
   }
 }
+
+.v-jdesign,
+.v-jdesign-dialog {
+  .v-jd-property {
+    .form-group {
+      &.property-field__wrapper {
+        position: relative;
+
+        .clear {
+          position: absolute;
+          top: 0;
+          right: 0;
+          padding: 0 0.5rem;
+        }
+      }
+    }
+  }
+}

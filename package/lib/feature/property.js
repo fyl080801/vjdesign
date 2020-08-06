@@ -53,15 +53,15 @@ export const assemblyEditor = (metaArray, defaults) => {
       rules,
       editorComponents: components,
       defaultValue,
-      component: 'el-form-item',
+      component: 'div',
       fieldOptions: {
-        class: 'property-field__wrapper',
-        props: { label: description }
+        class: 'form-group property-field__wrapper'
       },
       children: [
+        { component: 'label', fieldOptions: { domProps: { innerText: description } } },
         field,
         {
-          component: 'el-button',
+          component: 'button',
           text: '清除',
           condition: {
             $type: 'func',
@@ -69,8 +69,7 @@ export const assemblyEditor = (metaArray, defaults) => {
             $result: 'model !== undefined'
           },
           fieldOptions: {
-            class: 'clear',
-            props: { type: 'text' },
+            class: 'btn btn-sm btn-link clear',
             on: {
               click: {
                 $type: 'on',
@@ -78,9 +77,9 @@ export const assemblyEditor = (metaArray, defaults) => {
                   model: { $type: 'bind', $source: `model` }
                 },
                 $result: `(() => {
-                  delete model.${prop}; 
-                  this.$context.$emit('input', model); 
-                  this.$context.$emit('clear', '${prop}'); 
+                  delete model.${prop};
+                  this.$context.$emit('input', model);
+                  this.$context.$emit('clear', '${prop}');
                 })()`
               }
             }

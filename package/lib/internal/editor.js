@@ -13,30 +13,23 @@ feature.editor(
   { TransformInput }
 )
 
-feature.editor(
-  'simple',
-  path => ({
-    component: 'el-input',
-    model: [path],
-    fieldOptions: {
-      attrs: {
-        placeholder: '请输入'
-      }
-    }
-  })
-  // { "el-input": Input }
-)
+feature.editor('simple', path => ({
+  component: 'input',
+  model: [path],
+  fieldOptions: {
+    class: 'form-control form-control-sm',
+    attrs: { placeholder: '请输入' }
+  }
+}))
 
-feature.editor(
-  'number',
-  path => ({
-    component: 'el-input-number',
-    model: [path]
-  })
-  // {
-  //   "el-input-number": InputNumber
-  // }
-)
+feature.editor('number', path => ({
+  component: 'input',
+  model: [path],
+  fieldOptions: {
+    class: 'form-control form-control-sm',
+    domProps: { type: 'number' }
+  }
+}))
 
 feature.editor(
   'checkbox',
@@ -47,31 +40,28 @@ feature.editor(
   { TransformCheckbox }
 )
 
-feature.editor(
-  'check',
-  path => ({
-    component: 'el-checkbox',
-    model: [path]
-  })
-  // {
-  //   "el-checkbox": Checkbox
-  // }
-)
+feature.editor('check', path => ({
+  component: 'input',
+  model: [path],
+  fieldOptions: {
+    class: 'form-check-input',
+    domProps: { type: 'checkbox' }
+  }
+}))
 
-feature.editor(
-  'select',
-  (path, options) => ({
-    component: 'el-select',
-    model: [path],
-    children: options.items.map(item => {
-      return {
-        component: 'el-option',
-        fieldOptions: { props: { label: item.label, value: item.value } }
-      }
-    })
+feature.editor('select', (path, options) => ({
+  component: 'select',
+  model: [path],
+  fieldOptions: {
+    class: 'form-control form-control-sm'
+  },
+  children: options.items.map(item => {
+    return {
+      component: 'option',
+      fieldOptions: { domProps: { innerText: item.label, value: item.value } }
+    }
   })
-  // { "el-select": Select, "el-option": Option }
-)
+}))
 
 // registerEditor(
 //   "display",
