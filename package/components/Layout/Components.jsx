@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import ComponentList from '../components/ComponentList/index'
-import { getGroups } from '../lib/feature/component'
+import ComponentList from '../ComponentList'
+import { getGroups } from '../../lib/feature/component'
 
 export default Vue.extend({
   data() {

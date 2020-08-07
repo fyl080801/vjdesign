@@ -1,27 +1,13 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
-import { assemblyEditorGroups, DEFAULTS } from '../lib/feature/property'
-import { getComponent } from '../lib/feature/component'
-import emiter from '../utils/emiter'
-import Datasource from '../components/Datasource'
-import Listeners from '../components/Listeners'
-import { Accordion, Card } from '../components/Accordion'
+import { assemblyEditorGroups, DEFAULTS } from '../../lib/feature/property'
+import { getComponent } from '../../lib/feature/component'
+import emiter from '../../utils/emiter'
+import Datasource from '../Datasource'
+import Listeners from '../Listeners'
+import { Accordion, Card } from '../Accordion'
 import { Fragment } from 'vue-fragment'
 import SvgIcon from 'vue-svgicon'
-// import {
-//   Tabs,
-//   TabPane,
-//   Collapse,
-//   CollapseItem,
-//   Form,
-//   FormItem,
-//   Input,
-//   Checkbox,
-//   Select,
-//   Option,
-//   Button,
-//   Popconfirm
-// } from "element-ui";
 import VJForm from 'vjform'
 
 export default Vue.extend({

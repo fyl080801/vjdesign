@@ -48,23 +48,22 @@ export default function() {
         }
       },
       {
-        component: emiter.editing === uuid ? 'el-popconfirm' : null,
+        component: emiter.editing === uuid ? 'span' : null,
         layout: true,
         fieldOptions: {
-          props: { title: '是否删除？' },
-          class: 'del',
-          on: {
-            onConfirm: () => {
-              emiter.$emit('component-delete', cloned)
-            }
-          }
+          // props: { title: '是否删除？' },
+          class: 'del'
+          // on: {
+          //   onConfirm: () => {
+          //     emiter.$emit('component-delete', cloned)
+          //   }
+          // }
         },
         children: [
           {
             component: 'a',
             layout: true,
             fieldOptions: {
-              slot: 'reference',
               domProps: {
                 innerHTML: '<i class="el-icon-delete"></i> 删除',
                 href: 'javascript:;'

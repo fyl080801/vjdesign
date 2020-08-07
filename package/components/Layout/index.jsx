@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import store from '../store'
+import store from '../../store'
 import Components from './Components'
 import Main from './Main'
 import Properties from './Properties'

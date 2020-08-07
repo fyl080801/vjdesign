@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import DesignContent from '../components/DesignContent/index'
-import DesignMetadata from '../components/DesignMetadata/index'
-import DesignPreview from '../components/DesignPreview/index'
-import ModelPreview from '../components/ModelPreview/index'
+import DesignContent from '../DesignContent/index'
+import DesignMetadata from '../DesignMetadata/index'
+import DesignPreview from '../DesignPreview/index'
+import ModelPreview from '../ModelPreview/index'
 import SvgIcon from 'vue-svgicon'
 
 export default Vue.extend({

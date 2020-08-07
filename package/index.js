@@ -1,4 +1,4 @@
-import layout from './views'
+import layout from './components/Layout'
 import lib from './lib'
 import './icons/components'
 import './lib/vjform'
