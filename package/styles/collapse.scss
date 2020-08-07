@@ -8,10 +8,12 @@
       border: none;
       border-radius: 0;
       border-top: $border;
-      border-bottom: $border;
 
       &:first-child {
         border: none;
+      }
+      &:last-child {
+        border-bottom: $border;
       }
 
       > .header {
