@@ -1,5 +1,5 @@
 import emiter from '../../utils/emiter'
-import dialog from '../../utils/dialog'
+import Dialog from '../../components/Dialog'
 
 // 元素设计时处理程序
 export default function() {
@@ -65,7 +65,12 @@ export default function() {
             component: 'a',
             layout: true,
             fieldOptions: {
-              on: { click: dialog.confirm },
+              on: {
+                click: () =>
+                  Dialog.confirm('text', 'xxx')
+                    .then(() => {})
+                    .catch(() => {})
+              },
               domProps: {
                 innerHTML: '<i class="el-icon-delete"></i> 删除',
                 href: 'javascript:;'
