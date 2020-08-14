@@ -1,5 +1,10 @@
 const defaults = {
-  title: null
+  title: null,
+  visible: false,
+  backdrop: false,
+  size: null,
+  cancelText: '取消',
+  okText: '确定'
 }
 
 import Vue from 'vue'
@@ -102,7 +107,7 @@ const showNextMsg = () => {
   }
 }
 
-const MessageBox = function(options, callback) {
+const Dialog = function(options, callback) {
   if (Vue.prototype.$isServer) return
   if (typeof options === 'string' || isVNode(options)) {
     options = {
@@ -118,7 +123,7 @@ const MessageBox = function(options, callback) {
   if (typeof Promise !== 'undefined') {
     return new Promise((resolve, reject) => {
       msgQueue.push({
-        options: merge({}, defaults, MessageBox.defaults, options),
+        options: merge({}, defaults, Dialog.defaults, options),
         callback: callback,
         resolve: resolve,
         reject: reject
@@ -128,7 +133,7 @@ const MessageBox = function(options, callback) {
     })
   } else {
     msgQueue.push({
-      options: merge({}, defaults, MessageBox.defaults, options),
+      options: merge({}, defaults, Dialog.defaults, options),
       callback: callback
     })
 
@@ -136,23 +141,22 @@ const MessageBox = function(options, callback) {
   }
 }
 
-MessageBox.setDefaults = defaults => {
-  MessageBox.defaults = defaults
+Dialog.setDefaults = defaults => {
+  Dialog.defaults = defaults
 }
 
-MessageBox.alert = (message, title, options) => {
+Dialog.alert = (message, title, options) => {
   if (typeof title === 'object') {
     options = title
     title = ''
   } else if (title === undefined) {
     title = ''
   }
-  return MessageBox(
+  return Dialog(
     merge(
       {
         title: title,
         message: message,
-        $type: 'alert',
         closeOnPressEscape: false,
         closeOnClickModal: false
       },
@@ -161,19 +165,18 @@ MessageBox.alert = (message, title, options) => {
   )
 }
 
-MessageBox.confirm = (message, title, options) => {
+Dialog.confirm = (message, title, options) => {
   if (typeof title === 'object') {
     options = title
     title = ''
   } else if (title === undefined) {
     title = ''
   }
-  return MessageBox(
+  return Dialog(
     merge(
       {
         title: title,
         message: message,
-        $type: 'confirm',
         showCancelButton: true
       },
       options
@@ -181,33 +184,12 @@ MessageBox.confirm = (message, title, options) => {
   )
 }
 
-// MessageBox.prompt = (message, title, options) => {
-//   if (typeof title === 'object') {
-//     options = title
-//     title = ''
-//   } else if (title === undefined) {
-//     title = ''
-//   }
-//   return MessageBox(
-//     merge(
-//       {
-//         title: title,
-//         message: message,
-//         showCancelButton: true,
-//         showInput: true,
-//         $type: 'prompt'
-//       },
-//       options
-//     )
-//   )
-// }
-
-MessageBox.close = () => {
+Dialog.close = () => {
   instance.doClose()
   instance.visible = false
   msgQueue = []
   currentMsg = null
 }
 
-export default MessageBox
-export { MessageBox }
+export default Dialog
+export { Dialog }
