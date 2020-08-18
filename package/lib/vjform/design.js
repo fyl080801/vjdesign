@@ -52,13 +52,7 @@ export default function() {
         component: emiter.editing === uuid ? 'span' : null,
         layout: true,
         fieldOptions: {
-          // props: { title: '是否删除？' },
           class: 'del'
-          // on: {
-          //   onConfirm: () => {
-          //     emiter.$emit('component-delete', cloned)
-          //   }
-          // }
         },
         children: [
           {
@@ -67,8 +61,10 @@ export default function() {
             fieldOptions: {
               on: {
                 click: () =>
-                  Dialog.confirm('text', 'xxx')
-                    .then(() => {})
+                  Dialog.confirm('是否删除？', '提示', { size: 'sm' })
+                    .then(() => {
+                      emiter.$emit('component-delete', cloned)
+                    })
                     .catch(() => {})
               },
               domProps: {

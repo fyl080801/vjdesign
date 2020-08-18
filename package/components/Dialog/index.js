@@ -1,3 +1,3 @@
-import Dialog from './helper'
+import Dialog from './main'
 
 export default Dialog

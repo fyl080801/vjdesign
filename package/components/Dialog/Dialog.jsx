@@ -4,6 +4,7 @@ import { isEmpty } from 'lodash-es'
 export default Vue.extend({
   props: {
     title: String,
+    message: String,
     visible: Boolean,
     backdrop: Boolean,
     size: { type: String },
@@ -84,7 +85,7 @@ export default Vue.extend({
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">{this.$slots.default}</div>
+              <div class="modal-body">{this.$slots.default || this.message}</div>
               <div class="modal-footer">
                 <button
                   type="button"

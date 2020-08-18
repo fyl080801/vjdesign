@@ -1,5 +1,6 @@
 const defaults = {
   title: null,
+  message: null,
   visible: false,
   backdrop: false,
   size: null,
@@ -19,7 +20,7 @@ const isVNode = node => {
   return node !== null && typeof node === 'object' && hasOwn(node, 'componentOptions')
 }
 
-const MessageBoxConstructor = Vue.extend(msgboxVue)
+const DialogConstructor = Vue.extend(msgboxVue)
 
 let currentMsg, instance
 let msgQueue = []
@@ -49,7 +50,7 @@ const defaultCallback = action => {
 }
 
 const initInstance = () => {
-  instance = new MessageBoxConstructor({
+  instance = new DialogConstructor({
     el: document.createElement('div')
   })
 
@@ -143,6 +144,10 @@ const Dialog = function(options, callback) {
 
 Dialog.setDefaults = defaults => {
   Dialog.defaults = defaults
+}
+
+Dialog.show = options => {
+  return Dialog(options)
 }
 
 Dialog.alert = (message, title, options) => {
