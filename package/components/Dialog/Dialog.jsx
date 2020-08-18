@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { Fragment } from 'vue-fragment'
 import { isEmpty } from 'lodash-es'
 
 export default Vue.extend({
@@ -6,11 +7,9 @@ export default Vue.extend({
     title: String,
     message: String,
     visible: Boolean,
-    backdrop: Boolean,
-    size: { type: String },
-    cancelText: { type: String, default: '取消' },
-    okText: { type: String, default: '确定' }
+    size: { type: String }
   },
+  components: { Fragment },
   computed: {
     modalSize() {
       return isEmpty(this.size) || this.size === 'md' ? '' : `modal-${this.size}`
@@ -87,17 +86,23 @@ export default Vue.extend({
               </div>
               <div class="modal-body">{this.$slots.default || this.message}</div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary btn-sm"
-                  data-dismiss="modal"
-                  onClick={this.onCancel}
-                >
-                  {this.cancelText}
-                </button>
-                <button type="button" class="btn btn-primary btn-sm" onClick={this.onOk}>
-                  {this.okText}
-                </button>
+                {this.$slots.footer ? (
+                  this.$slots.footer
+                ) : (
+                  <fragment>
+                    <button
+                      type="button"
+                      class="btn btn-secondary btn-sm"
+                      data-dismiss="modal"
+                      onClick={this.onCancel}
+                    >
+                      取消
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" onClick={this.onOk}>
+                      确定
+                    </button>
+                  </fragment>
+                )}
               </div>
             </div>
           </div>

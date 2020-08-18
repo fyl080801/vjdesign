@@ -17,6 +17,7 @@ export default Vue.extend({
       active: 0,
       editorGroups: [],
       updating: null,
+      changing: false,
       groupNames: [],
       propNames: [],
       //
@@ -25,7 +26,8 @@ export default Vue.extend({
   },
   computed: {
     ...mapState({
-      editing: ({ form }) => form.fieldMap[form.editing]
+      editing: ({ form }) => form.fieldMap[form.editing],
+      designComponents: state => state.components
     })
   },
   watch: {
@@ -35,21 +37,21 @@ export default Vue.extend({
         return
       }
 
+      // 必须强刷编辑器表单, mapstate过来的不更新
+      this.changing = true
+      this.$nextTick(() => {
+        this.changing = false
+      })
+
       const component = getComponent(value.component)
       const groups = assemblyEditorGroups(component.properties, DEFAULTS)
 
       this.editorGroups = Object.keys(groups)
         .filter(key => groups[key].length > 0)
-        .map(key => {
-          const fields = groups[key]
-          const components = {}
-          fields.forEach(field => {
-            if (field.instance) {
-              components[field.instance.name] = field.instance
-            }
-          })
-          return { key, fields, components }
-        })
+        .map(key => ({
+          key,
+          fields: groups[key]
+        }))
       this.groupNames = Object.keys(groups)
     },
     updating(value) {
@@ -126,14 +128,16 @@ export default Vue.extend({
                         {group.key}
                       </Fragment>
                       <form class="v-jd-propform">
-                        <VJForm
-                          class="v-jd-property"
-                          value={this.editing}
-                          fields={group.fields}
-                          onInput={this.updateEditing}
-                          onClear={this.refreshEditing}
-                          components={{ ...group.components }}
-                        />
+                        {!this.changing ? (
+                          <VJForm
+                            class="v-jd-property"
+                            value={this.editing}
+                            fields={group.fields}
+                            onInput={this.updateEditing}
+                            onClear={this.refreshEditing}
+                            components={this.designComponents}
+                          />
+                        ) : null}
                       </form>
                     </Card>
                   ))}

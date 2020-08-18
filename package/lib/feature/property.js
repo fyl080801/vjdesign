@@ -45,13 +45,12 @@ export const assemblyEditor = (metaArray, defaults) => {
   return Object.keys(properties).map(prop => {
     const { editor, description, group, defaultValue, rules = [] } = properties[prop]
     const { name, options } = isObject(editor) ? editor : { name: editor }
-    const { field, components } = getEditorFactory(name)(prop, options)
+    const field = getEditorFactory(name)(prop, options)
 
     return {
       group,
       property: prop,
       rules,
-      editorComponents: components,
       defaultValue,
       component: 'div',
       fieldOptions: {
@@ -135,9 +134,9 @@ export default store => {
       description, // 名称
       defaultValue, // 默认值
       group, // 自定义分组名
-      rules // 属性验证规则
-    },
-    editor // 编辑器
+      rules, // 属性验证规则
+      editor // 编辑器
+    }
   ) => {
     const instance = {
       description,

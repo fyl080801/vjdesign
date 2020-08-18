@@ -82,9 +82,9 @@ export default Vue.extend({
         }
       ]) || []
 
-    this.fields.forEach(item => {
-      this.components = { ...this.components, ...item.editorComponents }
-    })
+    // this.fields.forEach(item => {
+    //   this.components = { ...this.components, ...item.editorComponents }
+    // })
   },
   render() {
     return (

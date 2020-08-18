@@ -1,12 +1,12 @@
 import Vue from 'vue'
-import Transform from './transform'
+// import Transform from '../transform'
 // import { Input, Button } from "element-ui";
 
 export default Vue.component('v-jdesign-input', {
-  mixins: [Transform],
-  props: {
-    placeholder: { type: String, default: '请输入' }
-  },
+  // mixins: [Transform],
+  // props: {
+  //   placeholder: { type: String, default: '请输入' }
+  // },
   render() {
     return (
       <div>

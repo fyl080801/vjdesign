@@ -1,17 +1,13 @@
 import feature from '../feature'
-import TransformInput from '../editors/Input'
-import TransformCheckbox from '../editors/Checkbox'
+// import TransformInput from '../editors/Input'
+// import TransformCheckbox from '../editors/Checkbox'
 // import { Input, InputNumber, Checkbox, Select, Option } from "element-ui";
 
-feature.editor(
-  'default',
-  (path, options) => ({
-    component: 'v-jdesign-input',
-    model: [path],
-    fieldOptions: options
-  }),
-  { TransformInput }
-)
+feature.editor('default', (path, options) => ({
+  component: 'v-jdesign-input',
+  model: [path],
+  fieldOptions: options
+}))
 
 feature.editor('simple', path => ({
   component: 'input',
@@ -31,14 +27,10 @@ feature.editor('number', path => ({
   }
 }))
 
-feature.editor(
-  'checkbox',
-  path => ({
-    component: 'v-jdesign-checkbox',
-    model: [path]
-  }),
-  { TransformCheckbox }
-)
+// feature.editor('checkbox', path => ({
+//   component: 'v-jdesign-checkbox',
+//   model: [path]
+// }))
 
 feature.editor('check', path => ({
   component: 'input',

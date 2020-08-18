@@ -5,27 +5,18 @@ const { feature } = vjdesign
 feature.property('fieldOptions.attrs.placeholder', { description: '水印' })
 feature.property('fieldOptions.props.labelWidth', { description: '前缀宽度' })
 feature.property('fieldOptions.props.label', { description: '前缀' })
-feature.property(
-  'fieldOptions.props.gutter',
-  {
-    description: '间隔'
-  },
-  'number'
-)
-feature.property(
-  'fieldOptions.props.span',
-  {
-    description: '列宽'
-  },
-  'number'
-)
-feature.property(
-  'fieldOptions.props.size',
-  {
-    description: '尺寸',
-    defaultValue: 'medium'
-  },
-  {
+feature.property('fieldOptions.props.gutter', {
+  description: '间隔',
+  editor: 'number'
+})
+feature.property('fieldOptions.props.span', {
+  description: '列宽',
+  editor: 'number'
+})
+feature.property('fieldOptions.props.size', {
+  description: '尺寸',
+  defaultValue: 'medium',
+  editor: {
     name: 'select',
     options: {
       items: [
@@ -35,14 +26,11 @@ feature.property(
       ]
     }
   }
-)
+})
 
-feature.property(
-  'fieldOptions.props.labelPosition',
-  {
-    description: '前缀位置'
-  },
-  {
+feature.property('fieldOptions.props.labelPosition', {
+  description: '前缀位置',
+  editor: {
     name: 'select',
     options: {
       items: [
@@ -52,60 +40,39 @@ feature.property(
       ]
     }
   }
-)
+})
 
-feature.property(
-  'fieldOptions.props.disabled',
-  {
-    description: '禁用'
-  },
-  'checkbox'
-)
+feature.property('fieldOptions.props.disabled', {
+  description: '禁用',
+  editor: 'check'
+})
 
-feature.property(
-  'fieldOptions.props.min',
-  {
-    description: '最小值'
-  },
-  'number'
-)
+feature.property('fieldOptions.props.min', {
+  description: '最小值',
+  editor: 'number'
+})
 
-feature.property(
-  'fieldOptions.props.max',
-  {
-    description: '最大值'
-  },
-  'number'
-)
+feature.property('fieldOptions.props.max', {
+  description: '最大值',
+  editor: 'number'
+})
 
-feature.property(
-  'fieldOptions.props.step',
-  {
-    description: '步长'
-  },
-  'number'
-)
+feature.property('fieldOptions.props.step', {
+  description: '步长',
+  editor: 'number'
+})
 
-feature.property(
-  'fieldOptions.props.range',
-  {
-    description: '是否范围'
-  },
-  'checkbox'
-)
+feature.property('fieldOptions.props.range', {
+  description: '是否范围',
+  editor: 'check'
+})
 
-feature.property(
-  'fieldOptions.props.name',
-  {
-    description: '命名'
-  },
-  'simple'
-)
+feature.property('fieldOptions.props.name', {
+  description: '命名',
+  editor: 'simple'
+})
 
-feature.property(
-  'fieldOptions.props.required',
-  {
-    description: '必填'
-  },
-  'checkbox'
-)
+feature.property('fieldOptions.props.required', {
+  description: '必填',
+  editor: 'check'
+})

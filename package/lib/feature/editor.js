@@ -5,24 +5,16 @@ export const getEditor = (name = 'default') => {
 }
 
 export const getEditorFactory = name => {
-  const instance = getEditor(name)
+  const factory = getEditor(name)
 
   return (path, options) => {
-    return {
-      field: instance.factory(path, options),
-      components: instance.components
-    }
+    return factory(path, options)
   }
 }
 
 export default store => {
   // factory 用于创建编辑器的定义
-  return (name, factory, components = {}) => {
-    const editor = {
-      factory,
-      components: components
-    }
-
-    store.set(name, editor)
+  return (name, factory) => {
+    store.set(name, factory)
   }
 }

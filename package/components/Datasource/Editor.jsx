@@ -56,9 +56,6 @@ export default Vue.extend({
         }
 
         this.fields = assemblyEditor(selected.options) || []
-        this.fields.forEach(item => {
-          this.components = { ...this.components, ...item.editorComponents }
-        })
       }
     }
   },

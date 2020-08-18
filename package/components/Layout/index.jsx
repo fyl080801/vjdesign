@@ -4,6 +4,8 @@ import Components from './Components'
 import Main from './Main'
 import Properties from './Properties'
 
+import { VJdInput } from '../../lib/editors/Input'
+
 export default Vue.extend({
   store,
   props: {
@@ -12,7 +14,10 @@ export default Vue.extend({
   },
   components: {},
   created() {
-    this.$store.commit('components/UPDATE', this.components || {})
+    this.$store.commit('components/UPDATE', {
+      ...(this.components || {}),
+      'v-jdesign-input': VJdInput
+    })
     this.$store.commit('form/CREATEED', this.value)
   },
   render() {
