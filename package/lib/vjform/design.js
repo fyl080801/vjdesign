@@ -39,7 +39,7 @@ export default function() {
         fieldOptions: { class: 'v-jd-border v-jd-border-' + item }
       })),
       {
-        component: 'span',
+        component: emiter.editing === uuid ? 'span' : null,
         layout: true,
         fieldOptions: {
           class: 'tag',

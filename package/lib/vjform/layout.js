@@ -66,7 +66,7 @@ export default function() {
             component: 'p',
             layout: true,
             fieldOptions: {
-              class: 'empty',
+              class: 'empty' + (emiter.editing === field.uuid ? ' active' : ''),
               slot: 'footer',
               domProps: {
                 innerText: remark ? `${component}.${remark}` : component

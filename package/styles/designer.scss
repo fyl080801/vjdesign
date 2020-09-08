@@ -95,6 +95,12 @@
         float: left;
         line-height: 24px;
       }
+
+      &.editing {
+        > .empty {
+          color: lightsalmon;
+        }
+      }
     }
 
     .v-jd-design {
