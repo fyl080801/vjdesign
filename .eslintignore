@@ -1,7 +1,3 @@
-client/build/
-client/dist/
-client/**/index.html
-server/app/public/
-/*.js
-**/node_modules/
-output/
+dist
+build
+node_modules

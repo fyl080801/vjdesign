@@ -1,41 +1,44 @@
 <template>
-  <div id="app">
-    <v-jdesign
-      :value="designValue"
-      @input="changed"
-      :components="components"
-    ></v-jdesign>
-  </div>
+  <el-container direction="vertical" class="demo">
+    <el-header class="header">
+      <el-button>预览</el-button>
+      <el-button>元数据</el-button>
+      <el-button>导出</el-button>
+    </el-header>
+    <el-main class="design">
+      <v-jdesign v-model="value"></v-jdesign>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
-import FieldSet from "./components/FieldSet.vue";
-
 export default {
-  name: "App",
   data() {
     return {
-      designValue: {
-        fields: []
-      },
-      components: { FieldSet }
-    };
-  },
-  methods: {
-    changed(value) {
-      this.designValue = value;
+      value: {
+        fields: [{ component: 'p', text: 'test' }]
+      }
     }
   }
-};
+}
 </script>
 
 <style>
-#app {
+.demo {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 10px;
+}
+
+.demo > .header {
+  border-bottom: 1px solid #dcdfe6;
+  line-height: 60px;
+  text-align: right;
+}
+
+.demo > .design {
+  padding: 0;
 }
 </style>
