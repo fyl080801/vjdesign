@@ -26,6 +26,7 @@
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "svg": "vsvg -s ./lib/icons/svg -t ./lib/icons/components --ext js --es6",
     "lint": "vue-cli-service lint",
     "dist": "vue-cli-service build --target lib ./lib/index.js",
     "prepublish": "npm run dist"
@@ -38,6 +39,7 @@
     "vjform": "^2.0.0-beta.4",
     "vue": "^2.6.12",
     "vue-json-viewer": "^2.2.14",
+    "vue-svgicon": "^3.2.9",
     "vuedraggable": "^2.24.1",
     "vuex": "^3.4.0"
   },
