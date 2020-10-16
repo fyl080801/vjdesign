@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import { createRegistry } from '../registry'
+import commonRegistry from '../utils/register'
 import store from '../store'
 import Fields from './fields/Index'
 import Datasource from './datasource/Index'
@@ -49,7 +51,8 @@ export default {
   store,
   props: {
     value: Object,
-    components: Object
+    components: Object,
+    profile: Object
   },
   components: {
     SvgIcon,
@@ -71,6 +74,9 @@ export default {
   created() {
     this.$store.dispatch('components/init', this.components || {})
     this.$store.dispatch('form/init', this.value)
+    this.$store.dispatch('edit/init', {
+      registry: createRegistry(commonRegistry.map).build()
+    })
   }
 }
 </script>
