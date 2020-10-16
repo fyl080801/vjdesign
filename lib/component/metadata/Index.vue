@@ -1,7 +1,10 @@
 <template>
   <div>
-    <svg-icon name="code"></svg-icon>
-    元数据
+    <p>
+      <svg-icon name="code"></svg-icon>
+      <span>元数据</span>
+      <svg-icon name="database"></svg-icon>
+    </p>
   </div>
 </template>
 

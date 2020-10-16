@@ -1,6 +1,16 @@
 <template>
-  <div class="toolbox">组件库</div>
+  <div class="toolbox">
+    <button type="button" class="btn btn-primary">Primary</button>
+  </div>
 </template>
+
+<script>
+// import vuedraggable from 'vuedraggable'
+
+export default {
+  // components: { vuedraggable }
+}
+</script>
 
 <style scoped>
 .toolbox {

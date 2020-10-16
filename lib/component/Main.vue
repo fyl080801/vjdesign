@@ -72,65 +72,50 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('components/init', this.components || {})
-    this.$store.dispatch('form/init', this.value)
     this.$store.dispatch('edit/init', {
+      components: this.components || {},
       registry: createRegistry(commonRegistry.map).build()
     })
+    this.$store.dispatch('profile/init', this.profile)
+    this.$store.dispatch('form/init', this.value)
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 .v-jdesign {
-  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
-  font-size: 14px;
-  height: 100%;
-  width: 100%;
-  display: flex;
-}
+  > ul {
+    &.v-jd-feature {
+      background-color: rgb(48, 65, 86);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      color: rgb(191, 203, 217);
 
-.v-jdesign .svg-icon {
-  width: 16px;
-  height: 16px;
-  color: inherit;
-}
+      a {
+        cursor: pointer;
+      }
 
-.v-jdesign .svg-icon.svg-fill {
-  fill: currentColor;
-  stroke: none;
-}
+      li {
+        padding: 0.375rem 0.75rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 4.35rem;
 
-.v-jdesign > ul.v-jd-feature {
-  background-color: rgb(48, 65, 86);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  color: rgb(191, 203, 217);
-}
+        &.active {
+          color: rgb(64, 158, 255);
+          background-color: #263445;
+        }
+      }
+    }
+  }
 
-.v-jdesign > ul.v-jd-feature a {
-  cursor: pointer;
-}
-
-.v-jdesign > ul.v-jd-feature li {
-  padding: 6px 12px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  height: 48px;
-}
-
-.v-jdesign > ul.v-jd-feature li.active {
-  color: rgb(64, 158, 255);
-  background-color: #263445;
-}
-
-.v-jdesign > .content {
-  flex: 1;
-  display: flex;
+  > .content {
+    flex: 1;
+    display: flex;
+  }
 }
 </style>

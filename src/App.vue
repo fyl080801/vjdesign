@@ -23,20 +23,15 @@ export default {
         components: [
           // 工具箱里的组件
           {
-            component: 'el-form',
+            name: 'el-form',
             label: '表单',
             description: '',
             icon: 'form',
             group: 'ElementUI', // 分组
-            tags: ['form', 'layout'], // 按标签查询
-            provider: 'default', // 设计器使用的 provider
+            designer: 'container', // 设计器使用的 provider
             properties: [
               'fieldOptions.props.model',
               'fieldOptions.props.labelWidth',
-              {
-                prop: 'fieldOptions.props.labelWidth',
-                editor: {}
-              },
               {
                 prop: 'fieldOptions.props.size',
                 editor: {
@@ -49,13 +44,12 @@ export default {
             ]
           },
           {
-            component: 'simple-table',
+            name: 'simple-table',
             label: '数据表格',
             description: '',
             icon: 'table',
             group: 'Custom',
-            tags: ['table', 'data'],
-            provider: 'default',
+            designer: 'default',
             properties: [
               {
                 prop: 'columns',
@@ -109,32 +103,6 @@ export default {
           { name: '', editor: '' },
           { name: '', editor: {} }
         ],
-        // editors: [
-        //   { name: 'elinput', field: { component: 'el-input' } },
-        //   {
-        //     name: 'elselect',
-        //     field: {
-        //       component: 'el-select',
-        //       fieldOptions: {
-        //         props: {}
-        //       },
-        //       children: [
-        //         {
-        //           component: 'v-jd-repeat',
-        //           fieldOptions: {
-        //             props: {
-        //               '$:data': 'params.items',
-        //               '^:field': {
-        //                 component: 'el-option',
-        //                 fieldOptions: { props: { value: '' } }
-        //               }
-        //             }
-        //           }
-        //         }
-        //       ]
-        //     }
-        //   }
-        // ], // 支持的编辑器
         schema: {
           type: 'object',
           properties: {
@@ -149,6 +117,11 @@ export default {
 </script>
 
 <style>
+html,
+body {
+  font-size: 14px;
+}
+
 .demo {
   position: absolute;
   top: 0;

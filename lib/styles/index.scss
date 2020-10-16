@@ -1,0 +1,20 @@
+.v-jdesign {
+  @import 'normalize.scss';
+  @import 'bootstrap/scss/bootstrap.scss';
+
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  .svg-icon {
+    width: 1em;
+    height: 1em;
+    color: inherit;
+    vertical-align: -0.15em;
+
+    &.svg-fill {
+      fill: currentColor;
+      stroke: none;
+    }
+  }
+}

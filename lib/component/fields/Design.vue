@@ -2,7 +2,7 @@
   <div class="design">
     <v-jform
       v-model="edit.model"
-      :components="components"
+      :components="edit.components"
       :fields="form.fields"
       :listeners="form.listeners"
       :datasource="form.datasource"
@@ -15,15 +15,18 @@
 <script>
 import { mapGetters } from 'vuex'
 import vjform from 'vjform'
+import designer from '../../internal/providers/designer'
 
 export default {
   components: { [vjform.name]: vjform },
   data() {
     return {}
   },
-  computed: { ...mapGetters(['components', 'form', 'edit', 'options']) },
+  computed: { ...mapGetters(['form', 'edit', 'options']) },
   methods: {
-    onInitialling() {}
+    onInitialling({ provider }) {
+      provider(designer)
+    }
   }
 }
 </script>
