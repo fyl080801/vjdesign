@@ -6,11 +6,18 @@
   width: 100%;
   display: flex;
 
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
   .svg-icon {
-    width: 1em;
-    height: 1em;
+    width: 1rem;
+    height: 1rem;
     color: inherit;
-    vertical-align: -0.15em;
+    vertical-align: -0.15rem;
 
     &.svg-fill {
       fill: currentColor;

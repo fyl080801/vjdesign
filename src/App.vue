@@ -1,9 +1,8 @@
 <template>
   <el-container direction="vertical" class="demo">
     <el-header class="header">
-      <el-button>预览</el-button>
-      <el-button>元数据</el-button>
-      <el-button>导出</el-button>
+      <el-button size="small">预览</el-button>
+      <el-button size="small">导出</el-button>
     </el-header>
     <el-main class="design">
       <v-jdesign v-model="value" :profile="profile"></v-jdesign>
@@ -16,7 +15,7 @@ export default {
   data() {
     return {
       value: {
-        fields: [{ component: 'p', text: 'test' }]
+        // fields: [{ component: 'p', text: 'test' }]
       },
       profile: {
         // i18n: {}, // 考虑国际化

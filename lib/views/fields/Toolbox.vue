@@ -18,7 +18,7 @@
           <a
             class="col-md-6 item-wrapper drag-handler"
             v-for="item in group.children"
-            :key="item.name"
+            :key="`${group.name}_${item.name}_${item.label}`"
           >
             <li class="item">
               <SvgIcon class="icon" :name="item.icon || 'square'"></SvgIcon>
@@ -67,35 +67,37 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.toolbox {
-  width: 250px;
-  border-right: 1px solid #dcdfe6;
+<style lang="scss">
+.v-jdesign {
+  .toolbox {
+    width: 250px;
+    border-right: 1px solid #dcdfe6;
 
-  .component-group {
-    list-style: none;
-    padding: inherit;
-    margin: inherit;
-    margin-bottom: -1px;
-    margin-right: -1px;
-    margin-left: 0;
+    .component-group {
+      list-style: none;
+      padding: inherit;
+      margin: inherit;
+      margin-bottom: -1px;
+      margin-right: -1px;
+      margin-left: 0;
 
-    .item-wrapper {
-      border-bottom: 1px solid #dcdfe6;
-      border-right: 1px solid #dcdfe6;
-      padding-left: 1.25rem;
-      color: #409eff;
+      .item-wrapper {
+        border-bottom: 1px solid #dcdfe6;
+        border-right: 1px solid #dcdfe6;
+        padding-left: 1.25rem;
+        color: #409eff;
 
-      &.drag-handler {
-        cursor: pointer;
-        text-decoration: none;
-      }
+        &.drag-handler {
+          cursor: pointer;
+          text-decoration: none;
+        }
 
-      .item {
-        padding: 0.75rem 0;
+        .item {
+          padding: 0.75rem 0;
 
-        > .icon {
-          margin-right: 0.75em;
+          > .icon {
+            margin-right: 0.75em;
+          }
         }
       }
     }
