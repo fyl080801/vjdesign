@@ -1,27 +1,27 @@
 <template>
   <div class="card">
-    <div class="card-header">
-      <a href="javascript:;" @click="onTitleClick">
-        <slot name="header">
-          <SvgIcon class="card-icon" :name="icon"></SvgIcon>
-          <span>{{ title }}</span>
-        </slot>
-      </a>
-    </div>
+    <a @click="onTitleClick" class="card-header">
+      <slot name="header">
+        <SvgIcon class="card-icon" :name="icon"></SvgIcon>
+        <span>{{ title }}</span>
+        <div class="card-tail">
+          <SvgIcon name="angle-down" :class="{ expand }"></SvgIcon>
+        </div>
+      </slot>
+    </a>
     <div :class="{ collapse: true, show: parent.value.includes(name) }">
-      <div class="card-body">
-        <slot></slot>
-      </div>
+      <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
 import SvgIcon from 'vue-svgicon'
+
 export default {
   props: {
     title: String,
-    icon: { type: String, default: 'code' },
+    icon: { type: String, default: 'list' },
     name: String
   },
   components: { SvgIcon },
@@ -32,6 +32,9 @@ export default {
         cache = cache.$parent
       }
       return cache
+    },
+    expand() {
+      return this.parent ? this.parent.value.includes(this.name) : false
     }
   },
   methods: {
@@ -47,6 +50,28 @@ export default {
 .v-jdesign {
   .card-icon {
     margin-right: 0.75em;
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+.card {
+  .card-header {
+    cursor: pointer;
+    text-decoration: none;
+    color: #303133;
+
+    .card-tail {
+      float: right;
+
+      > .svg-icon {
+        transform: rotate(90deg);
+
+        &.expand {
+          transform: rotate(0);
+        }
+      }
+    }
   }
 }
 </style>

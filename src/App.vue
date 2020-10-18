@@ -26,7 +26,7 @@ export default {
             name: 'el-form',
             label: '表单',
             description: '',
-            icon: 'form',
+            icon: 'window-maximize',
             group: 'ElementUI', // 分组
             designer: 'container', // 设计器使用的 provider
             properties: [
@@ -42,6 +42,22 @@ export default {
                 }
               }
             ]
+          },
+          {
+            name: 'el-form-item',
+            label: '表单项',
+            description: '',
+            group: 'ElementUI', // 分组
+            designer: 'container', // 设计器使用的 provider
+            properties: ['fieldOptions.props.labelWidth']
+          },
+          {
+            name: 'el-input',
+            label: '输入框',
+            description: '',
+            group: 'ElementUI', // 分组
+            designer: 'container', // 设计器使用的 provider
+            properties: []
           },
           {
             name: 'simple-table',
