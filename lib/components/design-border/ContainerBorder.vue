@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'v-jd-design-border'
+  name: 'v-jd-container-border'
 }
 </script>
 
@@ -17,10 +17,10 @@ export default {
 .v-jdesign {
   .design {
     .inner {
-      .v-jd-design-wrapper {
+      .v-jd-container-wrapper {
         position: relative;
-        // padding: 0.75rem 1.25rem;
-        // padding-bottom: 0;
+        padding: 0.75rem 1.25rem;
+        padding-bottom: 0;
       }
     }
   }
@@ -28,7 +28,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-$border: 1px dashed #dcdfe6;
+$border: 1px dashed #e4e7ed;
 
 .border-wrapper {
   position: absolute;

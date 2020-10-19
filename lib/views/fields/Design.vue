@@ -3,23 +3,23 @@
     <vuedraggable
       tag="div"
       class="inner"
-      :value="form.fields"
-      @input="onFieldsUpdate"
+      :value="form.value.fields"
+      @input="onRootUpdate"
       group="jdesign"
       draggable=".drag-handler"
     >
       <v-jform
-        v-if="form.fields.length > 0"
-        v-model="edit.model"
+        v-if="form.value.fields.length > 0"
+        v-model="form.model"
         :components="edit.components"
-        :fields="form.fields"
-        :listeners="form.listeners"
-        :datasource="form.datasource"
+        :fields="form.value.fields"
+        :listeners="form.value.listeners"
+        :datasource="form.value.datasource"
         :initialling="onInitialling"
         :options="options"
       ></v-jform>
-      <p :class="{ 'root-text': true, empty: !form.fields.length }">
-        {{ !form.fields.length ? '拖组件到此' : 'root' }}
+      <p :class="{ 'root-text': true, empty: !form.value.fields.length }">
+        {{ !form.value.fields.length ? '拖组件到此' : 'root' }}
       </p>
     </vuedraggable>
   </div>
@@ -38,7 +38,7 @@ export default {
     onInitialling({ provider }) {
       provider(designer)
     },
-    onFieldsUpdate(value) {
+    onRootUpdate(value) {
       this.$store.dispatch('form/updateRoot', value)
     }
   }
@@ -53,7 +53,7 @@ export default {
     padding: 0.75rem 1.25rem;
 
     .inner {
-      border: 1px dashed #e4e7ed;
+      border: 1px dashed #dcdfe6;
     }
 
     .root-text {
