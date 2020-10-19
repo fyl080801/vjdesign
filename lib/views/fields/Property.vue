@@ -4,7 +4,7 @@
 
 <style scoped>
 .property {
-  width: 250px;
+  width: 300px;
   border-left: 1px solid #dcdfe6;
 }
 </style>

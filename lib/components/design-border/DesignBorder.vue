@@ -14,13 +14,23 @@ export default {
 </script>
 
 <style lang="scss">
+$border: 1px dashed #dcdfe6;
+
 .v-jdesign {
   .design {
     .inner {
       .v-jd-design-wrapper {
         position: relative;
-        // padding: 0.75rem 1.25rem;
-        // padding-bottom: 0;
+
+        .tag {
+          position: absolute;
+          top: 0;
+          left: 0;
+          border: $border;
+          background-color: rgba(0, 0, 0, 0.03);
+          padding: 0.01rem 0.5rem;
+          color: #303133;
+        }
       }
     }
   }
@@ -36,6 +46,7 @@ $border: 1px dashed #dcdfe6;
   left: 0;
   bottom: 0;
   right: 0;
+  z-index: -1;
 
   > * {
     border: none;

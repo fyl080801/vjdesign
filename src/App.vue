@@ -1,17 +1,21 @@
 <template>
   <el-container direction="vertical" class="demo">
     <el-header class="header">
-      <el-button size="small">预览</el-button>
+      <el-button size="small" @click="showPreview">预览</el-button>
       <el-button size="small">导出</el-button>
     </el-header>
     <el-main class="design">
       <v-jdesign v-model="value" :profile="profile"></v-jdesign>
     </el-main>
+    <Preview ref="preview"></Preview>
   </el-container>
 </template>
 
 <script>
+import Preview from './components/Preview'
+
 export default {
+  components: { Preview },
   data() {
     return {
       value: {
@@ -126,6 +130,11 @@ export default {
           }
         } // 可用数据的结构
       }
+    }
+  },
+  methods: {
+    showPreview() {
+      this.$refs.preview.show(this.value)
     }
   }
 }

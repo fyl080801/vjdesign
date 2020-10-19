@@ -3,7 +3,6 @@
     <div class="left"></div>
     <div class="top"></div>
     <div class="right"></div>
-    <div class="bottom"></div>
   </div>
 </template>
 
@@ -19,7 +18,7 @@ export default {
     .inner {
       .v-jd-container-wrapper {
         position: relative;
-        padding: 0.75rem 1.25rem;
+        padding: 1.25rem;
         padding-bottom: 0;
       }
     }
@@ -36,6 +35,7 @@ $border: 1px dashed #e4e7ed;
   left: 0;
   bottom: 0;
   right: 0;
+  z-index: -1;
 
   > * {
     border: none;
@@ -60,13 +60,6 @@ $border: 1px dashed #e4e7ed;
     border-right: $border;
     top: 0;
     bottom: 0;
-    right: 0;
-  }
-
-  .bottom {
-    border-bottom: $border;
-    bottom: 0;
-    left: 0;
     right: 0;
   }
 }

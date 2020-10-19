@@ -1,6 +1,7 @@
 <template>
   <div class="design">
     <vuedraggable
+      v-if="!form.value.fields.length"
       tag="div"
       class="inner"
       :value="form.value.fields"
@@ -8,35 +9,56 @@
       group="jdesign"
       draggable=".drag-handler"
     >
-      <v-jform
-        v-if="form.value.fields.length > 0"
-        v-model="form.model"
-        :components="edit.components"
-        :fields="form.value.fields"
-        :listeners="form.value.listeners"
-        :datasource="form.value.datasource"
-        :initialling="onInitialling"
-        :options="options"
-      ></v-jform>
-      <p :class="{ 'root-text': true, empty: !form.value.fields.length }">
-        {{ !form.value.fields.length ? '拖组件到此' : 'root' }}
-      </p>
+      <p class="root-text empty">拖组件到此</p>
     </vuedraggable>
+    <v-jform
+      v-else
+      v-model="form.model"
+      class="inner"
+      :components="edit.components"
+      :fields="fields"
+      :listeners="form.value.listeners"
+      :datasource="form.value.datasource"
+      :initialling="onInitialling"
+      :options="options"
+    ></v-jform>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import vjform from 'vjform/lib'
+import vjform from 'vjform'
 import vuedraggable from 'vuedraggable'
 import designer from '../../internal/providers/designer'
 
 export default {
   components: { [vjform.name]: vjform, vuedraggable },
-  computed: { ...mapGetters(['form', 'edit', 'options']) },
+  computed: {
+    ...mapGetters(['form', 'edit', 'options']),
+    fields() {
+      return this.form.value.fields
+      // return [
+      //   {
+      //     component: 'vuedraggable',
+      //     fieldOptions: {
+      //       class: 'designed',
+      //       props: { group: 'jdesign', draggable: '.drag-handler' }
+      //     },
+      //     children: [
+      //       ...this.form.value.fields,
+      //       {
+      //         component: 'p',
+      //         text: 'root',
+      //         fieldOptions: { class: 'root-text designed' }
+      //       }
+      //     ]
+      //   }
+      // ]
+    }
+  },
   methods: {
     onInitialling({ provider }) {
-      provider(designer)
+      provider(designer).withIndex(1000)
     },
     onRootUpdate(value) {
       this.$store.dispatch('form/updateRoot', value)

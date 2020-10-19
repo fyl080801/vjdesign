@@ -45,6 +45,7 @@ import Listeners from './listeners/Index'
 import Metadata from './metadata/Index'
 import SvgIcon from 'vue-svgicon'
 import '../icons/components'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'v-jdesign',
@@ -64,6 +65,12 @@ export default {
   data() {
     return {
       current: 'fields'
+    }
+  },
+  computed: { ...mapGetters(['form']) },
+  watch: {
+    ['form.value.fields'](value) {
+      this.value.fields = value
     }
   },
   methods: {

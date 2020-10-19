@@ -38,7 +38,7 @@
     "jpresent-transform-modern": "^1.1.0",
     "lodash-es": "^4.17.15",
     "normalize.scss": "^0.1.0",
-    "vjform": "^2.1.0-beta.2",
+    "vjform": "^2.1.0-beta.3",
     "vue": "^2.6.12",
     "vue-json-viewer": "^2.2.14",
     "vue-svgicon": "^3.2.9",
