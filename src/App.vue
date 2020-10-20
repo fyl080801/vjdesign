@@ -59,23 +59,22 @@ export default {
             label: '输入框',
             description: '',
             group: 'ElementUI', // 分组
-            designer: 'container', // 设计器使用的 provider
             properties: []
-          },
-          {
-            name: 'simple-table',
-            label: '数据表格',
-            description: '',
-            icon: 'table',
-            group: 'Custom',
-            designer: 'default',
-            properties: [
-              {
-                prop: 'columns',
-                editor: 'tablecolumns'
-              }
-            ]
           }
+          // {
+          //   name: 'simple-table',
+          //   label: '数据表格',
+          //   description: '',
+          //   icon: 'table',
+          //   group: 'Custom',
+          //   designer: 'default',
+          //   properties: [
+          //     {
+          //       prop: 'columns',
+          //       editor: 'tablecolumns'
+          //     }
+          //   ]
+          // }
         ],
         datasource: [
           // 支持的数据源

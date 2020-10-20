@@ -28,7 +28,8 @@ $design-border: 1px dashed #dcdfe6;
           left: 0;
           border: $design-border;
           background-color: rgba(0, 0, 0, 0.03);
-          padding: 0.02rem 0.5rem;
+          padding: 0 0.5rem;
+          line-height: 1.45rem;
           color: #303133;
 
           .svg-icon {
