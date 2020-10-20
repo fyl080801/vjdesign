@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style lang="scss">
-$border: 1px dashed #dcdfe6;
+$design-border: 1px dashed #dcdfe6;
 
 .v-jdesign {
   .design {
@@ -26,59 +26,68 @@ $border: 1px dashed #dcdfe6;
           position: absolute;
           top: 0;
           left: 0;
-          border: $border;
+          border: $design-border;
           background-color: rgba(0, 0, 0, 0.03);
-          padding: 0.01rem 0.5rem;
+          padding: 0.02rem 0.5rem;
           color: #303133;
+        }
+
+        > .border-wrapper {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: -1;
+
+          > * {
+            border: none;
+            position: absolute;
+          }
+
+          .left {
+            border-left: $design-border;
+            top: 0;
+            bottom: 0;
+            left: 0;
+          }
+
+          .top {
+            border-top: $design-border;
+            top: 0;
+            left: 0;
+            right: 0;
+          }
+
+          .right {
+            border-right: $design-border;
+            top: 0;
+            bottom: 0;
+            right: 0;
+          }
+
+          .bottom {
+            border-bottom: $design-border;
+            bottom: 0;
+            left: 0;
+            right: 0;
+          }
+        }
+
+        &.editing {
+          > .tag {
+            border-color: #409eff;
+            color: #409eff;
+          }
+
+          > .border-wrapper {
+            > * {
+              border-color: #409eff;
+            }
+          }
         }
       }
     }
-  }
-}
-</style>
-
-<style lang="scss" scoped>
-$border: 1px dashed #dcdfe6;
-
-.border-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: -1;
-
-  > * {
-    border: none;
-    position: absolute;
-  }
-
-  .left {
-    border-left: $border;
-    top: 0;
-    bottom: 0;
-    left: 0;
-  }
-
-  .top {
-    border-top: $border;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .right {
-    border-right: $border;
-    top: 0;
-    bottom: 0;
-    right: 0;
-  }
-
-  .bottom {
-    border-bottom: $border;
-    bottom: 0;
-    left: 0;
-    right: 0;
   }
 }
 </style>

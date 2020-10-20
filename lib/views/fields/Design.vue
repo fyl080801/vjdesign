@@ -76,6 +76,7 @@ export default {
 
     .inner {
       border: 1px dashed #dcdfe6;
+      cursor: pointer;
     }
 
     .root-text {

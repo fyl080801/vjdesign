@@ -13,54 +13,64 @@ export default {
 </script>
 
 <style lang="scss">
+$container-border: 1px dashed #e4e7ed;
+
 .v-jdesign {
   .design {
     .inner {
       .v-jd-container-wrapper {
         position: relative;
-        padding: 1.25rem;
+        padding: 1.5rem;
         padding-bottom: 0;
+
+        > .border-wrapper {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: -1;
+
+          > * {
+            border: none;
+            position: absolute;
+          }
+
+          .left {
+            border-left: $container-border;
+            top: 0;
+            bottom: 0;
+            left: 0;
+          }
+
+          .top {
+            border-top: $container-border;
+            top: 0;
+            left: 0;
+            right: 0;
+          }
+
+          .right {
+            border-right: $container-border;
+            top: 0;
+            bottom: 0;
+            right: 0;
+          }
+        }
+
+        &.editing {
+          > .border-wrapper {
+            > * {
+              border-color: #409eff;
+            }
+          }
+
+          > .root-text {
+            color: #409eff;
+          }
+        }
       }
     }
-  }
-}
-</style>
-
-<style lang="scss" scoped>
-$border: 1px dashed #e4e7ed;
-
-.border-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: -1;
-
-  > * {
-    border: none;
-    position: absolute;
-  }
-
-  .left {
-    border-left: $border;
-    top: 0;
-    bottom: 0;
-    left: 0;
-  }
-
-  .top {
-    border-top: $border;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .right {
-    border-right: $border;
-    top: 0;
-    bottom: 0;
-    right: 0;
   }
 }
 </style>
