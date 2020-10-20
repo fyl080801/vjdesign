@@ -32,6 +32,7 @@
       <Listeners v-if="current === 'listeners'"></Listeners>
       <Metadata v-if="current === 'metadata'"></Metadata>
     </div>
+    <Modal></Modal>
   </div>
 </template>
 
@@ -46,6 +47,7 @@ import Metadata from './metadata/Index'
 import SvgIcon from 'vue-svgicon'
 import '../icons/components'
 import { mapGetters } from 'vuex'
+import { Modal } from '../components/modal'
 
 export default {
   name: 'v-jdesign',
@@ -60,7 +62,8 @@ export default {
     Fields,
     Datasource,
     Listeners,
-    Metadata
+    Metadata,
+    Modal
   },
   data() {
     return {

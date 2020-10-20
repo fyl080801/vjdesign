@@ -1,7 +1,10 @@
-.v-jdesign {
+.v-jdesign,
+.v-jdesign-modal {
   @import 'normalize.scss';
   @import 'bootstrap/scss/bootstrap.scss';
+}
 
+.v-jdesign {
   height: 100%;
   width: 100%;
   display: flex;

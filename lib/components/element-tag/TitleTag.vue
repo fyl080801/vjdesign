@@ -1,5 +1,8 @@
 <template>
-  <span class="tag"><SvgIcon :name="titleIcon"></SvgIcon>{{ text }}</span>
+  <span class="tag">
+    <SvgIcon :name="titleIcon"></SvgIcon>
+    <span>{{ text }}</span>
+  </span>
 </template>
 
 <script>
