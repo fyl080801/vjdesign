@@ -1,0 +1,205 @@
+.v-jdesign {
+  height: 100%;
+  border: 1px solid #e4e7ed;
+
+  > .main,
+  > .right {
+    border-left: 1px solid #e4e7ed;
+  }
+
+  .max-aside {
+    height: 100%;
+  }
+
+  // 组件
+  .aside {
+    .components {
+      .components-group {
+        > .drag-handler {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  .v-jform {
+    .design-element {
+      position: relative;
+      width: 100%;
+      display: inherit;
+    }
+
+    .design-element {
+      .layout {
+        position: relative;
+        box-sizing: border-box;
+        padding: 20px;
+        padding-bottom: 0;
+        width: 100%;
+        display: inherit;
+        overflow: hidden;
+      }
+
+      > * {
+        display: block !important;
+      }
+
+      > .layout-element * {
+        text-align: initial;
+      }
+
+      > .tag,
+      > .del {
+        position: absolute;
+        top: 0;
+        left: 0;
+        line-height: 16px;
+        font-size: 12px;
+        z-index: 2000;
+        background-color: rgb(242, 242, 242);
+        padding: 2px 4px;
+        cursor: pointer;
+        border: 1px dashed gray;
+        text-decoration: none;
+      }
+
+      > .del {
+        position: absolute;
+        left: auto;
+        right: 0;
+      }
+    }
+
+    .root,
+    .design-element .layout {
+      min-height: 45px;
+
+      > .empty {
+        width: 100%;
+        text-align: center;
+        color: silver;
+        margin: 0;
+        font-size: 14px;
+        cursor: pointer;
+        float: left;
+        line-height: 24px;
+      }
+    }
+  }
+}
+
+// border
+.v-jdesign {
+  .v-jform {
+    .design-element {
+      /* element border */
+      > .border-top,
+      > .border-bottom,
+      > .border-left,
+      > .border-right {
+        position: absolute;
+        border-style: none;
+        border-color: gray;
+      }
+
+      > .border-top {
+        top: 0;
+        left: 0;
+        right: 0;
+        border-top-width: 1px;
+        border-top-style: dashed;
+      }
+
+      > .border-left {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        border-left-width: 1px;
+        border-left-style: dashed;
+      }
+
+      > .border-bottom {
+        right: 0;
+        left: 0;
+        bottom: 0;
+        border-bottom-width: 1px;
+        border-bottom-style: dashed;
+      }
+
+      > .border-right {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border-right-width: 1px;
+        border-right-style: dashed;
+      }
+
+      // layout
+      .layout {
+        > .border-top,
+        > .border-right,
+        > .border-left,
+        > .border-bottom {
+          position: absolute;
+          border-style: none;
+          border-color: silver;
+        }
+
+        > .border-right {
+          right: 0;
+          top: 0;
+          bottom: 0;
+          border-right: 1px dashed silver;
+        }
+        > .border-left {
+          left: 0;
+          top: 0;
+          bottom: 0;
+          border-left: 1px dashed silver;
+        }
+        > .border-top {
+          right: 0;
+          top: 0;
+          left: 0;
+          border-top: 1px dashed silver;
+        }
+        > .border-bottom {
+          right: 0;
+          left: 0;
+          bottom: 0;
+          border-bottom: 1px dashed silver;
+        }
+      }
+    }
+  }
+}
+
+/* editing */
+.v-jdesign .v-jform .design-element.editing > .border,
+.v-jdesign .v-jform .design-element.editing > .tag,
+.v-jdesign .v-jform .design-element.editing > .del {
+  border-color: red;
+}
+.v-jdesign .v-jform .design-element.editing .layout.editing > .border-layout {
+  border-color: lightsalmon;
+}
+.v-jdesign .v-jform .design-element.editing .layout.editing > .empty {
+  color: lightsalmon;
+}
+.v-jdesign .v-jform .design-element.editing > .tag {
+  color: red;
+  font-weight: bold;
+  background-color: #e4e7ed;
+}
+.v-jdesign .v-jform .design-element.editing > .del {
+  background-color: #e4e7ed;
+}
+
+/*  */
+.v-jdesign .components-group > .drag-handler {
+  cursor: pointer;
+}
+
+.transform-form {
+  width: 640px;
+}

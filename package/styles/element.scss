@@ -1,0 +1,89 @@
+.v-jdesign {
+  .max-aside {
+    &.el-tabs--border-card {
+      border: none;
+      position: relative;
+    }
+
+    > .el-tabs__content {
+      position: absolute;
+      top: 39px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: auto;
+    }
+  }
+
+  .components {
+    > .el-collapse-item {
+      > .el-collapse-item__wrap {
+        > .el-collapse-item__content {
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+
+  //
+  > .aside {
+    > .max-aside,
+    > .main {
+      > .el-tabs__header {
+        > .el-tabs__nav-wrap {
+          > .el-tabs__nav-scroll {
+            > .el-tabs__nav {
+              border-radius: 0;
+              border-top: none;
+              border-left: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* 侧边属性盒子 */
+  > aside.aside {
+    > .max-aside {
+      > .el-tabs__content {
+        .el-tab-pane {
+          > * {
+            margin-top: -15px;
+            margin-right: -15px;
+            margin-left: -15px;
+          }
+
+          > .el-collapse {
+            border: none;
+
+            .el-collapse-item__header {
+              padding-left: 15px;
+              padding-right: 10px;
+            }
+
+            .el-collapse-item__content {
+              padding-left: 15px;
+              padding-right: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.v-jdesign,
+.v-jdesign-dialog {
+  .vjdesign-property {
+    .el-form-item {
+      &.property-field__wrapper {
+        .clear {
+          position: absolute;
+          top: -35px;
+          right: 0;
+        }
+      }
+    }
+  }
+}
