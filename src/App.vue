@@ -29,7 +29,7 @@ export default {
             name: 'el-form',
             label: '表单',
             description: '',
-            icon: 'window-maximize',
+            icon: 'file-alt',
             group: 'ElementUI', // 分组
             designer: 'container', // 设计器使用的 provider
             properties: [
@@ -60,6 +60,24 @@ export default {
             description: '',
             group: 'ElementUI', // 分组
             properties: []
+          },
+          {
+            name: 'el-row',
+            label: '行',
+            icon: 'window-maximize',
+            description: '',
+            group: 'ElementUI', // 分组
+            designer: 'container', // 设计器使用的 provider
+            properties: ['fieldOptions.props.gutter']
+          },
+          {
+            name: 'el-col',
+            label: '列',
+            icon: 'columns',
+            description: '',
+            group: 'ElementUI', // 分组
+            designer: 'container', // 设计器使用的 provider
+            properties: ['fieldOptions.props.span']
           }
           // {
           //   name: 'simple-table',
