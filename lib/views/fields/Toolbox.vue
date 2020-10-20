@@ -12,6 +12,7 @@
           class="component-group row"
           draggable=".drag-handler"
           :list="group.children"
+          ghost-class="ghost"
           :group="{ name: 'jdesign', pull: 'clone', put: false }"
           :sort="false"
         >

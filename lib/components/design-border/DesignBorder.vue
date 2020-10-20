@@ -30,6 +30,10 @@ $design-border: 1px dashed #dcdfe6;
           background-color: rgba(0, 0, 0, 0.03);
           padding: 0.02rem 0.5rem;
           color: #303133;
+
+          .svg-icon {
+            margin-right: 0.25rem;
+          }
         }
 
         > .border-wrapper {
