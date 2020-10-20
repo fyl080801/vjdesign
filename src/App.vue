@@ -36,7 +36,7 @@ export default {
               'fieldOptions.props.model',
               'fieldOptions.props.labelWidth',
               {
-                prop: 'fieldOptions.props.size',
+                name: 'fieldOptions.props.size',
                 editor: {
                   name: 'elselect',
                   options: {
@@ -136,8 +136,21 @@ export default {
         ],
         properties: [
           // 支持的全局属性定义
-          { name: '', editor: '' },
-          { name: '', editor: {} }
+          {
+            name: 'fieldOptions.props.labelWidth',
+            group: '表单'
+          },
+          { name: 'fieldOptions.props.model', group: '组件', editor: 'object' },
+          {
+            name: 'fieldOptions.props.gutter',
+            group: '组件',
+            editor: { name: 'default', options: { types: ['number'] } }
+          },
+          {
+            name: 'fieldOptions.props.span',
+            group: '组件',
+            editor: { name: 'default', options: { types: ['number'] } }
+          }
         ],
         schema: {
           type: 'object',

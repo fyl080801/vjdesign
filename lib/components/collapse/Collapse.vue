@@ -32,6 +32,8 @@ export default {
 <style lang="scss">
 .v-jdesign {
   .side {
+    overflow: auto;
+
     .accordion {
       > .card {
         border-radius: 0;
