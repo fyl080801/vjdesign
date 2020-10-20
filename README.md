@@ -1,6 +1,8 @@
 # 可视化设计器
 
-目前还在开发中...
+[新版设计器](https://fyl080801_admin.gitee.io/vjdesign-demo) 开发中
+
+## 目标
 
 > 元数据的 JSON 定义可直接传给 [vjform](https://github.com/fyl080801/vjform) 组件的相应属性实现展示功能
 
