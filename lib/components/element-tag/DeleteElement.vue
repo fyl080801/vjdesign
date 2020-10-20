@@ -16,6 +16,7 @@ export default {
     onDrop() {
       this.$store.dispatch('popup/show', {
         title: '删除',
+        size: 'sm',
         form: {
           fields: [
             {
