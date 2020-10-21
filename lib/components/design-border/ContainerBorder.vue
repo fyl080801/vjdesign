@@ -3,7 +3,7 @@
     <div class="left"></div>
     <div class="top"></div>
     <div class="right"></div>
-    <!-- <div class="bottom"></div> -->
+    <div class="bottom"></div>
   </div>
 </template>
 
@@ -58,12 +58,12 @@ $container-border: 1px dashed #e4e7ed;
             right: 0;
           }
 
-          // .bottom {
-          //   border-right: $container-border;
-          //   bottom: 0;
-          //   right: 0;
-          //   left: 0;
-          // }
+          .bottom {
+            border-bottom: $container-border;
+            bottom: 0;
+            right: 0;
+            left: 0;
+          }
         }
 
         &.editing {
@@ -74,7 +74,7 @@ $container-border: 1px dashed #e4e7ed;
           }
 
           > .root-text {
-            color: #409eff;
+            color: #007bff;
           }
         }
       }

@@ -81,13 +81,13 @@ $design-border: 1px dashed #dcdfe6;
 
         &.editing {
           > .tag {
-            border-color: #409eff;
-            color: #409eff;
+            border-color: #007bff;
+            color: #007bff;
           }
 
           > .border-wrapper {
             > * {
-              border-color: #409eff;
+              border-color: #007bff;
             }
           }
         }

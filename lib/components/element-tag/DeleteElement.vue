@@ -61,9 +61,9 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
-  color: #409eff;
+  color: #007bff;
 
-  border: 1px dashed #409eff;
+  border: 1px dashed #007bff;
   background-color: rgba(0, 0, 0, 0.03);
 
   padding: 0 0.5rem;
