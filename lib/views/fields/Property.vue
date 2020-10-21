@@ -1,5 +1,5 @@
 <template>
-  <div class="property side">
+  <div :class="{ property: true, side: true, 'no-select': !propForm }">
     <Collapse v-if="propForm" v-model="actives">
       <CollapseItem
         :name="key"
@@ -12,10 +12,11 @@
           class="property-form"
           :components="components"
           :fields="propForm[key]"
-          v-model="editing"
+          v-model="form.map[form.editing]"
         ></v-jform>
       </CollapseItem>
     </Collapse>
+    <p v-else class="empty">请选择组件</p>
   </div>
 </template>
 
@@ -32,40 +33,38 @@ export default {
   data() {
     return {
       components: { [PropertyItem.name]: PropertyItem, SvgIcon },
-      actives: [],
-      propForm: null
+      actives: []
     }
   },
   computed: {
     ...mapGetters(['profile', 'form', 'edit']),
-    editing() {
-      return this.form.map[this.form.editing]
-    },
     component() {
       return this.form.map[this.form.editing]
         ? this.profile.components.find(
             item => item.name === this.form.map[this.form.editing].component
           )
         : null
+    },
+    propForm() {
+      return this.form.editing
+        ? resolveForm([
+            'remark',
+            'condition',
+            'fieldOptions.slot',
+            'fieldOptions.class',
+            'fieldOptions.style',
+            ...this.component.properties
+          ])(this.profile.properties, this.edit.registry.editor)
+        : null
     }
   },
   watch: {
     ['form.editing'](value) {
-      if (value) {
-        this.propForm = resolveForm([
-          'remark',
-          'condition',
-          'fieldOptions.slot',
-          'fieldOptions.class',
-          'fieldOptions.style',
-          ...this.component.properties
-        ])(this.profile.properties, this.edit.registry.editor)
-        this.actives = Object.keys(this.propForm)
-      } else {
-        this.propForm = null
-        this.actives = []
-      }
+      this.actives = value ? Object.keys(this.propForm) : []
     }
+  },
+  mounted() {
+    this.actives = this.form.editing ? Object.keys(this.propForm) : []
   }
 }
 </script>
@@ -77,6 +76,17 @@ export default {
 
   .property-form {
     padding: 0.75rem 1.25rem;
+  }
+
+  > .empty {
+    text-align: center;
+    color: #c0c4cc;
+  }
+
+  &.no-select {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 </style>

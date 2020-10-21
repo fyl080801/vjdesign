@@ -78,10 +78,10 @@ export default {
     },
     onCancel() {
       this.editing = false
+      this.instance.setOption('readOnly', true)
       this.code = JSON.stringify(this.form.value)
       this.instance.setValue(this.code)
       this.instance.formatAll()
-      this.instance.setOption('readOnly', true)
     }
   },
   mounted() {

@@ -34,7 +34,23 @@ export default {
             designer: 'container', // 设计器使用的 provider
             properties: [
               'fieldOptions.props.model',
+              'fieldOptions.props.size',
               'fieldOptions.props.labelWidth',
+              {
+                name: 'fieldOptions.props.labelPosition',
+                group: '组件',
+                label: '前缀位置',
+                editor: {
+                  name: 'select',
+                  options: {
+                    items: [
+                      { value: 'right', label: '右侧' },
+                      { value: 'left', label: '左侧' },
+                      { value: 'top', label: '顶部' }
+                    ]
+                  }
+                }
+              },
               {
                 name: 'fieldOptions.props.size',
                 editor: {
@@ -52,7 +68,7 @@ export default {
             description: '',
             group: 'ElementUI', // 分组
             designer: 'container', // 设计器使用的 provider
-            properties: ['fieldOptions.props.labelWidth']
+            properties: ['fieldOptions.props.label']
           },
           {
             name: 'el-input',
@@ -137,19 +153,46 @@ export default {
         properties: [
           // 支持的全局属性定义
           {
-            name: 'fieldOptions.props.labelWidth',
-            group: '表单'
+            name: 'fieldOptions.props.size',
+            group: '组件',
+            label: '尺寸',
+            editor: {
+              name: 'select',
+              options: {
+                items: [
+                  { value: 'medium', label: '适中' },
+                  { value: 'small', label: '小' },
+                  { value: 'mini', label: '极小' }
+                ]
+              }
+            }
           },
-          { name: 'fieldOptions.props.model', group: '组件', editor: 'object' },
+          {
+            name: 'fieldOptions.props.labelWidth',
+            group: '组件',
+            label: '前缀宽度'
+          },
+          {
+            name: 'fieldOptions.props.label',
+            group: '组件',
+            label: '前缀'
+          },
+          {
+            name: 'fieldOptions.props.model',
+            group: '组件',
+            label: '表单数据'
+          },
           {
             name: 'fieldOptions.props.gutter',
             group: '组件',
-            editor: { name: 'default', options: { types: ['number'] } }
+            label: '间隔',
+            editor: { name: 'simple', options: { type: 'number' } }
           },
           {
             name: 'fieldOptions.props.span',
             group: '组件',
-            editor: { name: 'default', options: { types: ['number'] } }
+            label: '列宽',
+            editor: { name: 'simple', options: { type: 'number' } }
           }
         ],
         schema: {
