@@ -50,15 +50,6 @@ export default {
                     ]
                   }
                 }
-              },
-              {
-                name: 'fieldOptions.props.size',
-                editor: {
-                  name: 'elselect',
-                  options: {
-                    items: []
-                  }
-                }
               }
             ]
           },
