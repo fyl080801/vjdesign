@@ -21,7 +21,7 @@ $container-border: 1px dashed #e4e7ed;
     .inner {
       .v-jd-container-wrapper {
         position: relative;
-        padding: 1.5rem;
+        padding: 0.75rem 1.25rem;
         padding-bottom: 0;
 
         > .border-wrapper {
