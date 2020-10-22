@@ -20,6 +20,7 @@ $design-border: 1px dashed #dcdfe6;
   .design {
     .inner {
       .v-jd-design-wrapper {
+        padding-top: calc(1.45rem + 1px);
         position: relative;
 
         .tag {
