@@ -31,7 +31,7 @@ export default {
                     class: 'btn btn-primary',
                     on: {
                       click: () => {
-                        this.$store.dispatch('form/removeChild', this.uuid)
+                        this.$store.dispatch('form/removeField', this.uuid)
                         this.$store.dispatch('popup/close')
                       }
                     }

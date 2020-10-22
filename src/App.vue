@@ -66,7 +66,7 @@ export default {
             label: '输入框',
             description: '',
             group: 'ElementUI', // 分组
-            properties: []
+            properties: ['model']
           },
           {
             name: 'el-row',

@@ -101,6 +101,7 @@ export default {
       margin: 0;
       padding: 0;
       color: rgb(191, 203, 217);
+      overflow: hidden;
 
       a {
         cursor: pointer;

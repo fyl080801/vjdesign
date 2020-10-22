@@ -48,13 +48,18 @@ export default {
   computed: {
     ...mapGetters(['profile']),
     groups() {
-      return this.profile.components.reduce((prev, cur) => {
-        const existGroup = prev.find(item => item.name === cur.group)
+      return Object.keys(this.profile.components).reduce((prev, cur) => {
+        const current = this.profile.components[cur]
+        const existGroup = prev.find(item => item.name === current.group)
+
         if (existGroup) {
           existGroup.children = existGroup.children || []
-          existGroup.children.push(cur)
+          existGroup.children.push(current)
         } else {
-          prev.push({ name: cur.group, children: [cur] })
+          prev.push({
+            name: current.group,
+            children: [current]
+          })
         }
         return prev
       }, [])

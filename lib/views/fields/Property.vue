@@ -40,21 +40,12 @@ export default {
     ...mapGetters(['profile', 'form', 'edit']),
     component() {
       return this.form.map[this.form.editing]
-        ? this.profile.components.find(
-            item => item.name === this.form.map[this.form.editing].component
-          )
+        ? this.profile.components[this.form.map[this.form.editing].component]
         : null
     },
     propForm() {
       return this.form.editing
-        ? resolveForm([
-            'remark',
-            'condition',
-            'fieldOptions.slot',
-            'fieldOptions.class',
-            'fieldOptions.style',
-            ...this.component.properties
-          ])(this.profile.properties, this.edit.registry.editor)
+        ? resolveForm(this.component.properties)(this.edit.registry.editor)
         : null
     }
   },

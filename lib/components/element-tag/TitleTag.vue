@@ -16,7 +16,7 @@ export default {
   computed: {
     ...mapGetters(['profile']),
     titleIcon() {
-      return this.profile.icons[this.name] || 'square'
+      return (this.profile.components[this.name] || {}).icon || 'square'
     }
   }
 }

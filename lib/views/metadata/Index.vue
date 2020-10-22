@@ -3,13 +3,20 @@
     <div class="navbar navbar-light bg-light">
       <div class="form-inline">
         <button v-if="editing" class="btn btn-light" @click="onFormat">
+          <SvgIcon name="stream"></SvgIcon>
           格式
         </button>
       </div>
 
       <div v-if="editing" class="form-inline">
-        <button class="btn btn-light" @click="onSubmit">提交</button>
-        <button class="btn btn-light" @click="onCancel">取消</button>
+        <button class="btn btn-light" @click="onSubmit">
+          <SvgIcon name="check"></SvgIcon>
+          提交
+        </button>
+        <button class="btn btn-light" @click="onCancel">
+          <SvgIcon name="times"></SvgIcon>
+          取消
+        </button>
       </div>
       <div v-else>
         <button class="btn btn-light" @click="onEdit">
