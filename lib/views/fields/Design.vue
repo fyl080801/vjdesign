@@ -1,5 +1,5 @@
 <template>
-  <div class="design" @click="onDesignClick">
+  <div class="design">
     <vuedraggable
       v-if="!form.value.fields.length"
       tag="div"
@@ -62,9 +62,6 @@ export default {
     },
     onRootUpdate(value) {
       this.$store.dispatch('form/updateRoot', value)
-    },
-    onDesignClick() {
-      this.$store.dispatch('form/unselect')
     }
   }
 }
@@ -87,6 +84,7 @@ export default {
       color: #c0c4cc;
       padding: 0.75rem 1.25rem;
       margin: 0;
+      clear: both;
 
       &.empty {
         padding: 4rem 2rem;

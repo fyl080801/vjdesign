@@ -33,15 +33,18 @@ export default {
   },
   methods: {
     onClick(evt) {
-      this.$store.dispatch('form/select', {
-        uuid: this.uuid,
-        value: this.value
-      })
+      if (this.uuid === this.form.editing) {
+        this.$store.dispatch('form/unselect')
+      } else {
+        this.$store.dispatch('form/select', {
+          uuid: this.uuid,
+          value: this.value
+        })
+      }
       evt.stopPropagation()
     }
   },
   mounted() {
-    console.log('xxx')
     if (this.$children.length > 0) {
       this.childClass = [...this.$children[0].$el.classList]
       this.$children[0].$el.classList.remove(...this.$children[0].$el.classList)
