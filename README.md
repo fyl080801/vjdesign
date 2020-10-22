@@ -2,6 +2,10 @@
 
 [vjform](https://github.com/fyl080801/vjform) 的可视化设计器
 
+## 新版本
+
+[新版本设计器](https://fyl080801_admin.gitee.io/vjdesign-demo) 开发中。。。
+
 ## 目标
 
 > 元数据的 JSON 定义可直接传给 [vjform](https://github.com/fyl080801/vjform) 组件的相应属性实现功能
@@ -29,10 +33,6 @@ npm run dev
 - 可视化拖拽布局
 - 支持数据关联和交互行为的可视化编辑
 - 支持扩展组件、组件属性、属性编辑器
-
-## 新版本
-
-[新版设计器](https://fyl080801_admin.gitee.io/vjdesign-demo) 开发中。。。
 
 ## 依赖
 
