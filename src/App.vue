@@ -50,6 +50,12 @@ export default {
         this.profile = data
       })
     })
+
+    fetch('data/default.json', { method: 'GET' }).then(response => {
+      response.json().then(data => {
+        this.value = data
+      })
+    })
   }
 }
 </script>
