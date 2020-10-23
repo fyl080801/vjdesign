@@ -13,7 +13,7 @@ export default {
   props: { uuid: Symbol },
   components: { SvgIcon },
   methods: {
-    onDrop() {
+    onDrop(evt) {
       this.$store.dispatch('popup/show', {
         title: '删除',
         size: 'sm',
@@ -51,6 +51,7 @@ export default {
           ]
         }
       })
+      evt.stopPropagation()
     }
   }
 }

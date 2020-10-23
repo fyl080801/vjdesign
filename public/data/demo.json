@@ -1,0 +1,153 @@
+{
+  "components": [
+    {
+      "name": "el-form",
+      "label": "表单",
+      "description": "",
+      "icon": "file-alt",
+      "group": "ElementUI",
+      "designer": "container",
+      "properties": [
+        "fieldOptions.props.model",
+        "fieldOptions.props.size",
+        "fieldOptions.props.labelWidth",
+        {
+          "name": "fieldOptions.props.labelPosition",
+          "group": "组件",
+          "label": "前缀位置",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "right", "label": "右侧" },
+                { "value": "left", "label": "左侧" },
+                { "value": "top", "label": "顶部" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "el-form-item",
+      "label": "表单项",
+      "description": "",
+      "group": "ElementUI",
+      "designer": "container",
+      "properties": ["fieldOptions.props.label"]
+    },
+    {
+      "name": "el-input",
+      "label": "输入框",
+      "description": "",
+      "group": "ElementUI",
+      "properties": ["model"]
+    },
+    {
+      "name": "el-row",
+      "label": "行",
+      "icon": "window-maximize",
+      "description": "",
+      "group": "ElementUI",
+      "designer": "container",
+      "properties": ["fieldOptions.props.gutter"]
+    },
+    {
+      "name": "el-col",
+      "label": "列",
+      "icon": "columns",
+      "description": "",
+      "group": "ElementUI",
+      "designer": "container",
+      "properties": ["fieldOptions.props.span"]
+    }
+  ],
+  "datasource": [
+    {
+      "name": "object",
+      "label": "对象",
+      "description": "",
+      "properties": [{ "name": "data", "editor": "objecteditor" }]
+    },
+    {
+      "name": "request",
+      "label": "请求",
+      "description": "",
+      "properties": [
+        { "name": "url", "editor": "default" },
+        {
+          "name": "method",
+          "editor": {
+            "name": "select",
+            "options": { "items": ["GET", "POST", "PUT"] }
+          }
+        }
+      ],
+      "schema": {}
+    }
+  ],
+  "functional": [
+    {
+      "name": "ADD",
+      "label": "相加",
+      "description": "",
+      "params": ["value1", "value2"]
+    },
+    {
+      "name": "IF",
+      "label": "条件判断",
+      "description": "",
+      "params": ["expr", "trueValue", "falseValue"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "fieldOptions.props.size",
+      "group": "组件",
+      "label": "尺寸",
+      "editor": {
+        "name": "select",
+        "options": {
+          "items": [
+            { "value": "medium", "label": "适中" },
+            { "value": "small", "label": "小" },
+            { "value": "mini", "label": "极小" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "fieldOptions.props.labelWidth",
+      "group": "组件",
+      "label": "前缀宽度"
+    },
+    {
+      "name": "fieldOptions.props.label",
+      "group": "组件",
+      "label": "前缀"
+    },
+    {
+      "name": "fieldOptions.props.model",
+      "group": "组件",
+      "label": "表单数据"
+    },
+    {
+      "name": "fieldOptions.props.gutter",
+      "group": "组件",
+      "label": "间隔",
+      "editor": { "name": "simple", "options": { "type": "number" } }
+    },
+    {
+      "name": "fieldOptions.props.span",
+      "group": "组件",
+      "label": "列宽"
+    }
+  ],
+  "schema": {
+    "type": "object",
+    "properties": {
+      "model": {},
+      "params": {}
+    }
+  }
+}

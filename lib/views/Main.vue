@@ -74,6 +74,18 @@ export default {
   watch: {
     ['form.value.fields'](value) {
       this.value.fields = value
+    },
+    value(value) {
+      this.$store.dispatch('form/init', value)
+    },
+    profile(value) {
+      this.$store.dispatch('profile/init', value)
+    },
+    components(value) {
+      this.$store.dispatch('edit/init', {
+        components: value || {},
+        registry: createRegistry(commonRegistry.map).build()
+      })
     }
   },
   methods: {

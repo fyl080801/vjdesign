@@ -3,14 +3,14 @@ import App from './App'
 import Element from 'element-ui'
 import vjdesign from '../lib'
 import vjform from 'vjform'
-import modern from 'jpresent-transform-modern'
+import expression from 'jpresent-transform-expression'
 
 import 'element-ui/lib/theme-chalk/index.css'
 import './styles/index.scss'
 
 Vue.config.productionTip = false
 
-vjform.use(modern)
+vjform.use(expression)
 
 Vue.use(Element)
 Vue.use(vjdesign)

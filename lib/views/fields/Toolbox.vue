@@ -65,6 +65,14 @@ export default {
       }, [])
     }
   },
+  watch: {
+    groups(value) {
+      this.actives = []
+      value.forEach(group => {
+        this.actives.push(group.name)
+      })
+    }
+  },
   mounted() {
     this.groups.forEach(group => {
       this.actives.push(group.name)

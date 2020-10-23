@@ -36,6 +36,7 @@
     "codemirror": "^5.58.1",
     "core-js": "^3.6.4",
     "element-ui": "^2.13.2",
+    "jpresent-transform-expression": "^0.1.0",
     "jpresent-transform-modern": "^1.1.0",
     "js-beautify": "^1.13.0",
     "jsonlint": "^1.6.3",
