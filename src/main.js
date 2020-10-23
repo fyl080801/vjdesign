@@ -7,6 +7,7 @@ import expression from 'jpresent-transform-expression'
 
 import 'element-ui/lib/theme-chalk/index.css'
 import './styles/index.scss'
+import './styles/markdown.scss'
 
 Vue.config.productionTip = false
 

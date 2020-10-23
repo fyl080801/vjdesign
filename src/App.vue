@@ -1,34 +1,47 @@
 <template>
   <el-container direction="vertical" class="demo">
     <el-header class="header">
-      <el-button size="small" @click="showPreview">预览</el-button>
-      <el-button size="small">导出</el-button>
+      <div style="float: left">
+        <el-button
+          size="small"
+          icon="el-icon-question"
+          type="primary"
+          @click="showHelp"
+        >
+          帮助
+        </el-button>
+      </div>
+      <el-button size="small" icon="el-icon-view" @click="showPreview">
+        预览
+      </el-button>
+      <el-button size="small" icon="el-icon-upload2">导出</el-button>
     </el-header>
     <el-main class="design">
       <v-jdesign v-model="value" :profile="profile"></v-jdesign>
     </el-main>
     <Preview ref="preview"></Preview>
+    <Help ref="help"></Help>
   </el-container>
 </template>
 
 <script>
 import Preview from './components/Preview'
+import Help from './components/Help'
 
 export default {
-  components: { Preview },
+  components: { Preview, Help },
   data() {
     return {
-      value: {
-        // fields: [{ component: 'p', text: 'test' }]
-      },
-      profile: {
-        // i18n: {}, // 考虑国际化
-      }
+      value: {},
+      profile: {}
     }
   },
   methods: {
     showPreview() {
       this.$refs.preview.show(this.value)
+    },
+    showHelp() {
+      this.$refs.help.show()
     }
   },
   mounted() {
