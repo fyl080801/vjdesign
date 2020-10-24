@@ -1,6 +1,9 @@
 <template>
   <div :class="classes" @click="onClick">
     <slot></slot>
+    <div class="header">
+      <slot name="header"></slot>
+    </div>
   </div>
 </template>
 
@@ -62,6 +65,13 @@ $design-border: 1px dashed #dcdfe6;
       .v-jd-design-wrapper {
         padding-top: calc(1.45rem + 1px);
         position: relative;
+
+        > .header {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+        }
       }
     }
   }
