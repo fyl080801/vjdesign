@@ -71,7 +71,8 @@
                         "props": {
                           "label": "text2"
                         }
-                      }
+                      },
+                      "_collapse": true
                     }
                   ]
                 },
@@ -103,7 +104,8 @@
                         "props": {
                           "label": "text3"
                         }
-                      }
+                      },
+                      "_collapse": true
                     }
                   ]
                 }
@@ -141,6 +143,21 @@
             },
             "attrs": {
               "href": "http://www.baidu.com"
+            }
+          }
+        },
+        {
+          "component": "hr"
+        },
+        {
+          "component": "a",
+          "fieldOptions": {
+            "domProps": {
+              "target": "_blank",
+              "innerText": "打开text1输入的链接"
+            },
+            "attrs": {
+              "href": "$:model.text1"
             }
           }
         }
