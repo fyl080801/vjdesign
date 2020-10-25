@@ -19,7 +19,7 @@
               <input
                 class="form-control"
                 type="number"
-                v-model="item.timeout"
+                v-model.number="item.timeout"
               />
             </div>
           </div>

@@ -4,7 +4,7 @@
     {
       "actions": [
         {
-          "timeout": "0",
+          "timeout": 0,
           "handler": "@text1:null"
         }
       ],
