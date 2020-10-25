@@ -6,7 +6,12 @@
     :close-on-click-modal="false"
     width="1024px"
   >
-    <v-jform v-model="model" :fields="json.fields"></v-jform>
+    <v-jform
+      v-model="model"
+      :fields="json.fields"
+      :listeners="json.listeners"
+      :datasource="json.datasource"
+    ></v-jform>
   </el-dialog>
 </template>
 

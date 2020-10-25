@@ -1,6 +1,16 @@
 {
   "datasource": {},
-  "listeners": [],
+  "listeners": [
+    {
+      "actions": [
+        {
+          "timeout": "0",
+          "handler": "@text1:null"
+        }
+      ],
+      "watch": "model.text2"
+    }
+  ],
   "fields": [
     {
       "component": "div",
@@ -8,6 +18,14 @@
         {
           "component": "el-form",
           "children": [
+            {
+              "component": "p",
+              "fieldOptions": {
+                "domProps": {
+                  "innerText": "监听行为使 text2 输入后 text1 会清空"
+                }
+              }
+            },
             {
               "component": "el-row",
               "children": [

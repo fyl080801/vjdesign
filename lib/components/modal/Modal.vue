@@ -26,7 +26,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import vjform from 'vjform'
+import vjform from 'vjform/lib'
 
 export default {
   components: { [vjform.name]: vjform },
