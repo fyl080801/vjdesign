@@ -30,6 +30,10 @@ import { mapGetters } from 'vuex'
 import vjform from 'vjform/lib'
 import vuedraggable from 'vuedraggable'
 import designer from '../../internal/providers/designer'
+import {
+  saveComponentCache,
+  getComponentCache
+} from '../../internal/providers/condition'
 
 export default {
   components: { [vjform.name]: vjform, vuedraggable },
@@ -59,6 +63,8 @@ export default {
   methods: {
     onInitialling({ provider }) {
       provider(designer).withIndex(1000)
+      provider(saveComponentCache).withIndex(-1000)
+      provider(getComponentCache)
     },
     onRootUpdate(value) {
       this.$store.dispatch('form/updateRoot', value)

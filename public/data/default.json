@@ -48,9 +48,23 @@
                           "component": "span",
                           "fieldOptions": {
                             "domProps": {
-                              "innerText": "$:model.text1"
+                              "innerText": "text1输入正确的url后点击打开链接"
                             }
-                          }
+                          },
+                          "condition": "$:!/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
+                        },
+                        {
+                          "component": "a",
+                          "fieldOptions": {
+                            "domProps": {
+                              "target": "_blank",
+                              "innerText": "text1输入正确的url后点击打开链接"
+                            },
+                            "attrs": {
+                              "href": "$:model.text1"
+                            }
+                          },
+                          "condition": "$:/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
                         }
                       ],
                       "fieldOptions": {
@@ -166,18 +180,6 @@
         },
         {
           "component": "hr"
-        },
-        {
-          "component": "a",
-          "fieldOptions": {
-            "domProps": {
-              "target": "_blank",
-              "innerText": "打开text1输入的链接"
-            },
-            "attrs": {
-              "href": "$:model.text1"
-            }
-          }
         }
       ]
     }
