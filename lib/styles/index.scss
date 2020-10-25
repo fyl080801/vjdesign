@@ -1,0 +1,30 @@
+.v-jdesign,
+.v-jdesign-modal {
+  @import 'normalize.scss';
+  @import 'bootstrap/scss/bootstrap.scss';
+}
+
+.v-jdesign {
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .svg-icon {
+    width: 1rem;
+    height: 1rem;
+    color: inherit;
+    vertical-align: -0.15rem;
+
+    &.svg-fill {
+      fill: currentColor;
+      stroke: none;
+    }
+  }
+}

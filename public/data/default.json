@@ -1,0 +1,187 @@
+{
+  "datasource": {},
+  "listeners": [
+    {
+      "actions": [
+        {
+          "timeout": "0",
+          "handler": "@text1:null"
+        }
+      ],
+      "watch": "model.text2"
+    }
+  ],
+  "fields": [
+    {
+      "component": "div",
+      "children": [
+        {
+          "component": "el-form",
+          "children": [
+            {
+              "component": "p",
+              "fieldOptions": {
+                "domProps": {
+                  "innerText": "监听行为使 text2 输入后 text1 会清空"
+                }
+              }
+            },
+            {
+              "component": "el-row",
+              "children": [
+                {
+                  "component": "el-col",
+                  "fieldOptions": {
+                    "props": {
+                      "span": "$:12"
+                    }
+                  },
+                  "children": [
+                    {
+                      "component": "el-form-item",
+                      "children": [
+                        {
+                          "component": "el-input",
+                          "model": ["text1"]
+                        },
+                        {
+                          "component": "span",
+                          "fieldOptions": {
+                            "domProps": {
+                              "innerText": "text1输入正确的url后点击打开链接"
+                            }
+                          },
+                          "condition": "$:!/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
+                        },
+                        {
+                          "component": "a",
+                          "fieldOptions": {
+                            "domProps": {
+                              "target": "_blank",
+                              "innerText": "text1输入正确的url后点击打开链接"
+                            },
+                            "attrs": {
+                              "href": "$:model.text1"
+                            }
+                          },
+                          "condition": "$:/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
+                        }
+                      ],
+                      "fieldOptions": {
+                        "props": {
+                          "label": "text1"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "component": "el-col",
+                  "fieldOptions": {
+                    "props": {
+                      "span": "$:12"
+                    }
+                  },
+                  "children": [
+                    {
+                      "component": "el-form-item",
+                      "children": [
+                        {
+                          "component": "el-input",
+                          "model": ["text2"]
+                        },
+                        {
+                          "component": "span",
+                          "fieldOptions": {
+                            "domProps": {
+                              "innerText": "$:(model.text2||'') + 'xxxxxxxxx'"
+                            }
+                          }
+                        }
+                      ],
+                      "fieldOptions": {
+                        "props": {
+                          "label": "text2"
+                        }
+                      },
+                      "_collapse": true
+                    }
+                  ]
+                },
+                {
+                  "component": "el-col",
+                  "fieldOptions": {
+                    "props": {
+                      "span": "$:16"
+                    }
+                  },
+                  "children": [
+                    {
+                      "component": "el-form-item",
+                      "children": [
+                        {
+                          "component": "el-input",
+                          "model": ["text3"]
+                        },
+                        {
+                          "component": "span",
+                          "fieldOptions": {
+                            "domProps": {
+                              "innerText": "#:输入了 ${model.text3.length} 个字"
+                            }
+                          }
+                        }
+                      ],
+                      "fieldOptions": {
+                        "props": {
+                          "label": "text3"
+                        }
+                      },
+                      "_collapse": true
+                    }
+                  ]
+                }
+              ],
+              "fieldOptions": {
+                "props": {
+                  "gutter": 20
+                }
+              }
+            }
+          ],
+          "fieldOptions": {
+            "props": {
+              "labelWidth": "120px"
+            }
+          }
+        },
+        {
+          "component": "button",
+          "fieldOptions": {
+            "domProps": {
+              "innerText": "弹出"
+            },
+            "on": {
+              "click": "@:alert('xxxxxx')"
+            }
+          }
+        },
+        {
+          "component": "a",
+          "fieldOptions": {
+            "domProps": {
+              "target": "_blank",
+              "innerText": "打开链接"
+            },
+            "attrs": {
+              "href": "http://www.baidu.com"
+            }
+          }
+        },
+        {
+          "component": "hr"
+        }
+      ]
+    }
+  ]
+}
