@@ -2,7 +2,7 @@
 
 基于 [vjform](https://github.com/fyl080801/vjform) 的 Vue 界面可视化设计器
 
-示例请看 [demo](https://fyl080801_admin.gitee.io/vjdesign-demo)
+示例请看 [demo](https://fyl080801_admin.gitee.io/vjdesign/)
 
 > 使用 [jformer](https://gitee.com/fyl080801_admin/jformer) 组件可直接用编辑器元数据中的 json 定义呈现功能
 > 如果使用 [vjform](https://github.com/fyl080801/vjform) 呈现功能，则需要在 vjform 中引用 [表达式支持库](https://github.com/fyl080801/jpresent-transform-expression)
