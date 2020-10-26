@@ -1,14 +1,29 @@
 {
-  "datasource": {},
+  "datasource": {
+    "listdata": {
+      "type": "request",
+      "method": "GET",
+      "url": "data/list.json",
+      "autoload": "$:true"
+    },
+    "sublist": {
+      "type": "request",
+      "method": "GET",
+      "url": "#:data/sublist/${model.selected}.json",
+      "autoload": "$:false"
+    }
+  },
   "listeners": [
     {
       "actions": [
         {
-          "timeout": 0,
-          "handler": "@text1:null"
+          "handler": "@:datasource.sublist.load()"
+        },
+        {
+          "handler": "@subselected:null"
         }
       ],
-      "watch": "model.text2"
+      "watch": "model.selected"
     }
   ],
   "fields": [
@@ -19,21 +34,46 @@
           "component": "el-form",
           "children": [
             {
-              "component": "p",
-              "fieldOptions": {
-                "domProps": {
-                  "innerText": "监听行为使 text2 输入后 text1 会清空"
-                }
-              }
-            },
-            {
               "component": "el-row",
               "children": [
                 {
                   "component": "el-col",
                   "fieldOptions": {
                     "props": {
-                      "span": "$:12"
+                      "span": "$:14"
+                    }
+                  },
+                  "children": [
+                    {
+                      "component": "el-form-item",
+                      "children": [
+                        {
+                          "component": "el-input",
+                          "model": ["text3"]
+                        },
+                        {
+                          "component": "span",
+                          "fieldOptions": {
+                            "domProps": {
+                              "innerText": "#:输入了 ${model.text3.length} 个字"
+                            }
+                          }
+                        }
+                      ],
+                      "fieldOptions": {
+                        "props": {
+                          "label": "文本"
+                        }
+                      },
+                      "_collapse": true
+                    }
+                  ]
+                },
+                {
+                  "component": "el-col",
+                  "fieldOptions": {
+                    "props": {
+                      "span": "$:14"
                     }
                   },
                   "children": [
@@ -69,7 +109,7 @@
                       ],
                       "fieldOptions": {
                         "props": {
-                          "label": "text1"
+                          "label": "正则判断"
                         }
                       }
                     }
@@ -85,26 +125,22 @@
                   "children": [
                     {
                       "component": "el-form-item",
+                      "fieldOptions": {
+                        "props": {
+                          "label": "选择"
+                        }
+                      },
                       "children": [
                         {
-                          "component": "el-input",
-                          "model": ["text2"]
-                        },
-                        {
-                          "component": "span",
+                          "component": "c-select",
+                          "model": ["selected"],
                           "fieldOptions": {
-                            "domProps": {
-                              "innerText": "$:(model.text2||'') + 'xxxxxxxxx'"
+                            "props": {
+                              "items": "$:datasource.listdata.data"
                             }
                           }
                         }
-                      ],
-                      "fieldOptions": {
-                        "props": {
-                          "label": "text2"
-                        }
-                      },
-                      "_collapse": true
+                      ]
                     }
                   ]
                 },
@@ -112,7 +148,7 @@
                   "component": "el-col",
                   "fieldOptions": {
                     "props": {
-                      "span": "$:16"
+                      "span": "$:12"
                     }
                   },
                   "children": [
@@ -120,24 +156,20 @@
                       "component": "el-form-item",
                       "children": [
                         {
-                          "component": "el-input",
-                          "model": ["text3"]
-                        },
-                        {
-                          "component": "span",
+                          "component": "c-select",
+                          "model": ["subselected"],
                           "fieldOptions": {
-                            "domProps": {
-                              "innerText": "#:输入了 ${model.text3.length} 个字"
+                            "props": {
+                              "items": "$:datasource.sublist.data"
                             }
                           }
                         }
                       ],
                       "fieldOptions": {
                         "props": {
-                          "label": "text3"
+                          "label": "级联"
                         }
-                      },
-                      "_collapse": true
+                      }
                     }
                   ]
                 }
@@ -165,21 +197,6 @@
               "click": "@:alert('xxxxxx')"
             }
           }
-        },
-        {
-          "component": "a",
-          "fieldOptions": {
-            "domProps": {
-              "target": "_blank",
-              "innerText": "打开链接"
-            },
-            "attrs": {
-              "href": "http://www.baidu.com"
-            }
-          }
-        },
-        {
-          "component": "hr"
         }
       ]
     }

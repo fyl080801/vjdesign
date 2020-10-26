@@ -60,32 +60,19 @@
       "group": "ElementUI",
       "designer": "container",
       "properties": ["fieldOptions.props.span"]
-    }
-  ],
-  "datasource": [
-    {
-      "name": "object",
-      "label": "对象",
-      "description": "",
-      "properties": [{ "name": "data", "editor": "objecteditor" }]
     },
     {
-      "name": "request",
-      "label": "请求",
-      "description": "",
+      "name": "c-select",
+      "label": "选择",
+      "icon": "drop-down",
+      "group": "Custom",
       "properties": [
-        { "name": "url", "editor": "default" },
-        {
-          "name": "method",
-          "editor": {
-            "name": "select",
-            "options": { "items": ["GET", "POST", "PUT"] }
-          }
-        }
-      ],
-      "schema": {}
+        "model",
+        { "name": "fieldOptions.props.items", "label": "选项", "group": "基础" }
+      ]
     }
   ],
+  "datasource": [],
   "functional": [
     {
       "name": "ADD",

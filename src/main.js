@@ -9,6 +9,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './styles/index.scss'
 import './styles/markdown.scss'
 
+import Select from './components/Select.vue'
+
 Vue.config.productionTip = false
 
 vjform.use(expression)
@@ -16,6 +18,7 @@ vjform.use(expression)
 Vue.use(Element)
 Vue.use(vjdesign)
 Vue.use(vjform)
+Vue.component(Select.name, Select)
 
 new Vue({
   render: h => h(App)

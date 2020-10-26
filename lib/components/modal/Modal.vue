@@ -12,6 +12,7 @@
       }"
     >
       <v-jform
+        v-if="!updating"
         tag="div"
         :class="['modal-dialog', 'modal-' + (popup.size ? popup.size : '')]"
         v-model="popup.model"
@@ -19,6 +20,7 @@
         :datasource="popup.datasource"
         :listeners="popup.listeners"
         :components="edit.components"
+        :initialling="popup.initialling"
       ></v-jform>
     </div>
   </div>
@@ -31,6 +33,11 @@ import vjform from 'vjform/lib'
 export default {
   components: { [vjform.name]: vjform },
   computed: { ...mapGetters(['popup', 'edit']) },
+  data() {
+    return {
+      updating: false
+    }
+  },
   watch: {
     ['popup.show']: {
       handler(value) {
@@ -47,6 +54,11 @@ export default {
             this.$refs.dialog.classList.remove('show')
           })
         }
+
+        this.updating = true
+        this.$nextTick(() => {
+          this.updating = false
+        })
       }
     }
   },
@@ -89,5 +101,9 @@ export default {
 <style lang="scss">
 .v-jdesign-modal {
   position: fixed;
+
+  > .modal {
+    overflow: auto !important;
+  }
 }
 </style>

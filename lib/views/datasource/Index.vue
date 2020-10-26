@@ -13,15 +13,20 @@
               </div>
               <div class="form-group col-md-6">
                 <label>类型</label>
+                <div>
+                  <span>{{
+                    profile.datasource[form.value.datasource[key].type].label
+                  }}</span>
+                </div>
               </div>
             </div>
           </div>
           <div class="card-footer text-muted">
-            <a href="javascript:;" @click="onEdit">
+            <a href="javascript:;" @click="onEdit(key)">
               <SvgIcon name="edit"></SvgIcon>
               <span>编辑</span>
             </a>
-            <a href="javascript:;" @click="onRemove">
+            <a href="javascript:;" @click="onRemove($event, key)">
               <SvgIcon name="trash-alt"></SvgIcon>
               <span>删除</span>
             </a>
@@ -33,8 +38,8 @@
           <div class="card-body">
             <a href="javascript:;" @click="onAdd">
               <SvgIcon name="plus"></SvgIcon>
-              <span>添加</span></a
-            >
+              <span>添加</span>
+            </a>
           </div>
         </div>
       </div>
@@ -45,21 +50,58 @@
 <script>
 import { mapGetters } from 'vuex'
 import SvgIcon from 'vue-svgicon'
+import { cloneDeep } from 'lodash-es'
 
 export default {
   components: {
     SvgIcon
   },
   computed: {
-    ...mapGetters(['form', 'popup']),
+    ...mapGetters(['form', 'popup', 'edit', 'profile']),
     names() {
-      return Object.keys(this.form.value.datasource)
+      return Object.keys(this.form.value.datasource).filter(
+        key => this.form.value.datasource[key]
+      )
     },
     datasource() {
       return this.form.value.datasource
     }
   },
   methods: {
+    resolveForm() {
+      return [
+        {
+          component: 'v-jd-modal-content',
+          children: [
+            {
+              component: 'v-jd-datasource-form',
+              model: ['data'],
+              fieldOptions: { ref: 'form' }
+            },
+            {
+              component: 'button',
+              text: '确定',
+              fieldOptions: {
+                slot: 'footer',
+                class: 'btn btn-primary',
+                on: {
+                  click: '@:SUBMIT_DS()'
+                }
+              }
+            },
+            {
+              component: 'button',
+              text: '取消',
+              fieldOptions: {
+                slot: 'footer',
+                class: 'btn btn-secondary',
+                on: { click: () => this.$store.dispatch('popup/close') }
+              }
+            }
+          ]
+        }
+      ]
+    },
     onAdd() {
       const model = { data: { name: '' } }
 
@@ -67,15 +109,48 @@ export default {
         title: '添加数据源',
         model,
         form: {
+          initialling: ({ functional }) => {
+            functional('SUBMIT_DS', () => {
+              this.$store.dispatch('form/setDatasource', model.data)
+              this.$store.dispatch('popup/close')
+            })
+          },
+          fields: this.resolveForm()
+        }
+      })
+    },
+    onEdit(key) {
+      const model = {
+        data: { ...cloneDeep(this.form.value.datasource[key]), name: key }
+      }
+
+      this.$store.dispatch('popup/show', {
+        title: '编辑数据源',
+        model,
+        form: {
+          initialling: ({ functional }) => {
+            functional('SUBMIT_DS', () => {
+              if (model.data.name !== this.form.value.datasource[key].name) {
+                this.$store.dispatch('form/removeDatasource', key)
+              }
+              this.$store.dispatch('form/setDatasource', model.data)
+              this.$store.dispatch('popup/close')
+            })
+          },
+          fields: this.resolveForm()
+        }
+      })
+    },
+    onRemove(evt, key) {
+      this.$store.dispatch('popup/show', {
+        title: '删除',
+        size: 'sm',
+        form: {
           fields: [
             {
               component: 'v-jd-modal-content',
               children: [
-                {
-                  component: 'v-jd-datasource-form',
-                  model: ['data'],
-                  children: []
-                },
+                { component: 'p', text: '是否删除?' },
                 {
                   component: 'button',
                   text: '确定',
@@ -84,7 +159,7 @@ export default {
                     class: 'btn btn-primary',
                     on: {
                       click: () => {
-                        this.$store.dispatch('form/setDatasource', model.data)
+                        this.$store.dispatch('form/removeDatasource', key)
                         this.$store.dispatch('popup/close')
                       }
                     }
@@ -104,9 +179,8 @@ export default {
           ]
         }
       })
-    },
-    onEdit() {},
-    onRemove() {}
+      evt.stopPropagation()
+    }
   }
 }
 </script>

@@ -18,7 +18,6 @@
       :components="edit.components"
       :fields="fields"
       :listeners="form.value.listeners"
-      :datasource="form.value.datasource"
       :initialling="onInitialling"
       :options="options"
     ></v-jform>

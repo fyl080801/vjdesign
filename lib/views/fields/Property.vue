@@ -45,7 +45,16 @@ export default {
     },
     propForm() {
       return this.form.editing
-        ? resolveForm(this.component.properties)(this.edit.registry.editor)
+        ? resolveForm(this.component.properties)(
+            this.edit.registry.editor
+          ).reduce((prev, cur) => {
+            prev[cur.fieldOptions.attrs.group] =
+              prev[cur.fieldOptions.attrs.group] || []
+
+            prev[cur.fieldOptions.attrs.group].push(cur)
+
+            return prev
+          }, {})
         : null
     }
   },

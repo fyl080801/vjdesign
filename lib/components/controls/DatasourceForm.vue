@@ -6,17 +6,56 @@
     </div>
     <div class="form-group">
       <label>类型</label>
-      <select class="form-control" v-model="value.type"></select>
+      <select class="form-control" v-model="value.type">
+        <option
+          :key="key"
+          :value="key"
+          v-for="key in Object.keys(profile.datasource)"
+        >
+          {{ profile.datasource[key].label }}
+        </option>
+      </select>
     </div>
-    <slot></slot>
+    <v-jform
+      v-model="value"
+      :fields="fields"
+      :components="components"
+    ></v-jform>
   </form>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { resolveForm } from '../../utils/property'
+import { PropertyItem } from '../../components/property'
+import SvgIcon from 'vue-svgicon'
+
 export default {
   name: 'v-jd-datasource-form',
   props: {
     value: Object
-  }
+  },
+  data() {
+    return {
+      fields: [],
+      components: { [PropertyItem.name]: PropertyItem, SvgIcon }
+    }
+  },
+  computed: { ...mapGetters(['edit', 'profile']) },
+  watch: {
+    ['value.type']: {
+      handler(value) {
+        if (!value) {
+          return
+        }
+
+        this.fields = resolveForm(this.profile.datasource[value].properties)(
+          this.edit.registry.editor
+        )
+      },
+      immediate: true
+    }
+  },
+  methods: {}
 }
 </script>
