@@ -25,7 +25,7 @@
   "private": false,
   "scripts": {
     "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --dest demo",
     "svg": "vsvg -s ./lib/icons/svg -t ./lib/icons/components --ext js --es6",
     "lint": "vue-cli-service lint",
     "dist": "vue-cli-service build --target lib ./lib/index.js",
