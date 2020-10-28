@@ -52,6 +52,7 @@ module.exports = {
   lang: 'zh-CN',
   title: 'Vue Json Design',
   description: 'render ui by json',
+  base: '/vjdesign/',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['script', { src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js' }],
