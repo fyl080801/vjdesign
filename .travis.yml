@@ -1,15 +1,24 @@
 language: node_js
 node_js:
-  - lts/*
+  - stable
+
+branches:
+  only:
+    - master
+
 install:
-  - yarn install # npm ci
+  - npm install
+  - npm run docs:build
+
 script:
-  - yarn docs:build # npm run docs:build
-deploy:
-  provider: pages
-  cleanup: false
-  local_dir: docs/.vuepress/dist
-  github_token: $GITHUB_TOKEN
-  keep_history: true
-  on:
-    branch: master
+  - chmod u+x deploy.sh
+  - bash ./deploy.sh
+
+# deploy:
+#   provider: pages
+#   skip-cleanup: true
+#   github-token: $GITHUB_ACCESS_TOKEN  # Set in travis-ci.org dashboard, marked secure https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token
+#   target-branch: gh-pages
+#   local-dir: .vuepress/dist
+#   on:
+branch: master
