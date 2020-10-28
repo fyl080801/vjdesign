@@ -19,6 +19,8 @@ vjform.use(expression)
 
 ## Getting Start
 
+### 运行项目
+
 克隆项目，执行
 
 ```bash
@@ -29,6 +31,20 @@ npm install
 
 ```bash
 npm run dev
+```
+
+### 使用 npm 包
+
+```bash
+npm i vjdesign
+```
+
+```javascript
+import Vue from 'vue'
+import vjdesign from 'vjdesign'
+import 'vjdesign/dist/vjdesign.css'
+
+Vue.use(vjdesign)
 ```
 
 ## 特性
