@@ -26,6 +26,6 @@ git commit -m 'polish: deploy'
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
 
 # git push -f git@github.com:AlvinMi/Developer-notes.git master:gh-pages
-git push -f https://github.com/fyl080801/vjdesign.git master:gh-pages
+git push --force --quiet "https://${GITHUB_TOKEN}@${GITHUB_REF}" master:gh-pages
 
 cd -
