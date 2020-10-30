@@ -62,10 +62,7 @@ module.exports = {
     ]
   ],
   themeConfig: {
-    nav: [
-      { text: '指南', link: '/guide/' },
-      { text: 'API', link: '/guide/api/' }
-    ],
+    nav: [{ text: '指南', link: '/guide/' }],
     sidebar: [
       {
         title: '首页',
