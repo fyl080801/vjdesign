@@ -43,6 +43,7 @@ export default {
         position: relative;
         padding: 0.75rem 1.25rem;
         padding-bottom: 0;
+        z-index: 0;
       }
     }
   }

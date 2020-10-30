@@ -29,9 +29,11 @@ import { mapGetters } from 'vuex'
 import { resolveForm } from '../../utils/property'
 import { PropertyItem } from '../../components/property'
 import SvgIcon from 'vue-svgicon'
+import vjform from 'vjform'
 
 export default {
   name: 'v-jd-datasource-form',
+  components: { [vjform.name]: vjform },
   props: {
     value: Object
   },
