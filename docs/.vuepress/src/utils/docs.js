@@ -12,7 +12,7 @@ module.exports.resolvePaths = () => {
     })
     .filter(item => item.stat.isDirectory() && item.name !== '.vuepress')
     .reduce((prev, cur) => {
-      prev[cur.name] = prev[cur.name] || {
+      const current = prev[cur.name] || {
         title: '',
         collapsable: false,
         children: []
@@ -24,8 +24,8 @@ module.exports.resolvePaths = () => {
         const readmeFile = fs.readFileSync(readmePath).toString()
         const lines = readmeFile.split('\n')
         if (lines.length > 0 && lines[0].startsWith('# ')) {
-          prev[cur.name].title = lines[0].replace('# ', '')
-          prev[cur.name].path = `/${cur.name}`
+          current.title = lines[0].replace('# ', '')
+          // current.path = `/${cur.name}`
         }
       }
 
@@ -38,14 +38,19 @@ module.exports.resolvePaths = () => {
             return
           }
 
-          prev[cur.name].children.push(
+          current.children.push(
             path.resolve('/', cur.name, file.replace('.md', ''))
           )
         })
 
+      if (!current.children || current.children.length <= 0) {
+        prev[cur.name] = current.path + '/README'
+      } else {
+        prev[cur.name] = current
+      }
+
       return prev
     }, {})
-  console.log(groups)
-
+  // console.log(groups)
   return Object.keys(groups).map(key => groups[key])
 }
