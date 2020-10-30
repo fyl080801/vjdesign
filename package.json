@@ -24,7 +24,7 @@
   "module": "dist/vjdesign.common.js",
   "private": false,
   "scripts": {
-    "demo:build": "vue-cli-service build --dest demo",
+    "demo:build": "vue-cli-service build --dest ./demo",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "svg": "vsvg -s ./lib/icons/svg -t ./lib/icons/components --ext js --es6",

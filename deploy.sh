@@ -12,7 +12,18 @@ cd docs/.vuepress/dist
 
 git init
 git add -A
-git commit -m 'polish: deploy'
+git commit -m 'polish: docs'
 git push --force --quiet "https://${GITHUB_TOKEN}@${GITHUB_REF}" master:gh-pages
+
+cd -
+
+yarn demo:build
+
+cd demo
+
+git init
+git add -A
+git commit -m 'polish: demo'
+git push --force --quiet "https://${GITHUB_TOKEN}@${GITHUB_REF}" master:gh-demo
 
 cd -

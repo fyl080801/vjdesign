@@ -51,7 +51,7 @@ guides.forEach(item => {
 module.exports = {
   lang: 'zh-CN',
   title: 'Vue Json Design',
-  description: 'render ui by json',
+  description: 'Vue 可视化界面功能设计器',
   base: '/vjdesign/',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
@@ -63,8 +63,8 @@ module.exports = {
   ],
   themeConfig: {
     nav: [
-      { text: '首页', link: '/' },
-      { text: '指南', link: '/guide/' }
+      { text: '指南', link: '/guide/' },
+      { text: 'API', link: '/guide/api/' }
     ],
     sidebar: [
       {
