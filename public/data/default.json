@@ -40,7 +40,7 @@
                   "component": "el-col",
                   "fieldOptions": {
                     "props": {
-                      "span": "$:14"
+                      "span": "$:12"
                     }
                   },
                   "children": [
@@ -73,7 +73,7 @@
                   "component": "el-col",
                   "fieldOptions": {
                     "props": {
-                      "span": "$:14"
+                      "span": "$:12"
                     }
                   },
                   "children": [

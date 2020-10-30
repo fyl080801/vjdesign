@@ -65,6 +65,7 @@ $design-border: 1px dashed #dcdfe6;
       .v-jd-design-wrapper {
         padding-top: calc(1.45rem + 1px);
         position: relative;
+        z-index: 0;
 
         > .header {
           position: absolute;

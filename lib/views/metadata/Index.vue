@@ -18,7 +18,7 @@
           取消
         </button>
       </div>
-      <div v-else>
+      <div v-else class="form-inline">
         <button class="btn btn-light" @click="onEdit">
           <SvgIcon name="edit"></SvgIcon>
           编辑

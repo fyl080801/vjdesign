@@ -20,6 +20,7 @@
             class="col-md-6 item-wrapper drag-handler"
             v-for="item in group.children"
             :key="`${group.name}_${item.name}_${item.label}`"
+            :title="item.label"
           >
             <li class="item">
               <SvgIcon class="icon" :name="item.icon || 'square'"></SvgIcon>
@@ -84,7 +85,7 @@ export default {
 <style lang="scss">
 .v-jdesign {
   .toolbox {
-    width: 250px;
+    width: 18rem;
     border-right: 1px solid #dcdfe6;
 
     .component-group {
@@ -108,6 +109,9 @@ export default {
 
         .item {
           padding: 0.75rem 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
 
           > .icon {
             margin-right: 0.75em;
