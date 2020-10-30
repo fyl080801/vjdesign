@@ -1,5 +1,8 @@
 # Vue Json Design
 
+[![NPM version](https://img.shields.io/npm/v/vjdesign.svg?style=flat-square)](https://www.npmjs.com/package/vjdesign)
+[![Build Status](https://travis-ci.org/fyl080801/vjdesign.svg?branch=master)](https://travis-ci.org/fyl080801/vjdesign)
+
 基于 [vjform](https://github.com/fyl080801/vjform) 的 Vue 界面可视化设计器
 
 示例请看 [demo](https://fyl080801.gitee.io/vjdesign/)
