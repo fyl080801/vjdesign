@@ -26,7 +26,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import vjform from 'vjform/lib'
+import vjform from 'vjform'
 import vuedraggable from 'vuedraggable'
 import designer from '../../internal/providers/designer'
 import {

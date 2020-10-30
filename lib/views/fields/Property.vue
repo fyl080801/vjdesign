@@ -24,7 +24,7 @@
 import { resolveForm } from '../../utils/property'
 import { Collapse, CollapseItem } from '../../components/collapse'
 import { PropertyItem } from '../../components/property'
-import vjform from 'vjform/lib'
+import vjform from 'vjform'
 import SvgIcon from 'vue-svgicon'
 import { mapGetters } from 'vuex'
 
