@@ -5,20 +5,13 @@
 
 基于 [vjform](https://github.com/fyl080801/vjform) 的 Vue 界面可视化设计器
 
-示例请看 [demo](https://fyl080801.gitee.io/vjdesign/)
+## 特性
 
-> 使用 [jformer](https://gitee.com/fyl080801/jformer) 组件可直接用编辑器元数据中的 json 定义呈现功能
->
-> 如果使用 [vjform](https://github.com/fyl080801/vjform) 呈现功能，则需要在 vjform 中引用 [表达式支持库](https://github.com/fyl080801/jpresent-transform-expression)
-
-```javascript
-import vjform from 'vjform'
-import expression from 'jpresent-transform-expression'
-
-vjform.use(expression)
-```
-
-![截图](https://tva1.sinaimg.cn/large/0081Kckwly1gk1t04rlxqj31ns0u0alu.jpg)
+- 可视化拖拽布局
+- 支持任何 html 元素和 vue 项目中引用的组件
+- 支持数据关联和交互行为的编辑
+- 通过 json 格式数据就可扩展编辑器支持的组件和属性
+- 组件在设计器上呈现形式和属性编辑器支持二次开发
 
 ## Getting Start
 
@@ -50,13 +43,20 @@ import 'vjdesign/dist/vjdesign.css'
 Vue.use(vjdesign)
 ```
 
-## 特性
+## 相关链接
 
-- 可视化拖拽布局
-- 支持任何 html 元素和 vue 项目中引用的组件
-- 支持数据关联和交互行为的编辑
-- 通过 json 格式数据就可扩展编辑器支持的组件和属性
-- 组件在设计器上呈现形式和属性编辑器支持二次开发
+示例请看 [demo](https://fyl080801.gitee.io/vjdesign/)
+
+> 使用 [jformer](https://gitee.com/fyl080801/jformer) 组件可直接用编辑器元数据中的 json 定义呈现功能
+>
+> 如果使用 [vjform](https://github.com/fyl080801/vjform) 呈现功能，则需要在 vjform 中引用 [表达式支持库](https://github.com/fyl080801/jpresent-transform-expression)
+
+```javascript
+import vjform from 'vjform'
+import expression from 'jpresent-transform-expression'
+
+vjform.use(expression)
+```
 
 ## 依赖
 
