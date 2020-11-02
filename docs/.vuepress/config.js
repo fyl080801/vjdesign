@@ -14,7 +14,7 @@ module.exports = {
     ]
   ],
   themeConfig: {
-    nav: [{ text: '指南', link: '/1.guide/intro.html' }],
+    nav: [{ text: '指南', link: '/1.guide/1.intro.html' }],
     sidebar: resolvePaths(),
     sidebarDepth: 0
   },
