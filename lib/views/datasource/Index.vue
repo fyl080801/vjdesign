@@ -15,7 +15,11 @@
                 <label>类型</label>
                 <div>
                   <span>{{
-                    profile.datasource[form.value.datasource[key].type].label
+                    (
+                      profile.datasource[form.value.datasource[key].type] || {
+                        label: '未知类型'
+                      }
+                    ).label
                   }}</span>
                 </div>
               </div>
