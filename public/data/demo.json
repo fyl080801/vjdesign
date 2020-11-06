@@ -62,6 +62,21 @@
       "properties": ["fieldOptions.props.span"]
     },
     {
+      "name": "el-select",
+      "label": "选择",
+      "icon": "drop-down",
+      "group": "ElementUI",
+      "designer": "designContainer",
+      "properties": ["model"]
+    },
+    {
+      "name": "el-option",
+      "label": "选择项",
+      "group": "ElementUI",
+      "designer": "designElement",
+      "properties": ["fieldOptions.props.value", "fieldOptions.props.label"]
+    },
+    {
       "name": "c-select",
       "label": "选择",
       "icon": "drop-down",
@@ -128,6 +143,11 @@
       "name": "fieldOptions.props.span",
       "group": "组件",
       "label": "列宽"
+    },
+    {
+      "name": "fieldOptions.props.value",
+      "group": "组件",
+      "label": "值"
     }
   ],
   "schema": {

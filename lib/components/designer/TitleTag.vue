@@ -23,15 +23,16 @@ export default {
   components: { SvgIcon },
   computed: {
     ...mapGetters(['profile', 'form']),
+    componentTag() {
+      return this.field._design.name || this.field.component
+    },
     icon() {
-      return (
-        (this.profile.components[this.field.component] || {}).icon || 'square'
-      )
+      return (this.profile.components[this.componentTag] || {}).icon || 'square'
     },
     text() {
       return this.field.remark
-        ? this.field.component + '.' + this.field.remark
-        : this.field.component
+        ? this.componentTag + '.' + this.field.remark
+        : this.componentTag
     }
   }
 }
