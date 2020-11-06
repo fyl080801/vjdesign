@@ -1,6 +1,6 @@
 <template>
   <p :class="['container-tag', form.editing === field.uuid ? 'editing' : '']">
-    {{ field.remark ? `${field.component}.${field.remark}` : field.component }}
+    {{ field.remark ? `${componentTag}.${field.remark}` : componentTag }}
   </p>
 </template>
 
@@ -9,7 +9,12 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'v-jd-container-tag',
   props: { field: Object },
-  computed: { ...mapGetters(['form']) }
+  computed: {
+    ...mapGetters(['form']),
+    componentTag() {
+      return this.field._design.name || this.field.component
+    }
+  }
 }
 </script>
 
