@@ -75,6 +75,15 @@ export default {
     ['form.value.fields'](value) {
       this.value.fields = value
     },
+    ['form.value.datasource'](value) {
+      this.value.datasource = value
+    },
+    ['form.value.listeners'](value) {
+      this.value.listeners = value
+    },
+    ['form.value.model'](value) {
+      this.value.model = value
+    },
     value(value) {
       this.$store.dispatch('form/init', value)
     },
