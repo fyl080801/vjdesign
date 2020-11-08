@@ -1,6 +1,6 @@
 <template>
   <vuedraggable
-    v-if="field._collapse !== true"
+    v-if="(field.options || {}).collapse !== true"
     group="jdesign"
     draggable=".drag-handler"
     ghost-class="ghost"

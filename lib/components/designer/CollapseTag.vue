@@ -9,7 +9,7 @@
   >
     <SvgIcon
       class="collapse-tag-icon"
-      :name="field._collapse ? 'plus-square' : 'minus-square'"
+      :name="(field.options || {}).collapse ? 'plus-square' : 'minus-square'"
     ></SvgIcon>
   </span>
 </template>
