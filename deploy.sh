@@ -25,5 +25,6 @@ git init
 git add -A
 git commit -m 'polish: demo'
 git push --force --quiet "https://${GITHUB_TOKEN}@${GITHUB_REF}" master:gh-demo
+git push --force --quiet "https://${GITEE_TOKEN}@${GITEE_REF}" master:gh-demo
 
 cd -
