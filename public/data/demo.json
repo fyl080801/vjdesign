@@ -347,8 +347,11 @@
       "label": "选项卡页",
       "group": "ElementUI 布局",
       "designer": "designContainer",
-      "properties": ["fieldOptions.props.label", "fieldOptions.props.name"],
-      "options": { "direct": true }
+      "properties": [
+        "options.direct",
+        "fieldOptions.props.label",
+        "fieldOptions.props.name"
+      ]
     },
     {
       "name": "el-page-header",
