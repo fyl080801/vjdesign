@@ -24,7 +24,7 @@ export default {
   computed: {
     ...mapGetters(['profile', 'form']),
     componentTag() {
-      return this.field._design.name || this.field.component
+      return this.field._design.name //|| this.field.component
     },
     icon() {
       return (this.profile.components[this.componentTag] || {}).icon || 'square'

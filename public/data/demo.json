@@ -54,14 +54,14 @@
       "name": "el-row",
       "label": "行",
       "group": "ElementUI",
-      "designer": "container",
+      "designer": "classContainer",
       "properties": ["fieldOptions.props.gutter"]
     },
     {
       "name": "el-col",
       "label": "列",
       "group": "ElementUI",
-      "designer": "container",
+      "designer": "classContainer",
       "properties": ["fieldOptions.props.span"]
     },
     {
@@ -150,7 +150,7 @@
       "name": "el-radio-group",
       "label": "单选框组",
       "group": "ElementUI",
-      "designer": "designContainer",
+      "designer": "divContainer",
       "properties": ["model", "fieldOptions.props.disabled"]
     },
     {
@@ -167,7 +167,7 @@
       "name": "el-checkbox-group",
       "label": "多选框组",
       "group": "ElementUI",
-      "designer": "designContainer",
+      "designer": "divContainer",
       "properties": ["model", "fieldOptions.props.disabled"]
     },
     {
@@ -184,7 +184,7 @@
       "name": "el-select",
       "label": "选择",
       "group": "ElementUI",
-      "designer": "designContainer",
+      "designer": "divContainer",
       "properties": [
         "model",
         "fieldOptions.props.placeholder",
@@ -202,7 +202,7 @@
       "name": "el-option",
       "label": "选择项",
       "group": "ElementUI",
-      "designer": "designElement",
+      "designer": "divElement",
       "properties": ["fieldOptions.props.value", "fieldOptions.props.label"]
     },
     {
@@ -307,7 +307,7 @@
       "name": "el-tabs",
       "label": "选项卡",
       "group": "ElementUI 布局",
-      "designer": "designContainer",
+      "designer": "divContainer",
       "properties": [
         "model",
         {
@@ -346,7 +346,7 @@
       "name": "el-tab-pane",
       "label": "选项卡页",
       "group": "ElementUI 布局",
-      "designer": "designContainer",
+      "designer": "divContainer",
       "properties": [
         "options.direct",
         "fieldOptions.props.label",
@@ -392,7 +392,7 @@
       "name": "el-divider",
       "label": "分割线",
       "group": "ElementUI 布局",
-      "designer": "designContainer",
+      "designer": "divContainer",
       "properties": [
         {
           "name": "fieldOptions.props.direction",
@@ -422,6 +422,137 @@
               ]
             }
           }
+        }
+      ]
+    },
+    {
+      "name": "el-table",
+      "label": "数据表",
+      "group": "ElementUI 数据",
+      "designer": "divContainer",
+      "properties": [
+        { "name": "fieldOptions.props.data", "label": "数据", "group": "组件" },
+        {
+          "name": "fieldOptions.props.stripe",
+          "label": "斑马纹",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.border",
+          "label": "边框",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.fit",
+          "label": "列宽自撑开",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.showHeader",
+          "label": "显示表头",
+          "group": "组件",
+          "editor": "checkbox",
+          "default": true
+        },
+        {
+          "name": "fieldOptions.on.rowClick",
+          "label": "行点击",
+          "group": "事件"
+        }
+      ]
+    },
+    {
+      "name": "el-table-column",
+      "label": "数据列",
+      "group": "ElementUI 数据",
+      "designer": "divContainer",
+      "properties": [
+        {
+          "name": "fieldOptions.props.label",
+          "label": "标题",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.prop",
+          "label": "数据属性",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.width",
+          "label": "宽度",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.resizable",
+          "label": "可调宽度",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.fixed",
+          "label": "固定位置",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "left", "label": "左侧" },
+                { "value": "right", "label": "右侧" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.formatter",
+          "label": "内容格式化",
+          "group": "事件"
+        }
+      ]
+    },
+    {
+      "name": "el-pagination",
+      "label": "分页",
+      "group": "ElementUI 数据",
+      "properties": [
+        {
+          "name": "fieldOptions.props.pageSize",
+          "label": "每页记录数",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.total",
+          "label": "总记录数",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.currentPage",
+          "label": "当前页码",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.background",
+          "label": "按钮背景",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.hideOnSinglePage",
+          "label": "单页时隐藏",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.on.currentChange",
+          "label": "页码变更",
+          "group": "事件"
+        },
+        {
+          "name": "fieldOptions.on.sizeChange",
+          "label": "每页记录数变更",
+          "group": "事件"
         }
       ]
     },

@@ -13,7 +13,8 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'v-jd-design-wrapper',
   props: {
-    field: Object
+    field: Object,
+    copyClass: Boolean
   },
   data() {
     return {
@@ -48,7 +49,7 @@ export default {
     }
   },
   mounted() {
-    if (this.$children.length > 0) {
+    if (this.copyClass && this.$children.length > 0) {
       this.childClass = [...this.$children[0].$el.classList]
       this.$children[0].$el.classList.remove(...this.$children[0].$el.classList)
     }
