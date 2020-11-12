@@ -45,7 +45,7 @@
     "jsonlint": "^1.6.3",
     "lodash-es": "^4.17.15",
     "normalize.scss": "^0.1.0",
-    "vjform": "^2.4.0",
+    "vjform": "^2.5.0-beta.1",
     "vue": "^2.6.12",
     "vue-json-viewer": "^2.2.15",
     "vue-svgicon": "^3.2.9",

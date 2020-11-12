@@ -6,7 +6,6 @@ import vjform from 'vjform'
 import expression from 'jpresent-transform-expression'
 
 import 'element-ui/lib/theme-chalk/index.css'
-import './styles/index.scss'
 import './styles/markdown.scss'
 
 import Select from './components/Select.vue'

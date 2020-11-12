@@ -255,7 +255,47 @@
       "group": "ElementUI",
       "properties": [
         "fieldOptions.domProps.innerText",
-        "fieldOptions.props.type",
+        {
+          "name": "fieldOptions.props.type",
+          "label": "类型",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "primary", "label": "主要" },
+                { "value": "success", "label": "成功" },
+                { "value": "info", "label": "信息" },
+                { "value": "warning", "label": "警告" },
+                { "value": "danger", "label": "危险" },
+                { "value": "text", "label": "文本" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.plain",
+          "label": "边框按钮",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.round",
+          "label": "圆角",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.circle",
+          "label": "圆形",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.icon",
+          "label": "图标",
+          "group": "组件"
+        },
         "fieldOptions.props.disabled",
         "fieldOptions.on.click"
       ]
