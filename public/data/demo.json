@@ -80,7 +80,8 @@
               "items": [
                 { "value": "text", "label": "文本" },
                 { "value": "textarea", "label": "文本域" },
-                { "value": "number", "label": "数字" }
+                { "value": "number", "label": "数字" },
+                { "value": "password", "label": "密码" }
               ]
             }
           }

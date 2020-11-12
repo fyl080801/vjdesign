@@ -49,7 +49,7 @@ Vue.use(vjdesign)
 
 > 使用 [jformer](https://gitee.com/fyl080801/jformer) 组件可直接用编辑器元数据中的 json 定义呈现功能
 >
-> 如果使用 [vjform](https://github.com/fyl080801/vjform) 呈现功能，则需要在 vjform 中引用 [表达式支持库](https://github.com/fyl080801/jpresent-transform-expression)
+> 如果使用 [vjform](https://github.com/fyl080801/vjform) 呈现功能，则需要在 vjform 中引用 [表达式支持库](https://github.com/fyl080801/jpresent-transform-expression)和[vue 作用域转换](https://github.com/fyl080801/jpresent-vue-extends)
 
 ```javascript
 import vjform from 'vjform'
@@ -73,6 +73,10 @@ vjform.use(expression)
 - jpresent-transform-expression
 
 为了适应类似 excel 的习惯，将属性值是表达式的情况下直接作为转换来处理 `"text": "$:model.text"`
+
+- jpresent-vue-extends
+
+使组件支持设置 scopedSlot 属性，实现转换获取父级组件 scopedSlot 的作用域对象
 
 ### Lodash
 

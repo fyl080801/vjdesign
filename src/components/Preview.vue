@@ -11,11 +11,14 @@
       :fields="json.fields"
       :listeners="json.listeners"
       :datasource="json.datasource"
+      :initialling="onInitialling"
     ></v-jform>
   </el-dialog>
 </template>
 
 <script>
+import vueExtends from 'jpresent-vue-extends'
+
 export default {
   data() {
     return {
@@ -32,6 +35,9 @@ export default {
     close() {
       this.json = {}
       this.visible = false
+    },
+    onInitialling(builder) {
+      vueExtends(builder)
     }
   }
 }
