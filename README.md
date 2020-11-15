@@ -45,11 +45,17 @@ Vue.use(vjdesign)
 
 ## 相关链接
 
-示例请看 [demo](https://fyl080801.gitee.io/vjdesign/)
+[在线示例](https://fyl080801.gitee.io/vjdesign/)
 
-> 使用 [jformer](https://gitee.com/fyl080801/jformer) 组件可直接用编辑器元数据中的 json 定义呈现功能
->
-> 如果使用 [vjform](https://github.com/fyl080801/vjform) 呈现功能，则需要在 vjform 中引用 [表达式支持库](https://github.com/fyl080801/jpresent-transform-expression)和[vue 作用域转换](https://github.com/fyl080801/jpresent-vue-extends)
+[使用文档](https://fyl080801.github.io/vjdesign/) 完善中...
+
+[动态表单呈现 jformer](https://gitee.com/fyl080801/jformer)
+
+> 使用 `jformer` 组件可直接用编辑器元数据中的 json 定义呈现功能
+
+[动态表单呈现 vjform](https://github.com/fyl080801/vjform)
+
+> 如果使用 `vjform` 呈现功能，则需要在 vjform 中引用 [表达式支持库](https://github.com/fyl080801/jpresent-transform-expression)和[vue 作用域转换](https://github.com/fyl080801/jpresent-vue-extends)
 
 ```javascript
 import vjform from 'vjform'
