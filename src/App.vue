@@ -45,7 +45,7 @@ export default {
     }
   },
   mounted() {
-    fetch('data/demo.json', { method: 'GET' }).then(response => {
+    fetch('data/demo-profile.json', { method: 'GET' }).then(response => {
       response.json().then(data => {
         this.profile = data
       })

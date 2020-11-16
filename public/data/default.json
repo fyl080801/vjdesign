@@ -31,161 +31,252 @@
       "component": "div",
       "children": [
         {
-          "component": "el-form",
+          "component": "el-tabs",
           "children": [
             {
-              "component": "el-row",
+              "component": "el-tab-pane",
+              "options": {
+                "direct": true
+              },
+              "fieldOptions": {
+                "props": {
+                  "label": "表单"
+                }
+              },
               "children": [
                 {
-                  "component": "el-col",
-                  "fieldOptions": {
-                    "props": {
-                      "span": "$:12"
-                    }
-                  },
+                  "component": "el-form",
                   "children": [
                     {
-                      "component": "el-form-item",
+                      "component": "el-row",
                       "children": [
                         {
-                          "component": "el-input",
-                          "model": ["text3"]
+                          "component": "el-col",
+                          "fieldOptions": {
+                            "props": {
+                              "span": "$:12"
+                            }
+                          },
+                          "children": [
+                            {
+                              "component": "el-form-item",
+                              "children": [
+                                {
+                                  "component": "el-input",
+                                  "model": ["text3"]
+                                },
+                                {
+                                  "component": "span",
+                                  "fieldOptions": {
+                                    "domProps": {
+                                      "innerText": "#:输入了 ${model.text3.length} 个字"
+                                    }
+                                  }
+                                }
+                              ],
+                              "fieldOptions": {
+                                "props": {
+                                  "label": "文本"
+                                }
+                              },
+                              "_collapse": true
+                            }
+                          ]
                         },
                         {
-                          "component": "span",
+                          "component": "el-col",
                           "fieldOptions": {
-                            "domProps": {
-                              "innerText": "#:输入了 ${model.text3.length} 个字"
+                            "props": {
+                              "span": "$:12"
                             }
-                          }
+                          },
+                          "children": [
+                            {
+                              "component": "el-form-item",
+                              "children": [
+                                {
+                                  "component": "el-input",
+                                  "model": ["text1"]
+                                },
+                                {
+                                  "component": "span",
+                                  "fieldOptions": {
+                                    "domProps": {
+                                      "innerText": "text1输入正确的url后点击打开链接"
+                                    }
+                                  },
+                                  "condition": "$:!/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
+                                },
+                                {
+                                  "component": "a",
+                                  "fieldOptions": {
+                                    "domProps": {
+                                      "target": "_blank",
+                                      "innerText": "text1输入正确的url后点击打开链接"
+                                    },
+                                    "attrs": {
+                                      "href": "$:model.text1"
+                                    }
+                                  },
+                                  "condition": "$:/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
+                                }
+                              ],
+                              "fieldOptions": {
+                                "props": {
+                                  "label": "正则判断"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "component": "el-col",
+                          "fieldOptions": {
+                            "props": {
+                              "span": "$:12"
+                            }
+                          },
+                          "children": [
+                            {
+                              "component": "el-form-item",
+                              "fieldOptions": {
+                                "props": {
+                                  "label": "选择"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "component": "c-select",
+                                  "model": ["selected"],
+                                  "fieldOptions": {
+                                    "props": {
+                                      "items": "$:datasource.listdata.data"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "component": "el-col",
+                          "fieldOptions": {
+                            "props": {
+                              "span": "$:12"
+                            }
+                          },
+                          "children": [
+                            {
+                              "component": "el-form-item",
+                              "children": [
+                                {
+                                  "component": "c-select",
+                                  "model": ["subselected"],
+                                  "fieldOptions": {
+                                    "props": {
+                                      "items": "$:datasource.sublist.data"
+                                    }
+                                  }
+                                }
+                              ],
+                              "fieldOptions": {
+                                "props": {
+                                  "label": "级联"
+                                }
+                              }
+                            }
+                          ]
                         }
                       ],
                       "fieldOptions": {
                         "props": {
-                          "label": "文本"
-                        }
-                      },
-                      "_collapse": true
-                    }
-                  ]
-                },
-                {
-                  "component": "el-col",
-                  "fieldOptions": {
-                    "props": {
-                      "span": "$:12"
-                    }
-                  },
-                  "children": [
-                    {
-                      "component": "el-form-item",
-                      "children": [
-                        {
-                          "component": "el-input",
-                          "model": ["text1"]
-                        },
-                        {
-                          "component": "span",
-                          "fieldOptions": {
-                            "domProps": {
-                              "innerText": "text1输入正确的url后点击打开链接"
-                            }
-                          },
-                          "condition": "$:!/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
-                        },
-                        {
-                          "component": "a",
-                          "fieldOptions": {
-                            "domProps": {
-                              "target": "_blank",
-                              "innerText": "text1输入正确的url后点击打开链接"
-                            },
-                            "attrs": {
-                              "href": "$:model.text1"
-                            }
-                          },
-                          "condition": "$:/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
-                        }
-                      ],
-                      "fieldOptions": {
-                        "props": {
-                          "label": "正则判断"
+                          "gutter": 20
                         }
                       }
                     }
-                  ]
-                },
-                {
-                  "component": "el-col",
+                  ],
                   "fieldOptions": {
                     "props": {
-                      "span": "$:12"
+                      "labelWidth": "120px"
+                    }
+                  }
+                }
+              ],
+              "remark": "表单"
+            },
+            {
+              "component": "el-tab-pane",
+              "options": {
+                "direct": true
+              },
+              "remark": "表格",
+              "children": [
+                {
+                  "component": "el-table",
+                  "fieldOptions": {
+                    "props": {
+                      "showHeader": true,
+                      "data": "$:datasource.listdata.data"
                     }
                   },
                   "children": [
                     {
-                      "component": "el-form-item",
+                      "component": "el-table-column",
                       "fieldOptions": {
                         "props": {
-                          "label": "选择"
+                          "label": "key",
+                          "prop": "value"
                         }
-                      },
+                      }
+                    },
+                    {
+                      "component": "el-table-column",
+                      "fieldOptions": {
+                        "props": {
+                          "label": "名称",
+                          "prop": "label"
+                        }
+                      }
+                    },
+                    {
+                      "component": "el-table-column",
                       "children": [
                         {
-                          "component": "c-select",
-                          "model": ["selected"],
+                          "component": "div",
                           "fieldOptions": {
-                            "props": {
-                              "items": "$:datasource.listdata.data"
+                            "scopedSlot": "default"
+                          },
+                          "children": [
+                            {
+                              "component": "el-button",
+                              "fieldOptions": {
+                                "domProps": {
+                                  "innerText": "detail"
+                                },
+                                "props": {
+                                  "type": "text"
+                                },
+                                "on": {
+                                  "click": "@:alert(JSON.stringify(scope.row))"
+                                }
+                              }
                             }
-                          }
+                          ]
                         }
                       ]
-                    }
-                  ]
-                },
-                {
-                  "component": "el-col",
-                  "fieldOptions": {
-                    "props": {
-                      "span": "$:12"
-                    }
-                  },
-                  "children": [
-                    {
-                      "component": "el-form-item",
-                      "children": [
-                        {
-                          "component": "c-select",
-                          "model": ["subselected"],
-                          "fieldOptions": {
-                            "props": {
-                              "items": "$:datasource.sublist.data"
-                            }
-                          }
-                        }
-                      ],
-                      "fieldOptions": {
-                        "props": {
-                          "label": "级联"
-                        }
-                      }
                     }
                   ]
                 }
               ],
               "fieldOptions": {
                 "props": {
-                  "gutter": 20
+                  "label": "表格"
                 }
               }
             }
           ],
-          "fieldOptions": {
-            "props": {
-              "labelWidth": "120px"
-            }
-          }
+          "options": {},
+          "remark": ""
         },
         {
           "component": "button",
@@ -200,5 +291,6 @@
         }
       ]
     }
-  ]
+  ],
+  "model": {}
 }
