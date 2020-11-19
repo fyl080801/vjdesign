@@ -49,6 +49,7 @@
     "vjform": "^2.5.0-beta.2",
     "vue": "^2.6.12",
     "vue-json-viewer": "^2.2.15",
+    "vue-router": "^3.4.9",
     "vue-svgicon": "^3.2.9",
     "vuedraggable": "^2.24.3",
     "vuex": "^3.4.0"

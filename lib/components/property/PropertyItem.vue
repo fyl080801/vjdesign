@@ -12,13 +12,10 @@
 </template>
 
 <script>
-// import { toPath } from 'lodash-es'
-
 export default {
   name: 'v-jd-property-item',
   props: {
     label: String,
-    // editing: Object,
     prop: String,
     value: null
   },
@@ -30,16 +27,6 @@ export default {
   methods: {
     onClear() {
       this.$emit('clear', this.prop)
-      // const paths = toPath(this.prop)
-      // debugger
-      // let cache = null
-      // for (let i = 0; i < paths.length; i++) {
-      //   cache = this.editing[paths[i]]
-      //   if (i + 1 === paths.length - 1) {
-      //     delete cache[paths[i + 1]]
-      //     break
-      //   }
-      // }
     }
   }
 }
