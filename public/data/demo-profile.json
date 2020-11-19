@@ -86,7 +86,7 @@
             }
           }
         },
-        "fieldOptions.props.placeholder",
+        "fieldOptions.attrs.placeholder",
         "fieldOptions.props.disabled",
         "fieldOptions.props.readonly",
         "fieldOptions.props.maxlength",
