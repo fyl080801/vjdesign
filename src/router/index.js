@@ -23,7 +23,7 @@ export const constantRoutes = [
 
 const createRouter = () =>
   new Router({
-    mode: 'history',
+    mode: 'hash',
     scrollBehavior: (to, from, savedPosition) => {
       if (savedPosition) {
         return savedPosition
