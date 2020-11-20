@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import {} from './'
 
 Vue.use(Router)
 
@@ -8,7 +7,13 @@ export const constantRoutes = [
   {
     path: '/default',
     name: 'default',
-    component: () => import('@/views/Default')
+    component: () =>
+      import(/* webpackChunkName: "demo-default" */ '@/views/Default')
+  },
+  {
+    path: '/antd',
+    name: 'antd',
+    component: () => import(/* webpackChunkName: "demo-antd" */ '@/views/Antd')
   },
   {
     path: '/',

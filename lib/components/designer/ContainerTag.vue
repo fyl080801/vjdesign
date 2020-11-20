@@ -12,7 +12,7 @@ export default {
   computed: {
     ...mapGetters(['form']),
     componentTag() {
-      return this.field._design.name || this.field.component
+      return (this.field._design || {}).name || this.field.component
     }
   }
 }
