@@ -6,6 +6,25 @@
       "component": "div",
       "children": [
         {
+          "component": "a-page-header",
+          "fieldOptions": {
+            "props": {
+              "title": "测试页",
+              "subTitle": "测试"
+            }
+          },
+          "children": [
+            {
+              "component": "p",
+              "fieldOptions": {
+                "domProps": {
+                  "innerText": "antd 的值变更和element不同，触发input事件或change事件后不一定会返回值还是InputEvent，因此先手动加上处理逻辑，以后加转换简化"
+                }
+              }
+            }
+          ]
+        },
+        {
           "component": "a-form-model",
           "fieldOptions": {
             "props": {
@@ -18,14 +37,6 @@
             }
           },
           "children": [
-            {
-              "component": "p",
-              "fieldOptions": {
-                "domProps": {
-                  "innerText": "antd 的值变更和element不同，触发input事件或change事件后不一定会返回值还是InputEvent，因此先手动加上处理逻辑，以后加转换简化"
-                }
-              }
-            },
             {
               "component": "a-form-model-item",
               "fieldOptions": {
