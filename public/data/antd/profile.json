@@ -4,7 +4,64 @@
       "name": "a-button",
       "label": "按钮",
       "group": "Antd 通用",
-      "properties": ["fieldOptions.domProps.innerText"]
+      "properties": [
+        "fieldOptions.domProps.innerText",
+        "fieldOptions.props.disabled",
+        "fieldOptions.props.size",
+        {
+          "name": "fieldOptions.props.type",
+          "label": "按钮类型",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "primary", "label": "主要" },
+                { "value": "dashed", "label": "Dashed" },
+                { "value": "danger", "label": "Danger" },
+                { "value": "link", "label": "链接" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.ghost",
+          "label": "按钮背景透明",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.block",
+          "label": "匹配父宽度",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.icon",
+          "label": "图标类型",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.shape",
+          "label": "按钮形状",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "circle", "label": "圆形" },
+                { "value": "round", "label": "圆角" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.loading",
+          "label": "载入状态",
+          "group": "组件"
+        },
+        "fieldOptions.on.click"
+      ]
     },
     {
       "name": "a-icon",
@@ -51,7 +108,7 @@
       "name": "a-space",
       "label": "间距",
       "group": "Antd 布局",
-      "designer": "container",
+      "designer": "divContainer",
       "properties": [
         {
           "name": "fieldOptions.props.align",
@@ -383,6 +440,20 @@
       "group": "基础"
     },
     {
+      "name": "fieldOptions.props.size",
+      "label": "大小",
+      "group": "组件",
+      "editor": {
+        "name": "select",
+        "options": {
+          "items": [
+            { "value": "small", "label": "小" },
+            { "value": "large", "label": "大" }
+          ]
+        }
+      }
+    },
+    {
       "name": "fieldOptions.props.allowClear",
       "label": "是否可清除",
       "group": "组件",
@@ -422,6 +493,7 @@
       "name": "fieldOptions.on.change",
       "label": "值变更",
       "group": "事件"
-    }
+    },
+    { "name": "fieldOptions.on.click", "label": "点击", "group": "事件" }
   ]
 }

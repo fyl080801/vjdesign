@@ -140,8 +140,44 @@
                 }
               ],
               "fieldOptions": {
+                "props": {}
+              }
+            },
+            {
+              "component": "a-form-model-item",
+              "children": [
+                {
+                  "component": "a-space",
+                  "children": [
+                    {
+                      "component": "a-button",
+                      "fieldOptions": {
+                        "domProps": {
+                          "innerText": "确定"
+                        },
+                        "props": {
+                          "ghost": false,
+                          "block": false,
+                          "type": "primary"
+                        }
+                      }
+                    },
+                    {
+                      "component": "a-button",
+                      "fieldOptions": {
+                        "domProps": {
+                          "innerText": "取消"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "fieldOptions": {
                 "props": {
-                  "gutter": "$:20"
+                  "wrapperCol": {
+                    "offset": "4"
+                  }
                 }
               }
             }
