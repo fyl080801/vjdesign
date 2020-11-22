@@ -45,7 +45,7 @@ Vue.use(vjdesign)
 
 ## 相关链接
 
-[在线示例](https://fyl080801.gitee.io/vjdesign/)
+[在线示例](https://fyl080801.gitee.io/vjdesign/) 已追加 element 和 antd 示例
 
 [使用文档](https://fyl080801.github.io/vjdesign/) 完善中...
 
