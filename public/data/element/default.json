@@ -4,23 +4,32 @@
       "type": "request",
       "method": "GET",
       "url": "data/list.json",
-      "autoload": "$:true"
+      "autoload": true
     },
     "sublist": {
       "type": "request",
       "method": "GET",
-      "url": "#:data/sublist/${model.selected}.json",
-      "autoload": "$:false"
+      "url": {
+        "$type": "design",
+        "$value": "#:data/sublist/${model.selected}.json"
+      },
+      "autoload": true
     }
   },
   "listeners": [
     {
       "actions": [
         {
-          "handler": "@:datasource.sublist.load()"
+          "handler": {
+            "$type": "design",
+            "$value": "@:datasource.sublist.load()"
+          }
         },
         {
-          "handler": "@subselected:null"
+          "handler": {
+            "$type": "design",
+            "$value": "@subselected:null"
+          }
         }
       ],
       "watch": "model.selected"
@@ -54,7 +63,7 @@
                           "component": "el-col",
                           "fieldOptions": {
                             "props": {
-                              "span": "$:12"
+                              "span": 12
                             }
                           },
                           "children": [
@@ -63,7 +72,12 @@
                               "children": [
                                 {
                                   "component": "el-input",
-                                  "model": ["text3"]
+                                  "model": ["text3"],
+                                  "fieldOptions": {
+                                    "props": {
+                                      "clearable": true
+                                    }
+                                  }
                                 },
                                 {
                                   "component": "span",
@@ -87,7 +101,7 @@
                           "component": "el-col",
                           "fieldOptions": {
                             "props": {
-                              "span": "$:12"
+                              "span": 12
                             }
                           },
                           "children": [
@@ -105,7 +119,10 @@
                                       "innerText": "text1输入正确的url后点击打开链接"
                                     }
                                   },
-                                  "condition": "$:!/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
+                                  "condition": {
+                                    "$type": "design",
+                                    "$value": "$:!/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
+                                  }
                                 },
                                 {
                                   "component": "a",
@@ -118,7 +135,10 @@
                                       "href": "$:model.text1"
                                     }
                                   },
-                                  "condition": "$:/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
+                                  "condition": {
+                                    "$type": "design",
+                                    "$value": "$:/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
+                                  }
                                 }
                               ],
                               "fieldOptions": {
@@ -150,7 +170,10 @@
                                   "model": ["selected"],
                                   "fieldOptions": {
                                     "props": {
-                                      "items": "$:datasource.listdata.data"
+                                      "items": {
+                                        "$type": "design",
+                                        "$value": "$:datasource.listdata.data"
+                                      }
                                     }
                                   }
                                 }
@@ -216,7 +239,10 @@
                   "fieldOptions": {
                     "props": {
                       "showHeader": true,
-                      "data": "$:datasource.listdata.data"
+                      "data": {
+                        "$type": "design",
+                        "$value": "$:datasource.listdata.data"
+                      }
                     }
                   },
                   "children": [
@@ -257,7 +283,10 @@
                                   "type": "text"
                                 },
                                 "on": {
-                                  "click": "@:alert(JSON.stringify(scope.row))"
+                                  "click": {
+                                    "$type": "design",
+                                    "$value": "@:alert(JSON.stringify(scope.row))"
+                                  }
                                 }
                               }
                             }
@@ -285,7 +314,10 @@
               "innerText": "弹出"
             },
             "on": {
-              "click": "@:alert('xxxxxx')"
+              "click": {
+                "$type": "design",
+                "$value": "@:alert('xxxxxx')"
+              }
             }
           }
         }

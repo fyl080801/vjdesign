@@ -31,3 +31,17 @@
     }
   }
 }
+
+.v-jdesign-modal {
+  .svg-icon {
+    width: 1rem;
+    height: 1rem;
+    color: inherit;
+    vertical-align: -0.15rem;
+
+    &.svg-fill {
+      fill: currentColor;
+      stroke: none;
+    }
+  }
+}
