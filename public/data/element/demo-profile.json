@@ -96,13 +96,15 @@
           "name": "fieldOptions.props.rows",
           "label": "行数",
           "description": "文本域时候用",
-          "group": "组件"
+          "group": "组件",
+          "editor": "number"
         },
         {
           "name": "fieldOptions.props.autosize",
           "label": "自适应内容",
           "description": "文本域时候用",
-          "group": "组件"
+          "group": "组件",
+          "editor": "checkbox"
         }
       ]
     },
@@ -119,17 +121,20 @@
         {
           "name": "fieldOptions.props.step",
           "label": "步长",
-          "group": "组件"
+          "group": "组件",
+          "editor": "number"
         },
         {
           "name": "fieldOptions.props.precision",
           "label": "数值精度",
-          "group": "组件"
+          "group": "组件",
+          "editor": "number"
         },
         {
           "name": "fieldOptions.props.controls",
           "label": "是否使用控制按钮",
-          "group": "组件"
+          "group": "组件",
+          "editor": "checkbox"
         },
         {
           "name": "fieldOptions.props.controlsPosition",
@@ -194,7 +199,8 @@
         {
           "name": "fieldOptions.props.multiple",
           "label": "是否多选",
-          "group": "组件"
+          "group": "组件",
+          "editor": "checkbox"
         },
         "fieldOptions.on.change"
       ]
@@ -319,7 +325,8 @@
         {
           "name": "fieldOptions.props.closable",
           "label": "是否可关闭",
-          "group": "组件"
+          "group": "组件",
+          "editor": "checkbox"
         },
         {
           "name": "fieldOptions.props.type",
@@ -340,7 +347,8 @@
         {
           "name": "fieldOptions.props.showIcon",
           "label": "是否显示图标",
-          "group": "组件"
+          "group": "组件",
+          "editor": "checkbox"
         }
       ]
     },
@@ -658,7 +666,8 @@
     {
       "name": "fieldOptions.props.span",
       "group": "组件",
-      "label": "列宽"
+      "label": "列宽",
+      "editor": "number"
     },
     {
       "name": "fieldOptions.props.value",
@@ -695,17 +704,20 @@
     {
       "name": "fieldOptions.props.clearable",
       "label": "是否可清空",
-      "group": "组件"
+      "group": "组件",
+      "editor": "checkbox"
     },
     {
       "name": "fieldOptions.props.maxlength",
       "label": "最大长度",
-      "group": "组件"
+      "group": "组件",
+      "editor": "number"
     },
     {
       "name": "fieldOptions.props.minlength",
       "label": "最小长度",
-      "group": "组件"
+      "group": "组件",
+      "editor": "number"
     },
     {
       "name": "fieldOptions.props.placeholder",
@@ -715,12 +727,14 @@
     {
       "name": "fieldOptions.props.readonly",
       "label": "只读",
-      "group": "基础"
+      "group": "基础",
+      "editor": "checkbox"
     },
     {
       "name": "fieldOptions.props.disabled",
       "label": "是否禁用",
-      "group": "基础"
+      "group": "基础",
+      "editor": "checkbox"
     },
     {
       "name": "fieldOptions.on.click",

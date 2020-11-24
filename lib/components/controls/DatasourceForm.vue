@@ -51,9 +51,10 @@ export default {
           return
         }
 
-        this.fields = resolveForm(this.profile.datasource[value].properties)(
-          this.edit.registry.editor
-        )
+        this.fields = resolveForm(
+          this.profile.datasource[value].properties,
+          this.value
+        )(this.edit.registry.editor)
       },
       immediate: true
     }

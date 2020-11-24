@@ -10,10 +10,21 @@
             </button>
           </div>
           <div class="row">
-            <div class="form-group col-md-8">
-              <label>条件</label>
-              <input class="form-control" v-model="item.condition" />
-            </div>
+            <property-item
+              label="条件"
+              class="col-md-8"
+              :value="item.condition"
+              @input="value => (item.condition = value)"
+              :transform="true"
+              @clear="onActionClear(item, 'condition')"
+              @changeType="
+                value => onActionTypeChange(item, 'condition', value)
+              "
+            >
+              <div>
+                <input type="checkbox" v-model="item.condition" />
+              </div>
+            </property-item>
             <div class="form-group col-md-4">
               <label>延时</label>
               <input
@@ -23,10 +34,18 @@
               />
             </div>
           </div>
-          <div class="form-group">
-            <label>行为</label>
-            <input class="form-control" v-model="item.handler" />
-          </div>
+          <property-item
+            label="行为"
+            :value="item.handler"
+            @input="value => (item.handler = value)"
+            :transform="true"
+            @clear="onActionClear(item, 'handler')"
+            @changeType="value => onActionTypeChange(item, 'handler', value)"
+          >
+            <div>
+              <input class="form-control" v-model="item.handler" />
+            </div>
+          </property-item>
         </div>
       </div>
       <div class="card">
@@ -45,9 +64,12 @@
 <script>
 import { mapGetters } from 'vuex'
 import SvgIcon from 'vue-svgicon'
+import { PropertyItem } from '../../components/property'
+import { set, get } from 'lodash-es'
+import { deepSet } from '../../utils/helpers'
 
 export default {
-  components: { SvgIcon },
+  components: { SvgIcon, PropertyItem },
   computed: {
     ...mapGetters(['form']),
     actions() {
@@ -98,6 +120,27 @@ export default {
           ]
         }
       })
+    },
+    onActionClear(item, prop) {
+      set(item, prop, undefined)
+    },
+    onActionTypeChange(item, prop, value) {
+      const cache = get(item, prop)
+
+      if (value === true) {
+        deepSet(item, prop, { $type: 'design', $cache: cache })
+      } else {
+        if (
+          typeof cache === 'object' &&
+          cache !== null &&
+          cache.$type === 'design' &&
+          cache.$cache !== undefined
+        ) {
+          deepSet(item, prop, cache.$cache)
+        } else {
+          deepSet(item, prop, undefined)
+        }
+      }
     }
   }
 }
