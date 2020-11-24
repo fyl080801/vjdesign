@@ -147,7 +147,12 @@ export default {
         return
       }
 
-      const valueArray = (this.value.$value || '').split(':')
+      const firstIndex = (this.value.$value || '').indexOf(':')
+      const valueArray = [
+        this.value.$value.substring(0, firstIndex),
+        this.value.$value.substring(firstIndex + 1, this.value.$value.length)
+      ]
+
       if (valueArray.length > 1) {
         this.type = valueArray[0][0]
         this.model = valueArray[0].substring(1, valueArray[0].length) || ''
