@@ -27,8 +27,7 @@
         },
         {
           "handler": {
-            "$type": "design",
-            "$value": "@subselected:null"
+            "$type": "design"
           }
         }
       ],
@@ -83,7 +82,10 @@
                                   "component": "span",
                                   "fieldOptions": {
                                     "domProps": {
-                                      "innerText": "#:输入了 ${model.text3.length} 个字"
+                                      "innerText": {
+                                        "$type": "design",
+                                        "$value": "#:输入了 ${model.text3.length} 个字"
+                                      }
                                     }
                                   }
                                 }
@@ -116,7 +118,7 @@
                                   "component": "span",
                                   "fieldOptions": {
                                     "domProps": {
-                                      "innerText": "text1输入正确的url后点击打开链接"
+                                      "innerText": "输入正确的url后点击打开链接"
                                     }
                                   },
                                   "condition": {
@@ -129,7 +131,7 @@
                                   "fieldOptions": {
                                     "domProps": {
                                       "target": "_blank",
-                                      "innerText": "text1输入正确的url后点击打开链接"
+                                      "innerText": "输入正确的url后点击打开链接"
                                     },
                                     "attrs": {
                                       "href": "$:model.text1"

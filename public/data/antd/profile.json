@@ -203,6 +203,7 @@
         {
           "name": "fieldOptions.on.back",
           "label": "返回点击事件",
+          "transform": ["@"],
           "group": "事件"
         }
       ]
@@ -241,11 +242,13 @@
         {
           "name": "fieldOptions.on.change",
           "label": "页码改变",
+          "transform": ["@"],
           "group": "事件"
         },
         {
           "name": "fieldOptions.on.showSizeChange",
           "label": "分页大小改变",
+          "transform": ["@"],
           "group": "事件"
         }
       ]
@@ -299,11 +302,13 @@
         {
           "name": "fieldOptions.on.submit",
           "label": "验证成功后提交",
+          "transform": ["@"],
           "group": "事件"
         },
         {
           "name": "fieldOptions.on.validate",
           "label": "验证触发后",
+          "transform": ["@"],
           "group": "事件"
         }
       ]
@@ -492,8 +497,14 @@
     {
       "name": "fieldOptions.on.change",
       "label": "值变更",
+      "transform": ["@"],
       "group": "事件"
     },
-    { "name": "fieldOptions.on.click", "label": "点击", "group": "事件" }
+    {
+      "name": "fieldOptions.on.click",
+      "label": "点击",
+      "transform": ["@"],
+      "group": "事件"
+    }
   ]
 }

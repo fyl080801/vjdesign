@@ -420,6 +420,7 @@
         {
           "name": "fieldOptions.on.back",
           "label": "回退",
+          "transform": ["@"],
           "group": "事件"
         }
       ]
@@ -509,6 +510,7 @@
         {
           "name": "fieldOptions.on.rowClick",
           "label": "行点击",
+          "transform": ["@"],
           "group": "事件"
         }
       ]
@@ -557,6 +559,7 @@
         {
           "name": "fieldOptions.props.formatter",
           "label": "内容格式化",
+          "transform": ["@"],
           "group": "事件"
         }
       ]
@@ -596,11 +599,13 @@
         {
           "name": "fieldOptions.on.currentChange",
           "label": "页码变更",
+          "transform": ["@"],
           "group": "事件"
         },
         {
           "name": "fieldOptions.on.sizeChange",
           "label": "每页记录数变更",
+          "transform": ["@"],
           "group": "事件"
         }
       ]
@@ -739,11 +744,13 @@
     {
       "name": "fieldOptions.on.click",
       "label": "点击",
+      "transform": ["@"],
       "group": "事件"
     },
     {
       "name": "fieldOptions.on.change",
       "label": "值变更",
+      "transform": ["@"],
       "group": "事件"
     }
   ],

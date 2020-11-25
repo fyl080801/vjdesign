@@ -27,9 +27,9 @@
           <label class="input-group-text">类型</label>
         </div>
         <select class="form-control" :value="type" @change="onChangePrefix">
-          <option value="$">表达式</option>
-          <option value="#">模板</option>
-          <option value="@">行为</option>
+          <option :key="item" :value="item" v-for="item in enablesTransform">
+            {{ transformKeys[item] }}
+          </option>
         </select>
       </div>
       <div class="input-group" v-if="type === '@'">
@@ -58,12 +58,13 @@
 
 <script>
 import SvgIcon from 'vue-svgicon'
+import { isArray } from 'lodash-es'
 
 export default {
   name: 'v-jd-property-item',
   props: {
     label: String,
-    transform: Boolean,
+    transform: [Boolean, Array],
     value: null
   },
   components: { SvgIcon },
@@ -71,12 +72,20 @@ export default {
     return {
       type: null,
       model: '',
-      expr: ''
+      expr: '',
+      transformKeys: { $: '表达式', '#': '模板', '@': '行为' }
     }
   },
   computed: {
     hasValue() {
       return this.value !== undefined
+    },
+    enablesTransform() {
+      return this.transform !== false &&
+        isArray(this.transform) &&
+        this.transform.length > 0
+        ? this.transform
+        : ['$', '#']
     },
     isTransform() {
       return (

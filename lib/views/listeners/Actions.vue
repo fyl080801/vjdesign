@@ -38,7 +38,7 @@
             label="行为"
             :value="item.handler"
             @input="value => (item.handler = value)"
-            :transform="true"
+            :transform="['@']"
             @clear="onActionClear(item, 'handler')"
             @changeType="value => onActionTypeChange(item, 'handler', value)"
           >
