@@ -134,6 +134,7 @@ export default {
     .v-jd-listeners-watchs {
       flex: 1;
       border-right: 1px solid #dcdfe6;
+      overflow: auto;
 
       .listener-item {
         position: relative;

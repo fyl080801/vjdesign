@@ -2,14 +2,14 @@
   <div :class="{ 'form-group': true, transform: isTransform }">
     <label>{{ label }}</label>
     <div class="propterty-type" v-if="transform !== false">
-      <a @click="onChangeType(false)">
+      <a @click="onChangeType(false)" :class="!isTransform ? 'active' : ''">
         <span
           class="badge badge-pill"
           :class="!isTransform ? 'badge-primary' : ''"
           >值</span
         >
       </a>
-      <a @click="onChangeType(true)">
+      <a @click="onChangeType(true)" :class="isTransform ? 'active' : ''">
         <span
           class="badge badge-pill"
           :class="isTransform ? 'badge-primary' : ''"
@@ -194,6 +194,14 @@ export default {
   .propterty-type {
     display: inline-block;
     margin-left: 1rem;
+
+    > a {
+      cursor: pointer;
+
+      &.active {
+        cursor: default;
+      }
+    }
 
     .badge-primary {
       cursor: default;
