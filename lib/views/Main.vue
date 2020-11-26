@@ -59,6 +59,7 @@ import SvgIcon from 'vue-svgicon'
 import '../icons/components'
 import { mapGetters } from 'vuex'
 import { Modal } from '../components/modal'
+import vjform from 'vjform'
 
 export default {
   name: 'v-jdesign',
@@ -74,6 +75,7 @@ export default {
     Datasource,
     Listeners,
     Metadata,
+    [vjform.name]: vjform,
     Modal
   },
   data() {
