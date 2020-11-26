@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-content">
+  <div>
     <div class="modal-header">
       <h5 class="modal-title">{{ popup.title }}</h5>
       <button

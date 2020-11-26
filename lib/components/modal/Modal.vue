@@ -1,109 +1,137 @@
 <template>
-  <div ref="wrapper" class="v-jdesign-modal" style="z-index: -1">
-    <div ref="backdrop" class="modal-backdrop fade"></div>
-    <div
-      ref="dialog"
-      class="modal fade"
-      tabindex="-1"
-      aria-modal="true"
-      role="dialog"
-      :style="{
-        display: 'block'
-      }"
-    >
-      <v-jform
-        v-if="!updating"
-        tag="div"
-        :class="['modal-dialog', 'modal-' + (popup.size ? popup.size : '')]"
-        v-model="popup.model"
-        :fields="popup.fields"
-        :datasource="popup.datasource"
-        :listeners="popup.listeners"
-        :components="edit.components"
-        :initialling="popup.initialling"
-      ></v-jform>
+  <div ref="modal" class="v-jdesign-modal">
+    <div ref="popup" class="modal fade" style="display: block">
+      <div class="modal-dialog" :class="`modal-${size}`">
+        <slot></slot>
+      </div>
     </div>
+    <div ref="backdrop" class="modal-backdrop fade"></div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import vjform from 'vjform'
+const TRANSITION_END = 'transitionend'
 
 export default {
-  components: { [vjform.name]: vjform },
-  computed: { ...mapGetters(['popup', 'edit']) },
+  props: {
+    visiable: {
+      type: Boolean,
+      default: false
+    },
+    size: String,
+    // 为true时无法通过点击遮罩层关闭modal
+    force: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
-      updating: false
+      duration: null
     }
   },
   watch: {
-    ['popup.show']: {
-      handler(value) {
-        if (value === true) {
-          const style = window.getComputedStyle(this.$refs.backdrop)
-          this.$refs.wrapper.style.display = 'block'
-          this.$refs.wrapper.style.zIndex = style.zIndex
-
-          setTimeout(() => {
-            this.$refs.backdrop.classList.add('show')
-          })
-        } else {
-          setTimeout(() => {
-            this.$refs.dialog.classList.remove('show')
-          })
-        }
-
-        this.updating = true
-        this.$nextTick(() => {
-          this.updating = false
-        })
+    visiable(value) {
+      if (value) {
+        this.addModalClass()
+      } else {
+        this.removeModalClass()
       }
     }
   },
   methods: {
-    onTransitionend() {
-      if (this.popup.show) {
-        this.$refs.dialog.classList.add('show')
-      } else {
-        this.$refs.wrapper.style.display = 'none'
-        this.$refs.wrapper.style.zIndex = '-1'
-      }
+    doTransition(callback) {
+      this.$nextTick(() => {
+        setTimeout(callback, 0)
+      })
     },
-    onDialogTransitionend() {
-      if (!this.popup.show) {
-        this.$refs.backdrop.classList.remove('show')
+    addBodyClass() {
+      document.body.className += ' modal-open'
+    },
+    removeBodyClass() {
+      document.body.className = document.body.className.replace(
+        /\s?modal-open/,
+        ''
+      )
+    },
+    addModalClass() {
+      this.addBodyClass()
+
+      this.$refs.modal.className += ' show'
+
+      this.doTransition(() => {
+        const func = () => {
+          this.$refs.popup.className += ' show'
+          this.$refs.backdrop.removeEventListener(TRANSITION_END, func)
+        }
+        this.$refs.backdrop.addEventListener(TRANSITION_END, func)
+        this.$refs.backdrop.className += ' show'
+      })
+    },
+    removeModalClass() {
+      const func1 = () => {
+        this.$refs.backdrop.className = this.$refs.backdrop.className.replace(
+          /\s?show/,
+          ''
+        )
+        this.$refs.popup.removeEventListener(TRANSITION_END, func1)
       }
+
+      const func2 = () => {
+        this.$refs.modal.className = this.$refs.modal.className.replace(
+          /\s?show/,
+          ''
+        )
+        this.removeBodyClass()
+        this.$refs.backdrop.removeEventListener(TRANSITION_END, func2)
+      }
+
+      this.$refs.popup.addEventListener(TRANSITION_END, func1)
+      this.$refs.backdrop.addEventListener(TRANSITION_END, func2)
+      this.$refs.popup.className = this.$refs.popup.className.replace(
+        /\s?show/,
+        ''
+      )
     }
   },
-  mounted() {
-    document.body.appendChild(this.$el)
-    this.$refs.backdrop.addEventListener('transitionend', this.onTransitionend)
-    this.$refs.dialog.addEventListener(
-      'transitionend',
-      this.onDialogTransitionend
-    )
+  created() {
+    if (this.visiable) {
+      this.addModalClass()
+    }
   },
   beforeDestroy() {
-    this.$refs.backdrop.removeEventListener(
-      'transitionend',
-      this.onTransitionend
-    )
-    this.$refs.dialog.removeEventListener(
-      'transitionend',
-      this.onDialogTransitionend
-    )
+    this.removeBodyClass()
   }
 }
 </script>
 
 <style lang="scss">
 .v-jdesign-modal {
-  position: fixed;
+  display: none;
+
+  &.show {
+    display: block;
+  }
 
   > .modal {
     overflow: auto !important;
+
+    &.fade {
+      &.show {
+        .modal-dialog {
+          -webkit-transform: none;
+          transform: none;
+        }
+      }
+
+      .modal-dialog {
+        transition: -webkit-transform 0.3s ease-out;
+        transition: transform 0.3s ease-out;
+        transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+        -webkit-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+      }
+    }
   }
 }
 </style>

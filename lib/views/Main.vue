@@ -32,7 +32,18 @@
       <Listeners v-if="current === 'listeners'"></Listeners>
       <Metadata v-if="current === 'metadata'"></Metadata>
     </div>
-    <Modal></Modal>
+    <Modal :visiable="popup.show" :size="popup.size">
+      <v-jform
+        tag="div"
+        class="modal-content"
+        v-model="popup.model"
+        :fields="popup.fields"
+        :datasource="popup.datasource"
+        :listeners="popup.listeners"
+        :components="edit.components"
+        :initialling="popup.initialling"
+      ></v-jform>
+    </Modal>
   </div>
 </template>
 
@@ -67,10 +78,11 @@ export default {
   },
   data() {
     return {
-      current: 'fields'
+      current: 'fields',
+      modalUpdating: false
     }
   },
-  computed: { ...mapGetters(['form']) },
+  computed: { ...mapGetters(['popup', 'form', 'edit']) },
   watch: {
     ['form.value.fields'](value) {
       this.value.fields = value
@@ -84,6 +96,14 @@ export default {
     ['form.value.model'](value) {
       this.value.model = value
     },
+    // ['popup.show'](value) {
+    //   if (value === true) {
+    //     this.modalUpdating = true
+    //     this.$nextTick(() => {
+    //       this.modalUpdating = false
+    //     })
+    //   }
+    // },
     value(value) {
       this.$store.dispatch('form/init', value)
     },
