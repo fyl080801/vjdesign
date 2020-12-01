@@ -98,14 +98,6 @@ export default {
     ['form.value.model'](value) {
       this.value.model = value
     },
-    // ['popup.show'](value) {
-    //   if (value === true) {
-    //     this.modalUpdating = true
-    //     this.$nextTick(() => {
-    //       this.modalUpdating = false
-    //     })
-    //   }
-    // },
     value(value) {
       this.$store.dispatch('form/init', value)
     },

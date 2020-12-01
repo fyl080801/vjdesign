@@ -739,7 +739,7 @@
       "name": "fieldOptions.props.disabled",
       "label": "是否禁用",
       "group": "基础",
-      "editor": "checkbox"
+      "editor": "switch"
     },
     {
       "name": "fieldOptions.on.click",

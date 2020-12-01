@@ -1,10 +1,14 @@
 <template>
-  <div class="btn-group wrapper">
-    <button :class="['btn', value ? 'btn-primary' : 'btn-outline-secondary']">
+  <div :class="['v-jd-switch btn-group wrapper', value ? 'on' : 'off']">
+    <button
+      :class="['btn btn-sm', value ? 'btn-primary' : 'btn-outline-secondary']"
+    >
       否
     </button>
     <div class="face" @click="onToggle"></div>
-    <button :class="['btn', value ? 'btn-outline-primary' : 'btn-secondary']">
+    <button
+      :class="['btn btn-sm', value ? 'btn-outline-primary' : 'btn-secondary']"
+    >
       是
     </button>
   </div>
@@ -34,9 +38,27 @@ export default {
   z-index: 1;
 }
 
-.wrapper {
-  button {
-    color: transparent;
+.v-jd-switch {
+  &.wrapper {
+    button {
+      color: transparent;
+    }
+
+    > .btn {
+      // position: absolute;
+      // width: 2.75rem;
+      border-radius: 1.25rem;
+
+      // &.btn-secondary {
+      //   width: 3.5rem;
+      //   // transform: translate(-1rem);
+      //   z-index: 0;
+      // }
+
+      // &.btn-outline-secondary {
+      //   border-radius: 1.25rem !important;
+      // }
+    }
   }
 }
 </style>

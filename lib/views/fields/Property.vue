@@ -10,7 +10,7 @@
         <v-jform
           tag="form"
           class="property-form"
-          :components="components"
+          :components="edit.components"
           :fields="propForm[key]"
           v-model="form.map[form.editing]"
         ></v-jform>
@@ -23,16 +23,13 @@
 <script>
 import { resolveForm } from '../../utils/property'
 import { Collapse, CollapseItem } from '../../components/collapse'
-import { PropertyItem } from '../../components/property'
 import vjform from 'vjform'
-import SvgIcon from 'vue-svgicon'
 import { mapGetters } from 'vuex'
 
 export default {
   components: { Collapse, CollapseItem, [vjform.name]: vjform },
   data() {
     return {
-      components: { [PropertyItem.name]: PropertyItem, SvgIcon },
       actives: []
     }
   },

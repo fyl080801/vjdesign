@@ -147,7 +147,7 @@ export default {
     onChangeExpr(evt) {
       this.expr = evt.target.value
     },
-
+    //
     updateValue() {
       this.value.$value = `${this.type}${this.model}:${this.expr}`
     },
@@ -156,10 +156,11 @@ export default {
         return
       }
 
-      const firstIndex = (this.value.$value || '').indexOf(':')
+      const realValue = this.value.$value || ''
+      const firstIndex = realValue.indexOf(':')
       const valueArray = [
-        this.value.$value.substring(0, firstIndex),
-        this.value.$value.substring(firstIndex + 1, this.value.$value.length)
+        realValue.substring(0, firstIndex),
+        realValue.substring(firstIndex + 1, realValue.length)
       ]
 
       if (valueArray.length > 1) {
