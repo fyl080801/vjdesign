@@ -47,6 +47,20 @@
           "label": "数据属性",
           "descriotion": "显示验证结果相关",
           "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.rules",
+          "label": "验证规则",
+          "group": "组件",
+          "properties": [
+            { "name": "type", "label": "类型" },
+            { "name": "required", "label": "是否为空" },
+            { "name": "message", "label": "错误提示" },
+            { "name": "min", "label": "最小值" },
+            { "name": "max", "label": "最大值" },
+            { "name": "pattern", "label": "正则" }
+          ],
+          "editor": "array"
         }
       ]
     },
