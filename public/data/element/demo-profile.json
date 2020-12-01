@@ -733,7 +733,7 @@
       "name": "fieldOptions.props.readonly",
       "label": "只读",
       "group": "基础",
-      "editor": "checkbox"
+      "editor": "switch"
     },
     {
       "name": "fieldOptions.props.disabled",

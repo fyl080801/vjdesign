@@ -43,22 +43,6 @@ export default {
     button {
       color: transparent;
     }
-
-    > .btn {
-      // position: absolute;
-      // width: 2.75rem;
-      border-radius: 1.25rem;
-
-      // &.btn-secondary {
-      //   width: 3.5rem;
-      //   // transform: translate(-1rem);
-      //   z-index: 0;
-      // }
-
-      // &.btn-outline-secondary {
-      //   border-radius: 1.25rem !important;
-      // }
-    }
   }
 }
 </style>

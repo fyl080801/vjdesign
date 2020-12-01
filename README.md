@@ -3,7 +3,9 @@
 [![NPM version](https://img.shields.io/npm/v/vjdesign.svg?style=flat-square)](https://www.npmjs.com/package/vjdesign)
 [![Build Status](https://travis-ci.org/fyl080801/vjdesign.svg?branch=master)](https://travis-ci.org/fyl080801/vjdesign)
 
-基于 [vjform](https://github.com/fyl080801/vjform) 的 Vue 界面可视化设计器
+Vue 界面可视化设计器，基于 [vjform](https://github.com/fyl080801/vjform)
+
+本设计器特色功能就是可以支持任何 vue 项目中被引用的组件，不需要二次开发就可以定义支持的组件以及组件的属性，并且对组件的属性和数据的关系以及表单的交互行为也可以通过设计器配置实现
 
 ## 特性
 
@@ -51,11 +53,11 @@ Vue.use(vjdesign)
 
 [动态表单呈现 jformer](https://gitee.com/fyl080801/jformer)
 
-> 使用 `jformer` 组件可直接用编辑器元数据中的 json 定义呈现功能
+> 使用 `jformer` 组件可直接用设计器元数据中的 json 定义来呈现界面
 
 [动态表单呈现 vjform](https://github.com/fyl080801/vjform)
 
-> 如果使用 `vjform` 呈现功能，则需要在 vjform 中引用 [表达式支持库](https://github.com/fyl080801/jpresent-transform-expression)和[vue 作用域转换](https://github.com/fyl080801/jpresent-vue-extends)
+> 如果使用 `vjform` 作为呈现组件，则需要在 vjform 中引用 [表达式支持库](https://github.com/fyl080801/jpresent-transform-expression)、[vue 作用域转换](https://github.com/fyl080801/jpresent-vue-extends)、[设计器编辑转换](https://github.com/fyl080801/jpresent-transform-design)
 
 ```javascript
 import vjform from 'vjform'
@@ -70,7 +72,7 @@ vjform.use(expression)
 
 - vjform
 
-可视化布局基于 vjform 扩展，基于 `2.1.0` 版本
+可视化布局基于 vjform 扩展
 
 - jpresent-transform-modern
 
@@ -99,7 +101,3 @@ vjform.use(expression)
 ### codemirror
 
 实现直接编辑配置数据
-
-## 说明
-
-数据源的编辑界面还没实现，现在完全是在挤时间做这个，所以先这样了回头再补上。。。
