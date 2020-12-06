@@ -72,10 +72,11 @@ export default {
     }
   },
   methods: {
-    resolveForm() {
+    resolveForm(title) {
       return [
         {
           component: 'v-jd-modal-content',
+          fieldOptions: { props: { title } },
           children: [
             {
               component: 'v-jd-datasource-form',
@@ -110,7 +111,6 @@ export default {
       const model = { data: { name: '' } }
 
       this.$store.dispatch('popup/show', {
-        title: '添加数据源',
         model,
         form: {
           initialling: ({ functional }) => {
@@ -119,7 +119,7 @@ export default {
               this.$store.dispatch('popup/close')
             })
           },
-          fields: this.resolveForm()
+          fields: this.resolveForm('添加数据源')
         }
       })
     },
@@ -129,7 +129,6 @@ export default {
       }
 
       this.$store.dispatch('popup/show', {
-        title: '编辑数据源',
         model,
         form: {
           initialling: ({ functional }) => {
@@ -141,18 +140,18 @@ export default {
               this.$store.dispatch('popup/close')
             })
           },
-          fields: this.resolveForm()
+          fields: this.resolveForm('编辑数据源')
         }
       })
     },
     onRemove(evt, key) {
       this.$store.dispatch('popup/show', {
-        title: '删除',
         size: 'sm',
         form: {
           fields: [
             {
               component: 'v-jd-modal-content',
+              fieldOptions: { props: { title: '删除' } },
               children: [
                 { component: 'p', text: '是否删除?' },
                 {

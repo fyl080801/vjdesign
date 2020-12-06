@@ -44,6 +44,7 @@
         :initialling="popup.initialling"
       ></v-jform>
     </Modal>
+    <StackModals :modals="popup.modals"></StackModals>
   </div>
 </template>
 
@@ -58,7 +59,7 @@ import Metadata from './metadata/Index'
 import SvgIcon from 'vue-svgicon'
 import '../icons/components'
 import { mapGetters } from 'vuex'
-import { Modal } from '../components/modal'
+import { Modal, StackModals } from '../components/modal'
 import vjform from 'vjform'
 
 export default {
@@ -76,7 +77,8 @@ export default {
     Listeners,
     Metadata,
     [vjform.name]: vjform,
-    Modal
+    Modal,
+    StackModals
   },
   data() {
     return {

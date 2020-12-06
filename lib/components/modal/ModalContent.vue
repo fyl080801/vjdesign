@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="modal-header">
-      <h5 class="modal-title">{{ popup.title }}</h5>
+      <h5 class="modal-title">{{ title }}</h5>
       <button
         type="button"
         class="close"
@@ -22,11 +22,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'v-jd-modal-content',
-  computed: { ...mapGetters(['popup']) },
+  props: { title: String },
   methods: {
     onClose() {
       this.$store.dispatch('popup/close')

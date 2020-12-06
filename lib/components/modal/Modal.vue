@@ -1,6 +1,6 @@
 <template>
   <div ref="modal" class="v-jdesign-modal">
-    <div ref="popup" class="modal fade" style="display: block">
+    <div ref="popup" class="modal fade" style="display: block !important">
       <div class="modal-dialog" :class="`modal-${size}`">
         <slot></slot>
       </div>
@@ -110,7 +110,7 @@ export default {
   display: none;
 
   &.show {
-    display: block;
+    display: block !important;
   }
 
   > .modal {

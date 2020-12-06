@@ -84,12 +84,12 @@ export default {
     },
     onRemove(index) {
       this.$store.dispatch('popup/show', {
-        title: '删除',
         size: 'sm',
         form: {
           fields: [
             {
               component: 'v-jd-modal-content',
+              fieldOptions: { props: { title: '删除' } },
               children: [
                 { component: 'p', text: '是否删除?' },
                 {
