@@ -32,18 +32,6 @@
       <Listeners v-if="current === 'listeners'"></Listeners>
       <Metadata v-if="current === 'metadata'"></Metadata>
     </div>
-    <Modal :visiable="popup.show" :size="popup.size">
-      <v-jform
-        tag="div"
-        class="modal-content"
-        v-model="popup.model"
-        :fields="popup.fields"
-        :datasource="popup.datasource"
-        :listeners="popup.listeners"
-        :components="edit.components"
-        :initialling="popup.initialling"
-      ></v-jform>
-    </Modal>
     <StackModals :modals="popup.modals"></StackModals>
   </div>
 </template>
@@ -59,7 +47,7 @@ import Metadata from './metadata/Index'
 import SvgIcon from 'vue-svgicon'
 import '../icons/components'
 import { mapGetters } from 'vuex'
-import { Modal, StackModals } from '../components/modal'
+import { StackModals } from '../components/modal'
 import vjform from 'vjform'
 
 export default {
@@ -77,7 +65,6 @@ export default {
     Listeners,
     Metadata,
     [vjform.name]: vjform,
-    Modal,
     StackModals
   },
   data() {
