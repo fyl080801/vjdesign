@@ -1,24 +1,26 @@
 <template>
   <div :class="{ 'form-group': true, transform: isTransform }">
     <label>{{ label }}</label>
-    <div class="propterty-type" v-if="transform !== false">
-      <a @click="onChangeType(false)" :class="!isTransform ? 'active' : ''">
-        <span
-          class="badge badge-pill"
-          :class="!isTransform ? 'badge-primary' : ''"
-          >值</span
-        >
-      </a>
-      <a @click="onChangeType(true)" :class="isTransform ? 'active' : ''">
-        <span
-          class="badge badge-pill"
-          :class="isTransform ? 'badge-primary' : ''"
-          >转换</span
-        >
-      </a>
+    <div class="propterty-center">
+      <a href="javascript:;" v-if="hasValue" @click="onClear">清空</a>
     </div>
     <div class="property-tail">
-      <a href="javascript:;" v-if="hasValue" @click="onClear">清空</a>
+      <template v-if="transform !== false">
+        <a @click="onChangeType(false)" :class="!isTransform ? 'active' : ''">
+          <span
+            class="badge badge-pill"
+            :class="!isTransform ? 'badge-primary' : ''"
+            >值</span
+          >
+        </a>
+        <a @click="onChangeType(true)" :class="isTransform ? 'active' : ''">
+          <span
+            class="badge badge-pill"
+            :class="isTransform ? 'badge-primary' : ''"
+            >转换</span
+          >
+        </a>
+      </template>
     </div>
     <slot v-if="!isTransform"></slot>
     <div v-else-if="transform !== false">
@@ -192,7 +194,7 @@ export default {
 }
 
 .form-group {
-  .propterty-type {
+  .propterty-center {
     display: inline-block;
     margin-left: 1rem;
 

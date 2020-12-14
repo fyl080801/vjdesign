@@ -145,43 +145,17 @@ export default {
       })
     },
     onRemove(evt, key) {
-      this.$store.dispatch('popup/show', {
-        size: 'sm',
-        form: {
-          fields: [
-            {
-              component: 'v-jd-modal-content',
-              fieldOptions: { props: { title: '删除' } },
-              children: [
-                { component: 'p', text: '是否删除?' },
-                {
-                  component: 'button',
-                  text: '确定',
-                  fieldOptions: {
-                    slot: 'footer',
-                    class: 'btn btn-primary',
-                    on: {
-                      click: () => {
-                        this.$store.dispatch('form/removeDatasource', key)
-                        this.$store.dispatch('popup/close')
-                      }
-                    }
-                  }
-                },
-                {
-                  component: 'button',
-                  text: '取消',
-                  fieldOptions: {
-                    slot: 'footer',
-                    class: 'btn btn-secondary',
-                    on: { click: () => this.$store.dispatch('popup/close') }
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      })
+      this.$store
+        .dispatch('popup/confirm', {
+          title: '删除',
+          content: '是否删除？'
+        })
+        .then(() => {
+          this.$store.dispatch('form/removeDatasource', key)
+        })
+        .catch(() => {
+          //
+        })
       evt.stopPropagation()
     }
   }
