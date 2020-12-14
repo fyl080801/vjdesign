@@ -19,7 +19,7 @@
     <v-jform
       v-model="value"
       :fields="fields"
-      :components="components"
+      :components="edit.components"
     ></v-jform>
   </form>
 </template>
@@ -27,8 +27,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import { resolveForm } from '../../utils/property'
-import { PropertyItem } from '../../components/property'
-import SvgIcon from 'vue-svgicon'
 import vjform from 'vjform'
 
 export default {
@@ -39,8 +37,7 @@ export default {
   },
   data() {
     return {
-      fields: [],
-      components: { [PropertyItem.name]: PropertyItem, SvgIcon }
+      fields: []
     }
   },
   computed: { ...mapGetters(['edit', 'profile']) },

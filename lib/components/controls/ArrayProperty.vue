@@ -3,12 +3,17 @@
     <div class="list-group-item" :key="index" v-for="(item, index) in value">
       <div>
         <v-jform
-          value="item"
+          :value="item"
           :fields="fields"
           :datasource="datasource"
           :listeners="listeners"
         ></v-jform>
-        <a @click="removeItem">删除</a>
+        <button type="button" class="btn btn-sm btn-link" @click="editItem">
+          编辑
+        </button>
+        <button type="button" class="btn btn-sm btn-link" @click="removeItem">
+          删除
+        </button>
       </div>
     </div>
     <a
@@ -24,6 +29,7 @@
 <script>
 import SvgIcon from 'vue-svgicon'
 import { mapGetters } from 'vuex'
+import { resolveProperties } from '../../utils/property'
 
 export default {
   components: { SvgIcon },
@@ -37,46 +43,71 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['popup'])
+    ...mapGetters(['popup', 'profile'])
   },
   methods: {
-    addItem() {
-      console.log(this.prop)
-      this.$store.dispatch('popup/show', {
-        form: {
-          fields: [
+    resolveForm(title) {
+      return [
+        {
+          component: 'v-jd-modal-content',
+          fieldOptions: { props: { title } },
+          children: [
             {
-              component: 'v-jd-modal-content',
-              fieldOptions: { props: { title: '编辑属性' } },
-              children: [
-                {
-                  component: 'button',
-                  text: '确定',
-                  fieldOptions: {
-                    slot: 'footer',
-                    class: 'btn btn-primary',
-                    on: {
-                      click: () => {
-                        this.$store.dispatch('popup/close')
-                      }
+              component: 'v-jd-object-form',
+              model: ['data'],
+              fieldOptions: {
+                props: {
+                  properties: resolveProperties(
+                    this.profile.properties,
+                    this.prop.properties || [],
+                    {
+                      editor: 'default'
                     }
-                  }
-                },
-                {
-                  component: 'button',
-                  text: '取消',
-                  fieldOptions: {
-                    slot: 'footer',
-                    class: 'btn btn-secondary',
-                    on: { click: () => this.$store.dispatch('popup/close') }
-                  }
+                  )
                 }
-              ]
+              }
+            },
+            {
+              component: 'button',
+              text: '确定',
+              fieldOptions: {
+                slot: 'footer',
+                class: 'btn btn-primary',
+                on: {
+                  click: '@:SUBMIT_OBJECT()'
+                }
+              }
+            },
+            {
+              component: 'button',
+              text: '取消',
+              fieldOptions: {
+                slot: 'footer',
+                class: 'btn btn-secondary',
+                on: { click: () => this.$store.dispatch('popup/close') }
+              }
             }
           ]
         }
+      ]
+    },
+    addItem() {
+      const model = { data: {} }
+
+      this.$store.dispatch('popup/show', {
+        model,
+        form: {
+          initialling: ({ functional }) => {
+            functional('SUBMIT_OBJECT', () => {
+              this.$emit('input', (this.value || []).concat(model.data))
+              this.$store.dispatch('popup/close')
+            })
+          },
+          fields: this.resolveForm('添加项')
+        }
       })
     },
+    editItem() {},
     removeItem() {
       this.$store.dispatch('popup/confirm', {
         title: '删除',

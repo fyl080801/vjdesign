@@ -93,7 +93,14 @@
                               ],
                               "fieldOptions": {
                                 "props": {
-                                  "label": "文本"
+                                  "label": "文本",
+                                  "rules": [
+                                    {
+                                      "required": true,
+                                      "message": "必填项"
+                                    }
+                                  ],
+                                  "prop": "text3"
                                 }
                               },
                               "_collapse": true
@@ -229,7 +236,11 @@
                   ],
                   "fieldOptions": {
                     "props": {
-                      "labelWidth": "120px"
+                      "labelWidth": "120px",
+                      "model": {
+                        "$type": "design",
+                        "$value": "$:model"
+                      }
                     }
                   }
                 }

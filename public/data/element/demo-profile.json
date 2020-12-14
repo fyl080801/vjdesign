@@ -48,20 +48,7 @@
           "descriotion": "显示验证结果相关",
           "group": "组件"
         },
-        {
-          "name": "fieldOptions.props.rules",
-          "label": "验证规则",
-          "group": "组件",
-          "properties": [
-            { "name": "type", "label": "类型" },
-            { "name": "required", "label": "是否为空" },
-            { "name": "message", "label": "错误提示" },
-            { "name": "min", "label": "最小值" },
-            { "name": "max", "label": "最大值" },
-            { "name": "pattern", "label": "正则" }
-          ],
-          "editor": "array"
-        }
+        "fieldOptions.props.rules"
       ]
     },
     {
@@ -755,6 +742,36 @@
       "group": "基础",
       "editor": "switch"
     },
+    {
+      "name": "fieldOptions.props.rules",
+      "label": "验证规则",
+      "group": "组件",
+      "properties": [
+        {
+          "name": "type",
+          "label": "类型",
+          "transform": false,
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "string", "label": "字符串" },
+                { "value": "number", "label": "数字" },
+                { "value": "boolean", "label": "布尔" },
+                { "value": "array", "label": "数组" }
+              ]
+            }
+          }
+        },
+        { "name": "required", "label": "是否为空", "editor": "switch" },
+        { "name": "message", "label": "错误提示" },
+        { "name": "min", "label": "最小值", "editor": "number" },
+        { "name": "max", "label": "最大值", "editor": "number" },
+        { "name": "pattern", "label": "正则" }
+      ],
+      "editor": "array"
+    },
+
     {
       "name": "fieldOptions.on.click",
       "label": "点击",
