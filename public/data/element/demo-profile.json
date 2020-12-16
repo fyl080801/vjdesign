@@ -763,7 +763,7 @@
             }
           }
         },
-        { "name": "required", "label": "是否为空", "editor": "switch" },
+        { "name": "required", "label": "是否必填", "editor": "switch" },
         { "name": "message", "label": "错误提示" },
         { "name": "min", "label": "最小值", "editor": "number" },
         { "name": "max", "label": "最大值", "editor": "number" },
