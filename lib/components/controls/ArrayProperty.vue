@@ -1,20 +1,28 @@
 <template>
   <div class="list-group list-group-flush">
-    <div class="list-group-item" :key="index" v-for="(item, index) in value">
-      <div>
-        <span></span>
-        <a @click="editItem(index)">
-          编辑
-        </a>
-        <a @click="removeItem(index)">
-          删除
-        </a>
+    <div
+      class="list-group-item property-wrapper"
+      :key="index"
+      v-for="(item, index) in properties"
+    >
+      <div class="property-item">
+        <v-jform
+          class="property-content"
+          :key="index"
+          :value="item"
+          :fields="[]"
+        ></v-jform>
+        <span>
+          <a href="javascript:;" @click="editItem(index)">
+            编辑
+          </a>
+          <a href="javascript:;" @click="removeItem(index)">
+            删除
+          </a>
+        </span>
       </div>
     </div>
-    <a
-      class="list-group-item list-group-item-action list-group-item-primary add-text"
-      @click="addItem"
-    >
+    <a class="list-group-item list-group-item-action add-text" @click="addItem">
       <SvgIcon name="plus"></SvgIcon>
       添加
     </a>
@@ -23,12 +31,13 @@
 
 <script>
 import SvgIcon from 'vue-svgicon'
+import vjform from 'vjform'
 import { mapGetters } from 'vuex'
 import { resolveProperties } from '../../utils/property'
 import { cloneDeep } from 'lodash-es'
 
 export default {
-  components: { SvgIcon },
+  components: { [vjform.name]: vjform, SvgIcon },
   name: 'v-jd-array-property',
   props: { value: Array, prop: Object },
   data() {
@@ -39,7 +48,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['popup', 'profile'])
+    ...mapGetters(['popup', 'profile']),
+    properties() {
+      return this.value
+    }
   },
   methods: {
     resolveForm(title) {
@@ -139,6 +151,19 @@ export default {
 
 <style lang="scss" scoped>
 .list-group-item {
+  &.property-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+
+    .property-item {
+      display: flex;
+
+      > .property-content {
+        flex: 1;
+      }
+    }
+  }
+
   &.add-text {
     text-align: center;
   }
