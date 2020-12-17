@@ -3,14 +3,17 @@
     <div
       class="list-group-item property-wrapper"
       :key="index"
-      v-for="(item, index) in properties"
+      v-for="(item, index) in value"
     >
       <div class="property-item">
         <v-jform
           class="property-content"
           :key="index"
+          :components="edit.components"
           :value="item"
-          :fields="[]"
+          :fields="form.fields"
+          :datasource="form.datasource"
+          :listeners="form.listeners"
         ></v-jform>
         <span>
           <a href="javascript:;" @click="editItem(index)">
@@ -39,7 +42,7 @@ import { cloneDeep } from 'lodash-es'
 export default {
   components: { [vjform.name]: vjform, SvgIcon },
   name: 'v-jd-array-property',
-  props: { value: Array, prop: Object },
+  props: { value: Array, prop: Object, form: Object },
   data() {
     return {
       fields: [],
@@ -48,10 +51,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['popup', 'profile']),
-    properties() {
-      return this.value
-    }
+    ...mapGetters(['popup', 'profile', 'edit'])
   },
   methods: {
     resolveForm(title) {
@@ -157,6 +157,7 @@ export default {
 
     .property-item {
       display: flex;
+      align-items: center;
 
       > .property-content {
         flex: 1;

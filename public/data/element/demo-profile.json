@@ -618,7 +618,16 @@
       "group": "Custom",
       "properties": [
         "model",
-        { "name": "fieldOptions.props.items", "label": "选项", "group": "基础" }
+        {
+          "name": "fieldOptions.props.items",
+          "label": "选项",
+          "group": "基础",
+          "editor": "array",
+          "properties": [
+            { "name": "label", "label": "显示名称" },
+            { "name": "value", "label": "值" }
+          ]
+        }
       ]
     }
   ],

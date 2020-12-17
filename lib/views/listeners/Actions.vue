@@ -64,7 +64,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import SvgIcon from 'vue-svgicon'
-import { PropertyItem } from '../../components/property'
+import { PropertyItem } from '../../components/controls'
 import { set, get } from 'lodash-es'
 import { deepSet } from '../../utils/helpers'
 

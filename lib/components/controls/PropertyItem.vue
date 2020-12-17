@@ -1,6 +1,6 @@
 <template>
   <div :class="{ 'form-group': true, transform: isTransform }">
-    <label>{{ label }}</label>
+    <label class="property-label">{{ label }}</label>
     <div class="propterty-center">
       <a href="javascript:;" v-if="hasValue" @click="onClear">清空</a>
     </div>
@@ -190,6 +190,10 @@ export default {
 }
 
 .form-group {
+  .property-label {
+    font-weight: bold;
+  }
+
   .propterty-center {
     display: inline-block;
     margin-left: 1rem;
