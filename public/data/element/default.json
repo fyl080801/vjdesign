@@ -179,15 +179,11 @@
                               },
                               "children": [
                                 {
-                                  "component": "c-select",
+                                  "component": "el-select",
                                   "model": ["selected"],
-                                  "fieldOptions": {
-                                    "props": {
-                                      "items": {
-                                        "$type": "design",
-                                        "$value": "$:datasource.listdata.data"
-                                      }
-                                    }
+                                  "children": {
+                                    "$type": "design",
+                                    "$value": "$:MAP(datasource.listdata.data, item=>({component:'el-option',fieldOptions:{props:{value:item.value,label:item.label}}}))"
                                   }
                                 }
                               ]
@@ -206,15 +202,11 @@
                               "component": "el-form-item",
                               "children": [
                                 {
-                                  "component": "c-select",
+                                  "component": "el-select",
                                   "model": ["subselected"],
-                                  "fieldOptions": {
-                                    "props": {
-                                      "items": {
-                                        "$type": "design",
-                                        "$value": "$:datasource.sublist.data"
-                                      }
-                                    }
+                                  "children": {
+                                    "$type": "design",
+                                    "$value": "$:MAP(datasource.sublist.data, item=>({component:'el-option',fieldOptions:{props:{value:item.value,label:item.label}}}))"
                                   }
                                 }
                               ],
@@ -250,7 +242,8 @@
             {
               "component": "el-tab-pane",
               "options": {
-                "direct": true
+                "direct": true,
+                "collapse": true
               },
               "remark": "表格",
               "children": [

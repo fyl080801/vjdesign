@@ -191,7 +191,6 @@
       "name": "el-select",
       "label": "选择",
       "group": "ElementUI",
-      "designer": "divContainer",
       "properties": [
         "model",
         "fieldOptions.props.placeholder",
@@ -202,6 +201,26 @@
           "label": "是否多选",
           "group": "组件",
           "editor": "checkbox"
+        },
+        {
+          "name": "children",
+          "label": "选择项",
+          "group": "组件",
+          "editor": "array",
+          "properties": [
+            {
+              "name": "component",
+              "label": "组件",
+              "editor": {
+                "name": "select",
+                "options": {
+                  "items": [{ "value": "el-option", "label": "选择项" }]
+                }
+              }
+            },
+            { "name": "fieldOptions.props.value", "label": "值" },
+            { "name": "fieldOptions.props.label", "label": "名称" }
+          ]
         },
         "fieldOptions.on.change"
       ]
