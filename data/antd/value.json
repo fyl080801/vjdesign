@@ -1,0 +1,198 @@
+{
+  "datasource": {},
+  "listeners": [],
+  "fields": [
+    {
+      "component": "div",
+      "children": [
+        {
+          "component": "a-page-header",
+          "fieldOptions": {
+            "props": {
+              "title": "测试页",
+              "subTitle": "测试"
+            }
+          },
+          "children": [
+            {
+              "component": "p",
+              "fieldOptions": {
+                "domProps": {
+                  "innerText": "antd 的值变更和element不同，触发input事件或change事件后不一定会返回值还是InputEvent，因此先手动加上处理逻辑，以后加转换简化"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "component": "a-form-model",
+          "fieldOptions": {
+            "props": {
+              "labelCol": {
+                "span": "4"
+              },
+              "wrapperCol": {
+                "span": "20"
+              }
+            }
+          },
+          "children": [
+            {
+              "component": "a-form-model-item",
+              "fieldOptions": {
+                "props": {
+                  "label": "aaaaa"
+                }
+              },
+              "children": [
+                {
+                  "component": "a-input",
+                  "fieldOptions": {
+                    "props": {
+                      "value": "$:model.text1"
+                    },
+                    "on": {
+                      "input": "@text1:arguments[0].target.value"
+                    },
+                    "attrs": {}
+                  }
+                }
+              ]
+            },
+            {
+              "component": "a-row",
+              "children": [
+                {
+                  "component": "a-col",
+                  "fieldOptions": {
+                    "props": {
+                      "span": "$:12"
+                    }
+                  },
+                  "children": [
+                    {
+                      "component": "a-form-model-item",
+                      "fieldOptions": {
+                        "props": {
+                          "label": "bbb",
+                          "labelCol": {
+                            "span": "8"
+                          },
+                          "wrapperCol": {
+                            "span": "16"
+                          }
+                        }
+                      },
+                      "children": [
+                        {
+                          "component": "a-select",
+                          "fieldOptions": {
+                            "props": {
+                              "options": "$:[{value:1,label:'选项1'}, {value:2,label:'选项2'}]",
+                              "value": "$:model.selected"
+                            },
+                            "on": {
+                              "input": "@selected:arguments[0].target.value",
+                              "change": "@selected:arguments[0]"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "component": "a-col",
+                  "fieldOptions": {
+                    "props": {
+                      "span": "$:12"
+                    }
+                  },
+                  "children": [
+                    {
+                      "component": "a-form-model-item",
+                      "fieldOptions": {
+                        "props": {
+                          "label": "ccc",
+                          "labelCol": {
+                            "span": "8"
+                          },
+                          "wrapperCol": {
+                            "span": "16"
+                          }
+                        }
+                      },
+                      "children": [
+                        {
+                          "component": "a-textarea",
+                          "fieldOptions": {
+                            "props": {
+                              "value": "$:model.text2"
+                            },
+                            "on": {
+                              "input": "@text2:arguments[0].target.value"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "fieldOptions": {
+                "props": {}
+              }
+            },
+            {
+              "component": "a-form-model-item",
+              "children": [
+                {
+                  "component": "a-space",
+                  "children": [
+                    {
+                      "component": "a-button",
+                      "fieldOptions": {
+                        "domProps": {
+                          "innerText": "确定"
+                        },
+                        "props": {
+                          "ghost": false,
+                          "block": false,
+                          "type": "primary"
+                        }
+                      }
+                    },
+                    {
+                      "component": "a-button",
+                      "fieldOptions": {
+                        "domProps": {
+                          "innerText": "取消"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "fieldOptions": {
+                "props": {
+                  "wrapperCol": {
+                    "offset": "4"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "component": "p",
+          "fieldOptions": {
+            "domProps": {
+              "innerText": "#:数据: ${JSON.stringify(model)}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "model": {}
+}
