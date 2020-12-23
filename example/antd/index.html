@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ElementUI 示例</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vjdesign"></script>
+    <script src="https://unpkg.com/ant-design-vue/dist/antd.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vjdesign/dist/vjdesign.css"></link>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/ant-design-vue/dist/antd.css"
+    />
+    <style>
+      html {
+        font-size: 14px;
+      }
+
+      #app {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <v-jdesign v-model="model" v-bind:profile="profile"></v-jdesign>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data() {
+          return {
+            model: {},
+            profile: {}
+          }
+        },
+        async mounted() {
+          const config = await fetch('value.json', { method: 'GET' })
+          const profile = await fetch('profile.json', {
+            method: 'GET'
+          })
+
+          this.model = await config.json()
+          this.profile = await profile.json()
+        }
+      })
+    </script>
+  </body>
+</html>

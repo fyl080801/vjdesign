@@ -7,11 +7,7 @@ module.exports = {
   base: '/vjdesign/',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['script', { src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js' }],
-    [
-      'script',
-      { src: 'https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js' }
-    ]
+    ['script', { src: 'https://unpkg.com/vue@2.6.12/dist/vue.min.js' }]
   ],
   themeConfig: {
     nav: [{ text: '指南', link: '/1.guide/1.intro.html' }],

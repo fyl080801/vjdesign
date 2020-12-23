@@ -5,6 +5,10 @@ set -e
 
 yarn docs:build
 
+mkdir docs/.vuepress/dist/example
+
+cp -r example docs/.vuepress/dist
+
 cd docs/.vuepress/dist
 
 # 如果是发布到自定义域名
@@ -14,16 +18,3 @@ git init
 git add -A
 git commit -m 'polish: docs'
 git push --force --quiet "https://${GITHUB_TOKEN}@${GITHUB_REF}" master:gh-pages
-
-cd -
-
-yarn demo:build
-
-cd demo
-
-git init
-git add -A
-git commit -m 'polish: demo'
-git push --force --quiet "https://${GITHUB_TOKEN}@${GITHUB_REF}" master:gh-demo
-
-cd -
