@@ -3,7 +3,7 @@
 [![NPM version](https://img.shields.io/npm/v/vjdesign.svg?style=flat-square)](https://www.npmjs.com/package/vjdesign)
 [![Build Status](https://travis-ci.org/fyl080801/vjdesign.svg?branch=master)](https://travis-ci.org/fyl080801/vjdesign)
 [![star](https://gitee.com/fyl080801/vjdesign/badge/star.svg?theme=dark)](https://gitee.com/fyl080801/vjdesign/stargazers)
-![GitHub Repo stars](https://img.shields.io/github/stars/fyl080801/vjdesign)
+![GitHub Repo stars](https://img.shields.io/github/stars/fyl080801/vjdesign?style=social)
 
 Vue 界面可视化设计器，基于 [vjform](https://github.com/fyl080801/vjform)
 
