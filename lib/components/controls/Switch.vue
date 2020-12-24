@@ -1,5 +1,7 @@
 <template>
-  <div :class="['v-jd-switch btn-group wrapper', value ? 'on' : 'off']">
+  <div
+    :class="['v-jd-switch btn-group v-jd-switch-wrapper', value ? 'on' : 'off']"
+  >
     <button
       :class="['btn btn-sm', value ? 'btn-primary' : 'btn-outline-secondary']"
     >
@@ -39,7 +41,7 @@ export default {
 }
 
 .v-jd-switch {
-  &.wrapper {
+  &.v-jd-switch-wrapper {
     button {
       color: transparent;
     }
