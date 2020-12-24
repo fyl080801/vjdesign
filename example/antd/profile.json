@@ -492,7 +492,8 @@
     {
       "name": "fieldOptions.on.input",
       "label": "输入",
-      "group": "数据"
+      "group": "数据",
+      "transform": ["@"]
     },
     {
       "name": "fieldOptions.on.change",
