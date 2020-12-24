@@ -13,7 +13,7 @@
         "$type": "design",
         "$value": "#:data/sublist/${model.selected}.json"
       },
-      "autoload": true
+      "autoload": false
     }
   },
   "listeners": [
