@@ -3,7 +3,7 @@
     "listdata": {
       "type": "request",
       "method": "GET",
-      "url": "data/list.json",
+      "url": "https://fyl080801.github.io/vjdesign/example/element/data/list.json",
       "autoload": true
     },
     "sublist": {
@@ -11,7 +11,7 @@
       "method": "GET",
       "url": {
         "$type": "design",
-        "$value": "#:data/sublist/${model.selected}.json"
+        "$value": "#:https://fyl080801.github.io/vjdesign/example/element/data/sublist/${model.selected}.json"
       },
       "autoload": false
     }
