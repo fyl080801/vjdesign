@@ -10,7 +10,16 @@ module.exports = {
     ['script', { src: 'https://unpkg.com/vue@2.6.12/dist/vue.min.js' }]
   ],
   themeConfig: {
-    nav: [{ text: '指南', link: '/1.guide/1.intro.html' }],
+    nav: [
+      { text: '首页', link: '/' },
+      { text: '指南', link: '/1.guide/1.intro.html' },
+      {
+        text: '在线示例',
+        link: 'https://fyl080801.github.io/vjdesign/example'
+      },
+      { text: 'Github', link: 'https://github.com/fyl080801/vjdesign' },
+      { text: 'Gitee', link: 'https://gitee.com/fyl080801/vjdesign' }
+    ],
     sidebar: resolvePaths(),
     sidebarDepth: 0
   },

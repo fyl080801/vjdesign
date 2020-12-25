@@ -6,18 +6,11 @@ actionLink: /1.guide/1.intro.html
 tagline: Vue 可视化界面功能设计器
 actionText: 指南
 features:
+  - title: 可视化构建
+    details: 通过拖拽添加组件调整布局，可设置组件属性与数据的关联关系以及设置对数据变化的监听实现联动
   - title: 扩展性
-    details: 支持任何html元素和vue组件，仅通过配置就可以增加支持的组件和组件属性
-  - title: 拖拽构建
-    details: 支持拖拽实现添加组件和调整布局，
+    details: 支持任何html元素和vue组件，仅通过配置就可以增加支持的组件和组件属性，也支持自定义扩展设计器功能
   - title: 构建生态
-    details: 也许每个用户的代码生成场景千人千面，我们愿为生态的构建提供力所能及的帮助。
-footer: MIT Licensed | Copyright © 2020 vdesjs
+    details: 持续提供组件的功能和示例更新为各种用户场景服务，支持多平台web应用构建和主流vue组件库
+footer: MIT Licensed | Copyright © 2020 vjdesign
 ---
-
-<!-- <div class="hero">
-  <p class="action">
-    <a href="/vjdesign/1.guide/1.intro.html" class="action-button">指南</a>
-  </p>
-  <hr/>
-</div> -->
