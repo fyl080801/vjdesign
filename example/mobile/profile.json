@@ -1,0 +1,74 @@
+{
+  "components": [
+    { "name": "van-button", "label": "按钮", "group": "Vant 基础组件" },
+    {
+      "name": "van-cell-group",
+      "label": "单元格组",
+      "group": "Vant 基础组件",
+      "designer": "container"
+    },
+    {
+      "name": "van-cell",
+      "label": "单元格",
+      "group": "Vant 基础组件",
+      "designer": "container"
+    },
+    {
+      "name": "van-row",
+      "label": "行",
+      "group": "Vant 基础组件",
+      "designer": "container"
+    },
+    {
+      "name": "van-col",
+      "label": "列",
+      "group": "Vant 基础组件",
+      "designer": "container"
+    },
+
+    {
+      "name": "van-form",
+      "label": "表单",
+      "group": "Vant 表单组件",
+      "designer": "container"
+    },
+    {
+      "name": "van-field",
+      "label": "输入框",
+      "group": "Vant 表单组件",
+      "designer": "divContainer",
+      "properties": ["model", "fieldOptions.props.label"]
+    },
+    {
+      "name": "van-password-input",
+      "label": "密码输入",
+      "group": "Vant 表单组件",
+      "properties": ["model"]
+    },
+    {
+      "name": "van-slider",
+      "label": "滑块",
+      "group": "Vant 表单组件",
+      "properties": ["model"]
+    },
+    {
+      "name": "van-stepper",
+      "label": "步进器",
+      "group": "Vant 表单组件",
+      "properties": ["model"]
+    },
+    {
+      "name": "van-switch",
+      "label": "开关",
+      "group": "Vant 表单组件",
+      "properties": ["model"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "fieldOptions.props.label",
+      "group": "组件",
+      "label": "前缀"
+    }
+  ]
+}
