@@ -3,7 +3,7 @@
     "listdata": {
       "type": "request",
       "method": "GET",
-      "url": "data/list.json",
+      "url": "https://fyl080801.github.io/vjdesign/example/element/data/list.json",
       "autoload": true
     },
     "sublist": {
@@ -11,9 +11,9 @@
       "method": "GET",
       "url": {
         "$type": "design",
-        "$value": "#:data/sublist/${model.selected}.json"
+        "$value": "#:https://fyl080801.github.io/vjdesign/example/element/data/sublist/${model.selected}.json"
       },
-      "autoload": true
+      "autoload": false
     }
   },
   "listeners": [
@@ -23,6 +23,10 @@
           "handler": {
             "$type": "design",
             "$value": "@:datasource.sublist.load()"
+          },
+          "condition": {
+            "$type": "design",
+            "$value": "$:model.selected"
           }
         },
         {
@@ -85,7 +89,7 @@
                                     "domProps": {
                                       "innerText": {
                                         "$type": "design",
-                                        "$value": "#:输入了 ${model.text3.length} 个字"
+                                        "$value": "#:输入了 ${(model.text3||'').length} 个字"
                                       }
                                     }
                                   }
@@ -174,7 +178,8 @@
                               "component": "el-form-item",
                               "fieldOptions": {
                                 "props": {
-                                  "label": "选择"
+                                  "label": "选择",
+                                  "prop": "selected"
                                 }
                               },
                               "children": [
@@ -212,7 +217,8 @@
                               ],
                               "fieldOptions": {
                                 "props": {
-                                  "label": "级联"
+                                  "label": "级联",
+                                  "prop": "subselected"
                                 }
                               }
                             }
@@ -224,6 +230,37 @@
                           "gutter": 20
                         }
                       }
+                    },
+                    {
+                      "component": "el-button",
+                      "fieldOptions": {
+                        "domProps": {
+                          "innerText": "提交"
+                        },
+                        "props": {
+                          "type": "primary"
+                        },
+                        "on": {
+                          "click": {
+                            "$type": "design",
+                            "$value": "@:refs.form.validate().then(()=>{alert(JSON.stringify(model))})"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "component": "el-button",
+                      "fieldOptions": {
+                        "domProps": {
+                          "innerText": "重置"
+                        },
+                        "on": {
+                          "click": {
+                            "$type": "design",
+                            "$value": "@:refs.form.resetFields()"
+                          }
+                        }
+                      }
                     }
                   ],
                   "fieldOptions": {
@@ -233,7 +270,8 @@
                         "$type": "design",
                         "$value": "$:model"
                       }
-                    }
+                    },
+                    "ref": "form"
                   }
                 }
               ],
@@ -319,20 +357,6 @@
           ],
           "options": {},
           "remark": ""
-        },
-        {
-          "component": "button",
-          "fieldOptions": {
-            "domProps": {
-              "innerText": "弹出"
-            },
-            "on": {
-              "click": {
-                "$type": "design",
-                "$value": "@:alert('xxxxxx')"
-              }
-            }
-          }
         }
       ]
     }

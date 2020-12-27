@@ -6,12 +6,20 @@
     </div>
     <div class="property-tail">
       <template v-if="transform !== false">
-        <a @click="onChangeType(false)" :class="!isTransform ? 'active' : ''">
+        <a
+          href="javascript:;"
+          @click="onChangeType(false)"
+          :class="!isTransform ? 'active' : ''"
+        >
           <span class="badge" :class="!isTransform ? 'badge-primary' : ''"
             >值</span
           >
         </a>
-        <a @click="onChangeType(true)" :class="isTransform ? 'active' : ''">
+        <a
+          href="javascript:;"
+          @click="onChangeType(true)"
+          :class="isTransform ? 'active' : ''"
+        >
           <span class="badge" :class="isTransform ? 'badge-primary' : ''"
             >转换</span
           >

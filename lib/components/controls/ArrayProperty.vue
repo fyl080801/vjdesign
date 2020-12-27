@@ -25,7 +25,11 @@
         </span>
       </div>
     </div>
-    <a class="list-group-item list-group-item-action add-text" @click="addItem">
+    <a
+      href="javascript:;"
+      class="list-group-item list-group-item-action add-text"
+      @click="addItem"
+    >
       <SvgIcon name="plus"></SvgIcon>
       添加
     </a>

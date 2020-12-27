@@ -324,7 +324,8 @@
           "group": "组件"
         },
         "fieldOptions.props.disabled",
-        "fieldOptions.on.click"
+        "fieldOptions.on.click",
+        "events"
       ]
     },
     {
@@ -627,25 +628,6 @@
           "label": "每页记录数变更",
           "transform": ["@"],
           "group": "事件"
-        }
-      ]
-    },
-    {
-      "name": "c-select",
-      "label": "选择",
-      "icon": "drop-down",
-      "group": "Custom",
-      "properties": [
-        "model",
-        {
-          "name": "fieldOptions.props.items",
-          "label": "选项",
-          "group": "基础",
-          "editor": "array",
-          "properties": [
-            { "name": "label", "label": "显示名称" },
-            { "name": "value", "label": "值" }
-          ]
         }
       ]
     }
