@@ -1,5 +1,13 @@
 {
-  "datasource": {},
+  "datasource": {
+    "radiovalues": {
+      "type": "object",
+      "data": {
+        "$type": "design",
+        "$value": "$:[{value:1,label:'radio1'},{value:2,label:'radio2'}]"
+      }
+    }
+  },
   "listeners": [],
   "fields": [
     {
@@ -33,15 +41,33 @@
               },
               "wrapperCol": {
                 "span": "20"
+              },
+              "model": {
+                "$type": "design",
+                "$value": "$:model"
               }
-            }
+            },
+            "ref": "form"
           },
           "children": [
             {
               "component": "a-form-model-item",
               "fieldOptions": {
                 "props": {
-                  "label": "aaaaa"
+                  "label": "aaaaa",
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填项",
+                      "trigger": "blur"
+                    },
+                    {
+                      "trigger": "change",
+                      "min": 1,
+                      "max": 5
+                    }
+                  ],
+                  "prop": "text1"
                 }
               },
               "children": [
@@ -49,10 +75,16 @@
                   "component": "a-input",
                   "fieldOptions": {
                     "props": {
-                      "value": "$:model.text1"
+                      "value": {
+                        "$type": "design",
+                        "$value": "$:model.text1"
+                      }
                     },
                     "on": {
-                      "input": "@text1:arguments[0].target.value"
+                      "input": {
+                        "$type": "design",
+                        "$value": "@text1:arguments[0].target.value"
+                      }
                     },
                     "attrs": {}
                   }
@@ -80,7 +112,8 @@
                           },
                           "wrapperCol": {
                             "span": "16"
-                          }
+                          },
+                          "prop": "selected"
                         }
                       },
                       "children": [
@@ -119,7 +152,8 @@
                           },
                           "wrapperCol": {
                             "span": "16"
-                          }
+                          },
+                          "prop": "text2"
                         }
                       },
                       "children": [
@@ -145,6 +179,38 @@
             },
             {
               "component": "a-form-model-item",
+              "fieldOptions": {
+                "props": {
+                  "label": "radios",
+                  "prop": "radiovalue"
+                }
+              },
+              "children": [
+                {
+                  "component": "a-radio-group",
+                  "fieldOptions": {
+                    "props": {
+                      "value": {
+                        "$type": "design",
+                        "$value": "$:model.radiovalue"
+                      },
+                      "options": {
+                        "$type": "design",
+                        "$value": "$:datasource.radiovalues.data"
+                      }
+                    },
+                    "on": {
+                      "change": {
+                        "$type": "design",
+                        "$value": "@radiovalue:arguments[0].target.value"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "component": "a-form-model-item",
               "children": [
                 {
                   "component": "a-space",
@@ -159,6 +225,12 @@
                           "ghost": false,
                           "block": false,
                           "type": "primary"
+                        },
+                        "on": {
+                          "click": {
+                            "$type": "design",
+                            "$value": "@:refs.form.validate().then(()=>{alert(JSON.stringify(model))})"
+                          }
                         }
                       }
                     },
@@ -166,7 +238,13 @@
                       "component": "a-button",
                       "fieldOptions": {
                         "domProps": {
-                          "innerText": "取消"
+                          "innerText": "重置"
+                        },
+                        "on": {
+                          "click": {
+                            "$type": "design",
+                            "$value": "@:refs.form.resetFields()"
+                          }
                         }
                       }
                     }
@@ -182,14 +260,6 @@
               }
             }
           ]
-        },
-        {
-          "component": "p",
-          "fieldOptions": {
-            "domProps": {
-              "innerText": "#:数据: ${JSON.stringify(model)}"
-            }
-          }
         }
       ]
     }
