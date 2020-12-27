@@ -1,0 +1,11 @@
+{
+  "components": [
+    {
+      "name": "c-form",
+      "label": "问卷表单",
+      "group": "问卷",
+      "designer": "container"
+    },
+    { "name": "c-question", "label": "问题", "group": "问卷" }
+  ]
+}
