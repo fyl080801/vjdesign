@@ -1,5 +1,11 @@
 <template>
-  <div :class="{ 'form-group': true, transform: isTransform }">
+  <div
+    :class="{
+      'v-jd-property-item': true,
+      'form-group': true,
+      transform: isTransform
+    }"
+  >
     <label class="property-label">{{ label }}</label>
     <div class="propterty-center">
       <a href="javascript:;" v-if="hasValue" @click="onClear">清空</a>
@@ -182,47 +188,52 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.property-tail {
-  float: right;
-}
+<style lang="scss">
+.v-jdesign,
+.v-jdesign-modal {
+  .v-jd-property-item {
+    &.transform {
+      .input-group {
+        margin-bottom: 0.25rem;
 
-.transform {
-  .input-group {
-    margin-bottom: 0.25rem;
-
-    &:last-child {
-      margin-bottom: inherit;
-    }
-  }
-}
-
-.form-group {
-  .property-label {
-    font-weight: bold;
-  }
-
-  .propterty-center {
-    display: inline-block;
-    margin-left: 1rem;
-
-    > a {
-      cursor: pointer;
-
-      &.active {
-        cursor: default;
+        &:last-child {
+          margin-bottom: inherit;
+        }
       }
     }
 
-    .badge-primary {
-      cursor: default;
-    }
-  }
+    &.form-group {
+      .property-tail {
+        float: right;
+      }
 
-  .input-group {
-    .type-selector {
-      width: 6rem;
-      flex: none;
+      .property-label {
+        font-weight: bold;
+      }
+
+      .propterty-center {
+        display: inline-block;
+        margin-left: 1rem;
+
+        > a {
+          cursor: pointer;
+
+          &.active {
+            cursor: default;
+          }
+        }
+
+        .badge-primary {
+          cursor: default;
+        }
+      }
+
+      .input-group {
+        .type-selector {
+          width: 6rem;
+          flex: none;
+        }
+      }
     }
   }
 }

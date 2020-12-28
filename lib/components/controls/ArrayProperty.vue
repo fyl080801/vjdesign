@@ -166,30 +166,33 @@ export default {
 </script>
 
 <style lang="scss">
-.v-jd-array-property {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+.v-jdesign,
+.v-jdesign-modal {
+  .v-jd-array-property {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 
-  .list-group-item {
-    cursor: default;
+    .list-group-item {
+      cursor: default;
 
-    &.property-wrapper {
-      padding-left: 0;
-      padding-right: 0;
+      &.property-wrapper {
+        padding-left: 0;
+        padding-right: 0;
 
-      .property-item {
-        display: flex;
-        align-items: center;
+        .property-item {
+          display: flex;
+          align-items: center;
 
-        > .property-content {
-          flex: 1;
+          > .property-content {
+            flex: 1;
+          }
         }
       }
-    }
 
-    &.add-text {
-      text-align: center;
+      &.add-text {
+        text-align: center;
+      }
     }
   }
 }
