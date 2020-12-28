@@ -1,5 +1,5 @@
 <template>
-  <div class="v-jd-design-face bg-light"></div>
+  <div class="v-jd-design-face"></div>
 </template>
 
 <script>
@@ -18,8 +18,7 @@ export default {
         right: 0;
         top: calc(1.45rem + 1px);
         bottom: 0;
-        z-index: 0;
-        opacity: 0.4;
+        z-index: 1;
       }
     }
   }
