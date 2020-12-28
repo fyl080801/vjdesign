@@ -14,6 +14,7 @@
       "label": "输入问题",
       "group": "问卷",
       "properties": [
+        "fieldOptions.props.prop",
         "fieldOptions.props.label",
         "fieldOptions.props.required",
         "fieldOptions.props.requireMessage"
@@ -24,6 +25,7 @@
       "label": "单选问题",
       "group": "问卷",
       "properties": [
+        "fieldOptions.props.prop",
         "fieldOptions.props.label",
         "fieldOptions.props.required",
         "fieldOptions.props.requireMessage",
@@ -35,6 +37,7 @@
       "label": "多选问题",
       "group": "问卷",
       "properties": [
+        "fieldOptions.props.prop",
         "fieldOptions.props.label",
         "fieldOptions.props.required",
         "fieldOptions.props.requireMessage",
@@ -47,6 +50,11 @@
       "name": "fieldOptions.props.label",
       "label": "标题",
       "group": "组件"
+    },
+    {
+      "name": "fieldOptions.props.prop",
+      "label": "数据属性",
+      "group": "数据"
     },
     {
       "name": "fieldOptions.props.required",

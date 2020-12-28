@@ -3,6 +3,7 @@ const Vue = window.Vue
 const questionMixins = {
   props: {
     label: String,
+    prop: String,
     required: Boolean,
     requireMessage: String
   },
@@ -18,7 +19,7 @@ const questionMixins = {
   },
   methods: {
     onInput(value) {
-      this.$set(this.parentModel, this.label, value)
+      this.$set(this.parentModel, this.prop, value)
     },
     resolveParentModel() {
       let cacheParent = this.$parent
@@ -60,17 +61,17 @@ Vue.component('c-form', {
 })
 
 Vue.component('c-question-input', {
-  template: `<el-form-item :label="label" :rules="[...baseRules]" :prop="label">
+  template: `<el-form-item :label="label" :rules="[...baseRules]" :prop="prop">
   <h2 slot="label">{{label}}</h2>
-  <el-input :value="parentModel[label]" @input="onInput"></el-input>
+  <el-input :value="parentModel[prop]" @input="onInput"></el-input>
 </el-form-item>`,
   mixins: [questionMixins]
 })
 
 Vue.component('c-question-single', {
-  template: `<el-form-item :label="label" :rules="[...baseRules]" :prop="label">
+  template: `<el-form-item :label="label" :rules="[...baseRules]" :prop="prop">
   <h2 slot="label">{{label}}</h2>
-  <el-radio-group :value="parentModel[label]" @input="onInput">
+  <el-radio-group :value="parentModel[prop]" @input="onInput">
     <el-radio :key="index" :label="item.label" v-for="(item, index) in options">{{item.label}}</el-radio>
   </el-radio-group>
 </el-form-item>`,
@@ -81,9 +82,9 @@ Vue.component('c-question-single', {
 })
 
 Vue.component('c-question-multiple', {
-  template: `<el-form-item :label="label" :rules="[...baseRules]" :prop="label">
+  template: `<el-form-item :label="label" :rules="[...baseRules]" :prop="prop">
   <h2 slot="label">{{label}}</h2>
-  <el-checkbox-group :value="parentModel[label] || []" @input="onInput">
+  <el-checkbox-group :value="parentModel[prop] || []" @input="onInput">
     <el-checkbox :key="index" :label="item.label" v-for="(item, index) in options">{{item.label}}</el-checkbox>
   </el-checkbox-group>
 </el-form-item>`,
