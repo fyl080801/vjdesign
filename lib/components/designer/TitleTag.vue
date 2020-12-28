@@ -30,9 +30,15 @@ export default {
       return (this.profile.components[this.componentTag] || {}).icon || 'square'
     },
     text() {
-      return this.field.remark
+      let result = this.field.remark
         ? this.componentTag + '.' + this.field.remark
         : this.componentTag
+
+      if (this.field.fieldOptions && this.field.fieldOptions.slotName) {
+        result += ` #${this.field.fieldOptions.slotName}`
+      }
+
+      return result
     }
   }
 }

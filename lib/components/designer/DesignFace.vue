@@ -18,7 +18,7 @@ export default {
         right: 0;
         top: calc(1.45rem + 1px);
         bottom: 0;
-        z-index: 1;
+        z-index: 0;
       }
     }
   }
