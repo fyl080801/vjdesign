@@ -1,33 +1,40 @@
 <template>
-  <div class="list-group list-group-flush">
-    <div
-      class="list-group-item property-wrapper"
-      :key="index"
-      v-for="(item, index) in value"
+  <div class="v-jd-array-property">
+    <vuedraggable
+      class="list-group list-group-flush"
+      draggable=".list-group-item"
+      :value="value"
+      @input="onInput"
     >
-      <div class="property-item">
-        <v-jform
-          class="property-content"
-          :key="index"
-          :components="edit.components"
-          :value="item"
-          :fields="form.fields"
-          :datasource="form.datasource"
-          :listeners="form.listeners"
-        ></v-jform>
-        <span>
-          <a href="javascript:;" @click="editItem(index)">
-            编辑
-          </a>
-          <a href="javascript:;" @click="removeItem(index)">
-            删除
-          </a>
-        </span>
+      <div
+        class="list-group-item property-wrapper"
+        :key="index"
+        v-for="(item, index) in value"
+      >
+        <div class="property-item">
+          <v-jform
+            class="property-content"
+            :key="index"
+            :components="edit.components"
+            :value="item"
+            :fields="form.fields"
+            :datasource="form.datasource"
+            :listeners="form.listeners"
+          ></v-jform>
+          <span>
+            <a href="javascript:;" @click="editItem(index)">
+              编辑
+            </a>
+            <a href="javascript:;" @click="removeItem(index)">
+              删除
+            </a>
+          </span>
+        </div>
       </div>
-    </div>
+    </vuedraggable>
     <a
       href="javascript:;"
-      class="list-group-item list-group-item-action add-text"
+      class="add-text btn btn-outline-primary"
       @click="addItem"
     >
       <SvgIcon name="plus"></SvgIcon>
@@ -42,9 +49,10 @@ import vjform from 'vjform'
 import { mapGetters } from 'vuex'
 import { resolveProperties } from '../../utils/property'
 import { cloneDeep } from 'lodash-es'
+import vuedraggable from 'vuedraggable'
 
 export default {
-  components: { [vjform.name]: vjform, SvgIcon },
+  components: { [vjform.name]: vjform, SvgIcon, vuedraggable },
   name: 'v-jd-array-property',
   props: { value: Array, prop: Object, form: Object },
   data() {
@@ -103,6 +111,10 @@ export default {
         }
       ]
     },
+    onInput(value) {
+      this.$emit('input', value)
+    },
+    //
     addItem() {
       const model = { data: {} }
 
@@ -153,24 +165,32 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.list-group-item {
-  &.property-wrapper {
-    padding-left: 0;
-    padding-right: 0;
+<style lang="scss">
+.v-jd-array-property {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
-    .property-item {
-      display: flex;
-      align-items: center;
+  .list-group-item {
+    cursor: default;
 
-      > .property-content {
-        flex: 1;
+    &.property-wrapper {
+      padding-left: 0;
+      padding-right: 0;
+
+      .property-item {
+        display: flex;
+        align-items: center;
+
+        > .property-content {
+          flex: 1;
+        }
       }
     }
-  }
 
-  &.add-text {
-    text-align: center;
+    &.add-text {
+      text-align: center;
+    }
   }
 }
 </style>
