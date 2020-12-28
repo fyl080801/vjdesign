@@ -38,6 +38,10 @@ export default {
         result += ` #${this.field.fieldOptions.slotName}`
       }
 
+      if (this.field.fieldOptions && this.field.fieldOptions.scopedSlot) {
+        result += ` $${this.field.fieldOptions.scopedSlot}`
+      }
+
       return result
     }
   }
