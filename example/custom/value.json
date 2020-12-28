@@ -9,15 +9,17 @@
           "component": "c-question-single",
           "fieldOptions": {
             "props": {
-              "label": "aaaaaaa",
+              "label": "您的性别",
               "options": [
                 {
-                  "label": "aaa"
+                  "label": "男"
                 },
                 {
-                  "label": "bbb"
+                  "label": "女"
                 }
-              ]
+              ],
+              "required": true,
+              "prop": "gender"
             }
           }
         },
@@ -25,18 +27,29 @@
           "component": "c-question-single",
           "fieldOptions": {
             "props": {
-              "label": "asssdad",
+              "label": "您的学历",
               "options": [
                 {
-                  "label": "aaa"
+                  "label": "小学"
                 },
                 {
-                  "label": "bbbb"
+                  "label": "初中"
                 },
                 {
-                  "label": "cccc"
+                  "label": "高中"
+                },
+                {
+                  "label": "大学本科"
+                },
+                {
+                  "label": "硕士"
+                },
+                {
+                  "label": "博士"
                 }
-              ]
+              ],
+              "required": true,
+              "prop": "education"
             }
           }
         },
@@ -44,21 +57,25 @@
           "component": "c-question-multiple",
           "fieldOptions": {
             "props": {
-              "label": "zxzcxc",
+              "label": "您的爱好",
               "options": [
                 {
-                  "label": "zxxxx"
+                  "label": "唱歌"
                 },
                 {
-                  "label": "ccxc"
+                  "label": "跳舞"
                 },
                 {
-                  "label": "xcxcc"
+                  "label": "运动"
                 },
                 {
-                  "label": "zzzzz"
+                  "label": "游戏"
+                },
+                {
+                  "label": "其他"
                 }
-              ]
+              ],
+              "prop": "hobby"
             }
           }
         },
@@ -66,11 +83,17 @@
           "component": "c-question-input",
           "fieldOptions": {
             "props": {
-              "label": "sdsdsd"
+              "label": "您的建议",
+              "prop": "propose"
             }
           }
         }
-      ]
+      ],
+      "fieldOptions": {
+        "props": {
+          "title": "自定义问卷"
+        }
+      }
     }
   ],
   "model": {}

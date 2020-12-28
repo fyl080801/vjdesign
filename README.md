@@ -1,8 +1,10 @@
 # Vue Json Design
 
-[![NPM version](https://img.shields.io/npm/v/vjdesign.svg?style=flat-square)](https://www.npmjs.com/package/vjdesign)
+![NPM](https://img.shields.io/npm/l/vjdesign)
+![npm](https://img.shields.io/npm/v/vjdesign)
 [![Build Status](https://travis-ci.org/fyl080801/vjdesign.svg?branch=master)](https://travis-ci.org/fyl080801/vjdesign)
-![GitHub Repo stars](https://img.shields.io/github/stars/fyl080801/vjdesign)
+![GitHub Repo stars](https://img.shields.io/github/stars/fyl080801/vjdesign?style=social)
+
 [![star](https://gitee.com/fyl080801/vjdesign/badge/star.svg?theme=dark)](https://gitee.com/fyl080801/vjdesign/stargazers)
 
 Vue 界面可视化设计器，基于 [vjform](https://github.com/fyl080801/vjform)

@@ -62,7 +62,7 @@ Vue.component('c-form', {
 
 Vue.component('c-question-input', {
   template: `<el-form-item :label="label" :rules="[...baseRules]" :prop="prop">
-  <h2 slot="label">{{label}}</h2>
+  <h2 slot="label" style="display: inline-block">{{label}}</h2>
   <el-input :value="parentModel[prop]" @input="onInput"></el-input>
 </el-form-item>`,
   mixins: [questionMixins]
@@ -70,7 +70,7 @@ Vue.component('c-question-input', {
 
 Vue.component('c-question-single', {
   template: `<el-form-item :label="label" :rules="[...baseRules]" :prop="prop">
-  <h2 slot="label">{{label}}</h2>
+  <h2 slot="label" style="display: inline-block">{{label}}</h2>
   <el-radio-group :value="parentModel[prop]" @input="onInput">
     <el-radio :key="index" :label="item.label" v-for="(item, index) in options">{{item.label}}</el-radio>
   </el-radio-group>
@@ -83,7 +83,7 @@ Vue.component('c-question-single', {
 
 Vue.component('c-question-multiple', {
   template: `<el-form-item :label="label" :rules="[...baseRules]" :prop="prop">
-  <h2 slot="label">{{label}}</h2>
+  <h2 slot="label" style="display: inline-block">{{label}}</h2>
   <el-checkbox-group :value="parentModel[prop] || []" @input="onInput">
     <el-checkbox :key="index" :label="item.label" v-for="(item, index) in options">{{item.label}}</el-checkbox>
   </el-checkbox-group>
