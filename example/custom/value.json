@@ -1,1 +1,77 @@
-{}
+{
+  "datasource": {},
+  "listeners": [],
+  "fields": [
+    {
+      "component": "c-form",
+      "children": [
+        {
+          "component": "c-question-single",
+          "fieldOptions": {
+            "props": {
+              "label": "aaaaaaa",
+              "options": [
+                {
+                  "label": "aaa"
+                },
+                {
+                  "label": "bbb"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "component": "c-question-single",
+          "fieldOptions": {
+            "props": {
+              "label": "asssdad",
+              "options": [
+                {
+                  "label": "aaa"
+                },
+                {
+                  "label": "bbbb"
+                },
+                {
+                  "label": "cccc"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "component": "c-question-multiple",
+          "fieldOptions": {
+            "props": {
+              "label": "zxzcxc",
+              "options": [
+                {
+                  "label": "zxxxx"
+                },
+                {
+                  "label": "ccxc"
+                },
+                {
+                  "label": "xcxcc"
+                },
+                {
+                  "label": "zzzzz"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "component": "c-question-input",
+          "fieldOptions": {
+            "props": {
+              "label": "sdsdsd"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "model": {}
+}
