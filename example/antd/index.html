@@ -61,7 +61,7 @@
         @cancel="previewShow=false"
         width="720px"
       >
-        <j-former v-if="previewShow" v-bind:config="model"></j-former>
+        <j-former v-if="previewShow" v-model="preview" v-bind:config="model"></j-former>
       </a-modal>
       <a-modal
         v-model="exportShow"
@@ -78,6 +78,7 @@
         el: '#app',
         data() {
           return {
+            preview: {},
             model: {},
             profile: {},
             previewShow: false,

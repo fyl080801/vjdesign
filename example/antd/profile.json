@@ -366,6 +366,7 @@
       "label": "输入框",
       "group": "Antd 组件",
       "properties": [
+        "options.direct",
         "fieldOptions.props.value",
         {
           "name": "fieldOptions.props.type",
@@ -397,9 +398,10 @@
     },
     {
       "name": "a-textarea",
-      "label": "输入框",
+      "label": "文本域",
       "group": "Antd 组件",
       "properties": [
+        "options.direct",
         "fieldOptions.props.value",
         "fieldOptions.attrs.placeholder",
         "fieldOptions.props.disabled",
@@ -420,6 +422,7 @@
       "label": "选择器",
       "group": "Antd 组件",
       "properties": [
+        "options.direct",
         "fieldOptions.props.value",
         "fieldOptions.attrs.placeholder",
         "fieldOptions.props.disabled",
@@ -443,6 +446,7 @@
       "label": "单选框组",
       "group": "Antd 组件",
       "properties": [
+        "options.direct",
         "fieldOptions.props.value",
         "fieldOptions.props.disabled",
         {
@@ -463,6 +467,7 @@
       "label": "多选框组",
       "group": "Antd 组件",
       "properties": [
+        "options.direct",
         "fieldOptions.props.value",
         "fieldOptions.props.disabled",
         {
@@ -483,6 +488,7 @@
       "label": "多选框",
       "group": "Antd 组件",
       "properties": [
+        "options.direct",
         {
           "name": "fieldOptions.props.checked",
           "label": "值",
@@ -507,6 +513,7 @@
       "label": "开关",
       "group": "Antd 组件",
       "properties": [
+        "options.direct",
         {
           "name": "fieldOptions.props.checked",
           "label": "值",
@@ -526,6 +533,7 @@
       "label": "日期选择",
       "group": "Antd 组件",
       "properties": [
+        "options.direct",
         "fieldOptions.props.value",
         "fieldOptions.attrs.placeholder",
         "fieldOptions.props.disabled",

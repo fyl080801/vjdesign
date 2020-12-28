@@ -29,6 +29,14 @@
                   "innerText": "antd 的值变更和element不同，触发input事件或change事件后不一定会返回值还是InputEvent，因此先手动加上处理逻辑，以后加转换简化"
                 }
               }
+            },
+            {
+              "component": "p",
+              "fieldOptions": {
+                "domProps": {
+                  "innerText": "antd 输入等交互组件在设置 rules 做表单验证时，由于 a-from-item 只劫持唯一下级元素的事件，因此会导致交互操作无法触发验证的现象，这时需要在组件设置里加上 options: { direct: true } 避免 vjform 渲染这个元素时使用代理节点，但这可能会导致交互元素具有过多的联动关系时出现性能问题，也可以通过转换定义 blur 和 change 的事件来解决这个问题"
+                }
+              }
             }
           ]
         },
@@ -73,6 +81,9 @@
               "children": [
                 {
                   "component": "a-input",
+                  "options": {
+                    "direct": true
+                  },
                   "fieldOptions": {
                     "props": {
                       "value": {
@@ -119,6 +130,9 @@
                       "children": [
                         {
                           "component": "a-select",
+                          "options": {
+                            "direct": true
+                          },
                           "fieldOptions": {
                             "props": {
                               "options": "$:[{value:1,label:'选项1'}, {value:2,label:'选项2'}]",
@@ -159,6 +173,9 @@
                       "children": [
                         {
                           "component": "a-textarea",
+                          "options": {
+                            "direct": true
+                          },
                           "fieldOptions": {
                             "props": {
                               "value": "$:model.text2"
@@ -188,6 +205,9 @@
               "children": [
                 {
                   "component": "a-radio-group",
+                  "options": {
+                    "direct": true
+                  },
                   "fieldOptions": {
                     "props": {
                       "value": {
