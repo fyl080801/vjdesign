@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>ElementUI 示例</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vjdesign@1.5.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vjdesign"></script>
     <script src="https://cdn.jsdelivr.net/npm/jformer"></script>
     <script src="https://cdn.jsdelivr.net/npm/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver/dist/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ejs"></script>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/vjdesign@1.5.4/dist/vjdesign.css"
+      href="https://cdn.jsdelivr.net/npm/vjdesign/dist/vjdesign.css"
     />
     <link
       rel="stylesheet"
@@ -49,22 +51,13 @@
     <div id="app">
       <header>
         <el-button @click="previewShow=true">预览</el-button>
-        <el-button @click="exportShow=true">导出</el-button>
+        <el-button @click="exportTemplate">导出</el-button>
       </header>
       <div class="demo-wrapper">
         <v-jdesign v-model="model" v-bind:profile="profile"></v-jdesign>
       </div>
       <el-dialog title="预览" v-bind:visible.sync="previewShow">
         <j-former v-if="previewShow" v-bind:config="model"></j-former>
-      </el-dialog>
-      <el-dialog title="导出" v-bind:visible.sync="exportShow">
-        <el-input
-          v-if="exportShow"
-          type="textarea"
-          v-bind:autosize="true"
-          v-bind:value="exportTemplate"
-        >
-        </el-input>
       </el-dialog>
     </div>
     <script>
@@ -74,38 +67,24 @@
           return {
             model: {},
             profile: {},
-            previewShow: false,
-            exportShow: false
+            previewShow: false
           }
         },
-        computed: {
+        methods: {
           exportTemplate() {
-            return `\<!DOCTYPE html\>
-\<html lang="en"\>
-  \<head\>
-    \<meta charset="UTF-8" /\>
-    \<meta name="viewport" content="width=device-width, initial-scale=1.0" /\>
-    \<meta http-equiv="X-UA-Compatible" content="ie=edge" /\>
-    \<title\>ElementUI 示例\</title\>
-    \<script src="https://cdn.jsdelivr.net/npm/vue"\>\</script\>
-    \<script src="https://cdn.jsdelivr.net/npm/jformer"\>\</script\>
-    \<script src="https://cdn.jsdelivr.net/npm/element-ui/lib/index.js"\>\</script\>
-    \<link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css"
-    /\>
-  \</head\>
-  \<body\>
-    \<div id="app"\>
-      \<j-former v-bind:config="config"\>\</j-former\>
-    \</div\>
-    \<script\>
-      new Vue({data(){return{config:${JSON.stringify(
-        this.model
-      )}}}}).$mount('#app');
-    \</script\>
-  \</body\>
-\</html\>`
+            fetch('./template.ejs').then(response => {
+              response.text().then(text => {
+                saveAs(
+                  new Blob(
+                    [ejs.render(text, { model: JSON.stringify(this.model) })],
+                    {
+                      type: 'text/plain;charset=utf-8'
+                    }
+                  ),
+                  'example.html'
+                )
+              })
+            })
           }
         },
         async mounted() {
