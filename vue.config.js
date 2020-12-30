@@ -27,7 +27,6 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
-    console.log('xxx')
 
     //
     config.module

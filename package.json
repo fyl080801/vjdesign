@@ -1,6 +1,6 @@
 {
   "name": "vjdesign",
-  "version": "1.5.6-beta.1",
+  "version": "1.5.6-beta.2",
   "description": "Vue Form Designer",
   "author": {
     "name": "fyl080801",
@@ -26,7 +26,6 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "svg": "vsvg -s ./lib/icons/svg -t ./lib/icons/components --ext js --es6",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve",
     "dist": "vue-cli-service build --target lib ./lib/index.js",
