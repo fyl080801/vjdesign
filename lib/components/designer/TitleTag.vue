@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import SvgIcon from 'vue-svgicon'
+import SvgIcon from '../../icons'
 import { mapGetters } from 'vuex'
 
 export default {

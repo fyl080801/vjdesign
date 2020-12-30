@@ -37,7 +37,7 @@
 import { mapGetters } from 'vuex'
 import { Collapse, CollapseItem } from '../../components/collapse'
 import vuedraggable from 'vuedraggable'
-import SvgIcon from 'vue-svgicon'
+import SvgIcon from '../../icons'
 
 export default {
   components: { Collapse, CollapseItem, vuedraggable, SvgIcon },

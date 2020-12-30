@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import SvgIcon from 'vue-svgicon'
+import SvgIcon from '../../icons'
 import vjform from 'vjform'
 import { mapGetters } from 'vuex'
 import { resolveProperties } from '../../utils/property'

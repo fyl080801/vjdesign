@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import SvgIcon from 'vue-svgicon'
+import SvgIcon from '../../icons'
 import { isArray } from 'lodash-es'
 
 export default {

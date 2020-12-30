@@ -53,7 +53,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import SvgIcon from 'vue-svgicon'
+import SvgIcon from '../../icons'
 import { cloneDeep } from 'lodash-es'
 
 export default {

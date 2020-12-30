@@ -16,7 +16,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import SvgIcon from 'vue-svgicon'
+import SvgIcon from '../../icons'
 
 export default {
   name: 'v-jd-collapse-tag',

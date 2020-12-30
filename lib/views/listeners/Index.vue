@@ -60,7 +60,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import SvgIcon from 'vue-svgicon'
+import SvgIcon from '../../icons'
 import { Switch } from '../../components/controls'
 import Actions from './Actions'
 

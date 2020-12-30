@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import SvgIcon from 'vue-svgicon'
+import SvgIcon from '../../icons'
 
 export default {
   props: {

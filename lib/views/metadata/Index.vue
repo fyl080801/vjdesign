@@ -34,7 +34,7 @@
 <script>
 import { CodeMirror } from '../../utils/code'
 import { mapGetters } from 'vuex'
-import SvgIcon from 'vue-svgicon'
+import SvgIcon from '../../icons'
 
 export default {
   components: { SvgIcon },
