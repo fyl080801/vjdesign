@@ -10,9 +10,15 @@ export default {
   name: 'v-jd-container-tag',
   props: { field: Object },
   computed: {
-    ...mapGetters(['form']),
+    ...mapGetters(['form', 'profile']),
+    design() {
+      return this.field._design
+    },
     componentTag() {
-      return (this.field._design || {}).name || this.field.component
+      return (
+        (this.profile.components[this.design.name] || {}).label ||
+        this.design.name
+      )
     }
   }
 }
