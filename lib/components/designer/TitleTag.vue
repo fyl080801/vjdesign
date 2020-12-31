@@ -24,7 +24,7 @@ export default {
   computed: {
     ...mapGetters(['profile', 'form']),
     design() {
-      return this.field._design
+      return this.field._design || {}
     },
     componentLabel() {
       return (

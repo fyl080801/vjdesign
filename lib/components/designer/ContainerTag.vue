@@ -12,7 +12,7 @@ export default {
   computed: {
     ...mapGetters(['form', 'profile']),
     design() {
-      return this.field._design
+      return this.field._design || {}
     },
     componentTag() {
       return (
