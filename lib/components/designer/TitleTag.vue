@@ -29,7 +29,8 @@ export default {
     componentLabel() {
       return (
         (this.profile.components[this.design.name] || {}).label ||
-        this.design.name
+        this.design.name ||
+        ''
       )
     },
     icon() {
