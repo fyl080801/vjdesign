@@ -11,6 +11,8 @@ Vue 界面可视化设计器，基于 [vjform](https://github.com/fyl080801/vjfo
 
 本设计器特色功能就是可以支持任何 vue 项目中被引用的组件，不需要二次开发就可以定义支持的组件以及组件的属性，并且对组件的属性和数据的关系以及表单的交互行为也可以通过设计器配置实现
 
+![](https://tva1.sinaimg.cn/large/0081Kckwly1gm6ulep495j31n80u01kx.jpg)
+
 ## 特性
 
 - 可视化拖拽布局
