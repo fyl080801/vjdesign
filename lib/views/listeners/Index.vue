@@ -13,7 +13,37 @@
           ]"
           @click="onSelect(index)"
         >
-          <div class="form-group">
+          <div class="v-jd-listener-watch">
+            <div class="watch-body">
+              <div class="form-group">
+                <property-item
+                  label="监听对象"
+                  :value="item.watch"
+                  @input="value => onWatchChange(value, index)"
+                  :transform="true"
+                  @clear="onWatchChange(undefined, index)"
+                  @changeType="value => onWatchTypeChange(value, index)"
+                >
+                  <div>
+                    <input class="form-control" v-model="item.watch" />
+                  </div>
+                </property-item>
+              </div>
+              <div class="row">
+                <div class="form-group col-md">
+                  <label>深度监听</label>
+                  <div>
+                    <v-jd-switch v-model="item.deep"></v-jd-switch>
+                  </div>
+                </div>
+                <div class="form-group col-md">
+                  <label>立即执行</label>
+                  <div>
+                    <v-jd-switch v-model="item.immediate"></v-jd-switch>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="delete">
               <button
                 class="btn btn-link delete"
@@ -22,26 +52,6 @@
                 <SvgIcon name="trash-alt"></SvgIcon>
                 <span>删除</span>
               </button>
-            </div>
-            <label>监听对象</label>
-            <input
-              class="form-control"
-              :value="item.watch"
-              @change="onWatchChange($event, index)"
-            />
-          </div>
-          <div class="row">
-            <div class="form-group col-md">
-              <label>深度监听</label>
-              <div>
-                <v-jd-switch v-model="item.deep"></v-jd-switch>
-              </div>
-            </div>
-            <div class="form-group col-md">
-              <label>立即执行</label>
-              <div>
-                <v-jd-switch v-model="item.immediate"></v-jd-switch>
-              </div>
             </div>
           </div>
         </li>
@@ -63,9 +73,10 @@ import { mapGetters } from 'vuex'
 import SvgIcon from '../../icons'
 import { Switch } from '../../components/controls'
 import Actions from './Actions'
+import { PropertyItem } from '../../components/controls'
 
 export default {
-  components: { SvgIcon, [Switch.name]: Switch, Actions },
+  components: { SvgIcon, [Switch.name]: Switch, Actions, PropertyItem },
   computed: { ...mapGetters(['form']) },
   methods: {
     onAdd() {
@@ -115,11 +126,38 @@ export default {
     onSelect(index) {
       this.$store.dispatch('form/selectListener', index)
     },
-    onWatchChange(evt, index) {
+    onWatchChange(value, index) {
       this.$store.dispatch('form/updateListener', {
         index,
-        value: evt.target.value
+        value
       })
+    },
+    onWatchTypeChange(value, index) {
+      const cache = this.form.value.listeners[index].watch
+
+      if (value === true) {
+        this.$store.dispatch('form/updateListener', {
+          index,
+          value: { $type: 'design', $cache: cache }
+        })
+      } else {
+        if (
+          typeof cache === 'object' &&
+          cache !== null &&
+          cache.$type === 'design' &&
+          cache.$cache !== undefined
+        ) {
+          this.$store.dispatch('form/updateListener', {
+            index,
+            value: cache.$cache
+          })
+        } else {
+          this.$store.dispatch('form/updateListener', {
+            index,
+            value: undefined
+          })
+        }
+      }
     }
   }
 }
@@ -153,16 +191,17 @@ export default {
           }
         }
 
-        > .form-group {
-          position: relative;
+        > .v-jd-listener-watch {
+          display: flex;
+          align-items: center;
 
-          .delete {
-            position: absolute;
-            right: 0;
+          > .watch-body {
+            flex: 1;
+            margin-right: 1.25rem;
+          }
 
+          > .delete {
             > button {
-              display: contents;
-
               > .svg-icon {
                 margin-right: 0.25rem;
               }
