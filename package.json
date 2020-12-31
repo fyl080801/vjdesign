@@ -32,11 +32,9 @@
     "prepublish": "npm run dist"
   },
   "dependencies": {
-    "ant-design-vue": "^1.7.2",
     "bootstrap": "^4.5.3",
     "codemirror": "^5.59.0",
     "core-js": "^3.8.1",
-    "element-ui": "^2.14.1",
     "jpresent-transform-design": "^0.1.1",
     "jpresent-transform-expression": "^0.2.1",
     "jpresent-transform-modern": "^1.2.1",
@@ -58,6 +56,7 @@
     "@vue/cli-plugin-eslint": "^4.5.9",
     "@vue/cli-service": "^4.5.9",
     "@vue/eslint-config-prettier": "^6.0.0",
+    "ant-design-vue": "^1.7.2",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-import": "^1.13.3",
@@ -67,6 +66,7 @@
     "chalk": "^4.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.6.0",
+    "element-ui": "^2.14.1",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-vue": "^6.1.2",
