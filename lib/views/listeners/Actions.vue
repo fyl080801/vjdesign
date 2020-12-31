@@ -3,7 +3,7 @@
     <div v-if="actions" class="listener-actions">
       <div :key="index" v-for="(item, index) in actions" class="card">
         <div class="card-body">
-          <div class="v-jd-listeners-action">
+          <div class="v-jd-action-item">
             <div class="action-body">
               <div class="row">
                 <property-item
@@ -141,7 +141,7 @@ export default {
       > .card {
         margin-bottom: 0.75rem;
 
-        .v-jd-listeners-action {
+        .v-jd-action-item {
           display: flex;
           align-items: center;
 

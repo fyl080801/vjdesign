@@ -13,7 +13,7 @@
           ]"
           @click="onSelect(index)"
         >
-          <div class="v-jd-listener-watch">
+          <div class="v-jd-watch-item">
             <div class="watch-body">
               <div class="form-group">
                 <property-item
@@ -191,7 +191,7 @@ export default {
           }
         }
 
-        > .v-jd-listener-watch {
+        > .v-jd-watch-item {
           display: flex;
           align-items: center;
 
