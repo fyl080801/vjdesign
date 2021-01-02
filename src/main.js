@@ -14,10 +14,13 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './styles/markdown.scss'
 
 import Select from './components/Select.vue'
+import { elFormExtends } from './utils/designer'
 
 Vue.config.productionTip = false
 
 vjform.use(expression)
+
+vjdesign.form.use(elFormExtends)
 
 Vue.use(Element)
 Vue.use(Antd)

@@ -4,6 +4,7 @@
       "name": "a-button",
       "label": "按钮",
       "group": "Antd 通用",
+      "designer": { "name": "default", "copyClass": false },
       "properties": [
         "fieldOptions.domProps.innerText",
         "fieldOptions.props.disabled",
@@ -365,6 +366,7 @@
       "name": "a-input",
       "label": "输入框",
       "group": "Antd 组件",
+      "designer": { "name": "default", "copyClass": false },
       "properties": [
         "options.direct",
         "fieldOptions.props.value",
@@ -400,6 +402,7 @@
       "name": "a-textarea",
       "label": "文本域",
       "group": "Antd 组件",
+      "designer": { "name": "default", "copyClass": false },
       "properties": [
         "options.direct",
         "fieldOptions.props.value",

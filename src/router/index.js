@@ -16,6 +16,11 @@ export const constantRoutes = [
     component: () => import(/* webpackChunkName: "demo-antd" */ '@/views/Antd')
   },
   {
+    path: '/test',
+    name: 'test',
+    component: () => import(/* webpackChunkName: "demo-test" */ '@/views/Test')
+  },
+  {
     path: '/',
     redirect: '/default'
   }

@@ -362,6 +362,7 @@
       "name": "a-input",
       "label": "输入框",
       "group": "Antd 组件",
+      "designer": { "name": "default", "copyClass": false },
       "properties": [
         "fieldOptions.props.value",
         {
@@ -395,6 +396,7 @@
       "name": "a-textarea",
       "label": "输入框",
       "group": "Antd 组件",
+      "designer": { "name": "default", "copyClass": false },
       "properties": [
         "fieldOptions.props.value",
         "fieldOptions.attrs.placeholder",

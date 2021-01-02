@@ -11,14 +11,8 @@ export default {
   props: { field: Object },
   computed: {
     ...mapGetters(['form', 'profile']),
-    design() {
-      return this.field._design || {}
-    },
     componentTag() {
-      return (
-        (this.profile.components[this.design.name] || {}).label ||
-        this.design.name
-      )
+      return (this.profile.components[this.field.component] || {}).label || ''
     }
   }
 }

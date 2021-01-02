@@ -23,18 +23,13 @@ export default {
   components: { SvgIcon },
   computed: {
     ...mapGetters(['profile', 'form']),
-    design() {
-      return this.field._design || {}
-    },
     componentLabel() {
-      return (
-        (this.profile.components[this.design.name] || {}).label ||
-        this.design.name ||
-        ''
-      )
+      return (this.profile.components[this.field.component] || {}).label || ''
     },
     icon() {
-      return (this.profile.components[this.design.name] || {}).icon || 'square'
+      return (
+        (this.profile.components[this.field.component] || {}).icon || 'square'
+      )
     },
     text() {
       let result =

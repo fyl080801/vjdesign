@@ -280,6 +280,7 @@
       "name": "el-button",
       "label": "按钮",
       "group": "ElementUI",
+      "designer": { "name": "default", "copyClass": false },
       "properties": [
         "fieldOptions.domProps.innerText",
         {

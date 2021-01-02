@@ -28,7 +28,7 @@
 import { mapGetters } from 'vuex'
 import vjform from 'vjform'
 import vuedraggable from 'vuedraggable'
-import designer from '../../internal/providers/designer'
+import { designProvider } from '../../internal/providers/designer'
 import {
   saveComponentCache,
   getComponentCache
@@ -61,8 +61,9 @@ export default {
   },
   methods: {
     onInitialling({ provider }) {
-      provider(designer).withIndex(1000)
-      provider(saveComponentCache).withIndex(-1000)
+      provider(designProvider).withIndex(-Number.MAX_SAFE_INTEGER + 1)
+
+      provider(saveComponentCache).withIndex(-Number.MAX_SAFE_INTEGER)
       provider(getComponentCache)
     },
     onRootUpdate(value) {
