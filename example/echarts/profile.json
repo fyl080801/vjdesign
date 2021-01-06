@@ -1,0 +1,74 @@
+{
+  "components": [
+    {
+      "name": "el-row",
+      "label": "行",
+      "group": "ElementUI",
+      "designer": "classContainer",
+      "properties": [
+        {
+          "name": "fieldOptions.props.gutter",
+          "group": "组件",
+          "label": "间隔",
+          "editor": "number"
+        }
+      ]
+    },
+    {
+      "name": "e-charts",
+      "label": "echarts",
+      "group": "ECharts",
+      "properties": [
+        {
+          "name": "fieldOptions.props.options.title.text",
+          "label": "标题",
+          "group": "Title"
+        },
+        {
+          "name": "fieldOptions.props.options.title.show",
+          "label": "显示标题",
+          "group": "Title",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.options.title.subtext",
+          "label": "副标题",
+          "group": "Title"
+        },
+
+        {
+          "name": "fieldOptions.props.options.xAxis.data",
+          "label": "数据",
+          "group": "xAxis"
+        },
+
+        {
+          "name": "fieldOptions.props.options.legend.data",
+          "label": "图例",
+          "group": "legend"
+        },
+
+        {
+          "name": "fieldOptions.props.options.series",
+          "label": "系列",
+          "group": "series",
+          "editor": "array",
+          "properties": [
+            { "name": "name", "label": "名称" },
+            { "name": "type", "label": "类型" },
+            { "name": "data", "label": "数据" }
+          ]
+        }
+      ]
+    }
+  ],
+  "datasource": [],
+  "functional": [],
+  "schema": {
+    "type": "object",
+    "properties": {
+      "model": {},
+      "params": {}
+    }
+  }
+}

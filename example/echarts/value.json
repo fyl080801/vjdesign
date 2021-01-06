@@ -1,0 +1,49 @@
+{
+  "datasource": {},
+  "listeners": [],
+  "fields": [
+    {
+      "component": "div",
+      "children": [
+        {
+          "component": "e-charts",
+          "fieldOptions": {
+            "props": {
+              "options": {
+                "title": {
+                  "text": "开发中...",
+                  "show": true
+                },
+                "xAxis": {
+                  "data": {
+                    "$type": "design",
+                    "$value": "$:[\"衬衫\",\"羊毛衫\",\"雪纺衫\",\"裤子\",\"高跟鞋\",\"袜子\"]"
+                  }
+                },
+                "legend": {
+                  "data": {
+                    "$type": "design",
+                    "$value": "$:['销量']"
+                  }
+                },
+                "yAxis": {},
+                "series": [
+                  {
+                    "name": "销量",
+                    "type": "bar",
+                    "data": {
+                      "$type": "design",
+                      "$value": "$:[5, 20, 36, 10, 10, 20]"
+                    }
+                  }
+                ]
+              }
+            },
+            "style": "height: 400px"
+          }
+        }
+      ]
+    }
+  ],
+  "model": {}
+}
