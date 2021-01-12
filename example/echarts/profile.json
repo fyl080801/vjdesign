@@ -39,13 +39,15 @@
         {
           "name": "fieldOptions.props.options.xAxis.data",
           "label": "数据",
-          "group": "xAxis"
+          "group": "xAxis",
+          "editor": "tags"
         },
 
         {
           "name": "fieldOptions.props.options.legend.data",
           "label": "图例",
-          "group": "legend"
+          "group": "legend",
+          "editor": "tags"
         },
 
         {
@@ -56,7 +58,7 @@
           "properties": [
             { "name": "name", "label": "名称" },
             { "name": "type", "label": "类型" },
-            { "name": "data", "label": "数据" }
+            { "name": "data", "label": "数据", "editor": "tags" }
           ]
         }
       ]

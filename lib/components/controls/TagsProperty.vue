@@ -25,12 +25,20 @@ export default {
   },
   methods: {
     onValueChange(evt) {
-      const inputs = (evt.target.value || '').split(',')
+      if (!evt.target.value || evt.target.value.trim() === '') {
+        this.$emit('input', [])
+        return
+      }
+
+      const inputs = evt.target.value.split(',')
       const isNumber =
         inputs.filter(item => /^([-+]?[0-9])+(\.[0-9]+)?$/g.test(item.trim()))
           .length === inputs.length
 
-      this.$emit('input', isNumber ? inputs.map(item => +item.trim()) : inputs)
+      this.$emit(
+        'input',
+        inputs.map(item => (isNumber ? +item.trim() : item))
+      )
     }
   }
 }
