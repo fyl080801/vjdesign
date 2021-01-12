@@ -18,17 +18,26 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'v-jd-title-tag',
   props: {
-    field: Object
+    field: Object,
+    design: Object
   },
   components: { SvgIcon },
   computed: {
     ...mapGetters(['profile', 'form']),
     componentLabel() {
-      return (this.profile.components[this.field.component] || {}).label || ''
+      return (
+        (
+          this.profile.components[this.design.name || this.field.component] ||
+          {}
+        ).label || ''
+      )
     },
     icon() {
       return (
-        (this.profile.components[this.field.component] || {}).icon || 'square'
+        (
+          this.profile.components[this.design.name || this.field.component] ||
+          {}
+        ).icon || 'square'
       )
     },
     text() {
