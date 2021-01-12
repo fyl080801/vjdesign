@@ -15,6 +15,20 @@
       ]
     },
     {
+      "name": "el-col",
+      "label": "列",
+      "group": "ElementUI",
+      "designer": "classContainer",
+      "properties": [
+        {
+          "name": "fieldOptions.props.span",
+          "group": "组件",
+          "label": "列宽",
+          "editor": "number"
+        }
+      ]
+    },
+    {
       "name": "e-charts",
       "label": "echarts",
       "group": "ECharts",
@@ -37,10 +51,35 @@
         },
 
         {
+          "name": "fieldOptions.props.options.xAxis.show",
+          "label": "显示",
+          "group": "X 轴",
+          "editor": "checkbox",
+          "default": true
+        },
+        {
+          "name": "fieldOptions.props.options.xAxis.name",
+          "label": "名称",
+          "group": "X 轴"
+        },
+        {
           "name": "fieldOptions.props.options.xAxis.data",
           "label": "数据",
-          "group": "xAxis",
+          "group": "X 轴",
           "editor": "tags"
+        },
+
+        {
+          "name": "fieldOptions.props.options.yAxis.show",
+          "label": "是否显示",
+          "group": "Y 轴",
+          "editor": "checkbox",
+          "default": true
+        },
+        {
+          "name": "fieldOptions.props.options.yAxis.name",
+          "label": "名称",
+          "group": "Y 轴"
         },
 
         {

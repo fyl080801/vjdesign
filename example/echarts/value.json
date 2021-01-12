@@ -6,31 +6,110 @@
       "component": "div",
       "children": [
         {
-          "component": "e-charts",
+          "component": "el-row",
+          "children": [
+            {
+              "component": "el-col",
+              "fieldOptions": {
+                "props": {
+                  "span": 12
+                }
+              },
+              "children": [
+                {
+                  "component": "e-charts",
+                  "fieldOptions": {
+                    "props": {
+                      "options": {
+                        "title": {
+                          "text": "开发中...",
+                          "show": true
+                        },
+                        "xAxis": {
+                          "data": [
+                            "衬衫",
+                            "羊毛衫",
+                            "雪纺衫",
+                            "裤子",
+                            "高跟鞋",
+                            "袜子"
+                          ],
+                          "show": true,
+                          "name": "货品"
+                        },
+                        "legend": {
+                          "data": ["2019年", "2020年"]
+                        },
+                        "yAxis": {
+                          "show": true,
+                          "name": "销量"
+                        },
+                        "series": [
+                          {
+                            "name": "2019年",
+                            "type": "bar",
+                            "data": [5, 20, 36, 10, 10, 20]
+                          },
+                          {
+                            "name": "2020年",
+                            "type": "bar",
+                            "data": [22, 33, 11, 50, 30, 12]
+                          }
+                        ]
+                      }
+                    },
+                    "style": "height: 400px"
+                  }
+                }
+              ]
+            },
+            {
+              "component": "el-col",
+              "fieldOptions": {
+                "props": {
+                  "span": 12
+                }
+              },
+              "children": [
+                {
+                  "component": "e-charts",
+                  "fieldOptions": {
+                    "props": {
+                      "options": {
+                        "xAxis": {
+                          "data": ["香蕉", "苹果", "橘子", "榴莲"],
+                          "show": true
+                        },
+                        "legend": {
+                          "data": ["产出"]
+                        },
+                        "series": [
+                          {
+                            "name": "产出",
+                            "type": "bar",
+                            "data": [12, 33, 4, 2]
+                          }
+                        ],
+                        "title": {
+                          "text": "test",
+                          "show": true
+                        },
+                        "yAxis": {
+                          "show": true,
+                          "name": "公斤"
+                        }
+                      }
+                    },
+                    "style": "height: 400px"
+                  }
+                }
+              ]
+            }
+          ],
           "fieldOptions": {
             "props": {
-              "options": {
-                "title": {
-                  "text": "开发中...",
-                  "show": true
-                },
-                "xAxis": {
-                  "data": ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-                },
-                "legend": {
-                  "data": ["销量"]
-                },
-                "yAxis": {},
-                "series": [
-                  {
-                    "name": "销量",
-                    "type": "bar",
-                    "data": [5, 20, 36, 10, 10, 20]
-                  }
-                ]
-              }
-            },
-            "style": "height: 400px"
+              "gutter": 20
+            }
           }
         }
       ]
