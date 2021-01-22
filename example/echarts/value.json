@@ -77,17 +77,31 @@
                     "props": {
                       "options": {
                         "xAxis": {
-                          "data": ["香蕉", "苹果", "橘子", "榴莲"],
-                          "show": true
+                          "show": false
                         },
-                        "legend": {
-                          "data": ["产出"]
-                        },
+                        "legend": {},
                         "series": [
                           {
                             "name": "产出",
-                            "type": "bar",
-                            "data": [12, 33, 4, 2]
+                            "type": "pie",
+                            "data": [
+                              {
+                                "value": "12",
+                                "name": "香蕉"
+                              },
+                              {
+                                "value": "33",
+                                "name": "苹果"
+                              },
+                              {
+                                "value": "24",
+                                "name": "橘子"
+                              },
+                              {
+                                "value": "5",
+                                "name": "榴莲"
+                              }
+                            ]
                           }
                         ],
                         "title": {
@@ -95,8 +109,7 @@
                           "show": true
                         },
                         "yAxis": {
-                          "show": true,
-                          "name": "公斤"
+                          "show": false
                         }
                       }
                     },

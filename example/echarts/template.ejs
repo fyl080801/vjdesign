@@ -18,12 +18,20 @@
     <div id="app"><j-former v-bind:config="config"></j-former></div>
     <script>
       Vue.component('e-charts', {
-        template: '<div ref="container"></div>',
+        template: '<div ref="container" v-bind:style="styles"></div>',
         props: {
           options: Object
         },
         data() {
           return { instance: null }
+        },
+        computed: {
+          styles() {
+            return {
+              width: this.width || '100%',
+              height: this.height || '100%'
+            }
+          }
         },
         watch: {
           options: {

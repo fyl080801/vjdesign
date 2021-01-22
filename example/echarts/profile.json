@@ -34,6 +34,18 @@
       "group": "ECharts",
       "properties": [
         {
+          "name": "fieldOptions.props.width",
+          "label": "宽度",
+          "group": "组件样式"
+        },
+        {
+          "name": "fieldOptions.props.height",
+          "label": "高度",
+          "group": "组件样式",
+          "default": "400px"
+        },
+
+        {
           "name": "fieldOptions.props.options.title.text",
           "label": "标题",
           "group": "Title"
@@ -96,8 +108,30 @@
           "editor": "array",
           "properties": [
             { "name": "name", "label": "名称" },
-            { "name": "type", "label": "类型" },
-            { "name": "data", "label": "数据", "editor": "tags" }
+            {
+              "name": "type",
+              "label": "类型",
+              "editor": {
+                "name": "select",
+                "options": {
+                  "items": [
+                    { "value": "bar", "label": "柱状图" },
+                    { "value": "line", "label": "折线图" },
+                    { "value": "pie", "label": "饼图" },
+                    { "value": "scatter", "label": "分散图" }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "data",
+              "label": "数据",
+              "editor": "array",
+              "properties": [
+                { "name": "value", "label": "数值" },
+                { "name": "name", "label": "名称" }
+              ]
+            }
           ]
         }
       ]
