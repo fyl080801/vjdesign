@@ -48,13 +48,21 @@
         <div class="input-group-prepend">
           <label class="input-group-text" :value="model">数据</label>
         </div>
-        <input class="form-control" :value="model" @change="onChangeModel" />
+        <input
+          class="form-control transform-input"
+          :value="model"
+          @change="onChangeModel"
+        />
       </div>
       <div class="input-group">
         <div class="input-group-prepend">
           <label class="input-group-text">实现</label>
         </div>
-        <input class="form-control" :value="expr" @change="onChangeExpr" />
+        <input
+          class="form-control transform-input"
+          :value="expr"
+          @change="onChangeExpr"
+        />
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button">
             <svg-icon name="edit"></svg-icon>
@@ -199,6 +207,10 @@ export default {
         &:last-child {
           margin-bottom: inherit;
         }
+      }
+
+      .transform-input {
+        font-family: 'DejaVu Sans Mono', monospace;
       }
     }
 
