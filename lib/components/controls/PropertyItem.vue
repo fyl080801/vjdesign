@@ -49,7 +49,7 @@
           <label class="input-group-text" :value="model">数据</label>
         </div>
         <input
-          class="form-control transform-input"
+          class="form-control v-jd-transform-input"
           :value="model"
           @change="onChangeModel"
         />
@@ -59,12 +59,16 @@
           <label class="input-group-text">实现</label>
         </div>
         <input
-          class="form-control transform-input"
+          class="form-control v-jd-transform-input"
           :value="expr"
           @change="onChangeExpr"
         />
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            @click="onOpenEditor"
+          >
             <svg-icon name="edit"></svg-icon>
           </button>
         </div>
@@ -79,6 +83,7 @@
 <script>
 import SvgIcon from '../../icons'
 import { isArray } from 'lodash-es'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'v-jd-property-item',
@@ -97,6 +102,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['popup']),
     hasValue() {
       return this.value !== undefined
     },
@@ -168,6 +174,57 @@ export default {
       this.expr = evt.target.value
     },
     //
+    onOpenEditor() {
+      const model = { expr: this.expr }
+      this.$store.dispatch('popup/show', {
+        model,
+        size: 'xl',
+        form: {
+          initialling: ({ functional }) => {
+            functional('SUBMIT_EXPR', () => {
+              this.expr = model.expr
+              this.$store.dispatch('popup/close')
+            })
+          },
+          fields: [
+            {
+              component: 'v-jd-modal-content',
+              fieldOptions: {
+                props: { title: '编辑表达式' }
+              },
+              children: [
+                {
+                  component: 'input',
+                  model: ['expr'],
+                  fieldOptions: { class: 'form-control v-jd-transform-input' }
+                },
+                {
+                  component: 'button',
+                  text: '确定',
+                  fieldOptions: {
+                    slot: 'footer',
+                    class: 'btn btn-primary',
+                    on: {
+                      click: '@:SUBMIT_EXPR()'
+                    }
+                  }
+                },
+                {
+                  component: 'button',
+                  text: '取消',
+                  fieldOptions: {
+                    slot: 'footer',
+                    class: 'btn btn-secondary',
+                    on: { click: () => this.$store.dispatch('popup/close') }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      })
+    },
+    //
     updateValue() {
       this.value.$value = `${this.type}${this.model}:${this.expr}`
     },
@@ -199,6 +256,10 @@ export default {
 <style lang="scss">
 .v-jdesign,
 .v-jdesign-modal {
+  .v-jd-transform-input {
+    font-family: 'DejaVu Sans Mono', monospace;
+  }
+
   .v-jd-property-item {
     &.transform {
       .input-group {
@@ -207,10 +268,6 @@ export default {
         &:last-child {
           margin-bottom: inherit;
         }
-      }
-
-      .transform-input {
-        font-family: 'DejaVu Sans Mono', monospace;
       }
     }
 
