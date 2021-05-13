@@ -53,7 +53,7 @@ Vue.use(vjdesign)
 
 ## 相关链接
 
-[在线示例](https://fyl080801.github.io/vjdesign/example) 已追加导出功能
+[在线示例](https://fyl080801.github.io/vjdesign/example) 已追加导出功能，速度慢可访问 [国内环境](https://fyl080801.gitee.io/vjdesign)
 
 [使用文档](https://fyl080801.github.io/vjdesign/) 完善中...
 
