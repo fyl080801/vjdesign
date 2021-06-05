@@ -1,0 +1,288 @@
+{
+  "datasource": {
+    "radiovalues": {
+      "type": "object",
+      "data": {
+        "$type": "design",
+        "$value": "$:[{value:1,label:'radio1'},{value:2,label:'radio2'}]"
+      }
+    }
+  },
+  "listeners": [],
+  "fields": [
+    {
+      "component": "div",
+      "children": [
+        {
+          "component": "a-page-header",
+          "fieldOptions": {
+            "props": {
+              "title": "测试页",
+              "subTitle": "测试"
+            }
+          },
+          "children": [
+            {
+              "component": "p",
+              "fieldOptions": {
+                "domProps": {
+                  "innerText": "antd 的值变更和element不同，触发input事件或change事件后不一定会返回值还是InputEvent，因此先手动加上处理逻辑，以后加转换简化"
+                }
+              }
+            },
+            {
+              "component": "p",
+              "fieldOptions": {
+                "domProps": {
+                  "innerText": "antd 输入等交互组件在设置 rules 做表单验证时，由于 a-from-item 只劫持唯一下级元素的事件，因此会导致交互操作无法触发验证的现象，这时需要在组件设置里加上 options: { direct: true } 避免 vjform 渲染这个元素时使用代理节点，但这可能会导致交互元素具有过多的联动关系时出现性能问题，也可以通过转换定义 blur 和 change 的事件来解决这个问题"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "component": "a-form-model",
+          "fieldOptions": {
+            "props": {
+              "labelCol": {
+                "span": "4"
+              },
+              "wrapperCol": {
+                "span": "20"
+              },
+              "model": {
+                "$type": "design",
+                "$value": "$:model"
+              }
+            },
+            "ref": "form"
+          },
+          "children": [
+            {
+              "component": "a-form-model-item",
+              "fieldOptions": {
+                "props": {
+                  "label": "aaaaa",
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填项",
+                      "trigger": "blur"
+                    },
+                    {
+                      "trigger": "change",
+                      "min": 1,
+                      "max": 5
+                    }
+                  ],
+                  "prop": "text1"
+                }
+              },
+              "children": [
+                {
+                  "component": "a-input",
+                  "options": {
+                    "direct": true
+                  },
+                  "fieldOptions": {
+                    "props": {
+                      "value": {
+                        "$type": "design",
+                        "$value": "$:model.text1"
+                      }
+                    },
+                    "on": {
+                      "input": {
+                        "$type": "design",
+                        "$value": "@text1:arguments[0].target.value"
+                      }
+                    },
+                    "attrs": {}
+                  }
+                }
+              ]
+            },
+            {
+              "component": "a-row",
+              "children": [
+                {
+                  "component": "a-col",
+                  "fieldOptions": {
+                    "props": {
+                      "span": "$:12"
+                    }
+                  },
+                  "children": [
+                    {
+                      "component": "a-form-model-item",
+                      "fieldOptions": {
+                        "props": {
+                          "label": "bbb",
+                          "labelCol": {
+                            "span": "8"
+                          },
+                          "wrapperCol": {
+                            "span": "16"
+                          },
+                          "prop": "selected"
+                        }
+                      },
+                      "children": [
+                        {
+                          "component": "a-select",
+                          "options": {
+                            "direct": true
+                          },
+                          "fieldOptions": {
+                            "props": {
+                              "options": "$:[{value:1,label:'选项1'}, {value:2,label:'选项2'}]",
+                              "value": "$:model.selected"
+                            },
+                            "on": {
+                              "input": "@selected:arguments[0].target.value",
+                              "change": "@selected:arguments[0]"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "component": "a-col",
+                  "fieldOptions": {
+                    "props": {
+                      "span": "$:12"
+                    }
+                  },
+                  "children": [
+                    {
+                      "component": "a-form-model-item",
+                      "fieldOptions": {
+                        "props": {
+                          "label": "ccc",
+                          "labelCol": {
+                            "span": "8"
+                          },
+                          "wrapperCol": {
+                            "span": "16"
+                          },
+                          "prop": "text2"
+                        }
+                      },
+                      "children": [
+                        {
+                          "component": "a-textarea",
+                          "options": {
+                            "direct": true
+                          },
+                          "fieldOptions": {
+                            "props": {
+                              "value": "$:model.text2"
+                            },
+                            "on": {
+                              "input": "@text2:arguments[0].target.value"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "fieldOptions": {
+                "props": {}
+              }
+            },
+            {
+              "component": "a-form-model-item",
+              "fieldOptions": {
+                "props": {
+                  "label": "radios",
+                  "prop": "radiovalue"
+                }
+              },
+              "children": [
+                {
+                  "component": "a-radio-group",
+                  "options": {
+                    "direct": true
+                  },
+                  "fieldOptions": {
+                    "props": {
+                      "value": {
+                        "$type": "design",
+                        "$value": "$:model.radiovalue"
+                      },
+                      "options": {
+                        "$type": "design",
+                        "$value": "$:datasource.radiovalues.data"
+                      }
+                    },
+                    "on": {
+                      "change": {
+                        "$type": "design",
+                        "$value": "@radiovalue:arguments[0].target.value"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "component": "a-form-model-item",
+              "children": [
+                {
+                  "component": "a-space",
+                  "children": [
+                    {
+                      "component": "a-button",
+                      "fieldOptions": {
+                        "domProps": {
+                          "innerText": "确定"
+                        },
+                        "props": {
+                          "ghost": false,
+                          "block": false,
+                          "type": "primary"
+                        },
+                        "on": {
+                          "click": {
+                            "$type": "design",
+                            "$value": "@:refs.form.validate().then(()=>{alert(JSON.stringify(model))})"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "component": "a-button",
+                      "fieldOptions": {
+                        "domProps": {
+                          "innerText": "重置"
+                        },
+                        "on": {
+                          "click": {
+                            "$type": "design",
+                            "$value": "@:refs.form.resetFields()"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "fieldOptions": {
+                "props": {
+                  "wrapperCol": {
+                    "offset": "4"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "model": {}
+}

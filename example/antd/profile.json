@@ -1,0 +1,787 @@
+{
+  "components": [
+    {
+      "name": "a-button",
+      "label": "按钮",
+      "group": "Antd 通用",
+      "designer": { "name": "default", "copyClass": false },
+      "properties": [
+        "fieldOptions.domProps.innerText",
+        "fieldOptions.props.disabled",
+        "fieldOptions.props.size",
+        {
+          "name": "fieldOptions.props.type",
+          "label": "按钮类型",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "primary", "label": "主要" },
+                { "value": "dashed", "label": "Dashed" },
+                { "value": "danger", "label": "Danger" },
+                { "value": "link", "label": "链接" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.ghost",
+          "label": "按钮背景透明",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.block",
+          "label": "匹配父宽度",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.icon",
+          "label": "图标类型",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.shape",
+          "label": "按钮形状",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "circle", "label": "圆形" },
+                { "value": "round", "label": "圆角" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.loading",
+          "label": "载入状态",
+          "group": "组件"
+        },
+        "fieldOptions.on.click",
+        "events"
+      ]
+    },
+    {
+      "name": "a-icon",
+      "label": "图标",
+      "group": "Antd 通用",
+      "properties": [
+        {
+          "name": "fieldOptions.attrs.type",
+          "label": "图标类型",
+          "group": "组件",
+          "editor": "default",
+          "default": " "
+        }
+      ]
+    },
+    {
+      "name": "a-row",
+      "label": "行",
+      "group": "Antd 布局",
+      "designer": "classContainer",
+      "properties": [
+        {
+          "name": "fieldOptions.props.gutter",
+          "label": "栅格间隔",
+          "group": "组件"
+        }
+      ]
+    },
+    {
+      "name": "a-col",
+      "label": "列",
+      "group": "Antd 布局",
+      "designer": "classContainer",
+      "properties": [
+        {
+          "name": "fieldOptions.props.span",
+          "label": "栅格占位格数",
+          "group": "组件",
+          "editor": "number"
+        }
+      ]
+    },
+    {
+      "name": "a-space",
+      "label": "间距",
+      "group": "Antd 布局",
+      "designer": "divContainer",
+      "properties": [
+        {
+          "name": "fieldOptions.props.align",
+          "label": "对齐方式",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "start", "label": "起始" },
+                { "value": "end", "label": "末尾" },
+                { "value": "center", "label": "中心" },
+                { "value": "baseline", "label": "基线" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.direction",
+          "label": "间距方向",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "horizontal", "label": "横向" },
+                { "value": "vertical", "label": "垂直" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.size",
+          "label": "间距大小",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "small", "label": "小" },
+                { "value": "middle", "label": "中" },
+                { "value": "large", "label": "大" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "a-affix",
+      "label": "固定",
+      "group": "Antd 导航",
+      "designer": "classContainer",
+      "properties": [
+        {
+          "name": "fieldOptions.props.offsetBottom",
+          "label": "距离窗口底部触发",
+          "group": "组件",
+          "editor": "number"
+        },
+        {
+          "name": "fieldOptions.props.offsetTop",
+          "label": "距离窗口顶部触发",
+          "group": "组件",
+          "editor": "number"
+        }
+      ]
+    },
+    {
+      "name": "a-page-header",
+      "label": "页头",
+      "group": "Antd 导航",
+      "designer": "classContainer",
+      "properties": [
+        {
+          "name": "fieldOptions.props.title",
+          "label": "标题文字",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.subTitle",
+          "label": "二级标题文字",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.ghost",
+          "label": "标题类型",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.on.back",
+          "label": "返回点击事件",
+          "transform": ["@"],
+          "group": "事件"
+        }
+      ]
+    },
+    {
+      "name": "a-pagination",
+      "label": "分页",
+      "group": "Antd 导航",
+      "properties": [
+        {
+          "name": "fieldOptions.props.current",
+          "label": "当前页数",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.pageSize",
+          "label": "每页条数",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.total",
+          "label": "数据总数",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.hideOnSinglePage",
+          "label": "只有一页时是否隐藏",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.current",
+          "label": "当前页数",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.on.change",
+          "label": "页码改变",
+          "transform": ["@"],
+          "group": "事件"
+        },
+        {
+          "name": "fieldOptions.on.showSizeChange",
+          "label": "分页大小改变",
+          "transform": ["@"],
+          "group": "事件"
+        },
+        "events"
+      ]
+    },
+
+    {
+      "name": "a-form-model",
+      "label": "表单",
+      "group": "Antd 组件",
+      "designer": "container",
+      "properties": [
+        {
+          "name": "fieldOptions.props.model",
+          "label": "表单数据",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.labelAlign",
+          "label": "标签的对齐方式",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "left", "label": "左侧" },
+                { "value": "right", "label": "右侧" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.layout",
+          "label": "表单布局",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "horizontal", "label": "横向" },
+                { "value": "vertical", "label": "纵向" },
+                { "value": "inline", "label": "行内" }
+              ]
+            }
+          }
+        },
+        "fieldOptions.props.labelCol.span",
+        "fieldOptions.props.labelCol.offset",
+        "fieldOptions.props.wrapperCol.span",
+        "fieldOptions.props.wrapperCol.offset",
+
+        {
+          "name": "fieldOptions.on.submit",
+          "label": "验证成功后提交",
+          "transform": ["@"],
+          "group": "事件"
+        },
+        {
+          "name": "fieldOptions.on.validate",
+          "label": "验证触发后",
+          "transform": ["@"],
+          "group": "事件"
+        }
+      ]
+    },
+    {
+      "name": "a-form-model-item",
+      "label": "表单项",
+      "group": "Antd 组件",
+      "designer": "container",
+      "properties": [
+        {
+          "name": "fieldOptions.props.label",
+          "label": "标签",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.prop",
+          "label": "数据属性",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.rules",
+          "label": "验证规则",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.help",
+          "label": "提示信息",
+          "group": "组件"
+        },
+        "fieldOptions.props.labelCol.span",
+        "fieldOptions.props.labelCol.offset",
+        "fieldOptions.props.wrapperCol.span",
+        "fieldOptions.props.wrapperCol.offset",
+        "fieldOptions.props.rules"
+      ]
+    },
+    {
+      "name": "a-input-group",
+      "label": "组合输入",
+      "group": "Antd 组件",
+      "properties": [
+        {
+          "name": "fieldOptions.props.compact",
+          "label": "紧凑模式",
+          "group": "组件",
+          "editor": "checkbox"
+        }
+      ]
+    },
+    {
+      "name": "a-input",
+      "label": "输入框",
+      "group": "Antd 组件",
+      "designer": { "name": "default", "copyClass": false },
+      "properties": [
+        "options.direct",
+        "fieldOptions.props.value",
+        {
+          "name": "fieldOptions.props.type",
+          "label": "类型",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "text", "label": "文本" },
+                { "value": "number", "label": "数字" },
+                { "value": "password", "label": "密码" }
+              ]
+            }
+          }
+        },
+        "fieldOptions.attrs.placeholder",
+        "fieldOptions.props.disabled",
+        "fieldOptions.props.allowClear",
+        {
+          "name": "fieldOptions.props.maxLength",
+          "label": "最大长度",
+          "group": "组件"
+        },
+
+        "fieldOptions.on.input",
+        "events"
+      ]
+    },
+    {
+      "name": "a-textarea",
+      "label": "文本域",
+      "group": "Antd 组件",
+      "designer": { "name": "default", "copyClass": false },
+      "properties": [
+        "options.direct",
+        "fieldOptions.props.value",
+        "fieldOptions.attrs.placeholder",
+        "fieldOptions.props.disabled",
+        {
+          "name": "fieldOptions.props.autosize",
+          "label": "自适应内容高度",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        "fieldOptions.props.allowClear",
+
+        "fieldOptions.on.input",
+        "events"
+      ]
+    },
+    {
+      "name": "a-select",
+      "label": "选择器",
+      "group": "Antd 组件",
+      "properties": [
+        "options.direct",
+        "fieldOptions.props.value",
+        "fieldOptions.attrs.placeholder",
+        "fieldOptions.props.disabled",
+        "fieldOptions.props.allowClear",
+        {
+          "name": "fieldOptions.props.options",
+          "label": "选项数据",
+          "group": "组件"
+        },
+
+        {
+          "name": "fieldOptions.on.change",
+          "label": "值变更",
+          "group": "数据"
+        },
+        "events"
+      ]
+    },
+    {
+      "name": "a-radio-group",
+      "label": "单选框组",
+      "group": "Antd 组件",
+      "properties": [
+        "options.direct",
+        "fieldOptions.props.value",
+        "fieldOptions.props.disabled",
+        {
+          "name": "fieldOptions.props.options",
+          "label": "选项数据",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.on.change",
+          "label": "值变更",
+          "group": "数据"
+        },
+        "events"
+      ]
+    },
+    {
+      "name": "a-checkbox-group",
+      "label": "多选框组",
+      "group": "Antd 组件",
+      "properties": [
+        "options.direct",
+        "fieldOptions.props.value",
+        "fieldOptions.props.disabled",
+        {
+          "name": "fieldOptions.props.options",
+          "label": "选项数据",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.on.change",
+          "label": "值变更",
+          "group": "数据"
+        },
+        "events"
+      ]
+    },
+    {
+      "name": "a-checkbox",
+      "label": "多选框",
+      "group": "Antd 组件",
+      "properties": [
+        "options.direct",
+        {
+          "name": "fieldOptions.props.checked",
+          "label": "值",
+          "group": "数据"
+        },
+        "fieldOptions.props.disabled",
+        {
+          "name": "fieldOptions.props.options",
+          "label": "选项数据",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.on.change",
+          "label": "值变更",
+          "group": "数据"
+        },
+        "events"
+      ]
+    },
+    {
+      "name": "a-switch",
+      "label": "开关",
+      "group": "Antd 组件",
+      "properties": [
+        "options.direct",
+        {
+          "name": "fieldOptions.props.checked",
+          "label": "值",
+          "group": "数据"
+        },
+        "fieldOptions.props.disabled",
+        {
+          "name": "fieldOptions.on.change",
+          "label": "值变更",
+          "group": "数据"
+        },
+        "events"
+      ]
+    },
+    {
+      "name": "a-date-picker",
+      "label": "日期选择",
+      "group": "Antd 组件",
+      "properties": [
+        "options.direct",
+        "fieldOptions.props.value",
+        "fieldOptions.attrs.placeholder",
+        "fieldOptions.props.disabled",
+        "fieldOptions.props.allowClear",
+        {
+          "name": "fieldOptions.props.valueFormat",
+          "label": "绑定值的格式",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.format",
+          "label": "展示格式",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.ranges",
+          "label": "时间范围",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.on.change",
+          "label": "值变更",
+          "group": "数据"
+        }
+      ]
+    },
+
+    {
+      "name": "a-table",
+      "label": "表格",
+      "group": "Antd 数据展示",
+      "properties": [
+        {
+          "name": "fieldOptions.props.tableLayout",
+          "label": "布局",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "auto", "label": "自动" },
+                { "value": "fixed", "label": "固定表头" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.showHeader",
+          "label": "显示表头",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.bordered",
+          "label": "是否展示外边框",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.size",
+          "label": "表格大小",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "default", "label": "默认" },
+                { "value": "middle", "label": "中等" },
+                { "value": "small", "label": "小" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.loading",
+          "label": "是否加载中",
+          "group": "状态",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.columns",
+          "label": "列集合",
+          "group": "组件",
+          "editor": "array",
+          "properties": [
+            { "name": "title", "label": "列标题" },
+            { "name": "width", "label": "列宽" },
+            { "name": "dataIndex", "label": "数据属性", "transform": false },
+            {
+              "name": "ellipsis",
+              "label": "超过宽度自动省略",
+              "editor": "checkbox",
+              "transform": false
+            },
+            {
+              "name": "colSpan",
+              "label": "表头合并",
+              "editor": "number",
+              "transform": false
+            },
+            {
+              "name": "fixed",
+              "label": "固定列",
+              "editor": {
+                "name": "select",
+                "options": {
+                  "items": [
+                    { "value": true, "label": "固定" },
+                    { "value": "left", "label": "左侧" },
+                    { "value": "right", "label": "右侧" }
+                  ]
+                }
+              },
+              "transform": false
+            }
+          ]
+        },
+        {
+          "name": "fieldOptions.props.dataSource",
+          "label": "表格数据",
+          "group": "数据"
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "fieldOptions.props.value",
+      "label": "值",
+      "group": "数据"
+    },
+    {
+      "name": "fieldOptions.props.disabled",
+      "label": "是否禁用",
+      "group": "基础"
+    },
+    {
+      "name": "fieldOptions.props.size",
+      "label": "大小",
+      "group": "组件",
+      "editor": {
+        "name": "select",
+        "options": {
+          "items": [
+            { "value": "small", "label": "小" },
+            { "value": "large", "label": "大" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "fieldOptions.props.allowClear",
+      "label": "是否可清除",
+      "group": "组件",
+      "editor": "checkbox"
+    },
+    {
+      "name": "fieldOptions.props.labelCol.span",
+      "label": "标签占位",
+      "group": "布局",
+      "editor": "number"
+    },
+    {
+      "name": "fieldOptions.props.labelCol.offset",
+      "label": "标签位移",
+      "group": "布局",
+      "editor": "number"
+    },
+    {
+      "name": "fieldOptions.props.wrapperCol.span",
+      "label": "输入占位",
+      "group": "布局",
+      "editor": "number"
+    },
+    {
+      "name": "fieldOptions.props.wrapperCol.offset",
+      "label": "输入位移",
+      "group": "布局",
+      "editor": "number"
+    },
+    {
+      "name": "fieldOptions.props.rules",
+      "label": "验证规则",
+      "group": "组件",
+      "properties": [
+        {
+          "name": "type",
+          "label": "类型",
+          "transform": false,
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "string", "label": "字符串" },
+                { "value": "number", "label": "数字" },
+                { "value": "boolean", "label": "布尔" },
+                { "value": "array", "label": "数组" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "trigger",
+          "label": "触发时机",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "blur", "label": "失去焦点" },
+                { "value": "change", "label": "值变更" }
+              ]
+            }
+          }
+        },
+        { "name": "required", "label": "是否必填", "editor": "switch" },
+        {
+          "name": "whitespace",
+          "label": "空格是否会被视为错误",
+          "editor": "checkbox"
+        },
+        { "name": "message", "label": "错误提示" },
+        { "name": "min", "label": "最小值", "editor": "number" },
+        { "name": "max", "label": "最大值", "editor": "number" },
+        { "name": "pattern", "label": "正则" }
+      ],
+      "editor": "array"
+    },
+
+    {
+      "name": "fieldOptions.on.input",
+      "label": "输入",
+      "group": "数据",
+      "transform": ["@"]
+    },
+    {
+      "name": "fieldOptions.on.change",
+      "label": "值变更",
+      "transform": ["@"],
+      "group": "事件"
+    },
+    {
+      "name": "fieldOptions.on.click",
+      "label": "点击",
+      "transform": ["@"],
+      "group": "事件"
+    }
+  ]
+}

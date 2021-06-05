@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ant Design 示例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vjdesign"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jformer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ant-design-vue/dist/antd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver/dist/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ejs"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/vjdesign/dist/vjdesign.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/ant-design-vue/dist/antd.css"
+    />
+    <style>
+      html {
+        font-size: 14px;
+      }
+
+      #app {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .demo-wrapper {
+        position: absolute;
+        top: 50px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      header {
+        line-height: 49px;
+        border-bottom: 1px solid silver;
+        padding: 0 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <a-button @click="previewShow=true">预览</a-button>
+        <a-button @click="exportTemplate">导出</a-button>
+      </header>
+      <div class="demo-wrapper">
+        <v-jdesign v-model="model" v-bind:profile="profile"></v-jdesign>
+      </div>
+      <a-modal
+        v-model="previewShow"
+        title="预览"
+        @ok="previewShow=false"
+        @cancel="previewShow=false"
+        width="720px"
+      >
+        <j-former
+          v-if="previewShow"
+          v-model="preview"
+          v-bind:config="model"
+        ></j-former>
+      </a-modal>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data() {
+          return {
+            preview: {},
+            model: {},
+            profile: {},
+            previewShow: false
+          }
+        },
+        methods: {
+          exportTemplate() {
+            fetch('./template.ejs').then(response => {
+              response.text().then(text => {
+                saveAs(
+                  new Blob(
+                    [ejs.render(text, { model: JSON.stringify(this.model) })],
+                    {
+                      type: 'text/plain;charset=utf-8'
+                    }
+                  ),
+                  'example.html'
+                )
+              })
+            })
+          }
+        },
+        async mounted() {
+          const config = await fetch('value.json', { method: 'GET' })
+          const profile = await fetch('profile.json', {
+            method: 'GET'
+          })
+          this.model = await config.json()
+          this.profile = await profile.json()
+        }
+      })
+    </script>
+  </body>
+</html>

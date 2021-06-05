@@ -1,0 +1,365 @@
+{
+  "datasource": {
+    "listdata": {
+      "type": "request",
+      "method": "GET",
+      "url": "https://fyl080801.github.io/vjdesign/example/element/data/list.json",
+      "autoload": true
+    },
+    "sublist": {
+      "type": "request",
+      "method": "GET",
+      "url": {
+        "$type": "design",
+        "$value": "#:https://fyl080801.github.io/vjdesign/example/element/data/sublist/${model.selected}.json"
+      },
+      "autoload": false
+    }
+  },
+  "listeners": [
+    {
+      "actions": [
+        {
+          "handler": {
+            "$type": "design",
+            "$value": "@:datasource.sublist.load()"
+          },
+          "condition": {
+            "$type": "design",
+            "$value": "$:model.selected"
+          }
+        },
+        {
+          "handler": {
+            "$type": "design",
+            "$value": "@subselected:null"
+          }
+        }
+      ],
+      "watch": "model.selected"
+    }
+  ],
+  "fields": [
+    {
+      "component": "div",
+      "children": [
+        {
+          "component": "el-tabs",
+          "children": [
+            {
+              "component": "el-tab-pane",
+              "options": {
+                "direct": true
+              },
+              "fieldOptions": {
+                "props": {
+                  "label": "表单"
+                }
+              },
+              "children": [
+                {
+                  "component": "el-form",
+                  "children": [
+                    {
+                      "component": "el-row",
+                      "children": [
+                        {
+                          "component": "el-col",
+                          "fieldOptions": {
+                            "props": {
+                              "span": 12
+                            }
+                          },
+                          "children": [
+                            {
+                              "component": "el-form-item",
+                              "children": [
+                                {
+                                  "component": "el-input",
+                                  "model": ["text3"],
+                                  "fieldOptions": {
+                                    "props": {
+                                      "clearable": true
+                                    }
+                                  }
+                                },
+                                {
+                                  "component": "span",
+                                  "fieldOptions": {
+                                    "domProps": {
+                                      "innerText": {
+                                        "$type": "design",
+                                        "$value": "#:输入了 ${(model.text3||'').length} 个字"
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "fieldOptions": {
+                                "props": {
+                                  "label": "文本",
+                                  "rules": [
+                                    {
+                                      "required": true,
+                                      "message": "必填项"
+                                    }
+                                  ],
+                                  "prop": "text3"
+                                }
+                              },
+                              "_collapse": true
+                            }
+                          ]
+                        },
+                        {
+                          "component": "el-col",
+                          "fieldOptions": {
+                            "props": {
+                              "span": 12
+                            }
+                          },
+                          "children": [
+                            {
+                              "component": "el-form-item",
+                              "children": [
+                                {
+                                  "component": "el-input",
+                                  "model": ["text1"]
+                                },
+                                {
+                                  "component": "span",
+                                  "fieldOptions": {
+                                    "domProps": {
+                                      "innerText": "输入正确的url后点击打开链接"
+                                    }
+                                  },
+                                  "condition": {
+                                    "$type": "design",
+                                    "$value": "$:!/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
+                                  }
+                                },
+                                {
+                                  "component": "a",
+                                  "fieldOptions": {
+                                    "domProps": {
+                                      "target": "_blank",
+                                      "innerText": "输入正确的url后点击打开链接"
+                                    },
+                                    "attrs": {
+                                      "href": {
+                                        "$type": "design",
+                                        "$value": "$:model.text1"
+                                      }
+                                    }
+                                  },
+                                  "condition": {
+                                    "$type": "design",
+                                    "$value": "$:/(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\'\\/\\\\\\+&amp;%$#_]*)?/g.test(model.text1)"
+                                  }
+                                }
+                              ],
+                              "fieldOptions": {
+                                "props": {
+                                  "label": "正则判断"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "component": "el-col",
+                          "fieldOptions": {
+                            "props": {
+                              "span": 12
+                            }
+                          },
+                          "children": [
+                            {
+                              "component": "el-form-item",
+                              "fieldOptions": {
+                                "props": {
+                                  "label": "选择",
+                                  "prop": "selected"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "component": "el-select",
+                                  "model": ["selected"],
+                                  "children": {
+                                    "$type": "design",
+                                    "$value": "$:MAP(datasource.listdata.data, item=>({component:'el-option',fieldOptions:{props:{value:item.value,label:item.label}}}))"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "component": "el-col",
+                          "fieldOptions": {
+                            "props": {
+                              "span": 12
+                            }
+                          },
+                          "children": [
+                            {
+                              "component": "el-form-item",
+                              "children": [
+                                {
+                                  "component": "el-select",
+                                  "model": ["subselected"],
+                                  "children": {
+                                    "$type": "design",
+                                    "$value": "$:MAP(datasource.sublist.data, item=>({component:'el-option',fieldOptions:{props:{value:item.value,label:item.label}}}))"
+                                  }
+                                }
+                              ],
+                              "fieldOptions": {
+                                "props": {
+                                  "label": "级联",
+                                  "prop": "subselected"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "fieldOptions": {
+                        "props": {
+                          "gutter": 20
+                        }
+                      }
+                    },
+                    {
+                      "component": "el-button",
+                      "fieldOptions": {
+                        "domProps": {
+                          "innerText": "提交"
+                        },
+                        "props": {
+                          "type": "primary"
+                        },
+                        "on": {
+                          "click": {
+                            "$type": "design",
+                            "$value": "@:refs.form.validate().then(()=>{alert(JSON.stringify(model))})"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "component": "el-button",
+                      "fieldOptions": {
+                        "domProps": {
+                          "innerText": "重置"
+                        },
+                        "on": {
+                          "click": {
+                            "$type": "design",
+                            "$value": "@:refs.form.resetFields()"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "fieldOptions": {
+                    "props": {
+                      "labelWidth": "120px",
+                      "model": {
+                        "$type": "design",
+                        "$value": "$:model"
+                      }
+                    },
+                    "ref": "form"
+                  }
+                }
+              ],
+              "remark": "表单"
+            },
+            {
+              "component": "el-tab-pane",
+              "options": {
+                "direct": true,
+                "collapse": true
+              },
+              "remark": "表格",
+              "children": [
+                {
+                  "component": "el-table",
+                  "fieldOptions": {
+                    "props": {
+                      "showHeader": true,
+                      "data": {
+                        "$type": "design",
+                        "$value": "$:datasource.listdata.data"
+                      }
+                    }
+                  },
+                  "children": [
+                    {
+                      "component": "el-table-column",
+                      "fieldOptions": {
+                        "props": {
+                          "label": "key",
+                          "prop": "value"
+                        }
+                      }
+                    },
+                    {
+                      "component": "el-table-column",
+                      "fieldOptions": {
+                        "props": {
+                          "label": "名称",
+                          "prop": "label"
+                        }
+                      }
+                    },
+                    {
+                      "component": "el-table-column",
+                      "children": [
+                        {
+                          "component": "div",
+                          "fieldOptions": {
+                            "scopedSlot": "default"
+                          },
+                          "children": [
+                            {
+                              "component": "el-button",
+                              "fieldOptions": {
+                                "domProps": {
+                                  "innerText": "detail"
+                                },
+                                "props": {
+                                  "type": "text"
+                                },
+                                "on": {
+                                  "click": {
+                                    "$type": "design",
+                                    "$value": "@:alert(JSON.stringify(scope.row))"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "fieldOptions": {
+                "props": {
+                  "label": "表格"
+                }
+              }
+            }
+          ],
+          "options": {},
+          "remark": ""
+        }
+      ]
+    }
+  ],
+  "model": {}
+}

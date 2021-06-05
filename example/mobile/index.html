@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>移动端示例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vjdesign"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jformer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant/lib/vant.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver/dist/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ejs"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/vjdesign/dist/vjdesign.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/vant/lib/index.css"
+    />
+    <style>
+      html {
+        font-size: 14px;
+      }
+
+      #app {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .demo-wrapper {
+        position: absolute;
+        top: 50px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      header {
+        border-bottom: 1px solid silver;
+      }
+
+      .v-jdesign .design > * {
+        width: 375px;
+      }
+
+      .v-jdesign .design {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .modal-dialog.example {
+        width: 420px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <header class="navbar">
+        <a class="navbar-brand" href="https://fyl080801.github.io/vjdesign/"
+          >VJDesign - Vant</a
+        >
+        <div>
+          <button
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#staticBackdrop"
+          >
+            预览
+          </button>
+          <button
+            class="btn btn-secondary"
+            data-toggle="modal"
+            data-target="#exportBackdrop"
+            @click="exportTemplate"
+          >
+            导出
+          </button>
+        </div>
+      </header>
+      <div class="demo-wrapper">
+        <v-jdesign v-model="model" v-bind:profile="profile"></v-jdesign>
+      </div>
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-backdrop="static"
+        data-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog example">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">预览</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <j-former v-if="previewShow" v-bind:config="model"></j-former>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">Ok</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data() {
+          return {
+            model: {},
+            profile: {},
+            previewShow: false
+          }
+        },
+        methods: {
+          exportTemplate() {
+            fetch('./template.ejs').then(response => {
+              response.text().then(text => {
+                saveAs(
+                  new Blob(
+                    [ejs.render(text, { model: JSON.stringify(this.model) })],
+                    {
+                      type: 'text/plain;charset=utf-8'
+                    }
+                  ),
+                  'example.html'
+                )
+              })
+            })
+          }
+        },
+        async mounted() {
+          const config = await fetch('value.json', { method: 'GET' })
+          const profile = await fetch('profile.json', {
+            method: 'GET'
+          })
+          this.model = await config.json()
+          this.profile = await profile.json()
+
+          $('#staticBackdrop').on('shown.bs.modal', () => {
+            this.previewShow = true
+          })
+          $('#staticBackdrop').on('hidden.bs.modal', () => {
+            this.previewShow = false
+          })
+
+          $('#exportBackdrop').on('shown.bs.modal', () => {
+            this.exportShow = true
+          })
+          $('#exportBackdrop').on('hidden.bs.modal', () => {
+            this.exportShow = false
+          })
+        }
+      })
+    </script>
+  </body>
+</html>

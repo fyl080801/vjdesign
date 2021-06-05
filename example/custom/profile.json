@@ -1,0 +1,78 @@
+{
+  "components": [
+    {
+      "name": "c-form",
+      "label": "问卷表单",
+      "group": "问卷",
+      "designer": "container",
+      "properties": [
+        { "name": "fieldOptions.props.title", "label": "标题", "group": "组件" }
+      ]
+    },
+    {
+      "name": "c-question-input",
+      "label": "输入问题",
+      "group": "问卷",
+      "properties": [
+        "fieldOptions.props.prop",
+        "fieldOptions.props.label",
+        "fieldOptions.props.required",
+        "fieldOptions.props.requireMessage"
+      ]
+    },
+    {
+      "name": "c-question-single",
+      "label": "单选问题",
+      "group": "问卷",
+      "properties": [
+        "fieldOptions.props.prop",
+        "fieldOptions.props.label",
+        "fieldOptions.props.required",
+        "fieldOptions.props.requireMessage",
+        "fieldOptions.props.options"
+      ]
+    },
+    {
+      "name": "c-question-multiple",
+      "label": "多选问题",
+      "group": "问卷",
+      "properties": [
+        "fieldOptions.props.prop",
+        "fieldOptions.props.label",
+        "fieldOptions.props.required",
+        "fieldOptions.props.requireMessage",
+        "fieldOptions.props.options"
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "fieldOptions.props.label",
+      "label": "标题",
+      "group": "组件"
+    },
+    {
+      "name": "fieldOptions.props.prop",
+      "label": "数据属性",
+      "group": "数据"
+    },
+    {
+      "name": "fieldOptions.props.required",
+      "label": "必填",
+      "group": "组件",
+      "editor": "checkbox"
+    },
+    {
+      "name": "fieldOptions.props.requireMessage",
+      "label": "必填验证消息",
+      "group": "组件"
+    },
+    {
+      "name": "fieldOptions.props.options",
+      "label": "选项",
+      "group": "组件",
+      "editor": "array",
+      "properties": [{ "name": "label", "label": "选项名称" }]
+    }
+  ]
+}

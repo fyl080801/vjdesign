@@ -1,0 +1,100 @@
+{
+  "datasource": {},
+  "listeners": [],
+  "fields": [
+    {
+      "component": "c-form",
+      "children": [
+        {
+          "component": "c-question-single",
+          "fieldOptions": {
+            "props": {
+              "label": "您的性别",
+              "options": [
+                {
+                  "label": "男"
+                },
+                {
+                  "label": "女"
+                }
+              ],
+              "required": true,
+              "prop": "gender"
+            }
+          }
+        },
+        {
+          "component": "c-question-single",
+          "fieldOptions": {
+            "props": {
+              "label": "您的学历",
+              "options": [
+                {
+                  "label": "小学"
+                },
+                {
+                  "label": "初中"
+                },
+                {
+                  "label": "高中"
+                },
+                {
+                  "label": "大学本科"
+                },
+                {
+                  "label": "硕士"
+                },
+                {
+                  "label": "博士"
+                }
+              ],
+              "required": true,
+              "prop": "education"
+            }
+          }
+        },
+        {
+          "component": "c-question-multiple",
+          "fieldOptions": {
+            "props": {
+              "label": "您的爱好",
+              "options": [
+                {
+                  "label": "唱歌"
+                },
+                {
+                  "label": "跳舞"
+                },
+                {
+                  "label": "运动"
+                },
+                {
+                  "label": "游戏"
+                },
+                {
+                  "label": "其他"
+                }
+              ],
+              "prop": "hobby"
+            }
+          }
+        },
+        {
+          "component": "c-question-input",
+          "fieldOptions": {
+            "props": {
+              "label": "您的建议",
+              "prop": "propose"
+            }
+          }
+        }
+      ],
+      "fieldOptions": {
+        "props": {
+          "title": "自定义问卷"
+        }
+      }
+    }
+  ],
+  "model": {}
+}

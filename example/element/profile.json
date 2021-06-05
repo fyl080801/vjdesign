@@ -1,0 +1,806 @@
+{
+  "components": [
+    {
+      "name": "el-form",
+      "label": "表单",
+      "group": "ElementUI",
+      "designer": "container",
+      "properties": [
+        {
+          "name": "fieldOptions.props.model",
+          "descriotion": "显示验证结果相关",
+          "label": "表单数据",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.labelWidth",
+          "group": "组件",
+          "label": "前缀宽度"
+        },
+        "fieldOptions.props.size",
+        {
+          "name": "fieldOptions.props.labelPosition",
+          "group": "组件",
+          "label": "前缀位置",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "right", "label": "右侧" },
+                { "value": "left", "label": "左侧" },
+                { "value": "top", "label": "顶部" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "el-form-item",
+      "label": "表单项",
+      "group": "ElementUI",
+      "designer": "container",
+      "properties": [
+        "fieldOptions.props.label",
+        {
+          "name": "fieldOptions.props.prop",
+          "label": "数据属性",
+          "descriotion": "显示验证结果相关",
+          "group": "组件"
+        },
+        "fieldOptions.props.rules"
+      ]
+    },
+    {
+      "name": "el-row",
+      "label": "行",
+      "group": "ElementUI",
+      "designer": "classContainer",
+      "properties": ["fieldOptions.props.gutter"]
+    },
+    {
+      "name": "el-col",
+      "label": "列",
+      "group": "ElementUI",
+      "designer": "classContainer",
+      "properties": ["fieldOptions.props.span"]
+    },
+    {
+      "name": "el-input",
+      "label": "输入",
+      "group": "ElementUI",
+      "properties": [
+        "model",
+        {
+          "name": "fieldOptions.props.type",
+          "label": "类型",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "text", "label": "文本" },
+                { "value": "textarea", "label": "文本域" },
+                { "value": "number", "label": "数字" },
+                { "value": "password", "label": "密码" }
+              ]
+            }
+          }
+        },
+        "fieldOptions.attrs.placeholder",
+        "fieldOptions.props.disabled",
+        "fieldOptions.props.readonly",
+        "fieldOptions.props.maxlength",
+        "fieldOptions.props.minlength",
+        "fieldOptions.props.clearable",
+        {
+          "name": "fieldOptions.props.rows",
+          "label": "行数",
+          "description": "文本域时候用",
+          "group": "组件",
+          "editor": "number"
+        },
+        {
+          "name": "fieldOptions.props.autosize",
+          "label": "自适应内容",
+          "description": "文本域时候用",
+          "group": "组件",
+          "editor": "checkbox"
+        }
+      ]
+    },
+    {
+      "name": "el-input-number",
+      "label": "数字输入",
+      "group": "ElementUI",
+      "properties": [
+        "model",
+        "fieldOptions.props.max",
+        "fieldOptions.props.min",
+        "fieldOptions.props.placeholder",
+        "fieldOptions.props.disabled",
+        {
+          "name": "fieldOptions.props.step",
+          "label": "步长",
+          "group": "组件",
+          "editor": "number"
+        },
+        {
+          "name": "fieldOptions.props.precision",
+          "label": "数值精度",
+          "group": "组件",
+          "editor": "number"
+        },
+        {
+          "name": "fieldOptions.props.controls",
+          "label": "是否使用控制按钮",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.controlsPosition",
+          "label": "控制按钮位置",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": null, "label": "默认" },
+                { "value": "right", "label": "右侧" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "el-radio-group",
+      "label": "单选框组",
+      "group": "ElementUI",
+      "designer": "divContainer",
+      "properties": ["model", "fieldOptions.props.disabled"]
+    },
+    {
+      "name": "el-radio",
+      "label": "单选项",
+      "group": "ElementUI",
+      "properties": [
+        "fieldOptions.domProps.innerText",
+        "fieldOptions.props.disabled",
+        { "name": "fieldOptions.props.label", "label": "值", "group": "组件" }
+      ]
+    },
+    {
+      "name": "el-checkbox-group",
+      "label": "多选框组",
+      "group": "ElementUI",
+      "designer": "divContainer",
+      "properties": ["model", "fieldOptions.props.disabled"]
+    },
+    {
+      "name": "el-checkbox",
+      "label": "多选项",
+      "group": "ElementUI",
+      "properties": [
+        "fieldOptions.domProps.innerText",
+        "fieldOptions.props.disabled",
+        { "name": "fieldOptions.props.label", "label": "值", "group": "组件" }
+      ]
+    },
+    {
+      "name": "el-select",
+      "label": "选择",
+      "group": "ElementUI",
+      "properties": [
+        "model",
+        "fieldOptions.props.placeholder",
+        "fieldOptions.props.disabled",
+        "fieldOptions.props.clearable",
+        {
+          "name": "fieldOptions.props.multiple",
+          "label": "是否多选",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "children",
+          "label": "选择项",
+          "group": "组件",
+          "editor": "array",
+          "properties": [
+            {
+              "name": "component",
+              "label": "组件",
+              "editor": {
+                "name": "select",
+                "options": {
+                  "items": [{ "value": "el-option", "label": "选择项" }]
+                }
+              }
+            },
+            { "name": "fieldOptions.props.value", "label": "值" },
+            { "name": "fieldOptions.props.label", "label": "名称" }
+          ]
+        },
+        "fieldOptions.on.change"
+      ]
+    },
+    {
+      "name": "el-option",
+      "label": "选择项",
+      "group": "ElementUI",
+      "designer": "divElement",
+      "properties": ["fieldOptions.props.value", "fieldOptions.props.label"]
+    },
+    {
+      "name": "el-date-picker",
+      "label": "时间选择",
+      "group": "ElementUI",
+      "properties": [
+        "model",
+        "fieldOptions.props.disabled",
+        "fieldOptions.props.readonly",
+        "fieldOptions.props.placeholder",
+        {
+          "name": "fieldOptions.props.type",
+          "label": "显示类型",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "year", "label": "年" },
+                { "value": "month", "label": "月" },
+                { "value": "date", "label": "日" },
+                { "value": "dates", "label": "日期" },
+                { "value": "week", "label": "周" },
+                { "value": "datetime", "label": "时间" },
+                { "value": "datetimerange", "label": "时间段" },
+                { "value": "daterange", "label": "日期段" },
+                { "value": "monthrange", "label": "月份段" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.format",
+          "label": "格式",
+          "group": "组件"
+        },
+        "fieldOptions.props.clearable"
+      ]
+    },
+    {
+      "name": "el-switch",
+      "label": "开关",
+      "group": "ElementUI",
+      "properties": ["model", "fieldOptions.props.disabled"]
+    },
+    {
+      "name": "el-button",
+      "label": "按钮",
+      "group": "ElementUI",
+      "designer": { "name": "default", "copyClass": false },
+      "properties": [
+        "fieldOptions.domProps.innerText",
+        {
+          "name": "fieldOptions.props.type",
+          "label": "类型",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "primary", "label": "主要" },
+                { "value": "success", "label": "成功" },
+                { "value": "info", "label": "信息" },
+                { "value": "warning", "label": "警告" },
+                { "value": "danger", "label": "危险" },
+                { "value": "text", "label": "文本" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.plain",
+          "label": "边框按钮",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.round",
+          "label": "圆角",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.circle",
+          "label": "圆形",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.icon",
+          "label": "图标",
+          "group": "组件"
+        },
+        "fieldOptions.props.disabled",
+        "fieldOptions.on.click",
+        "events"
+      ]
+    },
+    {
+      "name": "el-alert",
+      "label": "警告",
+      "group": "ElementUI",
+      "properties": [
+        {
+          "name": "fieldOptions.props.title",
+          "label": "标题",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.description",
+          "label": "辅助文字",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.closable",
+          "label": "是否可关闭",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.type",
+          "label": "主题",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "success", "label": "成功" },
+                { "value": "warning", "label": "提示" },
+                { "value": "info", "label": "信息" },
+                { "value": "error", "label": "错误" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.showIcon",
+          "label": "是否显示图标",
+          "group": "组件",
+          "editor": "checkbox"
+        }
+      ]
+    },
+    {
+      "name": "el-tabs",
+      "label": "选项卡",
+      "group": "ElementUI 布局",
+      "designer": "divContainer",
+      "properties": [
+        "model",
+        {
+          "name": "fieldOptions.props.type",
+          "label": "样式类型",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "card", "label": "卡片" },
+                { "value": "border-card", "label": "带边框卡片" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.tabPosition",
+          "label": "选项卡位置",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "top", "label": "顶部" },
+                { "value": "right", "label": "右侧" },
+                { "value": "bottom", "label": "底部" },
+                { "value": "left", "label": "左侧" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "el-tab-pane",
+      "label": "选项卡页",
+      "group": "ElementUI 布局",
+      "designer": "divContainer",
+      "properties": [
+        "options.direct",
+        "fieldOptions.props.label",
+        "fieldOptions.props.name"
+      ]
+    },
+    {
+      "name": "el-page-header",
+      "label": "页头",
+      "group": "ElementUI 布局",
+      "properties": [
+        {
+          "name": "fieldOptions.props.title",
+          "label": "标题",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.content",
+          "label": "内容",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.on.back",
+          "label": "回退",
+          "transform": ["@"],
+          "group": "事件"
+        }
+      ]
+    },
+    {
+      "name": "el-card",
+      "label": "卡片",
+      "group": "ElementUI 布局",
+      "designer": "container",
+      "properties": [
+        {
+          "name": "fieldOptions.props.header",
+          "label": "标题",
+          "group": "组件"
+        }
+      ]
+    },
+    {
+      "name": "el-divider",
+      "label": "分割线",
+      "group": "ElementUI 布局",
+      "designer": "divContainer",
+      "properties": [
+        {
+          "name": "fieldOptions.props.direction",
+          "label": "方向",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "horizontal", "label": "横向" },
+                { "value": "vertical", "label": "纵向" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.contentPosition",
+          "label": "文案位置",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "left", "label": "左" },
+                { "value": "right", "label": "右" },
+                { "value": "center", "label": "中间" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "el-table",
+      "label": "数据表",
+      "group": "ElementUI 数据",
+      "designer": "divContainer",
+      "properties": [
+        { "name": "fieldOptions.props.data", "label": "数据", "group": "组件" },
+        {
+          "name": "fieldOptions.props.stripe",
+          "label": "斑马纹",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.border",
+          "label": "边框",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.fit",
+          "label": "列宽自撑开",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.showHeader",
+          "label": "显示表头",
+          "group": "组件",
+          "editor": "checkbox",
+          "default": true
+        },
+        {
+          "name": "fieldOptions.on.rowClick",
+          "label": "行点击",
+          "transform": ["@"],
+          "group": "事件"
+        }
+      ]
+    },
+    {
+      "name": "el-table-column",
+      "label": "数据列",
+      "group": "ElementUI 数据",
+      "designer": "divContainer",
+      "properties": [
+        {
+          "name": "fieldOptions.props.label",
+          "label": "标题",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.prop",
+          "label": "数据属性",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.width",
+          "label": "宽度",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.resizable",
+          "label": "可调宽度",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.fixed",
+          "label": "固定位置",
+          "group": "组件",
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "left", "label": "左侧" },
+                { "value": "right", "label": "右侧" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "fieldOptions.props.formatter",
+          "label": "内容格式化",
+          "transform": ["@"],
+          "group": "事件"
+        }
+      ]
+    },
+    {
+      "name": "el-pagination",
+      "label": "分页",
+      "group": "ElementUI 数据",
+      "properties": [
+        {
+          "name": "fieldOptions.props.pageSize",
+          "label": "每页记录数",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.total",
+          "label": "总记录数",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.currentPage",
+          "label": "当前页码",
+          "group": "组件"
+        },
+        {
+          "name": "fieldOptions.props.background",
+          "label": "按钮背景",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.props.hideOnSinglePage",
+          "label": "单页时隐藏",
+          "group": "组件",
+          "editor": "checkbox"
+        },
+        {
+          "name": "fieldOptions.on.currentChange",
+          "label": "页码变更",
+          "transform": ["@"],
+          "group": "事件"
+        },
+        {
+          "name": "fieldOptions.on.sizeChange",
+          "label": "每页记录数变更",
+          "transform": ["@"],
+          "group": "事件"
+        }
+      ]
+    }
+  ],
+  "datasource": [],
+  "functional": [
+    {
+      "name": "ADD",
+      "label": "相加",
+      "description": "",
+      "params": ["value1", "value2"]
+    },
+    {
+      "name": "IF",
+      "label": "条件判断",
+      "description": "",
+      "params": ["expr", "trueValue", "falseValue"]
+    }
+  ],
+  "properties": [
+    {
+      "name": "fieldOptions.props.size",
+      "group": "组件",
+      "label": "尺寸",
+      "editor": {
+        "name": "select",
+        "options": {
+          "items": [
+            { "value": "medium", "label": "适中" },
+            { "value": "small", "label": "小" },
+            { "value": "mini", "label": "极小" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "fieldOptions.props.name",
+      "label": "命名",
+      "group": "组件"
+    },
+    {
+      "name": "fieldOptions.props.label",
+      "group": "组件",
+      "label": "前缀"
+    },
+    {
+      "name": "fieldOptions.props.gutter",
+      "group": "组件",
+      "label": "间隔",
+      "editor": { "name": "simple", "options": { "type": "number" } }
+    },
+    {
+      "name": "fieldOptions.props.span",
+      "group": "组件",
+      "label": "列宽",
+      "editor": "number"
+    },
+    {
+      "name": "fieldOptions.props.value",
+      "group": "组件",
+      "label": "值"
+    },
+    {
+      "name": "fieldOptions.props.type",
+      "group": "组件",
+      "label": "类型",
+      "editor": {
+        "name": "select",
+        "options": {
+          "items": [
+            { "value": "primary", "label": "主要" },
+            { "value": "success", "label": "成功" },
+            { "value": "info", "label": "信息" },
+            { "value": "warning", "label": "警告" },
+            { "value": "danger", "label": "危险" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "fieldOptions.props.min",
+      "label": "最小值",
+      "group": "组件"
+    },
+    {
+      "name": "fieldOptions.props.max",
+      "label": "最大值",
+      "group": "组件"
+    },
+    {
+      "name": "fieldOptions.props.clearable",
+      "label": "是否可清空",
+      "group": "组件",
+      "editor": "checkbox"
+    },
+    {
+      "name": "fieldOptions.props.maxlength",
+      "label": "最大长度",
+      "group": "组件",
+      "editor": "number"
+    },
+    {
+      "name": "fieldOptions.props.minlength",
+      "label": "最小长度",
+      "group": "组件",
+      "editor": "number"
+    },
+    {
+      "name": "fieldOptions.props.placeholder",
+      "label": "水印",
+      "group": "基础"
+    },
+    {
+      "name": "fieldOptions.props.readonly",
+      "label": "只读",
+      "group": "基础",
+      "editor": "switch"
+    },
+    {
+      "name": "fieldOptions.props.disabled",
+      "label": "是否禁用",
+      "group": "基础",
+      "editor": "switch"
+    },
+    {
+      "name": "fieldOptions.props.rules",
+      "label": "验证规则",
+      "group": "组件",
+      "properties": [
+        {
+          "name": "type",
+          "label": "类型",
+          "transform": false,
+          "editor": {
+            "name": "select",
+            "options": {
+              "items": [
+                { "value": "string", "label": "字符串" },
+                { "value": "number", "label": "数字" },
+                { "value": "boolean", "label": "布尔" },
+                { "value": "array", "label": "数组" }
+              ]
+            }
+          }
+        },
+        { "name": "required", "label": "是否必填", "editor": "switch" },
+        { "name": "message", "label": "错误提示" },
+        { "name": "min", "label": "最小值", "editor": "number" },
+        { "name": "max", "label": "最大值", "editor": "number" },
+        { "name": "pattern", "label": "正则" }
+      ],
+      "editor": "array"
+    },
+
+    {
+      "name": "fieldOptions.on.click",
+      "label": "点击",
+      "transform": ["@"],
+      "group": "事件"
+    },
+    {
+      "name": "fieldOptions.on.change",
+      "label": "值变更",
+      "transform": ["@"],
+      "group": "事件"
+    }
+  ],
+  "schema": {
+    "type": "object",
+    "properties": {
+      "model": {},
+      "params": {}
+    }
+  }
+}

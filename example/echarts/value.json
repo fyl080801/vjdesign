@@ -1,0 +1,132 @@
+{
+  "datasource": {},
+  "listeners": [],
+  "fields": [
+    {
+      "component": "div",
+      "children": [
+        {
+          "component": "el-row",
+          "children": [
+            {
+              "component": "el-col",
+              "fieldOptions": {
+                "props": {
+                  "span": 12
+                }
+              },
+              "children": [
+                {
+                  "component": "e-charts",
+                  "fieldOptions": {
+                    "props": {
+                      "options": {
+                        "title": {
+                          "text": "开发中...",
+                          "show": true
+                        },
+                        "xAxis": {
+                          "data": [
+                            "衬衫",
+                            "羊毛衫",
+                            "雪纺衫",
+                            "裤子",
+                            "高跟鞋",
+                            "袜子"
+                          ],
+                          "show": true,
+                          "name": "货品"
+                        },
+                        "legend": {
+                          "data": ["2019年", "2020年"]
+                        },
+                        "yAxis": {
+                          "show": true,
+                          "name": "销量"
+                        },
+                        "series": [
+                          {
+                            "name": "2019年",
+                            "type": "bar",
+                            "data": [5, 20, 36, 10, 10, 20]
+                          },
+                          {
+                            "name": "2020年",
+                            "type": "bar",
+                            "data": [22, 33, 11, 50, 30, 12]
+                          }
+                        ]
+                      }
+                    },
+                    "style": "height: 400px"
+                  }
+                }
+              ]
+            },
+            {
+              "component": "el-col",
+              "fieldOptions": {
+                "props": {
+                  "span": 12
+                }
+              },
+              "children": [
+                {
+                  "component": "e-charts",
+                  "fieldOptions": {
+                    "props": {
+                      "options": {
+                        "xAxis": {
+                          "show": false
+                        },
+                        "legend": {},
+                        "series": [
+                          {
+                            "name": "产出",
+                            "type": "pie",
+                            "data": [
+                              {
+                                "value": "12",
+                                "name": "香蕉"
+                              },
+                              {
+                                "value": "33",
+                                "name": "苹果"
+                              },
+                              {
+                                "value": "24",
+                                "name": "橘子"
+                              },
+                              {
+                                "value": "5",
+                                "name": "榴莲"
+                              }
+                            ]
+                          }
+                        ],
+                        "title": {
+                          "text": "test",
+                          "show": true
+                        },
+                        "yAxis": {
+                          "show": false
+                        }
+                      }
+                    },
+                    "style": "height: 400px"
+                  }
+                }
+              ]
+            }
+          ],
+          "fieldOptions": {
+            "props": {
+              "gutter": 20
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "model": {}
+}
