@@ -64,7 +64,7 @@ export default {
         this.addBodyClass()
       }
 
-      const maxIndex = 1024 + this.getMaxZIndex()
+      const maxIndex = 3000 + this.getMaxZIndex()
       const modal = this.$refs.modal
       const backdrop = this.$refs.backdrop
 
@@ -168,7 +168,7 @@ export default {
           maxIndex = current
         }
       })
-      return maxIndex === 'auto' ? 1024 : +maxIndex
+      return maxIndex === 'auto' ? 3000 : +maxIndex
     }
   }
 }
@@ -186,6 +186,8 @@ export default {
     overflow: auto !important;
 
     &.fade {
+      opacity: 1 !important;
+
       &.show {
         .modal-dialog {
           -webkit-transform: none;
@@ -197,8 +199,8 @@ export default {
         transition: -webkit-transform 0.3s ease-out;
         transition: transform 0.3s ease-out;
         transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
-        -webkit-transform: translate(0, -50px);
-        transform: translate(0, -50px);
+        -webkit-transform: translate(0, 5px);
+        transform: translate(0, 5px);
       }
     }
   }
